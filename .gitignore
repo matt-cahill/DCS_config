@@ -43,3 +43,7 @@ Logs/
 Tracks/
 MissionEditor/
 Missions/
+/Config/network.vault
+/Config/options.lua.nonvr
+/Config/imgui.ini
+/Config/authdata.bin
