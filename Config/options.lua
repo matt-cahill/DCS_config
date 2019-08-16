@@ -98,7 +98,7 @@ options = {
 		["f5_nearest_ac"] = true,
 		["force_feedback_enabled"] = false,
 		["headmove"] = false,
-		["show_pilot_body"] = true,
+		["show_pilot_body"] = false,
 		["synchronize_controls"] = true,
 	},
 	["plugins"] = {
