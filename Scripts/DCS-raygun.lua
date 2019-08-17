@@ -9,7 +9,7 @@
 -- Added "Rg" name space to all global variables and local functions to avoid
 -- conflicts with other exports.
 -- Added chaining to global functions to allow previous declarations of the same
--- funtion in other exports to be called.
+-- function in other exports to be called.
 -- Removed unused LuaExportActivityNextEvent function call.
 -- Stored socket port in a varaible.
 
