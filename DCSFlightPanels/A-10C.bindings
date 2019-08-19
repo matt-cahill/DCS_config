@@ -13,7 +13,7 @@ OperationLevelFlag=3
 UseGenericRadio=False
 
 PanelType=PZ55SwitchPanel
-PanelInstanceID=\\?\hid#vid_06a3&pid_0d67#8&34401796&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}
+PanelInstanceID=\\?\hid#vid_06a3&pid_0d67#8&8e19067&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}
 PanelSettingsVersion=0X
 BeginPanel
 	SwitchPanelDCSBIOSControl{1LEVER_GEAR_DOWN|DCS-BIOS}\o/\o/DCSBIOSInput{GEAR_LEVER|SET_STATE|1|0}
