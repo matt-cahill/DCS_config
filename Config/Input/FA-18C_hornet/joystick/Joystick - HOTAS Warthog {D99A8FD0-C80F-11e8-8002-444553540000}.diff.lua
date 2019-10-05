@@ -1,20 +1,40 @@
 local diff = {
 	["axisDiffs"] = {
 		["a2001cdnil"] = {
-			["name"] = "Pitch",
-			["removed"] = {
+			["changed"] = {
 				[1] = {
+					["filter"] = {
+						["curvature"] = {
+							[1] = 0.1,
+						},
+						["deadzone"] = 0,
+						["invert"] = false,
+						["saturationX"] = 1,
+						["saturationY"] = 1,
+						["slider"] = false,
+					},
 					["key"] = "JOY_Y",
 				},
 			},
+			["name"] = "Pitch",
 		},
 		["a2002cdnil"] = {
-			["name"] = "Roll",
-			["removed"] = {
+			["changed"] = {
 				[1] = {
+					["filter"] = {
+						["curvature"] = {
+							[1] = 0.1,
+						},
+						["deadzone"] = 0,
+						["invert"] = false,
+						["saturationX"] = 1,
+						["saturationY"] = 1,
+						["slider"] = false,
+					},
 					["key"] = "JOY_X",
 				},
 			},
+			["name"] = "Roll",
 		},
 		["a2003cdnil"] = {
 			["name"] = "Rudder",
@@ -50,6 +70,78 @@ local diff = {
 			},
 			["name"] = "Weapon Release Button",
 		},
+		["d3004pnilu3004cd13vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN5",
+				},
+			},
+			["name"] = "RECCE Event Mark Switch",
+		},
+		["d3005pnilu3005cd13vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN15",
+				},
+			},
+			["name"] = "Sensor Control Switch - Fwd",
+		},
+		["d3006pnilu3006cd13vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN17",
+				},
+			},
+			["name"] = "Sensor Control Switch - Aft",
+		},
+		["d3007pnilu3007cd13vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN18",
+				},
+			},
+			["name"] = "Sensor Control Switch - Left",
+		},
+		["d3008pnilu3008cd13vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN16",
+				},
+			},
+			["name"] = "Sensor Control Switch - Right",
+		},
+		["d3009pnilu3009cd13vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN13",
+				},
+			},
+			["name"] = "Select Sparrow",
+		},
+		["d3010pnilu3010cd13vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN11",
+				},
+			},
+			["name"] = "Select Gun",
+		},
+		["d3011pnilu3011cd13vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN12",
+				},
+			},
+			["name"] = "Select AMRAAM",
+		},
+		["d3012pnilu3012cd13vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN14",
+				},
+			},
+			["name"] = "Select Sidewinder",
+		},
 		["d3013pnilu3013cd13vd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
@@ -57,6 +149,38 @@ local diff = {
 				},
 			},
 			["name"] = "Undesignate/Nose Wheel Steer Switch",
+		},
+		["d3018pnilu3018cd13vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN4",
+				},
+			},
+			["name"] = "Autopilot/Nosewheel Steering Disengage (Paddle) Switch",
+		},
+		["d3023pnilu3023cd13vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN10",
+				},
+			},
+			["name"] = "Throttle Designator Controller - Depress",
+		},
+		["d3031pnilu3031cd13vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN8",
+				},
+			},
+			["name"] = "Cage/Uncage Button",
+		},
+		["d3045pnilu3045cd13vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN19",
+				},
+			},
+			["name"] = "Sensor Control Switch - Depress",
 		},
 		["dnilp210u214cdnilvdnilvpnilvunil"] = {
 			["name"] = "View Up Right slow",
@@ -153,14 +277,6 @@ local diff = {
 					["key"] = "JOY_BTN_POV1_D",
 				},
 			},
-		},
-		["dnilp36unilcdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN4",
-				},
-			},
-			["name"] = "View Center",
 		},
 	},
 }

@@ -21,7 +21,7 @@ local diff = {
 				[1] = {
 					["filter"] = {
 						["curvature"] = {
-							[1] = 0.55,
+							[1] = 0.1,
 						},
 						["deadzone"] = 0,
 						["invert"] = false,

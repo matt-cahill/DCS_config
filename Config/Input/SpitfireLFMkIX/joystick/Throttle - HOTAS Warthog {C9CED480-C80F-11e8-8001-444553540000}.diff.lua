@@ -50,22 +50,6 @@ local diff = {
 			},
 			["name"] = "COMM Communication menu",
 		},
-		["d201pnilu202cdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN_POV1_L",
-				},
-			},
-			["name"] = "Flight RUDDER LEFT",
-		},
-		["d203pnilu204cdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN_POV1_R",
-				},
-			},
-			["name"] = "Flight RUDDER RIGHT",
-		},
 		["d3009pnilunilcd1vd0vpnilvunil"] = {
 			["added"] = {
 				[1] = {
@@ -90,21 +74,37 @@ local diff = {
 			},
 			["name"] = "Undercarriage (toggle)",
 		},
-		["dnilp3003unilcd1vdnilvp-1vunil"] = {
-			["added"] = {
+		["dnilp210u214cdnilvdnilvpnilvunil"] = {
+			["name"] = "View Up Right slow",
+			["removed"] = {
 				[1] = {
-					["key"] = "JOY_BTN_POV1_U",
+					["key"] = "JOY_BTN_POV1_UR",
 				},
 			},
-			["name"] = "Wheel Brakes DECREASE",
 		},
-		["dnilp3003unilcd1vdnilvp1vunil"] = {
-			["added"] = {
+		["dnilp211u214cdnilvdnilvpnilvunil"] = {
+			["name"] = "View Down Right slow",
+			["removed"] = {
 				[1] = {
-					["key"] = "JOY_BTN_POV1_D",
+					["key"] = "JOY_BTN_POV1_DR",
 				},
 			},
-			["name"] = "Wheel Brakes INCREASE",
+		},
+		["dnilp212u214cdnilvdnilvpnilvunil"] = {
+			["name"] = "View Down Left slow",
+			["removed"] = {
+				[1] = {
+					["key"] = "JOY_BTN_POV1_DL",
+				},
+			},
+		},
+		["dnilp213u214cdnilvdnilvpnilvunil"] = {
+			["name"] = "View Up Left slow",
+			["removed"] = {
+				[1] = {
+					["key"] = "JOY_BTN_POV1_UL",
+				},
+			},
 		},
 		["dnilp32u214cdnilvdnilvpnilvunil"] = {
 			["name"] = "View Left slow",
@@ -135,6 +135,14 @@ local diff = {
 			["removed"] = {
 				[1] = {
 					["key"] = "JOY_BTN_POV1_D",
+				},
+			},
+		},
+		["dnilp36unilcdnilvdnilvpnilvunil"] = {
+			["name"] = "View Center",
+			["removed"] = {
+				[1] = {
+					["key"] = "JOY_BTN5",
 				},
 			},
 		},

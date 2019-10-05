@@ -21,7 +21,7 @@ local diff = {
 				[1] = {
 					["filter"] = {
 						["curvature"] = {
-							[1] = 0.39,
+							[1] = 0.55,
 						},
 						["deadzone"] = 0,
 						["invert"] = false,
@@ -39,13 +39,29 @@ local diff = {
 				},
 			},
 		},
-		["a3005cd2"] = {
-			["name"] = "Throttle (analog)",
+		["a2004cdnil"] = {
+			["name"] = "Thrust",
 			["removed"] = {
 				[1] = {
 					["key"] = "JOY_Z",
 				},
 			},
+		},
+		["a2112cdnil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_Y",
+				},
+			},
+			["name"] = "Wheel Brake Left",
+		},
+		["a2113cdnil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_X",
+				},
+			},
+			["name"] = "Wheel Brake Right",
 		},
 	},
 	["keyDiffs"] = {
@@ -110,14 +126,6 @@ local diff = {
 			["removed"] = {
 				[1] = {
 					["key"] = "JOY_BTN_POV1_D",
-				},
-			},
-		},
-		["dnilp36unilcdnilvdnilvpnilvunil"] = {
-			["name"] = "View Center",
-			["removed"] = {
-				[1] = {
-					["key"] = "JOY_BTN5",
 				},
 			},
 		},
