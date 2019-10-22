@@ -331,6 +331,8 @@ defineFloat("SAI_PITCH", 438, {0.0, 1.0}, "Gauges", "SAI Pitch")
 defineFloat("SAI_BANK", 439, {0.0, 1.0}, "Gauges", "SAI Bank")
 defineFloat("SAI_OFF", 440, {0.0, 1.0}, "Gauges", "SAI OFF Flag")
 defineFloat("SAI_ARROW", 443, {0.0, 1.0}, "Gauges", "SAI Knob Arrow")
+defineFloat("CANOPY_POS", 181, {0, 1}, "Gauges", "Canopy Position")
+
 
 -- Accelerometer
 definePushButton("ACC", 27, 3001, 904,"Accelerometer" , "Accelerometer - Push to set")
@@ -339,7 +341,7 @@ defineFloat("ACCELEROMETER_MIN", 902, {0.0, 0.323, 0.653, 1.0}, "Gauges", "Accel
 defineFloat("ACCELEROMETER_MAX", 903, {0.0, 0.323, 0.653, 1.0}, "Gauges", "Accelerometer Max")
 
 -- AirSpeed/Mach Indicator
-definePotentiometer("IAS_SET", 28, 3001, 180, {0, 1}, "AirSpeed Indicator", "Index Setting Pointer Knob")
+defineRotary("IAS_SET", 28, 3001, 180, "AirSpeed Indicator", "Index Setting Pointer Knob")
 defineFloat("AIRSPEED", 8, {0.0, 0.0435,   0.1, 0.318, 0.3745, 0.397, 0.4495, 0.482,  0.54, 0.553, 0.6145, 0.658, 0.668, 0.761, 0.801, 0.877, 0.909, 0.942, 0.972,   1.0}, "Gauges", "Airspeed")
 defineFloat("AIRSPEED_MAX", 178, {0.0, 0.0435,   0.1, 0.318, 0.3745, 0.397, 0.4495, 0.482,  0.54, 0.553, 0.6145, 0.658, 0.668, 0.761, 0.801, 0.877, 0.909, 0.942, 0.972,   1.0}, "Gauges", "Max Airspeed")
 defineFloat("AIRSPEED_SET", 177, {0.0, 1.0}, "Gauges", "Set Airspeed")

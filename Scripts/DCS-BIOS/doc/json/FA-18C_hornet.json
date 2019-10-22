@@ -2055,9 +2055,9 @@
                                                                                             "outputs": [ {
                                                                                                                "address": 29896,
                                                                                                            "description": "switch position -- 0 = off, 1 = on",
-                                                                                                                  "mask": 4096,
+                                                                                                                  "mask": 8192,
                                                                                                              "max_value": 1,
-                                                                                                              "shift_by": 12,
+                                                                                                              "shift_by": 13,
                                                                                                                 "suffix": "",
                                                                                                                   "type": "integer"
                                                                                                        } ]
@@ -2083,9 +2083,9 @@
                                                                                                    "outputs": [ {
                                                                                                                       "address": 29896,
                                                                                                                   "description": "selector position",
-                                                                                                                         "mask": 8192,
+                                                                                                                         "mask": 16384,
                                                                                                                     "max_value": 1,
-                                                                                                                     "shift_by": 13,
+                                                                                                                     "shift_by": 14,
                                                                                                                        "suffix": "",
                                                                                                                          "type": "integer"
                                                                                                               } ],
@@ -2112,9 +2112,9 @@
                                                                                                    "outputs": [ {
                                                                                                                       "address": 29896,
                                                                                                                   "description": "selector position",
-                                                                                                                         "mask": 16384,
+                                                                                                                         "mask": 32768,
                                                                                                                     "max_value": 1,
-                                                                                                                     "shift_by": 14,
+                                                                                                                     "shift_by": 15,
                                                                                                                        "suffix": "",
                                                                                                                          "type": "integer"
                                                                                                               } ],
@@ -2141,9 +2141,9 @@
                                                                                                    "outputs": [ {
                                                                                                                       "address": 29898,
                                                                                                                   "description": "selector position",
-                                                                                                                         "mask": 1024,
+                                                                                                                         "mask": 2048,
                                                                                                                     "max_value": 1,
-                                                                                                                     "shift_by": 10,
+                                                                                                                     "shift_by": 11,
                                                                                                                        "suffix": "",
                                                                                                                          "type": "integer"
                                                                                                               } ],
@@ -2163,9 +2163,9 @@
                                                                                                    "outputs": [ {
                                                                                                                       "address": 29898,
                                                                                                                   "description": "selector position",
-                                                                                                                         "mask": 768,
+                                                                                                                         "mask": 1536,
                                                                                                                     "max_value": 2,
-                                                                                                                     "shift_by": 8,
+                                                                                                                     "shift_by": 9,
                                                                                                                        "suffix": "",
                                                                                                                          "type": "integer"
                                                                                                               } ],
@@ -2190,11 +2190,11 @@
                                                                                                               } ],
                                                                                        "momentary_positions": "none",
                                                                                                    "outputs": [ {
-                                                                                                                      "address": 29896,
+                                                                                                                      "address": 29898,
                                                                                                                   "description": "selector position",
-                                                                                                                         "mask": 32768,
+                                                                                                                         "mask": 256,
                                                                                                                     "max_value": 1,
-                                                                                                                     "shift_by": 15,
+                                                                                                                     "shift_by": 8,
                                                                                                                        "suffix": "",
                                                                                                                          "type": "integer"
                                                                                                               } ],
@@ -2768,7 +2768,7 @@
                                                                                            "identifier": "EXT_FORMATION_LIGHTS",
                                                                                                "inputs": [  ],
                                                                                               "outputs": [ {
-                                                                                                                 "address": 30020,
+                                                                                                                 "address": 30022,
                                                                                                              "description": "Formation Lights",
                                                                                                                     "mask": 65535,
                                                                                                                "max_value": 65535,
@@ -2786,9 +2786,9 @@
                                                                                               "outputs": [ {
                                                                                                                  "address": 29898,
                                                                                                              "description": "Left Position Light",
-                                                                                                                    "mask": 8192,
+                                                                                                                    "mask": 16384,
                                                                                                                "max_value": 1,
-                                                                                                                "shift_by": 13,
+                                                                                                                "shift_by": 14,
                                                                                                                   "suffix": "",
                                                                                                                     "type": "integer"
                                                                                                          } ]
@@ -2802,9 +2802,9 @@
                                                                                               "outputs": [ {
                                                                                                                  "address": 29898,
                                                                                                              "description": "Right Position Light",
-                                                                                                                    "mask": 16384,
+                                                                                                                    "mask": 32768,
                                                                                                                "max_value": 1,
-                                                                                                                "shift_by": 14,
+                                                                                                                "shift_by": 15,
                                                                                                                   "suffix": "",
                                                                                                                     "type": "integer"
                                                                                                          } ]
@@ -2816,7 +2816,7 @@
                                                                                            "identifier": "EXT_SPEED_BRAKE",
                                                                                                "inputs": [  ],
                                                                                               "outputs": [ {
-                                                                                                                 "address": 30018,
+                                                                                                                 "address": 30020,
                                                                                                              "description": "Speed Brake",
                                                                                                                     "mask": 65535,
                                                                                                                "max_value": 65535,
@@ -2832,11 +2832,11 @@
                                                                                            "identifier": "EXT_STROBE_LIGHTS",
                                                                                                "inputs": [  ],
                                                                                               "outputs": [ {
-                                                                                                                 "address": 29898,
+                                                                                                                 "address": 29900,
                                                                                                              "description": "Strobe Lights",
-                                                                                                                    "mask": 32768,
+                                                                                                                    "mask": 256,
                                                                                                                "max_value": 1,
-                                                                                                                "shift_by": 15,
+                                                                                                                "shift_by": 8,
                                                                                                                   "suffix": "",
                                                                                                                     "type": "integer"
                                                                                                          } ]
@@ -4798,28 +4798,44 @@
                                                                                    }
                                                      },
                            "Internal Canopy Switch": {
-                                                         "CANOPY_SW": {
-                                                                                     "category": "Internal Canopy Switch",
-                                                                                 "control_type": "selector",
-                                                                                  "description": "Canopy Control Switch, OPEN/HOLD/CLOSE",
-                                                                                   "identifier": "CANOPY_SW",
-                                                                                       "inputs": [ {
-                                                                                                     "description": "set the switch position -- 0 = held left/down, 1 = centered, 2 = held right/up",
-                                                                                                       "interface": "set_state",
-                                                                                                       "max_value": 2
-                                                                                                 } ],
-                                                                          "momentary_positions": "first_and_last",
-                                                                                      "outputs": [ {
-                                                                                                         "address": 29896,
-                                                                                                     "description": "selector position",
-                                                                                                            "mask": 768,
-                                                                                                       "max_value": 2,
-                                                                                                        "shift_by": 8,
-                                                                                                          "suffix": "",
-                                                                                                            "type": "integer"
-                                                                                                 } ],
-                                                                             "physical_variant": "rocker_switch"
-                                                                      }
+                                                         "CANOPY_POS": {
+                                                                               "category": "Internal Canopy Switch",
+                                                                           "control_type": "analog_gauge",
+                                                                            "description": "Canopy Position",
+                                                                             "identifier": "CANOPY_POS",
+                                                                                 "inputs": [  ],
+                                                                                "outputs": [ {
+                                                                                                   "address": 30018,
+                                                                                               "description": "gauge position",
+                                                                                                      "mask": 65535,
+                                                                                                 "max_value": 65535,
+                                                                                                  "shift_by": 0,
+                                                                                                    "suffix": "",
+                                                                                                      "type": "integer"
+                                                                                           } ]
+                                                                       },
+                                                          "CANOPY_SW": {
+                                                                                      "category": "Internal Canopy Switch",
+                                                                                  "control_type": "selector",
+                                                                                   "description": "Canopy Control Switch, OPEN/HOLD/CLOSE",
+                                                                                    "identifier": "CANOPY_SW",
+                                                                                        "inputs": [ {
+                                                                                                      "description": "set the switch position -- 0 = held left/down, 1 = centered, 2 = held right/up",
+                                                                                                        "interface": "set_state",
+                                                                                                        "max_value": 2
+                                                                                                  } ],
+                                                                           "momentary_positions": "first_and_last",
+                                                                                       "outputs": [ {
+                                                                                                          "address": 29896,
+                                                                                                      "description": "selector position",
+                                                                                                             "mask": 768,
+                                                                                                        "max_value": 2,
+                                                                                                         "shift_by": 8,
+                                                                                                           "suffix": "",
+                                                                                                             "type": "integer"
+                                                                                                  } ],
+                                                                              "physical_variant": "rocker_switch"
+                                                                       }
                                                      },
                                     "KY-58 Control": {
                                                           "KY58_FILL_SELECT": {
@@ -7963,7 +7979,7 @@
                                                                                                     } ],
                                                                              "momentary_positions": "none",
                                                                                          "outputs": [ {
-                                                                                                            "address": 29890,
+                                                                                                            "address": 29892,
                                                                                                         "description": "selector position",
                                                                                                                "mask": 32768,
                                                                                                           "max_value": 1,
@@ -7993,7 +8009,7 @@
                                                                                                     } ],
                                                                              "momentary_positions": "none",
                                                                                          "outputs": [ {
-                                                                                                            "address": 29892,
+                                                                                                            "address": 29894,
                                                                                                         "description": "selector position",
                                                                                                                "mask": 32768,
                                                                                                           "max_value": 1,
@@ -8023,11 +8039,11 @@
                                                                                                     } ],
                                                                              "momentary_positions": "none",
                                                                                          "outputs": [ {
-                                                                                                            "address": 29894,
+                                                                                                            "address": 29896,
                                                                                                         "description": "selector position",
-                                                                                                               "mask": 32768,
+                                                                                                               "mask": 1024,
                                                                                                           "max_value": 1,
-                                                                                                           "shift_by": 15,
+                                                                                                           "shift_by": 10,
                                                                                                              "suffix": "",
                                                                                                                "type": "integer"
                                                                                                     } ],
@@ -8055,9 +8071,9 @@
                                                                                          "outputs": [ {
                                                                                                             "address": 29896,
                                                                                                         "description": "selector position",
-                                                                                                               "mask": 1024,
+                                                                                                               "mask": 2048,
                                                                                                           "max_value": 1,
-                                                                                                           "shift_by": 10,
+                                                                                                           "shift_by": 11,
                                                                                                              "suffix": "",
                                                                                                                "type": "integer"
                                                                                                     } ],
@@ -8084,9 +8100,9 @@
                                                                                          "outputs": [ {
                                                                                                             "address": 29896,
                                                                                                         "description": "selector position",
-                                                                                                               "mask": 2048,
+                                                                                                               "mask": 4096,
                                                                                                           "max_value": 1,
-                                                                                                           "shift_by": 11,
+                                                                                                           "shift_by": 12,
                                                                                                              "suffix": "",
                                                                                                                "type": "integer"
                                                                                                     } ],
@@ -8344,7 +8360,7 @@
                                                                                                             "suffix": "",
                                                                                                               "type": "integer"
                                                                                                    } ],
-                                                                               "physical_variant": "limited_rotary"
+                                                                               "physical_variant": "3_position_switch"
                                                                         },
                                                               "INS_SW": {
                                                                                        "category": "Sensor Panel",
@@ -8400,10 +8416,39 @@
                                                                                                    } ],
                                                                                "physical_variant": "toggle_switch"
                                                                         },
+                                                           "LTD_R_ARM": {
+                                                                                       "category": "Sensor Panel",
+                                                                                   "control_type": "selector",
+                                                                                    "description": "LTD/R Switch, ARM/SAFE",
+                                                                                     "identifier": "LTD_R_ARM",
+                                                                                         "inputs": [ {
+                                                                                                       "description": "switch to previous or next state",
+                                                                                                         "interface": "fixed_step"
+                                                                                                   }, {
+                                                                                                       "description": "set position",
+                                                                                                         "interface": "set_state",
+                                                                                                         "max_value": 1
+                                                                                                   }, {
+                                                                                                          "argument": "TOGGLE",
+                                                                                                       "description": "Toggle switch state",
+                                                                                                         "interface": "action"
+                                                                                                   } ],
+                                                                            "momentary_positions": "none",
+                                                                                        "outputs": [ {
+                                                                                                           "address": 29890,
+                                                                                                       "description": "selector position",
+                                                                                                              "mask": 32768,
+                                                                                                         "max_value": 1,
+                                                                                                          "shift_by": 15,
+                                                                                                            "suffix": "",
+                                                                                                              "type": "integer"
+                                                                                                   } ],
+                                                                               "physical_variant": "toggle_switch"
+                                                                        },
                                                             "LTD_R_SW": {
                                                                                        "category": "Sensor Panel",
                                                                                    "control_type": "selector",
-                                                                                    "description": "LTD/R Switch, ARM/SAFE/AFT",
+                                                                                    "description": "LTD/R Switch, ---/SAFE/AFT",
                                                                                      "identifier": "LTD_R_SW",
                                                                                          "inputs": [ {
                                                                                                        "description": "switch to previous or next state",
@@ -8423,7 +8468,7 @@
                                                                                                             "suffix": "",
                                                                                                               "type": "integer"
                                                                                                    } ],
-                                                                               "physical_variant": "limited_rotary"
+                                                                               "physical_variant": "3_position_switch"
                                                                         },
                                                             "RADAR_SW": {
                                                                                        "category": "Sensor Panel",
@@ -9037,9 +9082,9 @@
                                                                                             "outputs": [ {
                                                                                                                "address": 29898,
                                                                                                            "description": "selector position",
-                                                                                                                  "mask": 2048,
+                                                                                                                  "mask": 4096,
                                                                                                              "max_value": 1,
-                                                                                                              "shift_by": 11,
+                                                                                                              "shift_by": 12,
                                                                                                                 "suffix": "",
                                                                                                                   "type": "integer"
                                                                                                        } ],
@@ -9067,9 +9112,9 @@
                                                                                             "outputs": [ {
                                                                                                                "address": 29898,
                                                                                                            "description": "selector position",
-                                                                                                                  "mask": 4096,
+                                                                                                                  "mask": 8192,
                                                                                                              "max_value": 1,
-                                                                                                              "shift_by": 12,
+                                                                                                              "shift_by": 13,
                                                                                                                 "suffix": "",
                                                                                                                   "type": "integer"
                                                                                                        } ],

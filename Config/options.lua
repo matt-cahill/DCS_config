@@ -53,7 +53,7 @@ options = {
 		["SSAA"] = 0,
 		["SSAO"] = 0,
 		["anisotropy"] = 3,
-		["aspect"] = 1.038961038961,
+		["aspect"] = 4.8888888888889,
 		["chimneySmokeDensity"] = 5,
 		["civTraffic"] = "high",
 		["clouds"] = 1,
@@ -64,11 +64,11 @@ options = {
 		["forestDistanceFactor"] = 1,
 		["fullScreen"] = false,
 		["heatBlr"] = 1,
-		["height"] = 1848,
+		["height"] = 1440,
 		["lights"] = 2,
 		["messagesFontScale"] = 1,
 		["motionBlur"] = 0,
-		["multiMonitorSetup"] = "a-10c mini cockpit - 1080",
+		["multiMonitorSetup"] = "a-10c mini cockpit - ultrawide",
 		["outputGamma"] = 2.2,
 		["preloadRadius"] = 60000,
 		["rainDroplets"] = true,
@@ -82,7 +82,7 @@ options = {
 		["useDeferredShading"] = 1,
 		["visibRange"] = "High",
 		["water"] = 2,
-		["width"] = 1920,
+		["width"] = 7040,
 	},
 	["miscellaneous"] = {
 		["Coordinate_Display"] = "Lat Long",
@@ -103,6 +103,14 @@ options = {
 	},
 	["plugins"] = {
 		["A-10C"] = {
+			["CPLocalList"] = "default",
+		},
+		["A-4E-C"] = {
+			["hideControlStick"] = 0,
+			["rwrType"] = 0,
+			["trimSpeed"] = 0,
+		},
+		["AJS37"] = {
 			["CPLocalList"] = "default",
 		},
 		["AV8BNA"] = {
@@ -135,6 +143,11 @@ options = {
 			["RadioMenuPttOptions"] = 0,
 			["TID_A2G"] = false,
 			["WEAP_OFF_GUN"] = false,
+		},
+		["F-16C"] = {
+			["CPLocalList"] = "default",
+			["abDetent"] = 0,
+			["hmdEye"] = 1,
 		},
 		["F/A-18C"] = {
 			["CPLocalList"] = "default",
@@ -170,6 +183,11 @@ options = {
 			["UNI_ALIGNED"] = false,
 			["UNI_NODRIFT"] = false,
 		},
+		["MB-339PAN"] = {
+			["reset"] = false,
+			["resetTrim"] = 0,
+			["speedTrim"] = 0.2,
+		},
 		["Mi-8MTV2"] = {
 			["CPLocalList"] = "default",
 			["Mi8AutopilotAdjustment"] = false,
@@ -191,6 +209,7 @@ options = {
 			["c101cc_enabled"] = true,
 			["c101eb_enabled"] = true,
 			["f15c_enabled"] = true,
+			["f16cmbl50_enabled"] = true,
 			["f5e3_enabled"] = true,
 			["f86f_enabled"] = true,
 			["fa18c_enabled"] = false,
@@ -251,6 +270,21 @@ options = {
 			["CPLocalList"] = "default",
 			["assistance"] = 100,
 			["autoRudder"] = false,
+		},
+		["Tacview"] = {
+			["tacviewBookmarkShortcut"] = 0,
+			["tacviewClientTelemetryPassword"] = "",
+			["tacviewCompressionLevel"] = 1,
+			["tacviewDataRecordingEnabled"] = true,
+			["tacviewDebugModeEnabled"] = false,
+			["tacviewHostTelemetryPassword"] = "",
+			["tacviewPlaybackDelay"] = 600,
+			["tacviewProfilingPeriod"] = 600,
+			["tacviewRealTimeTelemetryPort"] = "42674",
+			["tacviewRecordClientsSessionsEnabled"] = false,
+			["tacviewRemoteControlPassword"] = "",
+			["tacviewRemoteControlPort"] = "42675",
+			["tacviewTerrainExport"] = 0,
 		},
 		["UH-1H"] = {
 			["CPLocalList"] = "default",

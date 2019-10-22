@@ -1,8 +1,8 @@
 BIOS.protocol.beginModule("F-14B", 0x1200)
 BIOS.protocol.setExportModuleAircrafts({"F-14B"})
 
--- Made by WarLord (aka BlackLibrary) and ArturDCS
--- v 1.3
+-- Made by WarLord (aka BlackLibrary), ArturDCS and Bullitt
+-- v 1.4
 
 local inputProcessors = moduleBeingDefined.inputProcessors
 local documentation = moduleBeingDefined.documentation
@@ -350,8 +350,8 @@ define3PosTumb("PLT_HSD_DIS_MODE", 41, 3235, 1016, "Display", "PILOT HSD Display
 defineToggleSwitch("PLT_HSD_ECM_OVER", 41, 3239, 1017, "Display", "PILOT HSD ECM Override")
 
 -- HSD
-definePotentiometer("PLT_HSD_KNOB_HDG", 41, 3241, 1039, {0.0, 1.0}, "HSD", "PILOT HSD Selected Heading")
-definePotentiometer("PLT_HSD_KNOB_CRS", 41, 3242, 1040, {0.0, 1.0}, "HSD", "PILOT HSD Selected Course")
+defineRotary("PLT_HSD_KNOB_HDG", 41, 3241, 1039, "HSD", "PILOT HSD Selected Heading")
+defineRotary("PLT_HSD_KNOB_CRS", 41, 3242, 1040, "HSD", "PILOT HSD Selected Course")
 definePotentiometer("PLT_HSD_BRIGHT", 41, 3240, 1043, {0.0, 1.0}, "HSD", "PILOT HSD Brightness")
 definePushButton("PLT_HSD_TEST", 41, 3243, 1041, "HSD", "PILOT HSD Test")
 
@@ -647,7 +647,7 @@ definePushButton("PLT_ACCEL_RESET", 24, 3488, 228, "Display", "PILOT Acceleromet
 
 -- VDI & HUD Indicator Controls
 defineToggleSwitch("PLT_HUD_FILTER", 40, 3228, 1033, "HUD", "PILOT HUD Filter")
-definePotentiometer("PLT_HUD_TRIM", 42, 3229, 1034, {0.0, 1.0}, "HUD", "PILOT HUD TRIM")
+definePotentiometer("PLT_HUD_TRIM", 40, 3229, 1034, {0.0, 1.0}, "HUD", "PILOT HUD TRIM")
 definePotentiometer("PLT_VSDI_TRIM", 42, 3230, 1035, {0.0, 1.0}, "HUD", "PILOT VSDI Screen Trim")
 definePotentiometer("PLT_VDI_CONTRAST", 42, 3231, 1038, {0.0, 1.0}, "HUD", "PILOT VDI Screen Contrast")
 definePotentiometer("PLT_VSDI_BRIGHT", 42, 3232, 1036, {0.0, 1.0}, "HUD", "PILOT VSDI Screen Brightness")
@@ -665,9 +665,9 @@ definePushButton("PLT_SIDEWINDER_COOL", 55, 3139, 16001, "Weapons Panel", "PILOT
 definePushButton("PLT_MISSLE_PREP", 55, 3140, 16002, "Weapons Panel", "PILOT Missile Prepare")
 definePushButton("PLT_MISSLE_MODE", 55, 3141, 16003, "Weapons Panel", "PILOT Missile Mode")
 definePushButton("PLT_EMERG_STORE_JETT", 55, 3142, 239, "Weapons Panel", "PILOT Emergency Stores Jettison")
-definePotentiometer("PLT_CLOCK_WIND", 26, 3042, 1051, {0.0, 1.0}, "Weapons Panel", "PILOT Clock Wind")
+defineRotary("PLT_CLOCK_WIND", 26, 3042, 1051, "Weapons Panel", "PILOT Clock Wind")
 definePushButton("PLT_CLOCK_TIMER", 26, 3043, 1000, "Weapons Panel", "PILOT Clock Timer Start/Stop/Reset")
-definePotentiometer("RIO_CLOCK_WIND", 26, 3697, 1052, {0.0, 1.0}, "Weapons Panel", "RIO Clock Wind")
+defineRotary("RIO_CLOCK_WIND", 26, 3697, 1052, "Weapons Panel", "RIO Clock Wind")
 definePushButton("RIO_CLOCK_TIMER", 26, 3698, 1053, "Weapons Panel", "RIO Clock Timer Start/Stop/Reset")
 
 -- RIO TID
@@ -981,6 +981,10 @@ defineIndicatorLight("PLT_VDI_LIGHT_ALTLOW", 15073, "Warning, Caution and Indica
 defineIndicatorLight("PLT_HOOK_LIGHT", 15090, "Warning, Caution and IndicatorLights","PILOT Hook Light (red)")
 defineIndicatorLight("PLT_RADAR_ALT_LIGHT", 19107, "Warning, Caution and IndicatorLights","PILOT Radar Altimeter Warning Light (red)")
 defineIndicatorLight("PLT_RADAR_ALT_TEST_LIGHT", 19108, "Warning, Caution and IndicatorLights","PILOT Radar Altimeter Test Light (red)")
+defineIndicatorLight("PLT_SLATS_IND_LIGHT", 8310, "Gauges", "PILOT Slats Indicator as Light")	
+defineIndicatorLight("PLT_FLAPS_IND_LIGHT", 8311, "Gauges", "PILOT Flaps Indicator as Light")
+defineIndicatorLight("PLT_SPDBRK_IND_LIGHT", 8307, "Gauges", "PILOT Speedbrake Indicator as Light")
+defineIndicatorLight("PLT_SPDBRK_FULL_LIGHT", 8308, "Gauges", "PILOT Speedbrake Full Indicator as Light")
 
 -- Warning, Caution and IndicatorLights RIO
 defineIndicatorLight("RIO_SCP_RECORD_STBY_L", 92, "Warning, Caution and IndicatorLights","RIO SCP Record Standby Light (red)")
@@ -1433,6 +1437,8 @@ defineFloat("RIO_TID_STEER_ROLLER", 6103, {0, 1}, "Gauges", "RIO TID Steering Ro
 defineFloat("RIO_RECORD_MIN_HI", 11600, {0, 1}, "Gauges", "RIO Record Minutes HI")
 defineFloat("RIO_RECORD_MIN_MED", 11601, {0, 1}, "Gauges", "RIO Record Minutes MED")
 defineFloat("RIO_RECORD_MIN_LOW", 11602, {0, 1}, "Gauges", "RIO Record Minutes LOW")
+
+defineFloat("CANOPY_POS", 403, {0, 1}, "Gauges", "Canopy Position")
 
 --Externals
 defineIntegerFromGetter("EXT_SPEED_BRAKE_RIGHT", function()

@@ -570,22 +570,6 @@ defineTumb("GMC_CTRL_SWITCH", 14, start_command + 3, 476, 1, {-1, 1}, nil, false
 defineTumb("GMC_CRS_SWITCH", 14, start_command + 5, 477, 1, {-1, 1}, nil, false, "GMC", "GMC Course Setting Switch, CCW/OFF/CW)")
 defineTumb("R863_CNL_SEL", 38, start_command + 3, 370, 0.05, {0, 0.949768}, nil, false, "R-863", "R-863, Radio Channel Selector Knob")
 
-
---defineTumb(msg, device_id, command, arg_number, step, limits, output_map, cycle, category, description)
---defineSetCommandTumb(msg, device_id, command, arg_number, step, limits, output_map, cycle, category, description)
---defineToggleSwitch(msg, device_id, command, arg_number, category, description)
---defineToggleSwitchToggleOnly(msg, device_id, command, arg_number, category, description)
---defineFixedStepTumb(msg, device_id, command, arg_number, step, limits, rel_args, output_map, category, description)
---defineFixedStepInput(msg, device_id, command, rel_args, category, description)
---defineVariableStepTumb(msg, device_id, command, arg_number, max_step, category, description)
---defineRockerSwitch(msg, device_id, pos_command, pos_stop_command, neg_command, neg_stop_command, arg_number, category, description)
---defineMultipositionSwitch(msg, device_id, device_command, arg_number, num_positions, increment, category, description)
---defineRotary(msg, device_id, command, arg_number, category, description)
---definePotentiometer(msg, device_id, command, arg_number, limits, category, description)
---definePushButton(msg, device_id, device_command, arg_number, category, description)
---defineIndicatorLight(msg, arg_number, category, description)
-
-
 --radio_wheel_1(_("R-863, 10MHz Rotary Knob"), devices.R_863, device_commands.Button_6, 163, {-0.1, 0.1},{0,1},{157,{0.0,0.23},0.1})
 --radio_wheel_1(_("R-863, 1MHz Rotary Knob"), devices.R_863, device_commands.Button_7, 164, {-0.1, 0.1},{0,1},{158,{0.0,1.0}})
 --radio_wheel_1(_("R-863, 100kHz Rotary Knob"), devices.R_863, device_commands.Button_8, 165, {-0.1, 0.1},{0,1},{159,{0.0,1.0}})
@@ -899,8 +883,8 @@ defineFloat("VD_10K_R_PRESS", 100, {-0.051, 0.668}, "Indicator", "VD_10K_R_PRESS
 defineFloat("ROTORRPM", 42, {0.0, 1.0}, "Indicator", "RotorRPM")
 defineFloat("ROTORRPM", 787, {0.0, 1.0}, "Indicator", "RotorRPM")
 defineFloat("ROTORPITCH", 36, {0.0, 1.0}, "Indicator", "RotorPitch")
-defineFloat("A_036_RALT", 34, {0.0, 1.0}, "Indicator", "A_036_RALT")
-defineFloat("A_036_DANGERRALT_INDEX", 31, {0.0, 1.0}, "Indicator", "A_036_DangerRALT_index")
+defineFloat("A_036_RALT", 34, {0.0, 0.475, 0.625, 1.0}, "Indicator", "A_036_RALT")
+defineFloat("A_036_DANGERRALT_INDEX", 31, {0.0, 0.475, 0.625, 1.0}, "Indicator", "A_036_DangerRALT_index")
 defineFloat("A_036_DANGERRALT_LAMP", 30, {0.0, 1.0}, "Indicator", "A_036_DangerRALT_lamp")
 defineFloat("A_036_WARNING_FLAG", 33, {0.0, 1.0}, "Indicator", "A_036_warning_flag")
 defineFloat("LEFTENGINERPM", 40, {0.0, 1.0}, "Indicator", "LeftEngineRPM")

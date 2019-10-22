@@ -19,9 +19,6 @@ local diff = {
 		["a2003cdnil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_X",
-				},
-				[2] = {
 					["key"] = "JOY_Z",
 				},
 			},

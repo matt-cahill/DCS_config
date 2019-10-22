@@ -18,6 +18,7 @@ local defineMultipositionSwitch = BIOS.util.defineMultipositionSwitch
 local defineFloat = BIOS.util.defineFloat
 local define3PosTumb = BIOS.util.define3PosTumb
 local defineIntegerFromGetter = BIOS.util.defineIntegerFromGetter
+local defineString = BIOS.util.defineString
 
 -------------------------------------------------------------------
 -- MAIN INSTRUMENT PANEL:
@@ -75,6 +76,28 @@ definePushButton("UFC_COM1_PULL", 23, 3178, 178,"UFC" , "UFC Comm 1 Channel Sele
 definePushButton("UFC_COM2_PULL", 23, 3179, 179,"UFC" , "UFC Comm 2 Channel Selector Pull")
 definePotentiometer("UFC_COM1_SEL", 23, 3300, 300, {0, 1}, "UHF Radio", "UFC Comm 1 Channel Selector")
 definePotentiometer("UFC_COM2_SEL", 23, 3301, 301, {0, 1}, "UHF Radio", "UFC Comm 2 Channel Selector")
+
+function getARC210_COMM1_String_Frequency()
+	local arc_210_comm1 = GetDevice(2)
+	local freq = tostring(arc_210_comm1:get_frequency())
+	if(string.len(freq) == 8) then
+		return freq:sub(1,2) .. "." .. freq:sub(3,5)	
+	else
+		return freq:sub(1,3) .. "." .. freq:sub(4,6)	
+	end	
+end
+defineString("COMM1_STRING_FREQ", getARC210_COMM1_String_Frequency, 7, "AAA", "COMM1 ARC-210 Frequency (string)")
+
+function getARC210_COMM2_String_Frequency()
+	local arc_210_comm2 = GetDevice(3)
+	local freq = tostring(arc_210_comm2:get_frequency())
+	if(string.len(freq) == 8) then
+		return freq:sub(1,2) .. "." .. freq:sub(3,5)	
+	else
+		return freq:sub(1,3) .. "." .. freq:sub(4,6)	
+	end	
+end
+defineString("COMM2_STRING_FREQ", getARC210_COMM2_String_Frequency, 7, "AAA", "COMM2 ARC-210 Frequency (string)")
 
 -- ODU Panel
 definePushButton("ODU_OPT1", 24, 3250, 250,"ODU" , "ODU Option 1")
@@ -165,6 +188,13 @@ definePushButton("JETT_STATION_5", 29, 3415, 415,"ACP" , "Select Station 5 Toggl
 definePushButton("JETT_STATION_6", 29, 3417, 417,"ACP" , "Select Station 6 Toggle")
 definePushButton("JETT_STATION_7", 29, 3419, 419,"ACP" , "Select Station 7 Toggle")
 defineToggleSwitch("GND_IR_COOL", 29, 3420, 420,"ACP" , "Ground IR Cool Switch")
+defineIndicatorLight("JETT_STATION_1_LIGHT", 406, "ACP","Select Station 1 LIGHT")
+defineIndicatorLight("JETT_STATION_2_LIGHT", 408, "ACP","Select Station 2 LIGHT")
+defineIndicatorLight("JETT_STATION_3_LIGHT", 410, "ACP","Select Station 3 LIGHT")
+defineIndicatorLight("JETT_STATION_4_LIGHT", 412, "ACP","Select Station 4 LIGHT")
+defineIndicatorLight("JETT_STATION_5_LIGHT", 414, "ACP","Select Station 5 LIGHT")
+defineIndicatorLight("JETT_STATION_6_LIGHT", 416, "ACP","Select Station 6 LIGHT")
+defineIndicatorLight("JETT_STATION_7_LIGHT", 418, "ACP","Select Station 7 LIGHT")
 
 -- Master Armament Panel
 definePushButton("LAUNCH_FLARE_SALVO", 30, 3286, 286,"Master Armament Panel" , "Launch Flare Salvo")
@@ -179,7 +209,7 @@ defineMultipositionSwitch("JAMMER_CONTROL", 30, 3275, 275, 5, 0.25,"ECM" ,"Jamme
 defineToggleSwitch("LG_EMERG_LEVER", 28, 3447, 447,"Gear/Flaps Control Panel" , "Emergency Landing Gear Lever")
 definePushButton("LG_DOWN_LOCK", 28, 3448, 448,"Gear/Flaps Control Panel" , "Gear Down Lock Override Button")
 defineMultipositionSwitch("FLAP_MODE", 13, 3454, 454, 3, 0.5, "Gear/Flaps Control Panel", "Flaps Mode Switch CRUISE/AUTO/STOL")
-defineMultipositionSwitch("FLAP_MODE", 13, 3457, 457, 3, 0.5, "Gear/Flaps Control Panel", "Flaps Power Switch RESET/ON/OFF")
+defineMultipositionSwitch("FLAP_POWER", 13, 3457, 457, 3, 0.5, "Gear/Flaps Control Panel", "Flaps Power Switch RESET/ON/OFF")
 definePushButton("EMERG_JETT", 29, 3458, 458,"Gear/Flaps Control Panel" , "Emergency Jettison Button")
 defineMultipositionSwitch("ANTI_SKID", 28, 3459, 459, 3, 0.5, "Gear/Flaps Control Panel", "Anti-Skid Switch TEST/ON/NWS")
 definePushButton("FLAPS_BIT", 13, 3460, 460,"Gear/Flaps Control Panel" , "Flaps BIT Button")
@@ -192,8 +222,8 @@ defineMultipositionSwitch("H2O_MODE", 9, 3449, 449, 3, 0.5, "H2O" , "H2O Mode Sw
 
 -- Bulkhead Switches
 defineToggleSwitch("MFS_EMERG_LEVER", 28, 3501, 501,"Bulkhead" , "MFS Emergency Lever")
-definePushButton("STOPWATCH_START", 12, 3282, 282,"Bulkhead" , "Stopwatch Start/Stop")
-definePushButton("STOPWATCH_LAP", 12, 3284, 284,"Bulkhead" , "Stopwatch Lap/Reset")
+definePushButton("STOPWATCH_START", 12, 4121, 1121,"Bulkhead" , "Stopwatch Start/Stop")
+definePushButton("STOPWATCH_LAP", 12, 4122, 1122,"Bulkhead" , "Stopwatch Lap/Reset")
 
 -- Seat
 defineToggleSwitch("SEAT_SAFE_LEVER", 12, 3800, 800,"Seat" , "Seat Ground Safety Lever")
@@ -316,7 +346,7 @@ define3PosTumb("IFF_CRYPT_MODE", 8, 3633, 633,"IFF" , "IFF Crypto Mode Switch  Z
 define3PosTumb("COMP_LIGHT", 34, 3634, 634,"Int Light" , "Compass Light/Test Lights  COPM/OFF/LTS TEST")
 definePotentiometer("INST_LIGHTS", 34, 3635, 635, {0, 1}, "Int Light", "Instruments Lights")
 definePotentiometer("CONSOLE_LIGHTS", 34, 3636, 636, {0, 1}, "Int Light", "Console Lights")
-definePotentiometer("FLOOD_LIGHTS", 34, 3637, 637, {0, 1}, "Int Light", "Flood Lights")
+definePotentiometer("FLOOD_LIGHTS_DIAL", 34, 3637, 637, {0, 1}, "Int Light", "Flood Lights")
 definePotentiometer("ANNUNCIATOR_LIGHTS", 34, 3638, 638, {0, 0.9}, "Int Light", "Annunciator Lights")
 
 -- ECS Panel
@@ -324,7 +354,7 @@ definePotentiometer("TEMP_CONTROL", 36, 3639, 639, {0, 1}, "ECS", "Temperature C
 defineToggleSwitch("ECS_FWD", 36, 3640, 640,"ECS" ,"Fwd Equipment Bay ECS Switch")
 defineMultipositionSwitch("CABIN_DEFOG", 36, 3641, 641, 3, 0.5,"ECS" ,"Cabin Defog Switch NORM/DFOG/MAX")
 defineMultipositionSwitch("ECS_AFT", 36, 3642, 642, 3, 0.5,"ECS" ,"Aft Equipment Bay ECS Switch RESET/ON/OFF")
-defineMultipositionSwitch("CABIN_PRESS", 36, 3643, 643, 3, 0.5,"ECS" ,"Cabin Pressure Switch NORM/DUMP/RAM")
+defineMultipositionSwitch("CABIN_PRESS_SWITCH", 36, 3643, 643, 3, 0.5,"ECS" ,"Cabin Pressure Switch NORM/DUMP/RAM")
 
 -------------------------------------------------------------------
 -- FLOOD LAMPS:
@@ -346,6 +376,7 @@ definePotentiometer("FLOOD_L_CAN_T", 28, 3159, 159, {-1, 1}, "Flood Lamps", "Flo
 defineToggleSwitch("CANOPY_HAND_L", 28, 3801, 801,"CANOPY" , "Canopy Handle Left")
 defineToggleSwitch("CANOPY_HAND_R", 28, 3802, 802,"CANOPY" , "Canopy Handle Right")
 defineToggleSwitch("CANOPY_LOCK", 28, 3803, 803,"CANOPY" , "Canopy Locking Lever")
+defineFloat("CANOPY_VALUE", 38, {0.0, 1.0}, "CANOPY", "Canopy Position")
 
 -------------------------------------------------------------------
 -- Indicator Lights & Gauges
@@ -569,5 +600,267 @@ end, 65535, "External Aircraft Model", "Formation Lights")
 defineIntegerFromGetter("EXT_STROBE_TAIL", function()
 	if LoGetAircraftDrawArgumentValue(191) > 0 then return 1 else return 0 end
 end, 1, "External Aircraft Model", "Tail Strobe Light")
+
+-- Get Displays Functions
+
+local function getAV8BNAUFCComm1DisplayV()
+	local li = list_indication(5)
+	local m = li:gmatch("-----------------------------------------\n([^\n]+)\n([^\n]*)\n")
+	while true do
+		local name, value = m()
+        if not name then break end
+		if name == "ufc_chnl_1_v"
+			then
+			return value:sub(1,2)
+		end
+    end
+return "XX"
+end
+ 
+defineString("AV8BNA_UFC_COMM1_DISPLAY_V", getAV8BNAUFCComm1DisplayV, 2, "UFC", "UFC Comm 1 Display V (string)")
+
+local function getAV8BNAUFCComm1DisplayM()
+	local li = list_indication(5)
+	local m = li:gmatch("-----------------------------------------\n([^\n]+)\n([^\n]*)\n")
+	while true do
+		local name, value = m()
+        if not name then break end
+		if name == "ufc_chnl_1_m"
+			then
+			return value:sub(1)
+		end
+    end
+return "XX"
+end
+
+defineString("AV8BNA_UFC_COMM1_DISPLAY_M", getAV8BNAUFCComm1DisplayM, 2, "UFC", "UFC Comm 1 Display M (string)")
+ 
+ local function getAV8BNAUFCComm2DisplayV()
+	local li = list_indication(5)
+	local m = li:gmatch("-----------------------------------------\n([^\n]+)\n([^\n]*)\n")
+	while true do
+		local name, value = m()
+        if not name then break end
+		if name == "ufc_chnl_2_v"
+			then
+			return value:sub(1,2)
+		end
+    end
+return "XX"
+end
+ 
+defineString("AV8BNA_UFC_COMM2_DISPLAY_V", getAV8BNAUFCComm2DisplayV, 2, "UFC", "UFC Comm 2 Display V (string)")
+
+local function getAV8BNAUFCComm2DisplayM()
+	local li = list_indication(5)
+	local m = li:gmatch("-----------------------------------------\n([^\n]+)\n([^\n]*)\n")
+	while true do
+		local name, value = m()
+        if not name then break end
+		if name == "ufc_chnl_2_m"
+			then
+			return value:sub(1)
+		end
+    end
+return "XX"
+end
+
+defineString("AV8BNA_UFC_COMM2_DISPLAY_M", getAV8BNAUFCComm2DisplayM, 2, "UFC", "UFC Comm 2 Display M (string)")
+
+local function getAV8BNAUFCScratchpadLeft()
+	local li = list_indication(5)
+	local m = li:gmatch("-----------------------------------------\n([^\n]+)\n([^\n]*)\n")
+	while true do
+		local name, value = m()
+        if not name then break end
+		if name == "ufc_left_position"
+			then
+			return value:sub(1,2)
+		end
+    end
+return "  "
+end
+
+defineString("AV8BNA_UFC_SCRATCHPAD_L", getAV8BNAUFCScratchpadLeft, 2, "UFC", "UFC Scratchpad Left (string)")
+
+ 
+local function getAV8BNAUFCScratchpadRight()
+	local li = list_indication(5)
+	local m = li:gmatch("-----------------------------------------\n([^\n]+)\n([^\n]*)\n")
+	while true do
+		local name, value = m()
+        if not name then break end
+		if name == "ufc_right_position"
+			then
+			return value:sub(1,7)
+		end
+    end
+return "       "
+end
+
+defineString("AV8BNA_UFC_SCRATCHPAD_R", getAV8BNAUFCScratchpadRight, 7, "UFC", "UFC Scratchpad Right (string)")
+
+local function getAV8BNAODU1Select()
+	local li = list_indication(6)
+	local m = li:gmatch("-----------------------------------------\n([^\n]+)\n([^\n]*)\n")
+	while true do
+		local name, value = m()
+        if not name then break end
+		if name == "ODU_Option_1_Slc"
+			then
+			return value:sub(1)
+		end
+    end
+return " "
+end
+
+defineString("AV8BNA_ODU_1_SELECT", getAV8BNAODU1Select, 1, "ODU", "ODU Option 1 Select (string)")
+
+local function getAV8BNAODU1Text()
+	local li = list_indication(6)
+	local m = li:gmatch("-----------------------------------------\n([^\n]+)\n([^\n]*)\n")
+	while true do
+		local name, value = m()
+        if not name then break end
+		if name == "ODU_Option_1_Text"
+			then
+			return value:sub(1,4)
+		end
+    end
+return "    "
+end
+
+defineString("AV8BNA_ODU_1_Text", getAV8BNAODU1Text, 4, "ODU", "ODU Option 1 Text (string)")
+
+local function getAV8BNAODU2Select()
+	local li = list_indication(6)
+	local m = li:gmatch("-----------------------------------------\n([^\n]+)\n([^\n]*)\n")
+	while true do
+		local name, value = m()
+        if not name then break end
+		if name == "ODU_Option_2_Slc"
+			then
+			return value:sub(1)
+		end
+    end
+return " "
+end
+
+defineString("AV8BNA_ODU_2_SELECT", getAV8BNAODU2Select, 1, "ODU", "ODU Option 2 Select (string)")
+
+local function getAV8BNAODU2Text()
+	local li = list_indication(6)
+	local m = li:gmatch("-----------------------------------------\n([^\n]+)\n([^\n]*)\n")
+	while true do
+		local name, value = m()
+        if not name then break end
+		if name == "ODU_Option_2_Text"
+			then
+			return value:sub(1,4)
+		end
+    end
+return "    "
+end
+
+defineString("AV8BNA_ODU_2_Text", getAV8BNAODU2Text, 4, "ODU", "ODU Option 2 Text (string)")
+
+
+local function getAV8BNAODU3Select()
+	local li = list_indication(6)
+	local m = li:gmatch("-----------------------------------------\n([^\n]+)\n([^\n]*)\n")
+	while true do
+		local name, value = m()
+        if not name then break end
+		if name == "ODU_Option_3_Slc"
+			then
+			return value:sub(1)
+		end
+    end
+return " "
+end
+
+defineString("AV8BNA_ODU_3_SELECT", getAV8BNAODU3Select, 1, "ODU", "ODU Option 3 Select (string)")
+
+local function getAV8BNAODU3Text()
+	local li = list_indication(6)
+	local m = li:gmatch("-----------------------------------------\n([^\n]+)\n([^\n]*)\n")
+	while true do
+		local name, value = m()
+        if not name then break end
+		if name == "ODU_Option_3_Text"
+			then
+			return value:sub(1,4)
+		end
+    end
+return "    "
+end
+
+defineString("AV8BNA_ODU_3_Text", getAV8BNAODU3Text, 4, "ODU", "ODU Option 3 Text (string)")
+
+local function getAV8BNAODU4Select()
+	local li = list_indication(6)
+	local m = li:gmatch("-----------------------------------------\n([^\n]+)\n([^\n]*)\n")
+	while true do
+		local name, value = m()
+        if not name then break end
+		if name == "ODU_Option_4_Slc"
+			then
+			return value:sub(1)
+		end
+    end
+return " "
+end
+
+defineString("AV8BNA_ODU_4_SELECT", getAV8BNAODU4Select, 1, "ODU", "ODU Option 4 Select (string)")
+
+local function getAV8BNAODU4Text()
+	local li = list_indication(6)
+	local m = li:gmatch("-----------------------------------------\n([^\n]+)\n([^\n]*)\n")
+	while true do
+		local name, value = m()
+        if not name then break end
+		if name == "ODU_Option_4_Text"
+			then
+			return value:sub(1,4)
+		end
+    end
+return "    "
+end
+
+defineString("AV8BNA_ODU_4_Text", getAV8BNAODU4Text, 4, "ODU", "ODU Option 4 Text (string)")
+
+local function getAV8BNAODU5Select()
+	local li = list_indication(6)
+	local m = li:gmatch("-----------------------------------------\n([^\n]+)\n([^\n]*)\n")
+	while true do
+		local name, value = m()
+        if not name then break end
+		if name == "ODU_Option_5_Slc"
+			then
+			return value:sub(1)
+		end
+    end
+return " "
+end
+
+defineString("AV8BNA_ODU_5_SELECT", getAV8BNAODU5Select, 1, "ODU", "ODU Option 5 Select (string)")
+
+local function getAV8BNAODU5Text()
+	local li = list_indication(6)
+	local m = li:gmatch("-----------------------------------------\n([^\n]+)\n([^\n]*)\n")
+	while true do
+		local name, value = m()
+        if not name then break end
+		if name == "ODU_Option_5_Text"
+			then
+			return value:sub(1,4)
+		end
+    end
+return "    "
+end
+
+defineString("AV8BNA_ODU_5_Text", getAV8BNAODU5Text, 4, "ODU", "ODU Option 5 Text (string)")
+
+
 
 BIOS.protocol.endModule()

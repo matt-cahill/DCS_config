@@ -319,6 +319,7 @@ defineToggleSwitch("BACK_EJECT_HANDLE_COVER", 2, 3520, 521, "Misc", "BACK Ejecti
 defineToggleSwitch("BACK_MAN_SEPERATION_HANDLE", 2, 3521, 522, "Misc", "BACK Manual Seperation Handle")
 definePotentiometer("BACK_AIR_VENT", 2, 3523, 1230, nil, "Misc", "BACK Air Vent")
 defineToggleSwitch("BACK_GEAR_HANDLE", 2, 3524, 75, "Misc", "BACK Landing Gear Handle")
+defineFloat("CANOPY_VALUE", 1, {0.0, 1.0}, "Misc", "Canopy Position")
 
 -- WARNING, CAUTION AND INDICATORLIGHTS
 defineIndicatorLight("FRONT_TRANS_GEAR_LIGHT", 9, "Warning, Caution and IndicatorLights","FRONT Transition Gear Light (red)")
@@ -326,8 +327,6 @@ defineIndicatorLight("FRONT_TRANS_GEAR_LIGHT", 9, "Warning, Caution and Indicato
 defineIndicatorLight("FRONT_BACK_COMPUTER_LIGHT", 143, "Warning, Caution and IndicatorLights","FRONT/BACK Computer Light MAN (yellow)")
 defineIndicatorLight("FRONT_BACK_ANTI_ICE_LIGHT", 192, "Warning, Caution and IndicatorLights","FRONT/BACK ANTI-ICE Light ON (yellow)")
 defineIndicatorLight("FRONT_BACK_ENG_START_TLIGHT", 140, "Warning, Caution and IndicatorLights","FRONT/BACK Engine Start Test Light (yellow)")
-
--- GAUGES
 
 --Externals
 defineIntegerFromGetter("EXT_SPEED_BRAKE_RIGHT", function()
@@ -353,6 +352,8 @@ end, 1, "External Aircraft Model", "Right Position Light (green)")
 defineIntegerFromGetter("EXT_STROBE_TOP", function()
 	if LoGetAircraftDrawArgumentValue(88) > 0 then return 1 else return 0 end
 end, 1, "External Aircraft Model", "Top Strobe Light")
+
+
 
 --------------------------------------- FORWARD COCKPIT ONLY FUNCTIONS ------------------------------------
 -- PRESSURIZATION/AIRCON SYSTEM 
@@ -456,7 +457,7 @@ defineMultipositionSwitch("CC_FRONT_VHF_COMM_PW", 9,3004,653,3,0.5,"VHF" ,"C-101
 defineMultipositionSwitch("CC_FRONT_VHF_COMM_FREQ_100", 9,3001,640,35,0.01,"VHF" ,"C-101CC FRONT VHF COMM Frequency Control 100 MHz")
 definePotentiometer("CC_FRONT_VHF_COMM_VOL", 9, 3003, 655, {0, 1}, "VHF", "C-101CC FRONT VHF COMM Volume Control")	
 defineMultipositionSwitch("CC_FRONT_VHF_COMM_FREQ_10", 9,3002,641,40,0.025,"VHF" ,"C-101CC FRONT VHF COMM Frequency Control 10 kHz")
-defineToggleSwitch("CC_FRONT_VHF_NAV_TEST", 2,3355,650, "VHF", "C-101CC FRONT VHF NAV Test Switch")
+define3PosTumb("CC_FRONT_VHF_NAV_TEST", 2,3355,650, "VHF", "C-101CC FRONT VHF NAV Test Switch")
 defineMultipositionSwitch("CC_FRONT_VHF_NAV_CONTROL", 11,3004,657,5,0.25,"VHF" ,"C-101CC FRONT VHF NAV Control Switch")
 defineMultipositionSwitch("CC_FRONT_VHF_NAV_FREQ_1", 11,3001,645,35,0.01,"VHF" ,"C-101CC FRONT VHF NAV Frequency Control 1 MHz")
 definePotentiometer("CC_FRONT_VHF_NAV_VOL", 11, 3003, 659, {0, 1}, "VHF", "C-101CC FRONT VHF NAV Volume Control")	
@@ -578,7 +579,7 @@ defineToggleSwitch("CC_FRONT_ADF_TRANS_SW", 12, 3011, 680, "ADF", "C-101CC FRONT
 -- GYROSCOPE PLATFORM 
 defineMultipositionSwitch("CC_FRONT_GYRO_FUNC_SEL", 2,3321,728,3,0.5,"Gyro" ,"C-101CC FRONT Gyro Function Selector")
 definePushButton("CC_FRONT_GYRO_SYNC_HDG_SET_BTN", 2, 3324, 1305, "Gyro", "C-101CC FRONT Gyro Synchnonizer and Heading Set Button")
-definePotentiometer("CC_FRONT_GYRO_SYNC_HDG_SET_KNB", 2,3322,729, {-1,1}, "Gyro", "C-101CC FRONT Gyro Synchnonizer and Heading Set Knob")
+definePotentiometer("CC_FRONT_GYRO_SYNC_HDG_SET_KNB", 2,3322,729, {0,1}, "Gyro", "C-101CC FRONT Gyro Synchnonizer and Heading Set Knob")
 definePotentiometer("CC_FRONT_GYRO_LAT_CORR", 2,3323,730, {0,1}, "Gyro", "C-101CC FRONT Gyro Latitude Correction")
 definePushButton("CC_FRONT_GYRO_FAST_ERECT", 2,3325,732, "Gyro", "C-101CC FRONT Gyro Fast Erect")
 defineMultipositionSwitch("CC_FRONT_GYRO_MAG_VAR", 2,3326,733,3,0.5,"Gyro" ,"C-101CC FRONT Gyro Mag Var Control")

@@ -78,6 +78,14 @@ local diff = {
 			},
 			["name"] = "Display Management Switch - Down",
 		},
+		["d3007pnilu3007cd25vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN19",
+				},
+			},
+			["name"] = "Right MFD OSB 7",
+		},
 		["d3008pnilu3008cd16vd-1vpnilvu0"] = {
 			["added"] = {
 				[1] = {

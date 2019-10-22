@@ -24,17 +24,35 @@ local diff = {
 				},
 			},
 		},
+		["a2004cdnil"] = {
+			["changed"] = {
+				[1] = {
+					["filter"] = {
+						["curvature"] = {
+							[1] = -0.2,
+						},
+						["deadzone"] = 0,
+						["invert"] = false,
+						["saturationX"] = 1,
+						["saturationY"] = 1,
+						["slider"] = false,
+					},
+					["key"] = "JOY_Z",
+				},
+			},
+			["name"] = "Thrust",
+		},
 		["a3046cd16"] = {
 			["added"] = {
 				[1] = {
 					["filter"] = {
 						["curvature"] = {
-							[1] = 0.3,
+							[1] = 0,
 						},
-						["deadzone"] = 0.03,
+						["deadzone"] = 0,
 						["invert"] = true,
-						["saturationX"] = 1,
-						["saturationY"] = 1,
+						["saturationX"] = 0.6,
+						["saturationY"] = 0.6,
 						["slider"] = false,
 					},
 					["key"] = "JOY_Y",
@@ -45,6 +63,16 @@ local diff = {
 		["a3047cd16"] = {
 			["added"] = {
 				[1] = {
+					["filter"] = {
+						["curvature"] = {
+							[1] = 0,
+						},
+						["deadzone"] = 0,
+						["invert"] = false,
+						["saturationX"] = 0.6,
+						["saturationY"] = 0.6,
+						["slider"] = false,
+					},
 					["key"] = "JOY_X",
 				},
 			},
@@ -52,22 +80,6 @@ local diff = {
 		},
 	},
 	["keyDiffs"] = {
-		["d3001pnilu3001cd3vd-1vpnilvu0"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN23",
-				},
-			},
-			["name"] = "MAIN PWR Switch - OFF/BATT",
-		},
-		["d3001pnilu3001cd3vd1vpnilvu0"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN22",
-				},
-			},
-			["name"] = "MAIN PWR Switch - MAIN PWR/BATT",
-		},
 		["d3004pnilu3004cd6vd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
@@ -75,6 +87,14 @@ local diff = {
 				},
 			},
 			["name"] = "Engine ANTI ICE Switch - ON/AUTO",
+		},
+		["d3004pnilu3004cd7vd-1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN14",
+				},
+			},
+			["name"] = "ANTI-SKID Switch - OFF/ANTI-SKID",
 		},
 		["d3010pnilu3010cd2vd1vpnilvu0"] = {
 			["added"] = {
@@ -84,6 +104,14 @@ local diff = {
 			},
 			["name"] = "MANUAL PITCH Override Switch - OVRD/NORM",
 		},
+		["d3010pnilu3010cd7vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN13",
+				},
+			},
+			["name"] = "ANTI-SKID Switch - PARKING BRAKE",
+		},
 		["d3014pnilunilcd4vd1vpnilvunil"] = {
 			["added"] = {
 				[1] = {
@@ -91,6 +119,14 @@ local diff = {
 				},
 			},
 			["name"] = "TANK INERTING Switch - TANK INERTING /OFF",
+		},
+		["d3019pnilu3019cd25vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN15",
+				},
+			},
+			["name"] = "Right MFD OSB 19",
 		},
 		["d3024pnilu3024cd16vd1vpnilvu0"] = {
 			["added"] = {
@@ -164,6 +200,22 @@ local diff = {
 			},
 			["name"] = "SPD BRK Switch (special) - Fwd/RETRACT /OFF",
 		},
+		["d3031pnilu3031cd2vd-1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN28",
+				},
+			},
+			["name"] = "Autopilot PITCH Switch - ATT HOLD",
+		},
+		["d3032pnilu3032cd2vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN27",
+				},
+			},
+			["name"] = "Autopilot PITCH Switch - ALT HOLD",
+		},
 		["d3033pnilu3033cd16vd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
@@ -187,6 +239,14 @@ local diff = {
 				},
 			},
 			["name"] = "ENABLE Switch - Depress",
+		},
+		["d313pnilu311cdnilvd1vpnilvu1"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN29",
+				},
+			},
+			["name"] = "Throttle - OFF/IDLE",
 		},
 		["d68pnilunilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
