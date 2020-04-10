@@ -9,6 +9,7 @@ local parse_indication = BIOS.util.parse_indication
 
 local defineFloat = BIOS.util.defineFloat
 local defineIndicatorLight = BIOS.util.defineIndicatorLight
+local defineIndicatorLightInverted = BIOS.util.defineIndicatorLightInverted
 local definePushButton = BIOS.util.definePushButton
 local definePotentiometer = BIOS.util.definePotentiometer
 local defineRotary = BIOS.util.defineRotary
@@ -160,7 +161,7 @@ definePushButton("SRZO_DEST", 38, 3230, 428, "SRZO/Fuse Panel", "SRZO Self Destr
 defineToggleSwitch("SOD_PWR", 39, 3090, 200, "SOD Panel", "SOD IFF On/Off")
 definePushButton("SOD_IDENT", 39, 3091, 199, "SOD Panel", "SOD Identify")
 defineTumb("SOD_WAVE", 39, 3092, 201, 0.5, {0, 1}, nil, false, "SOD Panel", "SOD Wave Selector 3/1/2")
-defineTumb("SOD_MODE", 39, 3093, 204, .25, {0, 1}, nil, false, "SOD Panel", "SOD Mode Select")
+defineTumb("SOD_MODE", 39, 3093, 204, 0.25, {0, 1}, nil, false, "SOD Panel", "SOD Mode Select")
 
 --RADAR
 defineTumb("RADAR_PWR", 40, 3094, 205, 0.5, {0, 1}, nil, false, "RADAR Power", "RADAR On/Standby/Off")
@@ -301,7 +302,7 @@ defineTumb("IR_SAR_NEU", 42, 3184, 231, 0.5, {0, 1}, nil, false, "Weapon Select 
 definePushButton("GUN_PYRO_1", 42, 3185, 232, "Weapon Select Panel", "Gun Pyro Charge 1")
 definePushButton("GUN_PYRO_2", 42, 3186, 233, "Weapon Select Panel", "Gun Pyro Charge 2")
 definePushButton("GUN_PYRO_3", 42, 3187, 234, "Weapon Select Panel", "Gun Pyro Charge 3")
-defineTumb("WPN_SEL", 42, 3188, 235, .1, {0, 1}, nil, true, "Weapon Select Panel", "Weapon Selector")
+defineTumb("WPN_SEL", 42, 3188, 235, 0.1, {0, 1}, nil, true, "Weapon Select Panel", "Weapon Selector")
 definePotentiometer("MSL_VOL", 42, 3189, 297, {0, 1}, "Left Vertical Mid Panel", "IR Missile Seeker Volume")
 definePushButton("GUN", 42, 3191, 381, "Stick", "Gun Trigger")
 definePushButton("WPN_REL", 42, 3193, 382, "Stick", "Weapons Release")
@@ -384,11 +385,11 @@ defineIndicatorLight("GEAR_OXY_LUNG", 60, "Left Vertical Forward Panel", "Oxygen
 defineFloat("O2_PRES", 58, {0, 1}, "Left Vertical Forward Panel", "Oxygen Pressure")
 
 --Gear Lights
-defineIndicatorLight("GEAR_NOSE_UP", 9, "Landing Gear Control", "Nose Gear Up Light")
-defineIndicatorLight("GEAR_NOSE_DOWN", 12, "Landing Gear Control", "Nose Gear Down Light")
-defineIndicatorLight("GEAR_LEFT_UP", 10, "Landing Gear Control", "Gear Left Up Light")
+defineIndicatorLightInverted("GEAR_NOSE_UP", 9, "Landing Gear Control", "Gear Nose Up Light")
+defineIndicatorLight("GEAR_NOSE_DOWN", 12, "Landing Gear Control", "Gear Nose Down Light")
+defineIndicatorLightInverted("GEAR_LEFT_UP", 10, "Landing Gear Control", "Gear Left Up Light")
 defineIndicatorLight("GEAR_LEFT_DOWN", 13, "Landing Gear Control", "Gear Left Down Light")
-defineIndicatorLight("GEAR_RIGHT_UP", 11, "Landing Gear Control", "Gear Right Up Light")
+defineIndicatorLightInverted("GEAR_RIGHT_UP", 11, "Landing Gear Control", "Gear Right Up Light")
 defineIndicatorLight("GEAR_RIGHT_DOWN", 14, "Landing Gear Control", "Gear Right Down Light")
 
 --Airspeed Gauges
@@ -559,7 +560,7 @@ defineFloat("ARU_ND", 64, {0, 1}, "ARU/Nosecone Panel", "ARU Needle")
 --Nosecone
 defineFloat("CONE_ND", 66, {0, 1}, "ARU/Nosecone Panel", "Nosecone Position Needle")
 
---Gun Arming (listed in mainpanel_init under the drag chute heading)
+--Gun Arming
 defineIndicatorLight("GUN_GOTOVN", 550, "Weapon Select Panel", "Gun Loaded Light")
 
 --SPO Lights
@@ -595,6 +596,8 @@ defineFloat("H_TRI_M", 658, {0, 1}, "Flight Status/Navigation Panel", "Altimeter
 --Cockpit Pressure Gauge
 defineFloat("PIT_PRES_ALT", 655, {0, 1}, "Center Pedestal Panel", "Cockpit Pressure Altimeter")
 defineFloat("H_TRI_M", 656, {0, 1}, "Center Pedestal Panel", "Cockpit Pressure Gauge")
+
+defineIndicatorLight("WARN_L_CHECK_STAT", 407, "Main Warning Lights", "WARNING LIGHTS CHECK STATE")
 
 --INSTRUMENTS NOT REPRESENTED:
 --Baro Alt pressure value window (mechanical?)

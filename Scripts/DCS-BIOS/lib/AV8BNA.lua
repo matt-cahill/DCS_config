@@ -20,6 +20,46 @@ local define3PosTumb = BIOS.util.define3PosTumb
 local defineIntegerFromGetter = BIOS.util.defineIntegerFromGetter
 local defineString = BIOS.util.defineString
 
+
+local function defineAV8BCommSelector(msg, device_id, command, arg_delta, arg_number, category, description)
+	moduleBeingDefined.inputProcessors[msg] = function(state)
+		local currentValue = GetDevice(0):get_argument_value(arg_number)
+		if state == "INC" then
+			GetDevice(device_id):performClickableAction(command, currentValue + arg_delta)
+		end
+		if state == "DEC" then
+			GetDevice(device_id):performClickableAction(command, currentValue - arg_delta)
+		end
+	end
+	
+	local value = moduleBeingDefined.memoryMap:allocateInt {
+		maxValue = 65535
+	}
+	moduleBeingDefined.exportHooks[#moduleBeingDefined.exportHooks+1] = function(dev0)
+		value:setValue(dev0:get_argument_value(arg_number) * 65535)
+	end
+
+	document {
+		identifier = msg,
+		category = category,
+		description = description,
+		control_type = "fixed_step_dial",
+		inputs = {
+			{ interface = "fixed_step", description = "rotate the knob left or right" },
+		},
+		outputs = {
+			{ ["type"] = "integer",
+			  suffix = "",
+			  address = value.address,
+			  mask = value.mask,
+			  shift_by = value.shiftBy,
+			  max_value = 65535,
+			  description = "rotation of the knob"
+			}
+		}
+	}
+end
+
 -------------------------------------------------------------------
 -- MAIN INSTRUMENT PANEL:
 -------------------------------------------------------------------
@@ -74,10 +114,11 @@ definePotentiometer("UFC_COM1_VOL", 23, 3298, 298, {0, 1}, "UHF Radio", "UFC Com
 definePotentiometer("UFC_COM2_VOL", 23, 3299, 299, {0, 1}, "UHF Radio", "UFC Comm 2 Volume Control")
 definePushButton("UFC_COM1_PULL", 23, 3178, 178,"UFC" , "UFC Comm 1 Channel Selector Pull")
 definePushButton("UFC_COM2_PULL", 23, 3179, 179,"UFC" , "UFC Comm 2 Channel Selector Pull")
-definePotentiometer("UFC_COM1_SEL", 23, 3300, 300, {0, 1}, "UHF Radio", "UFC Comm 1 Channel Selector")
-definePotentiometer("UFC_COM2_SEL", 23, 3301, 301, {0, 1}, "UHF Radio", "UFC Comm 2 Channel Selector")
+defineAV8BCommSelector("UFC_COM1_SEL", 23, 3300, 0.015, 300, "UHF Radio", "UFC Comm 1 Channel Selector")
+defineAV8BCommSelector("UFC_COM2_SEL", 23, 3301, 0.015, 301, "UHF Radio", "UFC Comm 2 Channel Selector")
 
-function getARC210_COMM1_String_Frequency()
+
+local function getARC210_COMM1_String_Frequency()
 	local arc_210_comm1 = GetDevice(2)
 	local freq = tostring(arc_210_comm1:get_frequency())
 	if(string.len(freq) == 8) then
@@ -88,7 +129,7 @@ function getARC210_COMM1_String_Frequency()
 end
 defineString("COMM1_STRING_FREQ", getARC210_COMM1_String_Frequency, 7, "AAA", "COMM1 ARC-210 Frequency (string)")
 
-function getARC210_COMM2_String_Frequency()
+local function getARC210_COMM2_String_Frequency()
 	local arc_210_comm2 = GetDevice(3)
 	local freq = tostring(arc_210_comm2:get_frequency())
 	if(string.len(freq) == 8) then
@@ -112,7 +153,7 @@ definePushButton("M_Warning", 35, 3199, 199,"Master Warning Panel" , "Master War
 
 -- Fuel Quantity Indicator
 defineMultipositionSwitch("FUEL_SEL", 21, 3379, 379, 7, 0.33,"Fuel Panel" ,"Fuel Totalizer Selector OUTBD/INBD/WING/INT/TOT/FEED/BIT")
-definePotentiometer("BINGO_SET", 21, 3380, 380, {0, 1},"Fuel Panel" , "Bingo Fuel Set Knob")
+defineAV8BCommSelector("BINGO_SET", 21, 3380, 0.01, 380, "Fuel Panel" , "Bingo Fuel Set Knob")
 
 -- MPCD left
 definePushButton("MPCD_L_1", 26, 3200, 200,"MPCD Left" , "MPCD Left Button 1")
@@ -162,7 +203,7 @@ definePushButton("MPCD_R_17", 27, 3240, 240,"MPCD Right" , "MPCD Right Button 17
 definePushButton("MPCD_R_18", 27, 3241, 241,"MPCD Right" , "MPCD Right Button 18")
 definePushButton("MPCD_R_19", 27, 3242, 242,"MPCD Right" , "MPCD Right Button 19")
 definePushButton("MPCD_R_20", 27, 3243, 243,"MPCD Right" , "MPCD Right Button 20")
-define3PosTumb("MPCD_R_DAY_NIGHT", 267, 3244, 244,"MPCD Right" , "MPCD Right Display DAY/NIGHT Mode")
+define3PosTumb("MPCD_R_DAY_NIGHT", 27, 3244, 244,"MPCD Right" , "MPCD Right Display DAY/NIGHT Mode")
 define3PosTumb("MPCD_R_SYMBOL", 27, 3245, 245,"MPCD Right" , "MPCD Right Display Symbology")
 define3PosTumb("MPCD_R_GAIN", 27, 3246, 246,"MPCD Right" , "MPCD Right Display Gain")
 define3PosTumb("MPCD_R_CONTRAST", 27, 3247, 247,"MPCD Right" , "MPCD Right Display Contrast")
@@ -232,7 +273,7 @@ defineToggleSwitch("SEAT_SAFE_LEVER", 12, 3800, 800,"Seat" , "Seat Ground Safety
 -- CENTER CONSOLE:
 -------------------------------------------------------------------
 -- Flights Instruments Panel
-definePotentiometer("NAV_CRS", 11, 3364, 364, {0, 1}, "Flight Instruments", "NAV Course Setting")
+defineAV8BCommSelector("NAV_CRS", 11, 3364, 0.015, 364, "Flight Instruments", "NAV Course Setting")
 definePotentiometer("BARO_PRESSURE", 10, 3653, 653, {0, 1}, "Flight Instruments", "Barometric Pressure Calibration")
 definePotentiometer("BAK_ADI_CAGE_KNOB", 19, 3351, 351, {0, 1}, "Flight Instruments", "Backup ADI Cage/Pitch Adjust Knob")
 definePushButton("BAK_ADI_CAGE_PULL", 19, 3350, 350,"Flight Instruments" , "Backup ADI Cage/Pitch Adjust Pull")
@@ -359,16 +400,16 @@ defineMultipositionSwitch("CABIN_PRESS_SWITCH", 36, 3643, 643, 3, 0.5,"ECS" ,"Ca
 -------------------------------------------------------------------
 -- FLOOD LAMPS:
 -------------------------------------------------------------------
-definePotentiometer("FLOOD_R_CAN_T", 28, 3150, 150, {-1, 1}, "Flood Lamps", "Flood Right Canopy Frame Top")
-definePotentiometer("FLOOD_R_CAN_B", 28, 3151, 151, {-1, 1}, "Flood Lamps", "Flood Right Canopy Frame Btm")
-definePotentiometer("FLOOD_R_BH_FWD", 28, 3152, 152, {-1, 1}, "Flood Lamps", "Flood Right BH FWD")
-definePotentiometer("FLOOD_R_BH_AFT_F", 28, 3153, 153, {-1, 1}, "Flood Lamps", "Flood Right BH AFT Front")
-definePotentiometer("FLOOD_R_BH_AFT_B", 28, 3154, 154, {-1, 1}, "Flood Lamps", "Flood Right BH AFT Back")
-definePotentiometer("FLOOD_L_BH_AFT_B", 28, 3155, 155, {-1, 1}, "Flood Lamps", "Flood Left BH AFT Back")
-definePotentiometer("FLOOD_L_BH_AFT_F", 28, 3156, 156, {-1, 1}, "Flood Lamps", "Flood Left BH AFT Front")
-definePotentiometer("FLOOD_L_BH_FWD", 28, 3157, 157, {-1, 1}, "Flood Lamps", "Flood Left BH FWD")
-definePotentiometer("FLOOD_L_CAN_B", 28, 3158, 158, {-1, 1}, "Flood Lamps", "Flood Left Canopy Frame Btm")
-definePotentiometer("FLOOD_L_CAN_T", 28, 3159, 159, {-1, 1}, "Flood Lamps", "Flood Left Canopy Frame Top")
+definePotentiometer("FLOOD_R_CAN_T", 34, 3150, 150, {-1, 1}, "Flood Lamps", "Flood Right Canopy Frame Top")
+definePotentiometer("FLOOD_R_CAN_B", 34, 3151, 151, {-1, 1}, "Flood Lamps", "Flood Right Canopy Frame Btm")
+definePotentiometer("FLOOD_R_BH_FWD", 34, 3152, 152, {-1, 1}, "Flood Lamps", "Flood Right BH FWD")
+definePotentiometer("FLOOD_R_BH_AFT_F", 34, 3153, 153, {-1, 1}, "Flood Lamps", "Flood Right BH AFT Front")
+definePotentiometer("FLOOD_R_BH_AFT_B", 34, 3154, 154, {-1, 1}, "Flood Lamps", "Flood Right BH AFT Back")
+definePotentiometer("FLOOD_L_BH_AFT_B", 34, 3155, 155, {-1, 1}, "Flood Lamps", "Flood Left BH AFT Back")
+definePotentiometer("FLOOD_L_BH_AFT_F", 34, 3156, 156, {-1, 1}, "Flood Lamps", "Flood Left BH AFT Front")
+definePotentiometer("FLOOD_L_BH_FWD", 34, 3157, 157, {-1, 1}, "Flood Lamps", "Flood Left BH FWD")
+definePotentiometer("FLOOD_L_CAN_B", 34, 3158, 158, {-1, 1}, "Flood Lamps", "Flood Left Canopy Frame Btm")
+definePotentiometer("FLOOD_L_CAN_T", 34, 3159, 159, {-1, 1}, "Flood Lamps", "Flood Left Canopy Frame Top")
 
 -------------------------------------------------------------------
 -- CANOPY CONTROLS:
@@ -482,13 +523,13 @@ defineFloat("FF3", 262, {0.0, 1.0}, "Gauges", "FF 3. Drum Digit")
 defineFloat("JPT1", 263, {0.0, 1.0}, "Gauges", "JPT 1. Drum Digit")
 defineFloat("JPT2", 264, {0.0, 1.0}, "Gauges", "JPT 2. Drum Digit")
 defineFloat("JPT3", 265, {0.0, 1.0}, "Gauges", "JPT 3. Drum Digit")
-defineFloat("STAB_ARROW", 266, {-1.0, 1.0}, "STAB Arrow up/down Drum Digit")
+defineFloat("STAB_ARROW", 266, {-1.0, 1.0}, "Gauges", "STAB Arrow up/down Drum Digit")
 defineFloat("STAB1", 267, {0.0, 1.0}, "Gauges", "STAB 1. Drum Digit")
 defineFloat("STAB2", 268, {0.0, 1.0}, "Gauges", "STAB 2. Drum Digit")
 defineFloat("H2O1", 269, {0.0, 1.0}, "Gauges", "H2O 1. Drum Digit")
 defineFloat("H2O2", 270, {0.0, 1.0}, "Gauges", "H2O 2. Drum Digit")
 defineFloat("NOZZLE_POINTER", 271, {0.0, 1.0}, "Gauges", "Nozzle Pointer")
-defineIndicatorLight("H2O_CONTROL_LIGHT", 331, "Warning, Caution and IndicatorLights","H2O Control Lamp")
+defineIndicatorLight("H2O_CONTROL_LIGHT", 177, "Warning, Caution and IndicatorLights","H2O Control Lamp (green)")
 ---FUEL PANEL DISPLAY
 defineFloat("FUEL_FLAG", 365, {0.0, 1.0}, "Gauges", "FUEL ON/OFF Flag")
 defineFloat("TOT_FUEL1", 366, {0.0, 1.0}, "Gauges", "TOT FUEL 1. Drum Digit")
@@ -585,6 +626,9 @@ defineFloat("MIP_LIGHTS", 182, {0, 1}, "Gauges", "MIP Backlight Intensity")
 defineFloat("SIDEPANEL_LIGHTS", 183, {0, 1}, "Gauges", "Sidepanel Lightning Intensity")
 defineFloat("COMPASS_LIGHTS", 184, {0, 1}, "Gauges", "Compass Lightning Intensity")
 
+defineFloat("BRAKE_ACCU", 559, {0, 0.4}, "Gauges", "Brake Accummulator")
+defineFloat("TURN_INDI", 652, {-1, 1}, "Gauges", "Turn Indicator")
+defineFloat("SLIP_TURN_FLAG", 654, {0, 1}, "Gauges", "Slip/Turn Flag")
 --Externals
 defineIntegerFromGetter("EXT_SPEED_BRAKE", function()
 	return math.floor(LoGetAircraftDrawArgumentValue(182)*65535)
@@ -603,102 +647,21 @@ end, 1, "External Aircraft Model", "Tail Strobe Light")
 
 -- Get Displays Functions
 
-local function getAV8BNAUFCComm1DisplayV()
-	local li = list_indication(5)
-	local m = li:gmatch("-----------------------------------------\n([^\n]+)\n([^\n]*)\n")
-	while true do
-		local name, value = m()
-        if not name then break end
-		if name == "ufc_chnl_1_v"
-			then
-			return value:sub(1,2)
-		end
-    end
-return "XX"
+local function getComm1Text()
+	if parse_indication(5) == nil then return (" "):rep(2) end
+	local txt = parse_indication(5)["ufc_chnl_1_m"] or parse_indication(5)["ufc_chnl_1_v"] or ""
+	return (" "):rep(2 - #txt) .. txt
 end
- 
-defineString("AV8BNA_UFC_COMM1_DISPLAY_V", getAV8BNAUFCComm1DisplayV, 2, "UFC", "UFC Comm 1 Display V (string)")
-
-local function getAV8BNAUFCComm1DisplayM()
-	local li = list_indication(5)
-	local m = li:gmatch("-----------------------------------------\n([^\n]+)\n([^\n]*)\n")
-	while true do
-		local name, value = m()
-        if not name then break end
-		if name == "ufc_chnl_1_m"
-			then
-			return value:sub(1)
-		end
-    end
-return "XX"
+defineString("UFC_COMM1_DISPLAY", getComm1Text, 2, "UFC", "UFC Comm1 Preset Display")
+local function getComm2Text()
+	if parse_indication(5) == nil then return (" "):rep(2) end
+	local txt = parse_indication(5)["ufc_chnl_2_m"] or parse_indication(5)["ufc_chnl_2_v"] or ""
+	return (" "):rep(2 - #txt) .. txt
 end
+defineString("UFC_COMM2_DISPLAY", getComm2Text, 2, "UFC", "UFC Comm2 Preset Display")
 
-defineString("AV8BNA_UFC_COMM1_DISPLAY_M", getAV8BNAUFCComm1DisplayM, 2, "UFC", "UFC Comm 1 Display M (string)")
- 
- local function getAV8BNAUFCComm2DisplayV()
-	local li = list_indication(5)
-	local m = li:gmatch("-----------------------------------------\n([^\n]+)\n([^\n]*)\n")
-	while true do
-		local name, value = m()
-        if not name then break end
-		if name == "ufc_chnl_2_v"
-			then
-			return value:sub(1,2)
-		end
-    end
-return "XX"
-end
- 
-defineString("AV8BNA_UFC_COMM2_DISPLAY_V", getAV8BNAUFCComm2DisplayV, 2, "UFC", "UFC Comm 2 Display V (string)")
 
-local function getAV8BNAUFCComm2DisplayM()
-	local li = list_indication(5)
-	local m = li:gmatch("-----------------------------------------\n([^\n]+)\n([^\n]*)\n")
-	while true do
-		local name, value = m()
-        if not name then break end
-		if name == "ufc_chnl_2_m"
-			then
-			return value:sub(1)
-		end
-    end
-return "XX"
-end
-
-defineString("AV8BNA_UFC_COMM2_DISPLAY_M", getAV8BNAUFCComm2DisplayM, 2, "UFC", "UFC Comm 2 Display M (string)")
-
-local function getAV8BNAUFCScratchpadLeft()
-	local li = list_indication(5)
-	local m = li:gmatch("-----------------------------------------\n([^\n]+)\n([^\n]*)\n")
-	while true do
-		local name, value = m()
-        if not name then break end
-		if name == "ufc_left_position"
-			then
-			return value:sub(1,2)
-		end
-    end
-return "  "
-end
-
-defineString("AV8BNA_UFC_SCRATCHPAD_L", getAV8BNAUFCScratchpadLeft, 2, "UFC", "UFC Scratchpad Left (string)")
-
- 
-local function getAV8BNAUFCScratchpadRight()
-	local li = list_indication(5)
-	local m = li:gmatch("-----------------------------------------\n([^\n]+)\n([^\n]*)\n")
-	while true do
-		local name, value = m()
-        if not name then break end
-		if name == "ufc_right_position"
-			then
-			return value:sub(1,7)
-		end
-    end
-return "       "
-end
-
-defineString("AV8BNA_UFC_SCRATCHPAD_R", getAV8BNAUFCScratchpadRight, 7, "UFC", "UFC Scratchpad Right (string)")
+local dummyAlloc = moduleBeingDefined.memoryMap:allocateString { maxLength = 14 }
 
 local function getAV8BNAODU1Select()
 	local li = list_indication(6)
@@ -861,6 +824,16 @@ end
 
 defineString("AV8BNA_ODU_5_Text", getAV8BNAODU5Text, 4, "ODU", "ODU Option 5 Text (string)")
 
+
+local function getUfcText()
+	if parse_indication(5) == nil then return (" "):rep(12) end
+	local leftStr = parse_indication(5)["ufc_left_position"] or ""
+	local rightStr = parse_indication(5)["ufc_right_position"] or ""
+	
+    local displayStr = leftStr .. (" "):rep(12 - #leftStr - #rightStr) .. rightStr
+    return displayStr
+end
+defineString("UFC_SCRATCHPAD", getUfcText, 12, "UFC", "UFC Scratchpad Display")
 
 
 BIOS.protocol.endModule()

@@ -1,6 +1,6 @@
--- V1.0c by Warlord (aka BlackLibrary)
--- Initial version of outputs from mainpanel_init.lua by Matchstick
--- Tested and fixed by BuzzKillington
+-- V1.5 by Warlord (aka BlackLibrary)
+-- DED Display, MAGV,INS,UHF, CMDS & Initial version of outputs from mainpanel_init.lua by Matchstick
+-- Tested and fixes by BuzzKillington
 
 BIOS.protocol.beginModule("F-16C_50", 0x4400)
 BIOS.protocol.setExportModuleAircrafts({"F-16C_50"})
@@ -27,7 +27,7 @@ local defineFloat = BIOS.util.defineFloat
 local defineIntegerFromGetter = BIOS.util.defineIntegerFromGetter
 local defineDoubleCommandButton = BIOS.util.defineDoubleCommandButton
 
-function defineMissionComputerSwitch(msg, device_id, mc1_off_command, mc2_off_command, arg_number, category, description)
+function define3Pos2CommandSwitch(msg, device_id, switch1, switch2, arg_number, category, description)
 	local alloc = moduleBeingDefined.memoryMap:allocateInt{ maxValue = 2 }
 	moduleBeingDefined.exportHooks[#moduleBeingDefined.exportHooks+1] = function(dev0)
 	    local val = dev0:get_argument_value(arg_number)
@@ -44,7 +44,7 @@ function defineMissionComputerSwitch(msg, device_id, mc1_off_command, mc2_off_co
 		identifier = msg,
 		category = category,
 		description = description,
-		control_type = "mission_computer_switch",
+		control_type = "3Pos_2Command_Switch",
 		inputs = {
 			{ interface = "set_state", max_value = 2, description = "set the switch position" }
 		},
@@ -55,21 +55,75 @@ function defineMissionComputerSwitch(msg, device_id, mc1_off_command, mc2_off_co
 			  mask = alloc.mask,
 			  shift_by = alloc.shiftBy,
 			  max_value = 2,
-			  description = "switch position -- 0 = emergency, 1 = parking"
+			  description = "switch position -- 0 = Down, 1 = Mid ,  2 = UP"
 			}
 		}
 	}
 	moduleBeingDefined.inputProcessors[msg] = function(toState)
 		local dev = GetDevice(device_id)
-		dev:performClickableAction(mc1_off_command, 0) 
-		dev:performClickableAction(mc2_off_command, 0) 
-		if toState == "0" then
-			dev:performClickableAction(mc2_off_command, -1) 
-		elseif toState == "2" then
-			dev:performClickableAction(mc1_off_command, 1) 
+		 if toState == "0" then --off
+			 dev:performClickableAction(switch1, -1) 
+	     elseif toState == "1" then --Middle
+			 dev:performClickableAction(switch1, 0) 
+   		     dev:performClickableAction(switch2, -1)
+		 elseif toState == "2" then --Up
+			 dev:performClickableAction(switch1, 1)  
+			 dev:performClickableAction(switch1, 0) --I think this lets a mag switch flip it back
 		end
 	end
 end
+
+--Seems to be F16C specific
+function defineSpringloaded_3_pos_tumb(msg, device_id, downSwitch, upSwitch, arg_number, category, description)
+	local alloc = moduleBeingDefined.memoryMap:allocateInt{ maxValue = 2 }
+	moduleBeingDefined.exportHooks[#moduleBeingDefined.exportHooks+1] = function(dev0)
+	    local val = dev0:get_argument_value(arg_number)
+		if val == -1 then
+			alloc:setValue(0)
+		elseif val == 0 then
+			alloc:setValue(1)
+		elseif val == 1 then
+			alloc:setValue(2)
+		end
+	end
+	
+	document {
+		identifier = msg,
+		category = category,
+		description = description,
+		control_type = "3Pos_2Command_Switch_OpenClose",
+		inputs = {
+			{ interface = "set_state", max_value = 2, description = "set the switch position" }
+		},
+		outputs = {
+			{ ["type"] = "integer",
+			  suffix = "",
+			  address = alloc.address,
+			  mask = alloc.mask,
+			  shift_by = alloc.shiftBy,
+			  max_value = 2,
+			  description = "switch position -- 0 = Down, 1 = Mid ,  2 = UP"
+			}
+		}
+	}
+
+	moduleBeingDefined.inputProcessors[msg] = function(toState)
+		local dev = GetDevice(device_id)
+		if toState == "0" then --downSwitch
+			dev:performClickableAction(downSwitch, 0)
+			dev:performClickableAction(upSwitch, 0) 
+			dev:performClickableAction(downSwitch, -1)		
+	    elseif toState == "1" then --Stop
+			dev:performClickableAction(downSwitch, 0)
+			dev:performClickableAction(upSwitch, 0) 		
+		elseif toState == "2" then --upSwitch
+			dev:performClickableAction(downSwitch, 0)
+			dev:performClickableAction(upSwitch, 0) 
+			dev:performClickableAction(upSwitch, 1)
+		end
+	end
+end
+
 
 ------------------------------------------------------------------Switches, Buttons---------------------------------------------------------------------------------
 --Control Interface
@@ -84,7 +138,7 @@ defineRotary("PITCH_TRIM", 2, 3008, 562, "Control Interface", "PITCH TRIM Wheel"
 defineRotary("YAW_TRIM", 2, 3009, 565, "Control Interface", "YAW TRIM Knob")
 defineToggleSwitch("MANUAL_PITCH_SW", 2, 3010, 425, "Control Interface", "MANUAL PITCH Override Switch, OVRD/NORM")
 defineToggleSwitch("STORES_CONFIG_SW", 2, 3011, 358, "Control Interface", "STORES CONFIG Switch, CAT III/CAT I")
-defineDoubleCommandButton("AP_PITCH_SW", 2, 3012, 3013, 109, "Control Interface", "Autopilot PITCH Switch, ATT HOLD/ A/P OFF/ ALT HOLD")
+defineSpringloaded_3_pos_tumb("AP_PITCH_SW", 2, 3012, 3013, 109, "Control Interface", "Autopilot PITCH Switch, ATT HOLD/ A/P OFF/ ALT HOLD")
 define3PosTumb("AP_ROLL_SW", 2, 3014, 108, "Control Interface", "Autopilot ROLL Switch, STRG SEL/ATT HOLD/HDG SEL")
 defineToggleSwitch("ADV_MODE_SW", 2, 3015, 97, "Control Interface", "ADV MODE Switch")
 defineToggleSwitch("MAN_TF_FLYUP_SW", 2, 3016, 568, "Control Interface", "MANUAL TF FLYUP Switch, ENABLE/DISABLE")
@@ -107,14 +161,16 @@ definePotentiometer("PRI_INST_PNL_BRT_KNB", 12, 3004, 686, nil, "Interior Lights
 definePotentiometer("PRI_DATA_DISPLAY_BRT_KNB", 12, 3005, 687, nil, "Interior Lights", "PRIMARY DATA ENTRY DISPLAY BRT Knob")
 definePotentiometer("FLOOD_CONSOLES_BRT_KNB", 12, 3006, 688, nil, "Interior Lights", "FLOOD CONSOLES BRT Knob")
 definePotentiometer("FLOOD_INST_PNL_BRT_KNB", 12, 3007, 690, nil, "Interior Lights", "FLOOD INST PNL BRT Knob")
-defineDoubleCommandButton("MAL_IND_LTS_BRT_SW", 12, 3008, 3009, 691, "External Lights", "MAL & IND LTS Switch, BRT/Center/DIM")
+defineSpringloaded_3_pos_tumb("MAL_IND_LTS_BRT_SW", 12, 3009, 3008, 691, "External Lights", "MAL & IND LTS Switch, BRT/Center/DIM")
+definePotentiometer("AOA_INDEX_BRT_KNB", 12, 3010, 794, nil, "Interior Lights", "AOA Indexer Dimming Lever")
+definePotentiometer("AOA_INDEX_BRT_KNB", 12, 3011, 795, nil, "Interior Lights", "AR Status Indicator Dimming Lever")
 
 --Electric System
 define3PosTumb("MAIN_PWR_SW", 3, 3001, 510, "Electric System", "MAIN PWR Switch, MAIN PWR/BATT/OFF")
 definePushButton("ELEC_CAUTION", 3, 3002, 511, "Electric System", "ELEC CAUTION RESET Button - Push to reset")
 defineToggleSwitch("EPU_GEN_TEST_SW", 3, 3005, 579, "Electric System", "EPU/GEN Test Switch, EPU/GEN /OFF")
-defineDoubleCommandButton("PROBE_HEAT_SW", 3, 3006, 3007, 578, "Electric System", "PROBE HEAT Switch, PROBE HEAT/OFF/TEST")
-defineDoubleCommandButton("FLCS_PWR_TEST_SW", 3, 3003, 3004, 585, "External Lights", "FLCS PWR TEST Switch, MAINT/NORM/TEST")
+defineSpringloaded_3_pos_tumb("PROBE_HEAT_SW", 3, 3007, 3006, 578, "Electric System", "PROBE HEAT Switch, PROBE HEAT/OFF/TEST")
+defineSpringloaded_3_pos_tumb("FLCS_PWR_TEST_SW", 3, 3003, 3004, 585, "Electric System", "FLCS PWR TEST Switch, MAINT/NORM/TEST")
 
 --Fuel System
 defineToggleSwitch("FUEL_MASTER_SW", 4, 3001, 559, "Fuel System", "FUEL MASTER Switch, MASTER/OFF")
@@ -123,7 +179,7 @@ defineToggleSwitch("TANK_INTERTING_SW", 4, 3007, 557, "Fuel System", "TANK INERT
 defineTumb("ENGINE_FEED_KNB", 4, 3004, 556, 0.1, {0, 0.3}, nil, true, "External Lights", "ENGINE FEED Knob, OFF/NORM/AFT/FWD")
 defineToggleSwitch("AIR_REFUEL_SW", 4, 3008, 555, "Fuel System", "AIR REFUEL Switch, OPEN/CLOSE")
 defineToggleSwitch("EXT_FUEL_TRANS_SW", 4, 3003, 159, "Fuel System", "External Fuel Transfer Switch, NORM/ WING FIRST")
-defineTumb("FUEL_QTY_SEL_KNB", 4, 3005, 158, 0.1, {0, 0.5}, nil, true, "Fuel System", "FUEL QTY SEL Knob, TEST/NORM/RSVR/INT WING/EXT WING/EXT CTR") --WIP
+defineTumb("FUEL_QTY_SEL_KNB", 4, 3005, 158, 0.1, {0, 0.5}, nil, true, "Fuel System", "FUEL QTY SEL Knob, TEST/NORM/RSVR/INT WING/EXT WING/EXT CTR")
 
 --Gear System
 defineToggleSwitch("GEAR_HANDLE", 7, 3001, 362, "Gear System", "LG Handle, UP/DN")
@@ -131,11 +187,11 @@ definePushButton("DN_LOCK_BTN", 7, 3002, 361, "Gear System", "DN LOCK REL Button
 defineToggleSwitch("HOOK_SW", 7, 3006, 354, "Gear System", "HOOK Switch, UP/DN")
 definePushButton("HORN_SILENCE_BTN", 7, 3007, 359, "Gear System", "HORN SILENCER Button - Push to reset")
 defineToggleSwitch("BRAKE_CHAN_SW", 7, 3005, 356, "Gear System", "BRAKES Channel Switch, CHAN 1/CHAN 2")
-defineMissionComputerSwitch("ANTI_SKID_SW", 7, 3003, 3004, 357, "Gear System", "ANTI-SKID Switch, PARKING BRAKE/ANTI-SKID/OFF")
+define3Pos2CommandSwitch("ANTI_SKID_SW", 7, 3010, 3004, 357, "Gear System", "ANTI-SKID Switch, PARKING BRAKE/ANTI-SKID/OFF")
 
 --ECS
 defineTumb("TEMP_KNB", 13, 3002, 692, 0.1, {-0.3,0.3}, nil, true, "ECS", "TEMP Knob")
-defineTumb("AIR_SOURCE_KNB", 13, 3001, 693, 0.1, {0, 0.4}, nil, true, "ECS", "AIR SOURCE Knob, OFF/NORM/DUMP/RAM")
+defineTumb("AIR_SOURCE_KNB", 13, 3001, 693, 0.1, {0.0, 0.4}, nil, true, "ECS", "AIR SOURCE Knob, OFF/NORM/DUMP/RAM")
 definePotentiometer("DEFOG_LEVER", 13, 3003, 602, nil, "ECS", "DEFOG Lever")
 
 --EPU
@@ -145,17 +201,18 @@ define3PosTumb("EPU_SW", 6, 3003, 528, "EPU", "EPU Switch, ON/NORM/OFF")
 
 --Engine
 define3PosTumb("ENG_ANTI_ICE", 6, 3004, 710, "Engine", "Engine ANTI ICE Switch, ON/AUTO/OFF")
-defineDoubleCommandButton("JFS_SW", 6, 3005, 3006, 447, "Engine", "JFS Switch, START 1/OFF/START 2")
+defineSpringloaded_3_pos_tumb("JFS_SW", 6, 3006, 3005, 447, "Engine", "JFS Switch, START 1/OFF/START 2")
 defineToggleSwitch("ENG_CONT_SW_COVER", 6, 3007, 448, "Engine", "ENG CONT Switch Cover, OPEN/CLOSE")
 defineToggleSwitch("ENG_CONT_SW", 6, 3008, 449, "Engine", "ENG CONT Switch, PRI/SEC")
 defineToggleSwitch("MAX_PWR_SW", 6, 3009, 451, "Engine", "MAX POWER Switch, MAX POWER/OFF")
-defineDoubleCommandButton("AB_RESET_SW", 6, 3010, 3011, 450, "Engine", "AB RESET Switch, AB RESET/NORM/ENG DATA")
+defineSpringloaded_3_pos_tumb("AB_RESET_SW", 6, 3011, 3010, 450, "Engine", "AB RESET Switch, AB RESET/NORM/ENG DATA")
 definePushButton("FIRE_OHEAT_DETECT_BTN", 6, 3012, 575, "Engine", "FIRE & OHEAT DETECT Test Button - Push to test")
 
 --Oxygen System
-define3PosTumb("OXY_SUPPLY_LVR", 8, 3001, 728, "Oxygen System", "Supply Lever, PBG/ON/OFF")
+defineTumb("OXY_SUPPLY_LVR", 8, 3001, 728, 0.5, {0.0, 1.0}, nil, true,"Oxygen System", "Supply Lever, PBG/ON/OFF")
 defineToggleSwitch("OXY_DILUTER_LVR", 8, 3002, 727, "Oxygen System", "Diluter Lever, 100 percent/NORM")
-defineDoubleCommandButton("OXY_EMERG_LVR", 8, 3003, 3004, 726, "Oxygen System", "Emergency Lever, EMERGENCY/NORMAL/TEST MASK")--WIP
+defineSpringloaded_3_pos_tumb("OXY_EMERG_LVR", 8, 3004, 3003, 726, "Oxygen System", "Emergency Lever, EMERGENCY/NORMAL/TEST MASK")
+defineToggleSwitch("OBOGS_SW", 8, 3005, 576, "Oxygen System", "OBOGS BIT Switch, BIT/OFF")
 
 --Sensor Power Control Panel
 defineToggleSwitch("HDPT_SW_L", 22, 3002, 670, "Sensor Panel", "LEFT HDPT Switch, ON/OFF")
@@ -168,12 +225,12 @@ defineToggleSwitch("MMC_PWR_SW", 19, 3001, 715, "Avionic Panel", "MMC Switch, MM
 defineToggleSwitch("ST_STA_SW", 22, 3001, 716, "Avionic Panel", "ST STA Switch, ST STA/OFF")
 defineToggleSwitch("MFD_SW", 19, 3014, 717, "Avionic Panel", "MFD Switch, MFD/OFF")
 defineToggleSwitch("UFC_SW", 17, 3001, 718, "Avionic Panel", "UFC Switch, UFC/OFF")
+defineToggleSwitch("GPS_SW", 59, 3001, 720, "Avionic Panel", "GPS Switch, GPS/OFF")
 defineTumb("MIDS_LVT_KNB", 41, 3001, 723, 0.1, {0.0,0.2}, nil, true, "Avionic Panel", "MIDS LVT Knob, ZERO/OFF/ON")
 defineTumb("INS_KNB", 14, 3001, 719, 0.1, {0.0,0.6}, nil, true, "Avionic Panel", "INS Knob, OFF/STOR HDG/NORM/NAV/CAL/INFLT ALIGN/ATT")
 
 --WIP:
 defineToggleSwitch("MAP_SW", 3, 3101, 722, "WIP", "MAP Switch, MAP/OFF")
-defineToggleSwitch("GPS_SW", 3, 3102, 720, "WIP", "GPS Switch, GPS/OFF")
 defineToggleSwitch("DL_SW", 3, 3103, 721, "WIP", "DL Switch, DL/OFF")
 
 --Modular Mission Computer (MMC)
@@ -208,13 +265,13 @@ definePotentiometer("ICP_RASTER_BRT_KNB", 17, 3023, 191, nil, "UFC", "ICP Raster
 definePotentiometer("ICP_HUD_BRT_KNB", 17, 3022, 190, nil, "UFC", "ICP HUD Symbology Intensity Knob")
 definePushButton("ICP_WX_BTN", 17, 3024, 187, "UFC", "ICP FLIR Polarity Button, Wx")
 define3PosTumb("ICP_FLIR_GAIN_SW", 17, 3027, 189, "UFC", "ICP FLIR GAIN/LEVEL Switch, GAIN/LVL/AUTO")
-defineRockerSwitch("ICP_DED_SW", 3, 3030, 3030, 3031, 3031, 183, "UFC", "ICP DED Increment/Decrement Switch")
-defineRockerSwitch("ICP_FLIR_SW", 3, 3025, 3025, 3026, 3026, 188, "UFC", "ICP FLIR Increment/Decrement Switch")
-define3PosTumb("ICP_DRIFT_SW", 17, 3029, 186, "UFC", "ICP DRIFT CUTOUT/WARN RESET Switch, DRIFT C/O /NORM/WARN RESET")
-defineTumb("ICP_DATA_RTN_SW", 17, 3032, 184, 1, {-1, 0}, nil, true, "UFC", "ICP Data Control Switch, RTN")
+defineSpringloaded_3_pos_tumb("ICP_DED_SW", 17, 3031, 3030, 183, "UFC", "ICP DED Increment/Decrement Switch")
+defineSpringloaded_3_pos_tumb("ICP_FLIR_SW", 17, 3026, 3025, 188, "UFC", "ICP FLIR Increment/Decrement Switch")
+defineSpringloaded_3_pos_tumb("ICP_DRIFT_SW", 17, 3029, 3028, 186, "UFC", "ICP DRIFT CUTOUT/WARN RESET Switch, DRIFT C/O /NORM/WARN RESET")
+defineTumb("ICP_DATA_RTN_SW", 17, 3032, 184, 1, {-1, 0}, nil, true, "UFC", "ICP Data Control Switch, RTN") ---
 defineToggleSwitch("ICP_DATA_SEQ_SW", 17, 3033, 184, "UFC", "ICP Data Control Switch, SEQ")
 defineToggleSwitch("ICP_DATA_UP_SW", 17, 3034, 185, "UFC", "ICP Data Control Switch, UP")
-defineTumb("ICP_DATA_DN_SW", 17, 3035, 185, 1, {-1, 0}, nil, true, "UFC", "ICP Data Control Switch, DN")
+defineTumb("ICP_DATA_DN_SW", 17, 3035, 185, 1, {-1, 0}, nil, true, "UFC", "ICP Data Control Switch, DN") ---
 definePushButton("F_ACK_BTN", 17, 3036, 122, "UFC", "F-ACK Button")
 definePushButton("IFF_ID_BTN", 17, 3037, 125, "UFC", "IFF IDENT Button")
 define3PosTumb("RF_SW", 17, 3038, 100, "UFC", "RF Switch, SILENT/QUIET/NORM")
@@ -370,9 +427,9 @@ defineRotary("AIRSPEED_SET_KNB", 46, 3001, 71, "Airspeed Indicator", "SET INDEX 
 
 --Altimeter
 defineRotary("ALT_BARO_SET_KNB", 45, 3003, 62, "Altimeter", "Altimeter Barometric Setting Knob")
-defineDoubleCommandButton("ALT_MODE_LV", 45, 3001, 3002, 60, "Altimeter", "Altimeter Mode Lever, ELEC/OFF/PNEU")
+defineSpringloaded_3_pos_tumb("ALT_MODE_LV", 45, 3002, 3001, 60, "Altimeter", "Altimeter Mode Lever, ELEC/OFF/PNEU")
 
---SAI
+--SAI ARU-42/A-2
 definePushButton("SAI_CAGE", 47, 3002, 67, "SAI", "SAI Cage Knob, (LMB) Pull to cage")
 defineRotary("SAI_PITCH_TRIM", 47, 3003, 66, "SAI", "SAI Cage Knob, (MW) Adjust aircraft reference symbol")
 
@@ -381,7 +438,7 @@ defineRotary("ADI_PITCH_TRIM", 50, 3001, 22, "ADI", "ADI Pitch Trim Knob")
 
 --EHSI
 definePushButton("EHSI_CRS_SET", 28, 3005, 43,"EHSI" , "EHSI CRS Set")
-definePotentiometer("EHSI_BRT_KNOB", 28, 3004, 44, nil, "EHSI", "EHSI Brightness Control Knob - Rotate to adjust brightness")
+defineRotary("EHSI_CRS_SET_KNB", 28, 3004, 44, "EHSI", "EHSI CRS Set Knob")
 definePushButton("EHSI_HDG_SET_BTN", 28, 3003, 42,"EHSI" , "EHSI HDG Set Button")
 defineRotary("EHSI_HDG_SET_KNB", 28, 3002, 45, "EHSI", "EHSI HDG Set Knob")
 definePushButton("EHSI_MODE", 28, 3001, 46,"EHSI" , "EHSI Mode (M) Button")
@@ -393,11 +450,12 @@ definePushButton("CLOCK_ELAPSED", 51, 3003, 628, "Clock", "Clock Elapsed Time Kn
 
 --Cockpit Mechanics
 defineToggleSwitch("CANOPY_HANDLE", 10, 3004, 600,"Cockpit Mechanics" ,"Canopy Handle, UP/DOWN")
-defineDoubleCommandButton("SEAT_ADJ", 10, 3013, 3014, 786, "Cockpit Mechanics", "SEAT ADJ Switch, UP/OFF/DOWN")
+defineSpringloaded_3_pos_tumb("SEAT_ADJ", 10, 3014, 3013, 786, "Cockpit Mechanics", "SEAT ADJ Switch, UP/OFF/DOWN")
 defineToggleSwitch("CANOPY_JETT_THANDLE", 10, 3005, 601,"Cockpit Mechanics" ,"CANOPY JETTISON T-Handle, PULL/STOW")
 defineToggleSwitch("SEAT_EJECT_SAFE", 10, 3009, 785,"Cockpit Mechanics" ,"Ejection Safety Lever, ARMED/LOCKED")
-defineDoubleCommandButton("CANOPY_SW", 10, 3002, 3003, 606, "Cockpit Mechanics", "Canopy Switch, OPEN/HOLD/CLOSE")--WIP
-
+defineSpringloaded_3_pos_tumb("CANOPY_SW", 10, 3003, 3002, 606, "Cockpit Mechanics", "Canopy Switch, OPEN/HOLD/CLOSE")
+defineToggleSwitch("SEAT_EJECT_SAFE", 10, 3009, 785,"Cockpit Mechanics" ,"Ejection Safety Lever, ARMED/LOCKED")
+defineToggleSwitch("HIDE_STICK", 10, 3015, 796,"Cockpit Mechanics" ,"Hide Stick toggle")
 ------------------------------------------------------------------Warning, Caution and Indicator Lights-------------------------------------------------------------
 
 --Caution Light Panel
@@ -564,8 +622,10 @@ defineIndicatorLight("LIGHT_MARKER_BEACON", 157, "Warning, Caution and Indicator
 
 ------------------------------------------------------------------Gauges--------------------------------------------------------------------------------------------
 defineFloat("CANOPY_VALUE", 7, {0.0, 1.0}, "Cockpit Mechanics", "Canopy Position")
+defineFloat("SEAT_HEIGHT", 783, {-1.0, 1.0}, "Cockpit Mechanics", "Seat Height")
+
 --AOA				
-defineFloat("AOA_VALUE", 15, {-1.0, -0.807, 0.0, 1.0}, "AoA", "AoA Value")
+defineFloat("AOA_VALUE", 15, {-1.0, 1.0}, "AoA", "AoA Value")
 
 --Altimeter AAU-34/A
 defineFloat("ALT_100_FT_PTR", 51, {0, 1}, "Altimeter", "Altimeter 100 ft pointer")
@@ -579,19 +639,20 @@ defineFloat("ALT_PRESSURE_DRUM_3_CNT", 56, {0, 1}, "Altimeter", "Altimeter Press
 defineFloat("ALT_PNEU_FLAG", 9, {0, 1}, "Altimeter", "Altimeter PNEU Flag")
 
 --AirSpeed/Mach Indicator
-defineFloat("AIRSPEED", 48, {0.0, 0.042, 0.152, 0.182, 0.199, 0.255, 0.303, 0.355, 0.402, 0.455, 0.653, 0.698, 0.750, 0.797, 0.850}, "Airspeed Indicator", "Airspeed Indicator")
-defineFloat("MAX_AIRSPEED", 47, {0.0, 0.045, 0.1, 0.153, 0.2, 0.256, 0.302, 0.355, 0.402, 0.852}, "Airspeed Indicator", "Max Airspeed")
+defineFloat("AIRSPEED", 48, {0.0, 1.0}, "Airspeed Indicator", "Airspeed Indicator")
+defineFloat("MAX_AIRSPEED", 47, {0.0, 1.0}, "Airspeed Indicator", "Max Airspeed")
 defineFloat("SET_AIRSPEED", 70, {0, 1}, "Airspeed Indicator", "Set Airspeed")
-defineFloat("MACH_INDICATOR", 49, {1.0, 0.958, 0.921, 0.902, 0.885, 0.848, 0.812, 0.775, 0.741, 0.704, 0.668, 0.632, 0.596, 0.562, 0.528, 0.493, 0.459, 0.422, 0.387}, "Airspeed Indicator", "Mach Indicator")
+defineFloat("MACH_INDICATOR", 49, {0.0, 1.0}, "Airspeed Indicator", "Mach Indicator")
 
 --Standby Attitude Indicator
 defineFloat("SAI_PITCH", 63, {-1.0, -0.902, -0.793, -0.687, -0.576, -0.450, -0.339, -0.225, -0.115, 0.0, 0.114, 0.225, 0.336, 0.445, 0.569, 0.679, 0.784, 0.893, 0.995}, "SAI", " SAI Pitch")
 defineFloat("SAI_BANK", 64, {1.0, -1.0}, "SAI", "SAI Bank")
 defineFloat("SAI_OFF_FLAG", 65, {0, 1}, "SAI", "SAI Off Flag")
 defineFloat("SAI_AIRCRAFTREFERENCESYMBOL", 68, {-1, 1}, "SAI", "SAI Aircraft Reference Symbol")
+defineFloat("SAI_KNB_ARROW", 69, {-1, 1}, "SAI", "SAI Knob Arrow")
 
 --Vertical Velocity Indicator
-defineFloat("VVI", 16, {-1.0, -0.77, 0.0, 1.0}, "Vertical Velocity Indicator", "VVI")
+defineFloat("VVI", 16, {-1.0, 1.0}, "Vertical Velocity Indicator", "VVI")
 
 --Attitude Director Indicator (ADI)
 defineFloat("ADI_PITCH", 17, {-1, 1}, "ADI", "ADI Pitch")
@@ -602,7 +663,7 @@ defineFloat("ADI_AUX_FLAG", 14, {0.0, 1.0}, "ADI", "ADI AUX Flag")
 defineFloat("ADI_GS_FLAG", 26, {0.0, 1.0},"ADI", "ADI GS Flag")
 defineFloat("ADI_LOC_BAR", 20, {-1, 1}, "ADI", "ADI LOC Bar")
 defineFloat("ADI_GS_BAR", 21, {-1, 1}, "ADI", "ADI GS Bar")
-defineFloat("ADI_TURNRATE", 23, {-1, 1}, "ADI", "ADI TurnRate")
+defineFloat("ADI_TURNRATE", 23, {-3, 3}, "ADI", "ADI TurnRate")
 defineFloat("ADI_GS_POINTER", 27, {-1, 1}, "ADI", "ADI GS Pointer")
 defineFloat("ADI_BUBBLE", 24, {-1, 1}, "ADI", "ADI Bubble")
 
@@ -614,21 +675,17 @@ defineFloat("PITCHTRIMIND", 563, {-1, 1}, "Trim Indicators", "Pitch Trim Indicat
 defineFloat("SPEEDBRAKE_INDICATOR", 363, {-1.0, 1.0}, "Speed Brake", "Speed Brake Indicator")
 
 --Hydraulic Pressure Indicators
-defineFloat("SYSA_PRESSURE", 615, {0.0, 0.170, 0.302, 0.496, 0.694, 0.828, 1.0}, "Hydraulic Pressure Indicators", "System A Pressure")
-defineFloat("SYSB_PRESSURE", 616, {0.0, 0.170, 0.302, 0.496, 0.694, 0.828, 1.0}, "Hydraulic Pressure Indicators", "System B Pressure")
+defineFloat("SYSA_PRESSURE", 615, {0.0, 1.0}, "Hydraulic Pressure Indicators", "System A Pressure")
+defineFloat("SYSB_PRESSURE", 616, {0.0, 1.0}, "Hydraulic Pressure Indicators", "System B Pressure")
 
 --Engine Indicators
---Oil Pressure
 defineFloat("ENGINE_OIL_PRESSURE", 93, {0, 1}, "Engine", "Oil Pressure Indicator")
---Nozzle Position Indicators
 defineFloat("ENGINE_NOZZLE_POSITION", 94, {0.0, 1.0}, "Engine", "Engine Nozzle Position Indicator")
---Engine Tachometers
-defineFloat("ENGINE_TACHOMETER", 95, {0.0, 0.114, 0.233, 0.346, 0.377, 0.437, 0.57, 0.705, 0.855, 1.0}, "Engine", "Engine Tachometer Indicator")
---FTIT
-defineFloat("ENGINE_FTIT", 96, {0.0, 0.026, 0.341, 0.530, 0.708, 0.882, 0.940, 1.0}, "Engine", "Engine FTIT Indicator")
+defineFloat("ENGINE_TACHOMETER", 95, {0.0, 1.0}, "Engine", "Engine Tachometer Indicator")
+defineFloat("ENGINE_FTIT", 96, {0.0, 1.0}, "Engine", "Engine FTIT Indicator")
 
 --Hydrazin Volume
-defineFloat("HYDRAZIN_VOLUME", 617, {0.0, 0.258, 0.416,	0.573, 0.731, 1.0}, "EPU", "Hydrazin Volume Indicator")
+defineFloat("HYDRAZIN_VOLUME", 617, {0.0, 1.0}, "EPU", "Hydrazin Volume Indicator")
 
 --Fuel Flow Indicator Counter
 defineFloat("FUELFLOWCOUNTER_10K", 88, {0, 1}, "Fuel System", "Fuel Flow Counter 10k")
@@ -637,7 +694,7 @@ defineFloat("FUELFLOWCOUNTER_100", 90, {0, 1}, "Fuel System", "Fuel Flow Counter
 
 --Fuel Quantity Indicator (Dual)
 defineFloat("FUEL_AL", 613, {0.0, 1.0}, "Fuel System", "Fuel Quantity Indicator AL")
-defineFloat("FUEL_FR", 614, {0.0, 0.1}, "Fuel System", "Fuel Quantity Indicator FR")
+defineFloat("FUEL_FR", 614, {0.0, 1.0}, "Fuel System", "Fuel Quantity Indicator FR")
 defineFloat("FUELTOTALIZER_10K", 730, {0, 1}, "Fuel System", "Fuel Totalizer Counter 10K")
 defineFloat("FUELTOTALIZER_1K", 731, {0, 1}, "Fuel System", "Fuel Totalizer Counter 1K")
 defineFloat("FUELTOTALIZER_100", 732, {0, 1}, "Fuel System", "Fuel Totalizer Counter 100")
@@ -646,7 +703,7 @@ defineFloat("FUELTOTALIZER_100", 732, {0, 1}, "Fuel System", "Fuel Totalizer Cou
 defineFloat("COCKPIT_ALITITUDE", 618, {0.0,	0.094, 0.194, 0.294, 0.394,	0.496, 0.597, 0.698, 0.798,	0.899, 1.0}, "Oxygen System", "Cabin Pressure Altimeter")
 
 --Oxygen Pressure Indicator
-defineFloat("OXYGEN_PRESSURE", 729, {0.0, 0.107, 0.217,	0.326,	0.435,	0.544, 0.611, 0.717, 0.829,	0.940, 1.0}, "Oxygen System", "Oxygen Pressure")
+defineFloat("OXYGEN_PRESSURE", 729, {0.0, 1.0}, "Oxygen System", "Oxygen Pressure")
 defineFloat("FLOW_INDICATOR", 725, {0, 1}, "Oxygen System", "Flow Indicator Gauge")
 defineIndicatorLight("FLOW_INDICATOR_LIGHT", 725, "Oxygen System", "Flow Indicator Light")
 
@@ -662,6 +719,739 @@ defineFloat("CLOCK_CURRTIME_MS", 622, {0, 1}, "Clock", "Current Time Minutes")
 defineFloat("CLOCK_ELAPSED_TIME_M", 623, {0, 1}, "Clock", "Elapsed Time Minutes")
 defineFloat("CLOCK_ELAPSED_TIME_SEC", 624, {0, 1}, "Clock", "Elapsed Time Seconds")
 
+------------------------------------------------------------------DED Display by Matchstick ------------------------------------------------------------------------
+------------------------------------------------------------------DED Layout Information----------------------------------------------------------------------------
+local DEDLayout_l1={}
+local DEDLayout_l2={}
+local DEDLayout_l3={}
+local DEDLayout_l4={}
+local DEDLayout_l5={}
+
+--CNI
+DEDLayout_l1["UHF Mode Rotary"]={1,3}
+DEDLayout_l1["UHF IncDecSymbol"]={5,1}
+DEDLayout_l1["Selected UHF Frequency"]={6,6}
+DEDLayout_l1["Steerpoint Use"]={14,4}
+DEDLayout_l1["WPT IncDecSymbol"]={19,1}
+DEDLayout_l1["Selected Steerpoint"] = {20,3}
+--COM
+DEDLayout_l1["Secure Voice"] = {1,3}
+DEDLayout_l1["COM 1 Mode"] = {5,3}
+DEDLayout_l1["Receiver Mode"] = {13,4}
+DEDLayout_l1["COM 1 Power Status"] = {13,2}
+DEDLayout_l1["COM 2 Mode"] = {9,3}
+DEDLayout_l1["COM 2 Mode Voice"] = {8,3}
+DEDLayout_l1["Receiver Power Status"] = {15,2}
+DEDLayout_l1["GUARD VHF Label"] = {8,3}
+DEDLayout_l1["GUARD COM 2 Receiver Mode"] = {13,2}
+--IFF
+DEDLayout_l1["STAT IFF label"] = {1,3}
+DEDLayout_l1["STAT IFF Power Status"] = {5,3}
+DEDLayout_l1["STAT Mode label"] = {12,3}
+DEDLayout_l1["STAT Event Occured"] = {18,3}
+DEDLayout_l1["POS IFF label"] = {1,3}
+DEDLayout_l1["POS IFF Power Status"] = {5,3,0,"","I"}
+DEDLayout_l1["POS Event Occured"] = {18,3,0,"","I"}
+DEDLayout_l1["POS Mode Group State"] = {22,1}
+DEDLayout_l1["POS IncDec Symbol"] = {23,1}
+DEDLayout_l1["TIM IFF label"] = {1,3}
+DEDLayout_l1["TIM IFF Power Status"] = {5,3}
+DEDLayout_l1["TIM Event Occured"] = {18,3,0,"","I"}
+DEDLayout_l1["TIM Code Group State"] = {22,1}
+DEDLayout_l1["TIM IncDec Symbol"] = {23,1}
+DEDLayout_l1["IFF label"] = {8,3}
+DEDLayout_l1["IFF Status"] = {12,4}
+--List
+DEDLayout_l1["LIST Label"] = {10,4}
+--T-ILS
+DEDLayout_l1["TCN Label"]={1,3}
+DEDLayout_l1["TCN Mode"]={5,3}
+DEDLayout_l1["TCN BIG OFF Label"]={5,3,0,"","B","OFF"}
+DEDLayout_l1["ILS Label"]={13,3}
+DEDLayout_l1["ILS Mode"]={18,3}
+--ALOW
+DEDLayout_l1["ALOW ALOW label"] = {10,4}
+DEDLayout_l1["ALOW Selected Steerpoint"] = {19,2}
+DEDLayout_l1["ALOW WPT IncDecSymbol"] = {23,1}
+--STPT
+DEDLayout_l1["STEERPOINT LABEL"] = {6,4}
+DEDLayout_l1["STEERPOINT NUMBER"] = {12,2,0,"_inv","I"}
+DEDLayout_l1["STEERPOINT IncDecSymbol"] = {16,1}
+DEDLayout_l1["STEERPOINT SEQUENCE"] = {18,4}
+DEDLayout_l1["STEERPOINT NUMBER Asteriscs_both"] = {11,1,15,"","I"}
+--BINGO
+DEDLayout_l1["BINGO label"] = {9,5}
+DEDLayout_l1["BINGO STPT Num"] = {20,2}
+DEDLayout_l1["BINGO IncDecSymbol"] = {21,1}
+--INS
+DEDLayout_l1["INS_SelectedSteerpoint"] = {20,2}
+DEDLayout_l1["INS_STPT_IncDecSymbol"] = {23,1}
+DEDLayout_l1["INS_lbl"] = {2,3}
+DEDLayout_l1["INS_AlignTime"] = {7,4}
+DEDLayout_l1["INS_AlignSlash"] = {11,1}
+DEDLayout_l1["INS_AlignStatusCode"] = {12,2}
+DEDLayout_l1["INS_Ready"] = {15,3}
+DEDLayout_l1["INFLT ALGN INS_SelectedSteerpoint"] = {20,2}
+DEDLayout_l1["INFLT ALGN INS_STPT_IncDecSymbol"] = {23,1}
+DEDLayout_l1["INFLT ALGN INS_lbl"] = {4,3}
+DEDLayout_l1["INFLT ALGN INS_INFLT_ALGN_lbl"] = {8,10}
+--CMDS
+DEDLayout_l1["CMDS_Prog_label"] = {15,4}
+DEDLayout_l1["CMDS_Selected_Program"] = {21,2}
+DEDLayout_l1["CMDS_Prog_IncDecSymbol"] = {23,1}
+DEDLayout_l1["BINGO CMDS_BINGO_label"] = {5,11}
+DEDLayout_l1["BINGO Selected Steerpoint"] = {19,2}
+DEDLayout_l1["BINGO WPT IncDecSymbol"] = {23,1}
+DEDLayout_l1["CMDS_CHAFF_label"] = {2,9}
+DEDLayout_l1["CMDS_FLARE_label"] = {2,9}
+DEDLayout_l1["CMDS_OTHER1_label"] = {2,10}
+DEDLayout_l1["CMDS_OTHER2_label"] = {2,10}
+--Mode
+DEDLayout_l1["Master_mode_label"] = {4,4}
+DEDLayout_l1["Master_mode"] = {10,3,0,"_inv","I"}
+DEDLayout_l1["Master_mode_ast_both"] = {9, 1, 13,"","I"}
+-- DLNK
+DEDLayout_l1["LINK16 lbl"] = {7,6}
+DEDLayout_l1["LINK16 STN lbl"] = {5,11}
+DEDLayout_l1["NET STATUS lbl"] = {5,10}
+DEDLayout_l1["AG DL lbl"] = {7,6}
+DEDLayout_l1["NET STATUS lbl"] = {5,10}
+DEDLayout_l1["INTRAFLIGHT INTRAFLIGHT lbl"] = {7,11}
+--Misc
+DEDLayout_l1["MISC Label"] = {10,4}
+--MAGV
+DEDLayout_l1["MAGV lbl"] = {7,4}
+DEDLayout_l1["MAGV Mode"] = {13,4}
+DEDLayout_l1["Asterisks_on_MAGV_Mode_both"] = {12,1,17,"","I"}
+--LASER
+DEDLayout_l1["LASR LABEL"] = {11,4}
+--INTG
+DEDLayout_l1["INTG INTG label"] = {13,4}
+DEDLayout_l1["INTG INTG Mode"] = {8,4}
+DEDLayout_l1["INTG TIM Event"] = {20,3}
+--DEDLayout_l1[""] = {,}
+
+--TODO
+DEDLayout_l2["TODO remove lbl"]={4,20}
+--CNI
+DEDLayout_l2["UHF Status"]={1,1}
+DEDLayout_l2["Default Value Indication"]={11,1}
+DEDLayout_l2["Wind Magnetic Direction"]={16,2}
+DEDLayout_l2["Wind Speed"]={20,2}
+--COM
+DEDLayout_l2["Active Frequency or Channel"]={2,6}
+DEDLayout_l2["Active Frequency or Channe"]={2,6}
+--IFF
+DEDLayout_l2["STAT Mode Asterisks_both"]={17,1,23,"","I"}
+DEDLayout_l2["STAT Mode Scratchpad"]={18,5,0,"_inv","I"}
+--List
+DEDLayout_l2["List Item 1 Number"]={0,1,0,"","I"}
+DEDLayout_l2["List Item 1 Name"]={1,4}
+DEDLayout_l2["List Item 2 Number"]={6,1,0,"","I"}
+DEDLayout_l2["List Item 2 Name"]={7,4}
+DEDLayout_l2["List Item 3 Number"]={12,1,0,"","I"}
+DEDLayout_l2["List Item 3 Name"]={13,4}
+DEDLayout_l2["List Item R Number"]={18,1,0,"","I"}
+DEDLayout_l2["List Item R Name"]={19,4}
+--STPT
+DEDLayout_l2["STEERPOINT Latitude"] = {3,3}
+DEDLayout_l2["STEERPOINT Latitude Value"] = {8,12,0,"_inv","I"}
+DEDLayout_l2["STEERPOINT Latitude Asteriscs_both"] = {7,1,20,"","I"}
+--INS
+DEDLayout_l2["INS_LAT_lbl"] = {2,3}
+DEDLayout_l2["INS_LAT_Scratchpad"] = {7,10,0,"_inv","I"}
+DEDLayout_l2["Asterisks_on_LAT_Scratchpad_both"] = {6,1,17,"","I"}
+--CMDS
+DEDLayout_l2["CMDS_BQ_lbl"] = {6,2}
+DEDLayout_l2["CMDS_BQ_Scratchpad"] = {10,2,0,"_inv","I"}
+DEDLayout_l2["CMDS_BQ_Asterisks_both"] = {9,1,12,"","I"}
+DEDLayout_l2["CMDS_CH_lbl"] = {1,2}
+DEDLayout_l2["CMDS_CH_Scratchpad"] = {7,2,0,"_inv","I"}
+DEDLayout_l2["CMDS_CH_Asterisks_both"] = {6,1,9,"","I"}
+-- DLNK
+DEDLayout_l2["FC lbl"] = {3,2}
+DEDLayout_l2["FC value"] = {6,3,0,"_inv","I"}
+DEDLayout_l2["Asterisks on FC_both"] = {15,1,20,"","I"}
+DEDLayout_l2["CallSign Name char1"] = {11,1,0,"_inv","I"}
+DEDLayout_l2["CallSign Name char2"] = {12,1,0,"_inv","I"}
+DEDLayout_l2["Asterisks on CS Name_both"] = {10,1,13,"","I"}
+DEDLayout_l2["VCS IncDecSymbol"] = {14,1}
+DEDLayout_l2["CallSign Number"] = {16,2,0,"_inv","I"}
+DEDLayout_l2["Asterisks on CS Number_both"] = {15,1,18,"","I"}
+DEDLayout_l2["STN id lbl1"] = {0,2}
+DEDLayout_l2["STN value1"] = {3,5}
+DEDLayout_l2["STN id lbl5"] = {9,2}
+DEDLayout_l2["STN value5"] = {12,5}
+DEDLayout_l2["OWN lbl"] = {18,3}
+DEDLayout_l2["GPS TIME lbl"] = {0,8}
+DEDLayout_l2["GPS TIME status"] = {9,3,0,"_inv","I"}
+DEDLayout_l2["Asterisks on ETR_both"] = {8,1,12,"","I"}
+DEDLayout_l2["IPF Reset lbl"] = {14,9,0,"_inv","I"}
+DEDLayout_l2["Asterisks on IPF_both"] = {13,1,23,"","I"}
+DEDLayout_l2["A-G DL XMT lbl"] = {3,3}
+DEDLayout_l2["A-G DL XMT value"] = {7,2}
+DEDLayout_l2["A-G DL COMM lbl"] = {12,4}
+DEDLayout_l2["A-G DL COMM status"] = {17,3}
+DEDLayout_l2["INTRAFLIGHT STN id lbl1"] = {1,2}
+DEDLayout_l2["INTRAFLIGHT STN value1"] = {4,5}
+DEDLayout_l2["INTRAFLIGHT STN id lbl5"] = {7,2}
+DEDLayout_l2["INTRAFLIGHT STN value5"] = {10,5}
+DEDLayout_l2["INTRAFLIGHT COMM lbl"] = {13,4}
+DEDLayout_l2["INTRAFLIGHT COMM status"] = {18,3}
+--Misc
+DEDLayout_l2["Misc Item 1 Number"]={0,1,0,"","I"}
+DEDLayout_l2["Misc Item 1 Name"]={1,4}
+DEDLayout_l2["Misc Item 2 Number"]={6,1,0,"","I"}
+DEDLayout_l2["Misc Item 2 Name"]={7,4}
+DEDLayout_l2["Misc Item 3 Number"]={12,1,0,"","I"}
+DEDLayout_l2["Misc Item 3 Name"]={13,4}
+DEDLayout_l2["Misc Item R Number"]={18,1,0,"","I"}
+DEDLayout_l2["Misc Item R Name"]={19,4}
+--LASER
+DEDLayout_l2["TGP CODE LABEL"] = {1,8}
+DEDLayout_l2["TGP CODE VALUE"] = {13,4,0,"_inv","I"}
+DEDLayout_l2["TGP CODE Asteriscs_both"] = {12,1,17,"","I"}
+
+--DEDLayout_l2[""] = {,}
+
+--CNI
+DEDLayout_l3["VHF Label"]={1,3}
+DEDLayout_l3["VHF IncDecSymbol"]={5,1}
+DEDLayout_l3["Selected VHF Frequency"]={6,6}
+DEDLayout_l3["System Time"]={15,8}
+--COM
+DEDLayout_l3["Scratchpad"]={14,6,0,"_inv","I"}
+DEDLayout_l3["Asterisks on Scratchpad_both"]={13,1,20,"","I"}
+DEDLayout_l3["Guard or Backup Status"]={9,5}
+DEDLayout_l3["GUARD COM 2 Receiver Band"]={8,2}
+DEDLayout_l3["GUARD Guard Label"]={12,5}
+--IFF
+DEDLayout_l3["STAT M1 Mode"]={0,2,0,"_inv","I"}
+DEDLayout_l3["STAT M1 Lockout Status"]={3,1}
+DEDLayout_l3["STAT M1 Code"]={4,2}
+DEDLayout_l3["STAT M4 Mode"]={8,2,0,"_inv","I"}
+DEDLayout_l3["STAT M4 Code"]={12,1}
+DEDLayout_l3["STAT M4 Key"]={14,3}
+DEDLayout_l3["STAT POS EVENT - Side"]={19,1}
+DEDLayout_l3["STAT POS EVENT - OF"]={20,2}
+DEDLayout_l3["STAT POS EVENT - Number"]={22,1}
+DEDLayout_l3["POS M1 Mode"]={1,2,0,"_inv","I"}
+DEDLayout_l3["POS M1 Lockout Status"]={3,1}
+DEDLayout_l3["POS M1 Code"]={4,5}
+DEDLayout_l3["POS M4 Mode"]={9,2,0,"_inv","I"}
+DEDLayout_l3["POS M4 Code"]={13,1}
+DEDLayout_l3["POS M4 Key"]={14,2}
+DEDLayout_l3["POS Mode Asterisks_both"]={18,1,23,"","I"}
+DEDLayout_l3["POS Mode Scratchpad"]={14,5,0,"_inv","I"}
+DEDLayout_l3["TIM M1 Mode"]={1,2,0,"_inv","I"}
+DEDLayout_l3["TIM M1 Lockout Status"]={3,1}
+DEDLayout_l3["TIM M1 Code"]={4,5}
+DEDLayout_l3["TIM M4 Mode"]={9,2,0,"_inv","I"}
+DEDLayout_l3["TIM M4 Code"]={13,1}
+DEDLayout_l3["TIM M4 Key"]={14,2}
+DEDLayout_l3["TIM Mode Asterisks_both"]={18,1,23,"","I"}
+DEDLayout_l3["TIM Mode Scratchpad"]={14,5,0,"_inv","I"}
+DEDLayout_l3["BACKUP label"]={9,6}
+--List
+DEDLayout_l3["List Item 4 Number"]={0,1,0,"","I"}
+DEDLayout_l3["List Item 4 Name"]={1,4}
+DEDLayout_l3["List Item 5 Number"]={6,1,0,"","I"}
+DEDLayout_l3["List Item 5 Name"]={7,4}
+DEDLayout_l3["List Item 6 Number"]={12,1,0,"","I"}
+DEDLayout_l3["List Item 6 Name"]={13,4}
+DEDLayout_l3["List Item E Number"]={18,1,0,"","I"}
+DEDLayout_l3["List Item E Name"]={19,4}
+--T-ILS
+DEDLayout_l3["TILS Scratchpad"]={8,6,0,"_inv","I"}
+DEDLayout_l3["TILS Asterisks_both"]={7,1,14,"",'INV'}
+DEDLayout_l3["ILS CMD STRG"]={15,8}
+DEDLayout_l3["TCN BCN Label"] = {0,3}
+DEDLayout_l3["TCN BCN ID"] = {4,3}
+--ALOW
+DEDLayout_l3["CARA ALOW label"] = {3,9}
+DEDLayout_l3["CARA ALOW Scratchpad"] = {15,7,0,"_inv","I"}
+DEDLayout_l3["CARA ALOW Asterisks_both"] = {14,1,22,"","I"}
+--STPT
+DEDLayout_l3["STEERPOINT Longitude"] = {3,3}
+DEDLayout_l3["STEERPOINT Longitude Value"] = {8,12,0,"_inv","I"}
+DEDLayout_l3["STEERPOINT Longitude Asteriscs_both"] = {7,1,20,"","I"}
+--BINGO
+DEDLayout_l3["SET label"] = {6,3}
+DEDLayout_l3["BINGO Asterisks_both"] = {10,1,19,"","I"}
+DEDLayout_l3["BINGO Scratchpad"] = {11,8,0,"_inv","I"}
+--INS
+DEDLayout_l3["INS_LNG_lbl"] = {2,3}
+DEDLayout_l3["INS_LNG_Scratchpad"] = {7,10,0,"_inv","I"}
+DEDLayout_l3["Asterisks_on_LNG_Scratchpad_both"] = {6,1,17,"","I"}
+DEDLayout_l3["INFLT ALGN INS_COMPASS_HDG_lbl"] = {3,11}
+DEDLayout_l3["INFLT ALGN INS_CompassHdgScratchpad"] = {16,4,0,"_inv","I"}
+DEDLayout_l3["INFLT ALGN Asterisks on Scratchpad_both"] = {15,1,20,"","I"}
+--CMDS
+DEDLayout_l3["CMDS_BI_lbl"] = {6,2}
+DEDLayout_l3["CMDS_BI_Scratchpad"] = {10,6,0,"_inv","I"}
+DEDLayout_l3["CMDS_BI_Asterisks_both"] = {9,1,16,"","I"}
+DEDLayout_l3["CMDS_FL_lbl"] = {2,2}
+DEDLayout_l3["CMDS_FL_Scratchpad"] = {7,2,0,"_inv","I"}
+DEDLayout_l3["CMDS_FL_Asterisks_both"] = {6,1,9,"","I"}
+DEDLayout_l3["CMDS_FDBK_lbl"] = {11,4}
+DEDLayout_l3["CMDS_FDBK_value"] = {19,3,0,"_inv","I"}
+DEDLayout_l3["CMDS_FDBK_Asterisks_both"] = {18,1,22,"","I"}
+-- DLNK
+DEDLayout_l3["MC lbl"] = {3,2}
+DEDLayout_l3["MC value"] = {6,3,0,"_inv","I"}
+DEDLayout_l3["Asterisks on MC_both"] = {5,1,9,"","I"}
+DEDLayout_l3["FL lbl"] = {12,2}
+DEDLayout_l3["FL status"] = {16,3,0,"_inv","I"}
+DEDLayout_l3["Asterisks on FL_both"] = {15,1,19,"","I"}
+DEDLayout_l3["NUM lbl"] = {18,1}
+DEDLayout_l3["Own num value"] = {20,1}
+DEDLayout_l3["TIME lbl"] = {4,4}
+DEDLayout_l3["TIME value"] = {9,8,0,"_inv","I"}
+DEDLayout_l3["Asterisks on TIME_both"] = {8,1,17,"","I"}
+DEDLayout_l3["STN id lbl2"] = {0,2}
+DEDLayout_l3["STN value2"] = {3,5}
+DEDLayout_l3["STN id lbl6"] = {9,2}
+DEDLayout_l3["STN value6"] = {12,5}
+DEDLayout_l3["OWN lbl"] = {3,3}
+DEDLayout_l3["OWN value"] = {7,2}
+DEDLayout_l3["DATA lbl"] = {12,4}
+DEDLayout_l3["DATA value"] = {7,3}
+DEDLayout_l3["INTRAFLIGHT STN id lbl2"] = {1,2}
+DEDLayout_l3["INTRAFLIGHT STN value2"] = {4,5}
+DEDLayout_l3["INTRAFLIGHT STN id lbl6"] = {7,2}
+DEDLayout_l3["INTRAFLIGHT STN value6"] = {10,5}
+DEDLayout_l3["INTRAFLIGHT DATA lbl"] = {13,4}
+DEDLayout_l3["INTRAFLIGHT DATA value"] = {18,3}
+--Misc
+DEDLayout_l3["Misc Item 4 Number"]={0,1,0,"","I"}
+DEDLayout_l3["Misc Item 4 Name"]={1,4}
+DEDLayout_l3["Misc Item 5 Number"]={6,1,0,"","I"}
+DEDLayout_l3["Misc Item 5 Name"]={7,4}
+DEDLayout_l3["Misc Item 6 Number"]={12,1,0,"","I"}
+DEDLayout_l3["Misc Item 6 Name"]={13,4}
+DEDLayout_l3["Misc Item E Number"]={18,1,0,"","I"}
+DEDLayout_l3["Misc Item E Name"]={19,4}
+--MAGV
+DEDLayout_l3["INS_MAGV_Scratchpad"] = {9,6,0,"_inv","I"}
+DEDLayout_l3["Asterisks_on_MAGV_Scratchpad_both"] = {8,1,15,"","I"}
+--LASER
+DEDLayout_l3["LST CODE LABEL"] = {1,8}
+DEDLayout_l3["LST CODE VALUE"] = {13,4,0,"_inv","I"}
+DEDLayout_l3["LST CODE Asteriscs_both"] = {12,1,17,"","I"}
+--INTG
+DEDLayout_l3["INTG M1 Mode"] = {0,2,0,"_inv","I"}
+DEDLayout_l3["INTG M1 Decoupled Status"] = {3,1}
+DEDLayout_l3["INTG M1 Code"] = {4,2}
+DEDLayout_l3["INTG M4 Mode"] = {16,2,0,"_inv","I"}
+DEDLayout_l3["INTG M4 Decoupled Status"] = {19,1}
+DEDLayout_l3["INTG M4 Code"] = {20,1,0,"_inv","I"}
+DEDLayout_l3["INTG M4 Key"] = {21,3}
+--DEDLayout_l3[""] = {,}
+
+--TODO
+DEDLayout_l4["TODO remove label"] = {4,20}
+--CNI
+DEDLayout_l4["VHF Status"]={1,1}
+DEDLayout_l4["Hack Time"]={15,8}
+--COM
+DEDLayout_l4["Preset Label"]={2,9}
+DEDLayout_l4["Preset Number"]={7,2,0,"_inv","I"}
+DEDLayout_l4["Asterisks on PresetChannel_both"]={6,1,9,"","I"}
+DEDLayout_l4["TOD Label"]={17,3}
+--IFF
+DEDLayout_l4["STAT M2 Mode"]={0,2,0,"_inv","I"}
+DEDLayout_l4["STAT M2 Lockout Status"]={3,1}
+DEDLayout_l4["STAT M2 Code"]={4,4}
+DEDLayout_l4["STAT MC Mode"]={9,2,0,"_inv","I"}
+DEDLayout_l4["STAT MC Code"]={12,1}
+DEDLayout_l4["STAT MC Key"]={14,3}
+DEDLayout_l4["STAT M2 Mode"]={0,2,0,"_inv","I"}
+DEDLayout_l4["STAT M2 Lockout Status"]={3,1}
+DEDLayout_l4["STAT M2 Code"]={4,4}
+DEDLayout_l4["STAT MC Mode"]={9,2,0,"_inv","I"}
+DEDLayout_l4["STAT MC Code"]={12,1}
+DEDLayout_l4["STAT MC Key"]={14,3}
+DEDLayout_l4["STAT TIM EVENT - Time"]={18,5}
+DEDLayout_l4["POS M2 Mode"]={1,2,0,"_inv","I"}
+DEDLayout_l4["POS M2 Lockout Status"]={3,1}
+DEDLayout_l4["POS M2 Code"]={4,4,0,"_inv","I"}
+DEDLayout_l4["POS MC Mode"]={9,2}
+DEDLayout_l4["POS MC Code"]={12,1}
+DEDLayout_l4["POS MC Key"]={14,3}
+DEDLayout_l4["POS POS EVENT - Side"]={19,1}
+DEDLayout_l4["POS POS EVENT - OF"]={20,2}
+DEDLayout_l4["POS POS EVENT - Number"]={22,1}
+DEDLayout_l4["TIM M2 Mode"]={1,2,0,"_inv","I"}
+DEDLayout_l4["TIM M2 Lockout Status"]={3,1}
+DEDLayout_l4["TIM M2 Lockout Status"]={4,4}
+DEDLayout_l4["TIM MC Mode"]={9,2}
+DEDLayout_l4["TIM MC Code"]={12,1}
+DEDLayout_l4["TIM MC Key"]={14,3}
+DEDLayout_l4["TIM EVENT - Time"]={18,5}
+--List
+DEDLayout_l4["List Item 7 Number"]={0,1,0,"","I"}
+DEDLayout_l4["List Item 7 Name"]={1,4}
+DEDLayout_l4["List Item 8 Number"]={6,1,0,"","I"}
+DEDLayout_l4["List Item 8 Name"]={7,4}
+DEDLayout_l4["List Item 9 Number"]={12,1,0,"","I"}
+DEDLayout_l4["List Item 9 Name"]={13,4}
+DEDLayout_l4["List Item 0 Number"]={18,1,0,"","I"}
+DEDLayout_l4["List Item 0 Name"]={19,4}
+--T-ILS
+DEDLayout_l4["ILS FRQ Label"]={12,3}
+DEDLayout_l4["ILS FRQ Scratchpad"]={17,6,0,"_inv","I"}
+DEDLayout_l4["ILS FRQ Asterisks_both"]={16,1,23,"","I"}
+DEDLayout_l4["TCN CHAN Label"] = {0,4}
+DEDLayout_l4["TCN CHAN Scratchpad"]={5,3,0,"_inv","I"}
+DEDLayout_l4["TCN CHAN Asterisks_both"]={4,1,8,"","I"}
+DEDLayout_l4["BACKUP lbl"] = {2,6}
+--ALOW
+DEDLayout_l4["MSL FLOOR label"] = {3,9}
+DEDLayout_l4["MSL FLOOR Scratchpad"] = {15,7,0,"_inv","I"}
+DEDLayout_l4["MSL FLOOR Asterisks_both"] = {14,1,22,"","I"}
+--STPT
+DEDLayout_l4["STEERPOINT Elevation"] = {2,3}
+DEDLayout_l4["STEERPOINT Elevation Value"] = {8,8,0,"_inv","I"}
+DEDLayout_l4["STEERPOINT Elevation Asteriscs_both"] = {7,1,16,"","I"}
+--BINGO
+DEDLayout_l4["TOTAL label"] = {4,5}
+DEDLayout_l4["TOTAL value"] = {11,5}
+DEDLayout_l4["TOTAL LBS label"] = {16,3}
+--INS
+DEDLayout_l4["INS_SALT_lbl"] = {1,4}
+DEDLayout_l4["INS_SALT_Scratchpad"] = {8,7,0,"_inv","I"}
+DEDLayout_l4["Asterisks_on_SALT_Scratchpad_both"] = {7,1,15,"","I"}
+DEDLayout_l4["INS_FIX_NECESSARY_lbl"] = {3,17}
+--CMDS
+DEDLayout_l4["CMDS_SQ_lbl"] = {6,2}
+DEDLayout_l4["CMDS_SQ_Scratchpad"] = {10,2,0,"_inv","I"}
+DEDLayout_l4["CMDS_SQ_Asterisks_both"] = {9,1,13,"","I"}
+DEDLayout_l4["CMDS_O1_lbl"] = {2,2}
+DEDLayout_l4["CMDS_O1_Scratchpad"] = {7,2,0,"_inv","I"}
+DEDLayout_l4["CMDS_O1_Asterisks_both"] = {6,1,9,"","I"}
+DEDLayout_l4["CMDS_REQCTR_lbl"] = {11,6}
+DEDLayout_l4["CMDS_REQCTR_value"] = {19,3,0,"_inv","I"}
+DEDLayout_l4["CMDS_REQCTR_Asterisks_both"] = {18,1,22,"","I"}
+-- DLNK
+DEDLayout_l4["SC lbl"] = {3,2}
+DEDLayout_l4["SC value"] = {6,3,0,"_inv","I"}
+DEDLayout_l4["Asterisks on SC_both"] = {5,1,9,"","I"}
+DEDLayout_l4["XMT lbl"] = {11,3}
+DEDLayout_l4["XMT status"] = {16,2,0,"_inv","I"}
+DEDLayout_l4["Asterisks on XMT_both"] = {15,1,18,"","I"}
+DEDLayout_l4["NTR lbl"] = {5,3}
+DEDLayout_l4["NTR status"] = {9,3,0,"_inv","I"}
+DEDLayout_l4["Asterisks on NTR_both"] = {8,1,12,"","I"}
+DEDLayout_l4["STN id lbl3"] = {0,2}
+DEDLayout_l4["STN value3"] = {3,5}
+DEDLayout_l4["STN id lbl7"] = {9,2}
+DEDLayout_l4["STN value7"] = {12,5}
+DEDLayout_l4["FILL lbl"] = {2,4}
+DEDLayout_l4["FILL status"] = {7,3}
+DEDLayout_l4["PRTL lbl"] = {12,4}
+DEDLayout_l4["PRTL status"] = {17,5}
+DEDLayout_l4["INTRAFLIGHT STN id lbl3"] = {1,2}
+DEDLayout_l4["INTRAFLIGHT STN value3"] = {4,5}
+DEDLayout_l4["INTRAFLIGHT STN id lbl7"] = {7,2}
+DEDLayout_l4["INTRAFLIGHT STN value7"] = {10,5}
+DEDLayout_l4["INTRAFLIGHT OWN lbl"] = {14,4}
+DEDLayout_l4["INTRAFLIGHT Own value"] = {18,2}
+--Misc
+DEDLayout_l4["Misc Item 7 Number"]={0,1,0,"","I"}
+DEDLayout_l4["Misc Item 7 Name"]={1,4}
+DEDLayout_l4["Misc Item 8 Number"]={6,1,0,"","I"}
+DEDLayout_l4["Misc Item 8 Name"]={7,4}
+DEDLayout_l4["Misc Item 9 Number"]={12,1,0,"","I"}
+DEDLayout_l4["Misc Item 9 Name"]={13,4}
+DEDLayout_l4["Misc Item 0 Number"]={18,1,0,"","I"}
+DEDLayout_l4["Misc Item 0 Name"]={19,4}
+--INTG
+DEDLayout_l4["INTG M2 Mode"] = {0,2}
+DEDLayout_l4["INTG M2 Decoupled Status"] = {3,1}
+DEDLayout_l4["INTG M2 Code"] = {4,4}
+DEDLayout_l4["INTG IJAM Mode"] = {15,4}
+DEDLayout_l4["INTG IJAM Key"] = {20,3}
+--DEDLayout_l4[""] = {,}
+
+--CNI
+DEDLayout_l5["IFF Modes Label"]={1,1}
+DEDLayout_l5["IFF Modes Enabled"]={2,6}
+DEDLayout_l5["Active Mode 3 Code"]={9,4}
+DEDLayout_l5["IFF Switching"]={14,1}
+DEDLayout_l5["TACAN Label"]={19,1}
+DEDLayout_l5["TACAN Channel"]={20,3}
+DEDLayout_l5["TACAN Band"]={23,1}
+--COM
+DEDLayout_l5["Preset Frequency"]={5,6,0,"_inv","I"}
+DEDLayout_l5["Asterisks on PresetFrequency_both"]={4,11,11,"","I"}
+DEDLayout_l5["Bandwidth"]={18,2,0,"_inv","I"}
+DEDLayout_l5["Asterisks on Band_both"]={17,1,20,"","I"}
+DEDLayout_l5["Preset Channel Number"]={20,2}
+DEDLayout_l5["Guard or Backup Frequency"]={10,6}
+--IFF
+DEDLayout_l5["STAT M3 Lockout Status"] = {3,1}
+DEDLayout_l5["STAT M3 Code"] = {4,4}
+DEDLayout_l5["STAT M4 Monitoring"] = {9,3}
+DEDLayout_l5["STAT M4 Monitoring Key"] = {14,3}
+DEDLayout_l5["STAT MS Mode"] = {18,2,0,"_inv","I"}
+DEDLayout_l5["STAT MS Code"] = {20,1}
+DEDLayout_l5["STAT MS Key"] = {21,3}
+DEDLayout_l5["POS M3 Mode"] = {1,2,0,"_inv","I"}
+DEDLayout_l5["POS M3 Lockout Status"] = {3,1}
+DEDLayout_l5["POS M3 Code"] = {4,4}
+DEDLayout_l5["POS M4 Monitoring"] = {9,3}
+DEDLayout_l5["POS M4 Monitoring Key"] = {14,3}
+DEDLayout_l5["POS MS Mode"] = {18,2,0,"_inv","I"}
+DEDLayout_l5["POS MS Code"] = {20,1}
+DEDLayout_l5["POS MS Key"] = {21,3}
+DEDLayout_l5["TIM M3 Mode"] = {1,2,0,"_inv","I"}
+DEDLayout_l5["TIM M3 Lockout Status"] = {3,1}
+DEDLayout_l5["TIM M3 Code"] = {4,4}
+DEDLayout_l5["TIM M4 Monitoring"] = {9,3}
+DEDLayout_l5["TIM M4 Monitoring Key"] = {14,3}
+DEDLayout_l5["TIM MS Mode"] = {18,2,0,"_inv","I"}
+DEDLayout_l5["TIM MS Code"] = {20,1}
+DEDLayout_l5["TIM MS Key"] = {21,3}
+--T-ILS
+DEDLayout_l5["ILS CRS Label"]={12,3}
+DEDLayout_l5["ILS CRS Scratchpad"]={17,4,0,"_inv","I"}
+DEDLayout_l5["ILS CRS Asterisks_both"]={16,1,21,"","I"}
+DEDLayout_l5["TCN BAND Label"] = {0,4}
+DEDLayout_l5["TCN BAND XY"] = {5,1}
+DEDLayout_l5["TCN BAND Key"] = {6,3}
+--STPT
+DEDLayout_l5["STEERPOINT Time over current STP"] = {3,3}
+DEDLayout_l5["STEERPOINT TOS Value"] = {8,8,0,"_inv","I"}
+DEDLayout_l5["STEERPOINT TOS Asteriscs_both"] = {7,1,16,"","I"}
+--INS
+DEDLayout_l5["INS_THDG_lbl"] = {1,4}
+DEDLayout_l5["INS_THDG_Scratchpad"] = {7,6,0,"_inv","I"}
+DEDLayout_l5["Asterisks_on_THDG_Scratchpad"] = {6,1,13,"","I"}
+DEDLayout_l5["INS_GS_lbl"] = {16,3}
+DEDLayout_l5["INS_GS_value"] = {20,3}
+--CMDS
+DEDLayout_l5["CMDS_SI_lbl"] = {6,2}
+DEDLayout_l5["CMDS_SI_Scratchpad"] = {10,6,0,"_inv","I"}
+DEDLayout_l5["CMDS_SI_Asterisks_both"] = {9,1,16,"","I"}
+DEDLayout_l5["CMDS_O2_lbl"] = {2,2}
+DEDLayout_l5["CMDS_O2_Scratchpad"] = {7,2,0,"_inv","I"}
+DEDLayout_l5["CMDS_O2_Asterisks_both"] = {6,1,9,"","I"}
+DEDLayout_l5["CMDS_BINGO_lbl"] = {11,5}
+DEDLayout_l5["CMDS_BINGO_value"] = {19,3,0,"_inv","I"}
+DEDLayout_l5["CMDS_BINGO_Asterisks_both"] = {18,1,22,"","I"}
+-- DLNK
+DEDLayout_l5["P2 lbl"] = {21,3}
+DEDLayout_l5["P3 lbl"] = {21,3}
+DEDLayout_l5["SYNC lbl"] = {4,4}
+DEDLayout_l5["SYNC status"] = {9,4,0,"_inv","I"}
+DEDLayout_l5["Asterisks on SYNC_both"] = {8,1,13,"","I"}
+DEDLayout_l5["P1 lbl"] = {21,3}
+DEDLayout_l5["STN id lbl4"] = {0,2}
+DEDLayout_l5["STN value4"] = {3,5}
+DEDLayout_l5["STN id lbl8"] = {9,2}
+DEDLayout_l5["STN value8"] = {12,5}
+DEDLayout_l5["P5 lbl"] = {21,3}
+DEDLayout_l5["INTRAFLIGHT STN id lbl4"] = {1,2}
+DEDLayout_l5["INTRAFLIGHT STN value4"] = {4,5}
+DEDLayout_l5["INTRAFLIGHT STN id lbl8"] = {7,2}
+DEDLayout_l5["INTRAFLIGHT STN value8"] = {10,5}
+DEDLayout_l5["INTRAFLIGHT LAST lbl"] = {13,4}
+DEDLayout_l5["INTRAFLIGHT LAST value"] = {18,2}
+DEDLayout_l5["INTRAFLIGHT P6 lbl"] = {21,3}
+--LASER
+DEDLayout_l5["Laser ST Time LABEL"] = {1,13}
+DEDLayout_l5["Laser ST Time VALUE"] = {17,2,0,"_inv","I"}
+DEDLayout_l5["Laser ST Time Asteriscs_both"] = {16,1,19,"","I"}
+--INTG
+DEDLayout_l5["INTG M3 Mode"] = {0,2,0,"_inv","I"}
+DEDLayout_l5["INTG M3 Decoupled Status"] = {3,1}
+DEDLayout_l5["INTG M3 Code"] = {4,4}
+DEDLayout_l5["INTG Asterisks_both"] = {9,1,16,"","I"}
+DEDLayout_l5["INTG Scratchpad"] = {10,5,0,"_inv","I"}
+DEDLayout_l5["INTG COUPLE Mode"] = {16,4,0,"_inv","I"}
+DEDLayout_l5["INTG COUPLE Key"] = {20,3}
+--DEDLayout_l5[""] = {,}
+
+DEDLayout = {DEDLayout_l1, DEDLayout_l2, DEDLayout_l3, DEDLayout_l4, DEDLayout_l5}
+
+------------------------------------------------------------------DED Display Utility Functions---------------------------------------------------------------------
+function parse_indication(indicator_id)  -- Thanks to [FSF]Ian code
+	local t = {}
+	local li = list_indication(indicator_id)
+	local m = li:gmatch("-----------------------------------------\n([^\n]+)\n([^\n]*)\n")
+	while true do
+    	local name, value = m()
+    	if not name then break end
+   			t[name]=value
+	end
+	return t
+end
+
+local function mergeString(original_string, new_data, location)
+	local new_data_length = string.len(new_data)
+	local before = string.sub(original_string,1,location)
+	local after = string.sub(original_string,location+new_data_length+1)
+	local base = string.sub(original_string,location+1, location+new_data_length)
+	local merged = {}
+
+	for i = 1, new_data_length
+	do
+		local curr_base = string.sub(base,i, i)
+		if curr_base  ~= " " then
+			merged[i]=curr_base
+		else
+			merged[i]=string.sub(new_data,i, i)
+		end
+	end
+	return before..table.concat(merged)..after
+end
+------------------------------------------------------------------DED Display Main Function-------------------------------------------------------------------------
+local function buildDEDLine(line)
+-- Get Layout Information for line being built
+	local DEDLayoutLine = DEDLayout[line]
+-- Get Exported DED Objects
+	local DED_fields = parse_indication(6)
+	local layout
+	local label
+	local value
+
+-- Base Output String
+	local dataLine ="                         "
+
+-- Check for present of Objects that indicate Duplicate Key Names that need resolving
+	local guard = DED_fields["Guard Label"]
+	local mode = DED_fields["Mode label"]
+	local event = DED_fields["Event Occured"]
+	local alow =  DED_fields["ALOW label"]
+	local bingo = DED_fields["CMDS_BINGO_lbl"]
+	local inflt_algn = DED_fields["INS_INFLT_ALGN_lbl"]
+	local intraflight = DED_fields["INTRAFLIGHT lbl"]
+	local dlnk_A_G= DED_fields["A-G DL lbl"]
+
+--Loop through Exported DED Objects
+	for k,v in pairs(DED_fields) do
+-- Handle Duplicate Key Names on COM2 Guard page items        
+		if guard ~= nil then
+			label = guard.." "..k
+-- Handle Duplicate Key Names on IFF STAT page items
+		elseif mode ~= nil then
+			label = mode.." "..k
+-- Handle Duplicate Key Names on IFF POS & TIM page items
+		elseif event ~= nil then
+			label = event.." "..k
+-- Handle Duplicate Key Names on ALOW page Line 1 items
+		elseif alow ~= nil and line == 1 then
+			label = alow.." "..k
+-- Handle Duplicate Key Names on CMDS Bingo page Line 1 items
+		elseif bingo ~= nil and line == 1 then
+			label = bingo.." "..k
+-- Handle Duplicate Key Names on INS INFL ALGN page Lines 1 & 3 items
+		elseif inflt_algn ~= nil and (line == 1 or line==3) then
+			label = inflt_algn.." "..k
+-- Handle Duplicate Key Names on DLNK INTRAFLIGHT page
+		elseif intraflight ~= nil then
+			label = intraflight.." "..k
+-- Handle Duplicate Key Names on DLNK A-G page Line 2 items
+		elseif dlnk_A_G ~= nil and line == 2 then
+			label = dlnk_A_G.." "..k
+		else
+			label = k
+		end
+--Get layout data associated with current key
+		layout = DEDLayoutLine[label:gsub("_inv","",1):gsub("_lhs","_both",1)]
+		if layout ~= nil then
+--If layout value 6 is present then use this value to override the value returned from DCS
+			if layout[6] ~= nil then
+				value = layout[6]
+			else
+				value = v
+			end
+			
+-- Add Value to dataLine using mergeString because some values are are supposed to fit within others
+			dataLine = mergeString(dataLine, value, layout[1])
+
+--If layout value 3 > 0 we need to duplicate this item at position specific in value 3 (this is for "*"s marking enterable fields
+			if layout[3] ~= nil and layout[3] > 0 then
+				dataLine = mergeString(dataLine, value, layout[3])
+			end
+		end
+	end
+    return dataLine
+end
+
+local DEDLine1 = ""
+local DEDLine2 = ""
+local DEDLine3 = ""
+local DEDLine4 = ""
+local DEDLine5 = ""
+
+-- Build DED Display Lines
+moduleBeingDefined.exportHooks[#moduleBeingDefined.exportHooks+1] = function()
+	DEDLine1 = buildDEDLine(1);
+	DEDLine2 = buildDEDLine(2);
+	DEDLine3 = buildDEDLine(3);
+	DEDLine4 = buildDEDLine(4);
+	DEDLine5 = buildDEDLine(5);
+end
+
+-- Add DED Display Lines to data sent across
+defineString("DED_LINE_1", function() return DEDLine1 end, 25, "DED Output Data", "DED Display Line 1")
+defineString("DED_LINE_2", function() return DEDLine2 end, 25, "DED Output Data", "DED Display Line 2")
+defineString("DED_LINE_3", function() return DEDLine3 end, 25, "DED Output Data", "DED Display Line 3")
+defineString("DED_LINE_4", function() return DEDLine4 end, 25, "DED Output Data", "DED Display Line 4")
+defineString("DED_LINE_5", function() return DEDLine5 end, 25, "DED Output Data", "DED Display Line 5")
+
+------------------------------------------------------------------CMDS Display--------------------------------------------------------------------------------------
+local CMDS_O1_Amount
+local CMDS_O2_Amount
+local CMDS_CH_Amount
+local CMDS_FL_Amount
+
+moduleBeingDefined.exportHooks[#moduleBeingDefined.exportHooks+1] = function()
+	local cmds = parse_indication(17)
+	CMDS_O1_Amount = "    "
+	CMDS_O2_Amount = "    "
+	CMDS_CH_Amount = "    "
+	CMDS_FL_Amount = "    "
+	if not cmds then
+		return
+	end
+	CMDS_O1_Amount 				= coerce_nil_to_string(cmds.CMDS_O1_Amount)
+	CMDS_O2_Amount 				= coerce_nil_to_string(cmds.CMDS_O2_Amount)
+	CMDS_CH_Amount 				= coerce_nil_to_string(cmds.CMDS_CH_Amount)
+	CMDS_FL_Amount 				= coerce_nil_to_string(cmds.CMDS_FL_Amount)
+end
+
+defineString("CMDS_O1_Amount", function() return CMDS_O1_Amount end, 4, "CMDS", "CMDS O1 Amount Display")
+defineString("CMDS_O2_Amount", function() return CMDS_O2_Amount end, 4, "CMDS", "CMDS O2 Amount Display")
+defineString("CMDS_CH_Amount", function() return CMDS_CH_Amount end, 4, "CMDS", "CMDS CH Amount Display")
+defineString("CMDS_FL_Amount", function() return CMDS_FL_Amount end, 4, "CMDS", "CMDS FL Amount Display")
+
+------------------------------------------------------------------UHF Display---------------------------------------------------------------------------------------
+local function get_UHF_CHAN()
+    local UHF = parse_indication(11)
+	if UHF and UHF.txtPresetChannel then
+		return coerce_nil_to_string(UHF.txtPresetChannel)
+	else
+		return "  "
+	end
+end
+
+defineString("UHF_CHAN_DISP", get_UHF_CHAN, 2, "UHF", "UHF CHAN Display")
+
+local function get_UHF_FREQUENCY()
+    local UHF = parse_indication(12)
+    if UHF and UHF.txtFreqStatus then
+        local UHF_Freq = UHF.txtFreqStatus
+        local UHF_dot =  UHF.txtDot
+        return UHF_Freq:sub(1,3)..UHF_dot..UHF_Freq:sub(4,6)
+    else
+        return "       "
+    end
+end
+
+defineString("UHF_FREQ_DISP", get_UHF_FREQUENCY, 7, "UHF", "UHF Manual Frequency Display")  
+
 ------------------------------------------------------------------Externals-----------------------------------------------------------------------------------------
 defineIntegerFromGetter("EXT_SPEED_BRAKE_RIGHT", function()
 	return math.floor(LoGetAircraftDrawArgumentValue(182)*65535)
@@ -671,26 +1461,24 @@ defineIntegerFromGetter("EXT_SPEED_BRAKE_LEFT", function()
 	return math.floor(LoGetAircraftDrawArgumentValue(184)*65535)
 end, 65535, "External Aircraft Model", "Left Speed Brake")
 
--- defineIntegerFromGetter("EXT_FORMATION_LIGHTS", function()
-	-- return math.floor(LoGetAircraftDrawArgumentValue(200)*65535)
--- end, 65535, "External Aircraft Model", "Formation Lights")
+defineIntegerFromGetter("EXT_FORMATION_LIGHTS", function()
+	return math.floor(LoGetAircraftDrawArgumentValue(200)*65535)
+end, 65535, "External Aircraft Model", "Formation Lights")
 
--- defineIntegerFromGetter("EXT_POSITION_LIGHT_LEFT", function()
-	-- if LoGetAircraftDrawArgumentValue(190) > 0 then return 1 else return 0 end
--- end, 1, "External Aircraft Model", "Left Position Light (red)")
--- defineIntegerFromGetter("EXT_POSITION_LIGHT_RIGHT", function()
-	-- if LoGetAircraftDrawArgumentValue(191) > 0 then return 1 else return 0 end
--- end, 1, "External Aircraft Model", "Right Position Light (green)")
+defineIntegerFromGetter("EXT_TAIL_LIGHT", function()
+	return math.floor(LoGetAircraftDrawArgumentValue(202)*65535)
+end, 65535, "External Aircraft Model", "Tail Lights")
 
--- defineIntegerFromGetter("EXT_STROBE_TAIL", function()
-	-- if LoGetAircraftDrawArgumentValue(192) > 0 then return 1 else return 0 end
--- end, 1, "External Aircraft Model", "Tail Strobe Light")
--- defineIntegerFromGetter("EXT_STROBE_LEFT", function()
-	-- if LoGetAircraftDrawArgumentValue(195) > 0 then return 1 else return 0 end
--- end, 1, "External Aircraft Model", "Left Strobe Light")
--- defineIntegerFromGetter("EXT_STROBE_RIGHT", function()
-	-- if LoGetAircraftDrawArgumentValue(196) > 0 then return 1 else return 0 end
--- end, 1, "External Aircraft Model", "Right Strobe Light")
+defineIntegerFromGetter("EXT_POSITION_LIGHTS_WING", function()
+	if LoGetAircraftDrawArgumentValue(190) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Wing Position Lights (L-red; R-green)")
 
+defineIntegerFromGetter("EXT_POSITION_LIGHT_FUSELAGE", function()
+	if LoGetAircraftDrawArgumentValue(191) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Fuselage Position Lights (L-red; R-green;Back-white)")
+
+defineIntegerFromGetter("EXT_STROBE_TAIL", function()
+	if LoGetAircraftDrawArgumentValue(192) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Tail Strobe Light")
 
 BIOS.protocol.endModule()

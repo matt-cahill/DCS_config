@@ -2,7 +2,7 @@ BIOS.protocol.beginModule("F-14B", 0x1200)
 BIOS.protocol.setExportModuleAircrafts({"F-14B"})
 
 -- Made by WarLord (aka BlackLibrary), ArturDCS and Bullitt
--- v 1.4
+-- v 1.7a
 
 local inputProcessors = moduleBeingDefined.inputProcessors
 local documentation = moduleBeingDefined.documentation
@@ -206,8 +206,8 @@ definePotentiometer("PLT_EMERG_WING_SWEEPLT_LEVER", 16, 3031, 384, {0, 1}, "Wing
 defineToggleSwitch("PLT_EMERG_WING_SWEEPLT_POP", 12, 3030, 15096, "Wing Sweep", "PILOT Emergency Wing Sweep Handle Pop out")
 
 --Radar Altimeter
-definePushButton("PLT_RADAR_ALT_BIT", 29, 3489, 16020, "Radar Altimeter", "PILOT Radar Altimeter BIT Test Button")
-defineRotary("PLT_RADAR_ALT_KNOB", 29, 3490, 308, "Radar Altimeter", "PILOT Radar Altimeter Control Knob")
+definePushButton("PLT_RADAR_ALT_BIT", 29, 3485, 16020, "Radar Altimeter", "PILOT Radar Altimeter BIT Test Button")
+defineRotary("PLT_RADAR_ALT_KNOB", 29, 3484, 308, "Radar Altimeter", "PILOT Radar Altimeter Control Knob")
 
 -- Airspeed Indicator
 definePushButton("PLT_AIRSPD_KNOB_PUSH", 27, 3492, 2127, "Airspeed Indicator", "PILOT Airspeed Indicator Bug Push Knob")
@@ -217,11 +217,11 @@ defineRotary("RIO_AIRSPD_KNOB", 27, 3639, 254, "Airspeed Indicator", "RIO Airspe
 
 -- Altimeter
 define3PosTumb("PLT_ALTIMETER_MODE", 28, 3487, 307, "Altimeter", "PILOT Altimeter Mode Switch")
-definePotentiometer("PLT_ALTIMETER_KNOB", 28, 3486, 306, {0, 1}, "Altimeter", "PILOT Altimeter Pressure Setting")
+defineRotary("PLT_ALTIMETER_KNOB", 28, 3486, 306, "Altimeter", "PILOT Altimeter Pressure Setting")
 
 -- RIO Altimeter
 define3PosTumb("RIO_ALTIMETER_MODE", 28, 3490, 20307, "Altimeter", "RIO Altimeter Mode Switch")
-definePotentiometer("RIO_ALTIMETER_KNOB", 28, 3489, 20306, {0, 1}, "Altimeter", "RIO Altimeter Pressure Setting")
+defineRotary("RIO_ALTIMETER_KNOB", 28, 3489, 20306, "Altimeter", "RIO Altimeter Pressure Setting")
 
 -- Gear
 defineToggleSwitch("PLT_GEAR_LEVER", 17, 3016, 326, "Gear", "PILOT Landing Gear Lever")
@@ -571,10 +571,10 @@ definePotentiometer("RIO_DECM_VOL", 53, 3253, 9950, {0.0, 1.0}, "DECM Panel", "R
 -- RWR Control Panel ALR-67
 definePotentiometer("PLT_RWR_BRIGHT", 54, 3261, 16011, {0.0, 1.0}, "RWR Control Panel", "PILOT AN/ALR-67 Display Brightness")
 definePotentiometer("RIO_RWR_BRIGHT", 54, 3263, 376, {0.0, 1.0}, "RWR Control Panel", "RIO AN/ALR-67 Display Brightness")
-defineMultipositionSwitch("RIO_RWR_DIS_TYP", 53, 3257, 2136, 5, 0.25, "DECM Panel" ,"RIO AN/ALR-67 Display Type")
-define3PosTumb("RIO_RWR_MODE", 53, 3256, 2137, "DECM Panel", "RIO AN/ALR-67 Mode")
-define3PosTumb("RIO_RWR_TEST", 53, 3261, 2140, "DECM Panel", "RIO AN/ALR-67 Mode")
-defineToggleSwitch("RIO_RWR_PW", 53, 3259, 2139, "DECM Panel", "RIO AN/ALR-67 Power")
+defineMultipositionSwitch("RIO_RWR_DIS_TYP", 54, 3257, 2136, 5, 0.25, "DECM Panel" ,"RIO AN/ALR-67 Display Type")
+define3PosTumb("RIO_RWR_MODE", 54, 3256, 2137, "DECM Panel", "RIO AN/ALR-67 Mode")
+define3PosTumb("RIO_RWR_TEST", 54, 3261, 2140, "DECM Panel", "RIO AN/ALR-67 Mode")
+defineToggleSwitch("RIO_RWR_PW", 54, 3259, 2139, "DECM Panel", "RIO AN/ALR-67 Power")
 definePotentiometer("RIO_RWR_VOL", 54, 3254, 2138, {0.0, 1.0}, "DECM Panel", "RIO AN/ALR-67 Volume")
 
 -- AN/ALE-39 Mode Panel
@@ -607,7 +607,7 @@ definePushButton("RIO_CMDS_PROG_RESET", 5, 3297, 216, "CMDS", "RIO AN/ALE-37 Pro
 
 -- INS
 defineMultipositionSwitch("RIO_TID_MODE_NAV", 50, 3106, 50, 7, 0.1666667, "INS" ,"RIO TID Navigation Mode")
-defineMultipositionSwitch("RIO_TID_MODE_DEST", 46, 3106, 51, 8, 0.142857, "INS" ,"RIO TID Destination Mode")
+defineMultipositionSwitch("RIO_TID_MODE_DEST", 46, 3109, 51, 8, 0.142857, "INS" ,"RIO TID Destination Mode")
 
 -- AHRS / Compass  (COMP Panel)
 definePotentiometer("PLT_AHRS_HDG_KNOB", 51, 3433, 904, {-1.0, 1.0}, "AHRS", "PILOT Compass HDG Slave Knob")
@@ -659,7 +659,7 @@ defineToggleSwitch("PLT_MASTER_ARM_COVER", 55, 3135, 1046, "Weapons Panel", "PIL
 define3PosTumb("PLT_MASTER_ARM_SW", 55, 3136, 1047, "Weapons Panel", "PILOT Master Arm Switch")
 defineToggleSwitch("PLT_ACM_COVER", 55, 3133, 1049, "Weapons Panel", "PILOT ACM Cover")
 definePushButton("PLT_ACM_JETT", 55, 3138, 1048, "Weapons Panel", "PILOT ACM Jettison")
-definePushButton("PLT_MASTER_CAUTION_RESET", 55, 3056, 9199, "Weapons Panel", "PILOT Master Caution Reset")
+definePushButton("PLT_MASTER_CAUTION_RESET", 34, 3056, 9199, "Weapons Panel", "PILOT Master Caution Reset")
 definePushButton("PLT_GUN_RATE", 55, 3130, 16000, "Weapons Panel", "PILOT Gun Rate")
 definePushButton("PLT_SIDEWINDER_COOL", 55, 3139, 16001, "Weapons Panel", "PILOT Sidewinder Cool")
 definePushButton("PLT_MISSLE_PREP", 55, 3140, 16002, "Weapons Panel", "PILOT Missile Prepare")
@@ -672,7 +672,7 @@ definePushButton("RIO_CLOCK_TIMER", 26, 3698, 1053, "Weapons Panel", "RIO Clock 
 
 -- RIO TID
 defineMultipositionSwitch("RIO_TID_MODE", 43, 3112, 2005, 4, 0.33333, "TID" ,"RIO TID Mode")
-defineMultipositionSwitch("RIO_TID_RANGE", 43, 3113, 2006, 5, 0.5, "TID" ,"RIO TID Range")
+defineTumb("RIO_TID_RANGE", 43, 3113, 2006, 0.5, {-1.0, 1.0}, nil, false, "TID" ,"RIO TID Range")
 definePushButton("RIO_TID_NON_ATTK", 43, 3114, 226, "TID", "RIO TID Non Attack")
 definePushButton("RIO_TID_JAM_STROBE", 43, 3115, 1118, "TID", "RIO TID Jam Strobe")
 definePushButton("RIO_TID_DATA_LINK", 43, 3116, 1117, "TID", "RIO TID Data Link")
@@ -738,8 +738,8 @@ defineToggleSwitch("RIO_DDD_PARA_AMP", 39, 3472, 3900, "DDD", "RIO DDD Parametri
 -- RIO RADAR Panel
 defineMultipositionSwitch("RIO_RADAR_ELE_BARS", 39, 3442, 79, 4, 0.33333, "Radar" ,"RIO Radar Elevation Scan")
 defineMultipositionSwitch("RIO_RADAR_AZI_SCAN", 39, 3443, 80, 4, 0.33333, "Radar" ,"RIO Radar Azimuth Scan")
-definePotentiometer("RIO_RADAR_ELE_CENTER", 39, 3446, 81, {0.0, 1.0}, "Radar", "RIO Radar Elevation Center")
-definePotentiometer("RIO_RADAR_AZI_CENTER", 39, 3447, 82, {0.0, 1.0}, "Radar", "RIO Radar Azimuth Center")
+definePotentiometer("RIO_RADAR_ELE_CENTER", 39, 3446, 81, {-1.0, 1.0}, "Radar", "RIO Radar Elevation Center")
+definePotentiometer("RIO_RADAR_AZI_CENTER", 39, 3447, 82, {-1.0, 1.0}, "Radar", "RIO Radar Azimuth Center")
 defineToggleSwitch("RIO_RADAR_STABI", 39, 3449, 83, "Radar", "RIO Radar Stabilize")
 define3PosTumb("RIO_RADAR_VSL", 39, 3448, 84, "Radar", "RIO Radar VSL Switch")
 
@@ -775,14 +775,14 @@ defineToggleSwitch("RIO_WEAPON_JETT_STAT_3", 55, 3165, 65, "Armament Panel", "RI
 defineToggleSwitch("RIO_WEAPON_JETT_STAT_4", 55, 3166, 69, "Armament Panel", "RIO Weapon Jettison Station 4")
 defineToggleSwitch("RIO_WEAPON_JETT_STAT_5", 55, 3167, 70, "Armament Panel", "RIO Weapon Jettison Station 5")
 defineToggleSwitch("RIO_WEAPON_JETT_STAT_6", 55, 3168, 64, "Armament Panel", "RIO Weapon Jettison Station 6")
-defineToggleSwitch("RIO_WEAPON_JETT_STAT_8", 55, 3170, 71, "Armament Panel", "RIO Weapon Jettison Station 8")
+define3PosTumb("RIO_WEAPON_JETT_STAT_8", 55, 3170, 71, "Armament Panel", "RIO Weapon Jettison Station 8")
 definePushButton("RIO_WEAPON_AA_LAUNCH", 55, 3161, 74, "Armament Panel", "RIO Weapon A/A Launch")
-definePushButton("RIO_WEAPON_NEXT_LAUNCH", 55, 3162, 9964, "Armament Panel", "RIO Weapon Next Launch")
+definePushButton("RIO_WEAPON_NEXT_LAUNCH", 43, 3162, 9964, "Armament Panel", "RIO Weapon Next Launch")
 
 -- Computer Address Panel (CAP)
 defineMultipositionSwitch("RIO_CAP_CATRGORY", 23, 3530, 98, 6, 0.2, "CAP" ,"RIO CAP Category")
-definePushButton("RIO_CAP_BTN_4", 23, 3521, 123, "CAP", "RIO CAP Button 4")
-definePushButton("RIO_CAP_BTN_5", 23, 3522, 124, "CAP", "RIO CAP Button 5")
+definePushButton("RIO_CAP_BTN_4", 23, 3521, 124, "CAP", "RIO CAP Button 4")
+definePushButton("RIO_CAP_BTN_5", 23, 3522, 123, "CAP", "RIO CAP Button 5")
 definePushButton("RIO_CAP_BTN_3", 23, 3520, 125, "CAP", "RIO CAP Button 3")
 definePushButton("RIO_CAP_BTN_2", 23, 3519, 126, "CAP", "RIO CAP Button 2")
 definePushButton("RIO_CAP_BTN_1", 23, 3518, 127, "CAP", "RIO CAP Button 1")
@@ -799,8 +799,8 @@ definePushButton("RIO_CAP_NBR_2", 23, 3537, 138, "CAP", "RIO CAP NBR 2")
 definePushButton("RIO_CAP_7", 23, 3542, 139, "CAP", "RIO CAP 7")
 definePushButton("RIO_CAP_HDG_8", 23, 3543, 140, "CAP", "RIO CAP HDG 8")
 definePushButton("RIO_CAP_SPD_3", 23, 3538, 141, "CAP", "RIO CAP SPD 3")
-definePushButton("RIO_CAP_ALT_4", 23, 3539, 142, "CAP", "RIO CAP ALT 4")
-definePushButton("RIO_CAP_9", 23, 3544, 143, "CAP", "RIO CAP 9")
+definePushButton("RIO_CAP_ALT_4", 23, 3539, 143, "CAP", "RIO CAP ALT 4")
+definePushButton("RIO_CAP_9", 23, 3544, 142, "CAP", "RIO CAP 9")
 definePushButton("RIO_CAP_BRG_0", 23, 3535, 144, "CAP", "RIO CAP BRG 0")
 definePushButton("RIO_CAP_RNG_5", 23, 3540, 145, "CAP", "RIO CAP RNG 5")
 definePushButton("RIO_CAP_NE", 23, 3533, 146, "CAP", "RIO CAP N+E")
@@ -985,6 +985,22 @@ defineIndicatorLight("PLT_SLATS_IND_LIGHT", 8310, "Gauges", "PILOT Slats Indicat
 defineIndicatorLight("PLT_FLAPS_IND_LIGHT", 8311, "Gauges", "PILOT Flaps Indicator as Light")
 defineIndicatorLight("PLT_SPDBRK_IND_LIGHT", 8307, "Gauges", "PILOT Speedbrake Indicator as Light")
 defineIndicatorLight("PLT_SPDBRK_FULL_LIGHT", 8308, "Gauges", "PILOT Speedbrake Full Indicator as Light")
+defineIndicatorLightMulti1("PLT_WEAPON_STORE_1A_STORE_L", 9221, "Gauges", "PILOT Weapon Store 1A as Light (STORE)")
+defineIndicatorLightMulti1("PLT_WEAPON_STORE_1B_STORE_L", 9222, "Gauges", "PILOT Weapon Store 1B as Light (STORE)")
+defineIndicatorLightMulti1("PLT_WEAPON_STORE_3_STORE_L", 9223, "Gauges", "PILOT Weapon Store 3 as Light (STORE)")
+defineIndicatorLightMulti1("PLT_WEAPON_STORE_4_STORE_L", 9224, "Gauges", "PILOT Weapon Store 4 as Light (STORE)")
+defineIndicatorLightMulti1("PLT_WEAPON_STORE_5_STORE_L", 9225, "Gauges", "PILOT Weapon Store 5 as Light (STORE)")
+defineIndicatorLightMulti1("PLT_WEAPON_STORE_6_STORE_L", 9226, "Gauges", "PILOT Weapon Store 6 as Light (STORE)")
+defineIndicatorLightMulti1("PLT_WEAPON_STORE_8B_STORE_L", 9227, "Gauges", "PILOT Weapon Store 8B as Light (STORE)")
+defineIndicatorLightMulti1("PLT_WEAPON_STORE_8A_STORE_L", 9228, "Gauges", "PILOT Weapon Store 8A as Light (STORE)")
+defineIndicatorLightMulti2("PLT_WEAPON_STORE_1A_READY_L", 9221, "Gauges", "PILOT Weapon Store 1A as Light (READY)")
+defineIndicatorLightMulti2("PLT_WEAPON_STORE_1B_READY_L", 9222, "Gauges", "PILOT Weapon Store 1B as Light (READY)")
+defineIndicatorLightMulti2("PLT_WEAPON_STORE_3_READY_L", 9223, "Gauges", "PILOT Weapon Store 3 as Light (READY)")
+defineIndicatorLightMulti2("PLT_WEAPON_STORE_4_READY_L", 9224, "Gauges", "PILOT Weapon Store 4 as Light (READY)")
+defineIndicatorLightMulti2("PLT_WEAPON_STORE_5_READY_L", 9225, "Gauges", "PILOT Weapon Store 5 as Light (READY)")
+defineIndicatorLightMulti2("PLT_WEAPON_STORE_6_READY_L", 9226, "Gauges", "PILOT Weapon Store 6 as Light (READY)")
+defineIndicatorLightMulti2("PLT_WEAPON_STORE_8B_READY_L", 9227, "Gauges", "PILOT Weapon Store 8B as Light (READY)")
+defineIndicatorLightMulti2("PLT_WEAPON_STORE_8A_READY_L", 9228, "Gauges", "PILOT Weapon Store 8A as Light (READY)")
 
 -- Warning, Caution and IndicatorLights RIO
 defineIndicatorLight("RIO_SCP_RECORD_STBY_L", 92, "Warning, Caution and IndicatorLights","RIO SCP Record Standby Light (red)")
@@ -1453,13 +1469,21 @@ defineIntegerFromGetter("EXT_SPEED_BRAKE_TOP", function()
 	return math.floor(LoGetAircraftDrawArgumentValue(400)*65535)
 end, 65535, "External Aircraft Model", "Top Speed Brake")
 
+defineIntegerFromGetter("EXT_REFUEL_PROBE_LIGHT", function()
+	if LoGetAircraftDrawArgumentValue(610) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Refuel Probe Light")
+
 defineIntegerFromGetter("EXT_POSITION_LIGHTS_WINGS", function()
 	if LoGetAircraftDrawArgumentValue(611) > 0 then return 1 else return 0 end
 end, 1, "External Aircraft Model", "Position Lights Wings")
 
 defineIntegerFromGetter("EXT_POSITION_LIGHTS_BODY", function()
-	if LoGetAircraftDrawArgumentValue(611) > 0 then return 1 else return 0 end
+	if LoGetAircraftDrawArgumentValue(612) > 0 then return 1 else return 0 end
 end, 1, "External Aircraft Model", "Position Lights Body")
+
+defineIntegerFromGetter("EXT_POSITION_LIGHT_TAIL", function()
+	if LoGetAircraftDrawArgumentValue(613) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Tail Position Light")
 
 defineIntegerFromGetter("EXT_FORMATION_LIGHTS", function()
 	return math.floor(LoGetAircraftDrawArgumentValue(200)*65535)

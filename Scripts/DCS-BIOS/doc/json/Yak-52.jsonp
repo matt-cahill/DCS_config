@@ -1,8 +1,8 @@
 docdata["Yak-52"] =
 {
-                                 "ARK-15M": {
+                                 "ARK 15M": {
                                                      "FRONT_CB_ADF": {
-                                                                                    "category": "ARK-15M",
+                                                                                    "category": "ARK 15M",
                                                                                 "control_type": "selector",
                                                                                  "description": "Fore ADF Marker",
                                                                                   "identifier": "FRONT_CB_ADF",
@@ -31,7 +31,7 @@ docdata["Yak-52"] =
                                                                             "physical_variant": "toggle_switch"
                                                                      },
                                                 "FRONT_RDF_CHANNEL": {
-                                                                                    "category": "ARK-15M",
+                                                                                    "category": "ARK 15M",
                                                                                 "control_type": "selector",
                                                                                  "description": "Fore RDF Channel Selector",
                                                                                   "identifier": "FRONT_RDF_CHANNEL",
@@ -57,7 +57,7 @@ docdata["Yak-52"] =
                                                                      },
                                                 "FRONT_RDF_CSWITCH": {
                                                                                  "api_variant": "momentary_last_position",
-                                                                                    "category": "ARK-15M",
+                                                                                    "category": "ARK 15M",
                                                                                 "control_type": "selector",
                                                                                  "description": "Fore RDF Control",
                                                                                   "identifier": "FRONT_RDF_CSWITCH",
@@ -86,7 +86,7 @@ docdata["Yak-52"] =
                                                                             "physical_variant": "push_button"
                                                                      },
                                                  "FRONT_RDF_LISTEN": {
-                                                                                    "category": "ARK-15M",
+                                                                                    "category": "ARK 15M",
                                                                                 "control_type": "selector",
                                                                                  "description": "Fore RDF Listen Mode",
                                                                                   "identifier": "FRONT_RDF_LISTEN",
@@ -115,7 +115,7 @@ docdata["Yak-52"] =
                                                                             "physical_variant": "toggle_switch"
                                                                      },
                                                  "FRONT_RDF_MODE12": {
-                                                                                    "category": "ARK-15M",
+                                                                                    "category": "ARK 15M",
                                                                                 "control_type": "selector",
                                                                                  "description": "Fore RDF Mode",
                                                                                   "identifier": "FRONT_RDF_MODE12",
@@ -145,7 +145,7 @@ docdata["Yak-52"] =
                                                                      },
                                                   "FRONT_RDF_MODE3": {
                                                                                  "api_variant": "momentary_last_position",
-                                                                                    "category": "ARK-15M",
+                                                                                    "category": "ARK 15M",
                                                                                 "control_type": "selector",
                                                                                  "description": "Fore RDF Loop",
                                                                                   "identifier": "FRONT_RDF_MODE3",
@@ -174,7 +174,7 @@ docdata["Yak-52"] =
                                                                             "physical_variant": "push_button"
                                                                      },
                                                  "FRONT_RDF_VOLUME": {
-                                                                             "category": "ARK-15M",
+                                                                             "category": "ARK 15M",
                                                                          "control_type": "limited_dial",
                                                                           "description": "Fore RDF Volume",
                                                                            "identifier": "FRONT_RDF_VOLUME",
@@ -199,7 +199,7 @@ docdata["Yak-52"] =
                                                                                          } ]
                                                                      },
                                                       "REAR_CB_ADF": {
-                                                                                    "category": "ARK-15M",
+                                                                                    "category": "ARK 15M",
                                                                                 "control_type": "selector",
                                                                                  "description": "Rear ADF Marker",
                                                                                   "identifier": "REAR_CB_ADF",
@@ -228,7 +228,7 @@ docdata["Yak-52"] =
                                                                             "physical_variant": "toggle_switch"
                                                                      },
                                                  "REAR_RDF_CHANNEL": {
-                                                                                    "category": "ARK-15M",
+                                                                                    "category": "ARK 15M",
                                                                                 "control_type": "selector",
                                                                                  "description": "Rear RDF Channel Selector",
                                                                                   "identifier": "REAR_RDF_CHANNEL",
@@ -254,7 +254,7 @@ docdata["Yak-52"] =
                                                                      },
                                                  "REAR_RDF_CSWITCH": {
                                                                                  "api_variant": "momentary_last_position",
-                                                                                    "category": "ARK-15M",
+                                                                                    "category": "ARK 15M",
                                                                                 "control_type": "selector",
                                                                                  "description": "Rear RDF Control",
                                                                                   "identifier": "REAR_RDF_CSWITCH",
@@ -283,7 +283,7 @@ docdata["Yak-52"] =
                                                                             "physical_variant": "push_button"
                                                                      },
                                                   "REAR_RDF_LISTEN": {
-                                                                                    "category": "ARK-15M",
+                                                                                    "category": "ARK 15M",
                                                                                 "control_type": "selector",
                                                                                  "description": "Rear RDF Listen Mode",
                                                                                   "identifier": "REAR_RDF_LISTEN",
@@ -312,7 +312,7 @@ docdata["Yak-52"] =
                                                                             "physical_variant": "toggle_switch"
                                                                      },
                                                   "REAR_RDF_MODE12": {
-                                                                                    "category": "ARK-15M",
+                                                                                    "category": "ARK 15M",
                                                                                 "control_type": "selector",
                                                                                  "description": "Rear RDF Mode",
                                                                                   "identifier": "REAR_RDF_MODE12",
@@ -342,7 +342,7 @@ docdata["Yak-52"] =
                                                                      },
                                                    "REAR_RDF_MODE3": {
                                                                                  "api_variant": "momentary_last_position",
-                                                                                    "category": "ARK-15M",
+                                                                                    "category": "ARK 15M",
                                                                                 "control_type": "selector",
                                                                                  "description": "Rear RDF Loop",
                                                                                   "identifier": "REAR_RDF_MODE3",
@@ -371,7 +371,7 @@ docdata["Yak-52"] =
                                                                             "physical_variant": "push_button"
                                                                      },
                                                   "REAR_RDF_VOLUME": {
-                                                                             "category": "ARK-15M",
+                                                                             "category": "ARK 15M",
                                                                          "control_type": "limited_dial",
                                                                           "description": "Rear RDF Volume",
                                                                            "identifier": "REAR_RDF_VOLUME",

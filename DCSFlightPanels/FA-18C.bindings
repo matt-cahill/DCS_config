@@ -1,5 +1,5 @@
 #This file can be manually edited using any ASCII editor.
-#File created on 15/09/2019 12:00:00 AM 15/09/2019 2:14:40 PM#
+#File created on 23/02/2020 12:00:00 AM 23/02/2020 10:52:05 AM#
 #
 #IMPORTANT INFO REGARDING the keyboard key AltGr (RAlt as named in DCS) or RMENU as named DCSFP
 #When you press AltGr DCSFP will register RMENU + LCONTROL. This is a bug which "just is". You need to modify that in the profile
@@ -14,12 +14,49 @@ UseGenericRadio=False
 
 
 PanelType=PZ55SwitchPanel
-PanelInstanceID=\\?\hid#vid_06a3&pid_0d67#8&8e19067&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}
+PanelInstanceID=\\?\hid#vid_06a3&pid_0d67#8&3105af1b&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}
 PanelSettingsVersion=0X
 BeginPanel
-	SwitchPanelDCSBIOSControl{1LEVER_GEAR_DOWN|DCS-BIOS}\o/\o/DCSBIOSInput{GEAR_LEVER|SET_STATE|0|0}
-	SwitchPanelDCSBIOSControl{1LEVER_GEAR_UP|DCS-BIOS}\o/\o/DCSBIOSInput{GEAR_LEVER|SET_STATE|1|0}
+	SwitchPanelDCSBIOSControl{1LEVER_GEAR_DOWN|Gear Down}\o/\o/DCSBIOSInput{GEAR_LEVER|SET_STATE|0|0}
+	SwitchPanelDCSBIOSControl{1LEVER_GEAR_UP|Gear Up}\o/\o/DCSBIOSInput{GEAR_LEVER|SET_STATE|1|0}
+	SwitchPanelDCSBIOSControl{1SWITCHKEY_MASTER_BAT|Master Arm}\o/\o/DCSBIOSInput{MASTER_ARM_SW|SET_STATE|1|0}
+	SwitchPanelDCSBIOSControl{0SWITCHKEY_MASTER_BAT|Master Arm Safe}\o/\o/DCSBIOSInput{MASTER_ARM_SW|SET_STATE|0|0}
+	SwitchPanelDCSBIOSControl{1KNOB_ENGINE_OFF|L FUS MSL}\o/\o/DCSBIOSInput{SEL_JETT_KNOB|SET_STATE|0|0}
+	SwitchPanelDCSBIOSControl{1KNOB_ENGINE_RIGHT|SAFE}\o/\o/DCSBIOSInput{SEL_JETT_KNOB|SET_STATE|1|0}
+	SwitchPanelDCSBIOSControl{1KNOB_ENGINE_LEFT|R FUS MSL}\o/\o/DCSBIOSInput{SEL_JETT_KNOB|SET_STATE|2|0}
+	SwitchPanelDCSBIOSControl{1KNOB_ENGINE_BOTH|RACK/LCHR}\o/\o/DCSBIOSInput{SEL_JETT_KNOB|SET_STATE|3|0}
+	SwitchPanelDCSBIOSControl{1KNOB_ENGINE_START|STORES}\o/\o/DCSBIOSInput{SEL_JETT_KNOB|SET_STATE|4|0}
+	SwitchPanelDCSBIOSControl{1SWITCHKEY_PITOT_HEAT|Baro}\o/\o/DCSBIOSInput{HUD_ALT_SW|SET_STATE|1|0}
+	SwitchPanelDCSBIOSControl{0SWITCHKEY_PITOT_HEAT|Radar}\o/\o/DCSBIOSInput{HUD_ALT_SW|SET_STATE|0|0}
+	SwitchPanelDCSBIOSControl{1SWITCHKEY_DE_ICE|HUD Day}\o/\o/DCSBIOSInput{HUD_SYM_BRT_SELECT|SET_STATE|1|0}
+	SwitchPanelDCSBIOSControl{0SWITCHKEY_DE_ICE|HUD Night}\o/\o/DCSBIOSInput{HUD_SYM_BRT_SELECT|SET_STATE|0|0}
+	SwitchPanelDCSBIOSControl{1SWITCHKEY_FUEL_PUMP|Anti Skid On}\o/\o/DCSBIOSInput{ANTI_SKID_SW|SET_STATE|1|0}
+	SwitchPanelDCSBIOSControl{0SWITCHKEY_FUEL_PUMP|Anti Skid Off}\o/\o/DCSBIOSInput{ANTI_SKID_SW|SET_STATE|0|0}
+	SwitchPanelDCSBIOSControl{1SWITCHKEY_AVIONICS_MASTER|Hook Bypass Field}\o/\o/DCSBIOSInput{HOOK_BYPASS_SW|SET_STATE|1|0}
+	SwitchPanelDCSBIOSControl{0SWITCHKEY_AVIONICS_MASTER|Hook Bypass Carrier}\o/\o/DCSBIOSInput{HOOK_BYPASS_SW|SET_STATE|0|0}
+	SwitchPanelDCSBIOSControl{1SWITCHKEY_MASTER_ALT|Hook Up}\o/\o/DCSBIOSInput{HOOK_LEVER|SET_STATE|1|0}
+	SwitchPanelDCSBIOSControl{0SWITCHKEY_MASTER_ALT|Hook Down}\o/\o/DCSBIOSInput{HOOK_LEVER|SET_STATE|0|0}
+	SwitchPanelLedUp{DARK|DCSBiosOutput{FLP_LG_NOSE_GEAR_LT|Equals|0}}
+	SwitchPanelLedUp{RED|DCSBiosOutput{LANDING_GEAR_HANDLE_LT|Equals|1}}
+	SwitchPanelLedUp{GREEN|DCSBiosOutput{FLP_LG_NOSE_GEAR_LT|Equals|1}}
+	SwitchPanelLedLeft{DARK|DCSBiosOutput{FLP_LG_LEFT_GEAR_LT|Equals|0}}
+	SwitchPanelLedLeft{RED|DCSBiosOutput{LANDING_GEAR_HANDLE_LT|Equals|1}}
+	SwitchPanelLedLeft{GREEN|DCSBiosOutput{FLP_LG_LEFT_GEAR_LT|Equals|1}}
+	SwitchPanelLedRight{DARK|DCSBiosOutput{FLP_LG_RIGHT_GEAR_LT|Equals|0}}
+	SwitchPanelLedRight{RED|DCSBiosOutput{LANDING_GEAR_HANDLE_LT|Equals|1}}
+	SwitchPanelLedRight{GREEN|DCSBiosOutput{FLP_LG_RIGHT_GEAR_LT|Equals|1}}
 	ManualLandingGearLEDs{False}
+EndPanel
+
+
+PanelType=PZ70MultiPanel
+PanelInstanceID=\\?\hid#vid_06a3&pid_0d06#8&11e17154&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}
+PanelSettingsVersion=2X
+BeginPanel
+	MultiPanelDCSBIOSControl{ALT}\o/{1PITCH_TRIM_WHEEL_UP|RadAlt Up}\o/\o/DCSBIOSInput{RADALT_HEIGHT|VARIABLE_STEP|1000|0}
+	MultiPanelDCSBIOSControl{ALT}\o/{1PITCH_TRIM_WHEEL_DOWN|RadAlt Down}\o/\o/DCSBIOSInput{RADALT_HEIGHT|VARIABLE_STEP|-1000|0}
+	MultiPanelDCSBIOSControl{IAS}\o/{0AUTO_THROTTLE|Wing Fold Pull In}\o/\o/DCSBIOSInput{WING_FOLD_PULL|SET_STATE|0|0}
+	MultiPanelDCSBIOSControl{IAS}\o/{1AUTO_THROTTLE|Wing Fold Pull Out}\o/\o/DCSBIOSInput{WING_FOLD_PULL|SET_STATE|1|0}
 EndPanel
 
 
@@ -201,4 +238,3 @@ EndPanel
 #	PA1
 #	OEM_CLEAR
 #	VK_NULL
-

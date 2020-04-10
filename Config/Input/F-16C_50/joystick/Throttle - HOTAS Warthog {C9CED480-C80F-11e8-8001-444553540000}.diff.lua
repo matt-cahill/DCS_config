@@ -29,13 +29,23 @@ local diff = {
 				[1] = {
 					["filter"] = {
 						["curvature"] = {
-							[1] = -0.2,
+							[1] = 0,
+							[2] = 0.05,
+							[3] = 0.11,
+							[4] = 0.2,
+							[5] = 0.35,
+							[6] = 0.5,
+							[7] = 0.6,
+							[8] = 0.7,
+							[9] = 0.8,
+							[10] = 0.9,
+							[11] = 1,
 						},
 						["deadzone"] = 0,
 						["invert"] = false,
 						["saturationX"] = 1,
 						["saturationY"] = 1,
-						["slider"] = false,
+						["slider"] = true,
 					},
 					["key"] = "JOY_Z",
 				},
@@ -47,12 +57,12 @@ local diff = {
 				[1] = {
 					["filter"] = {
 						["curvature"] = {
-							[1] = 0,
+							[1] = 0.2,
 						},
 						["deadzone"] = 0,
 						["invert"] = true,
-						["saturationX"] = 0.6,
-						["saturationY"] = 0.6,
+						["saturationX"] = 1,
+						["saturationY"] = 1,
 						["slider"] = false,
 					},
 					["key"] = "JOY_Y",
@@ -65,12 +75,12 @@ local diff = {
 				[1] = {
 					["filter"] = {
 						["curvature"] = {
-							[1] = 0,
+							[1] = 0.2,
 						},
 						["deadzone"] = 0,
 						["invert"] = false,
-						["saturationX"] = 0.6,
-						["saturationY"] = 0.6,
+						["saturationX"] = 1,
+						["saturationY"] = 1,
 						["slider"] = false,
 					},
 					["key"] = "JOY_X",
@@ -80,53 +90,37 @@ local diff = {
 		},
 	},
 	["keyDiffs"] = {
-		["d3004pnilu3004cd6vd1vpnilvu0"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN32",
-				},
-			},
-			["name"] = "Engine ANTI ICE Switch - ON/AUTO",
-		},
 		["d3004pnilu3004cd7vd-1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN14",
+					["key"] = "JOY_BTN23",
 				},
 			},
 			["name"] = "ANTI-SKID Switch - OFF/ANTI-SKID",
 		},
-		["d3010pnilu3010cd2vd1vpnilvu0"] = {
+		["d3004pnilu3004cd7vd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN31",
+					["key"] = "JOY_BTN22",
 				},
 			},
-			["name"] = "MANUAL PITCH Override Switch - OVRD/NORM",
+			["name"] = "ANTI-SKID Switch - PARKING BRAKE/ANTI-SKID",
 		},
-		["d3010pnilu3010cd7vd1vpnilvu0"] = {
+		["d3014pnilu3014cd2vd-1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN13",
+					["key"] = "JOY_BTN28",
 				},
 			},
-			["name"] = "ANTI-SKID Switch - PARKING BRAKE",
+			["name"] = "Autopilot ROLL Switch - STRG SEL/ATT HOLD",
 		},
-		["d3014pnilunilcd4vd1vpnilvunil"] = {
+		["d3014pnilu3014cd2vd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN24",
+					["key"] = "JOY_BTN27",
 				},
 			},
-			["name"] = "TANK INERTING Switch - TANK INERTING /OFF",
-		},
-		["d3019pnilu3019cd25vd1vpnilvu0"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN15",
-				},
-			},
-			["name"] = "Right MFD OSB 19",
+			["name"] = "Autopilot ROLL Switch - HDG SEL/ATT HOLD",
 		},
 		["d3024pnilu3024cd16vd1vpnilvu0"] = {
 			["added"] = {
@@ -200,37 +194,13 @@ local diff = {
 			},
 			["name"] = "SPD BRK Switch (special) - Fwd/RETRACT /OFF",
 		},
-		["d3031pnilu3031cd2vd-1vpnilvu0"] = {
+		["d3032pnilunilcd2vd-1vpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN28",
+					["key"] = "JOY_BTN26",
 				},
 			},
-			["name"] = "Autopilot PITCH Switch - ATT HOLD",
-		},
-		["d3032pnilu3032cd2vd1vpnilvu0"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN27",
-				},
-			},
-			["name"] = "Autopilot PITCH Switch - ALT HOLD",
-		},
-		["d3033pnilu3033cd16vd1vpnilvu0"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN_POV1_D",
-				},
-			},
-			["name"] = "ANT ELEV Knob - CW",
-		},
-		["d3034pnilu3034cd16vd1vpnilvu0"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN_POV1_U",
-				},
-			},
-			["name"] = "ANT ELEV Knob - CCW",
+			["name"] = "Autopilot PITCH Switch - A/P OFF",
 		},
 		["d3039pnilu3039cd16vd1vpnilvu0"] = {
 			["added"] = {
@@ -247,14 +217,6 @@ local diff = {
 				},
 			},
 			["name"] = "Throttle - OFF/IDLE",
-		},
-		["d68pnilunilcdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN21",
-				},
-			},
-			["name"] = "LG Handle - UP/DN",
 		},
 		["dnilp210u214cdnilvdnilvpnilvunil"] = {
 			["name"] = "View Up Right slow",

@@ -1,5 +1,5 @@
 #This file can be manually edited using any ASCII editor.
-#File created on 2/08/2019 12:00:00 AM 2/08/2019 4:52:09 PM#
+#File created on 1/03/2020 12:00:00 AM 1/03/2020 3:28:06 PM#
 #
 #IMPORTANT INFO REGARDING the keyboard key AltGr (RAlt as named in DCS) or RMENU as named DCSFP
 #When you press AltGr DCSFP will register RMENU + LCONTROL. This is a bug which "just is". You need to modify that in the profile
@@ -12,24 +12,47 @@ Airframe=A10C
 OperationLevelFlag=3
 UseGenericRadio=False
 
+
 PanelType=PZ55SwitchPanel
-PanelInstanceID=\\?\hid#vid_06a3&pid_0d67#8&8e19067&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}
+PanelInstanceID=\\?\hid#vid_06a3&pid_0d67#8&3105af1b&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}
 PanelSettingsVersion=0X
 BeginPanel
 	SwitchPanelDCSBIOSControl{1LEVER_GEAR_DOWN|DCS-BIOS}\o/\o/DCSBIOSInput{GEAR_LEVER|SET_STATE|1|0}
 	SwitchPanelDCSBIOSControl{1LEVER_GEAR_UP|DCS-BIOS}\o/\o/DCSBIOSInput{GEAR_LEVER|SET_STATE|0|0}
-	SwitchPanelDCSBIOSControl{1SWITCHKEY_CLOSE_COWL|DCS-BIOS}\o/\o/DCSBIOSInput{CANOPY_OPEN|SET_STATE|0|0}
+	SwitchPanelDCSBIOSControl{1SWITCHKEY_CLOSE_COWL|DCS-BIOS}\o/\o/DCSBIOSInput{CANOPY_OPEN|SET_STATE|0|0}\o/DCSBIOSInput{CANOPY_OPEN|SET_STATE|0|5000}\o/DCSBIOSInput{CANOPY_OPEN|SET_STATE|1|5000}
 	SwitchPanelDCSBIOSControl{0SWITCHKEY_CLOSE_COWL|DCS-BIOS}\o/\o/DCSBIOSInput{CANOPY_OPEN|SET_STATE|2|0}
+	SwitchPanelDCSBIOSControl{1SWITCHKEY_AVIONICS_MASTER|DCS-BIOS}\o/\o/DCSBIOSInput{AHCP_MASTER_ARM|SET_STATE|2|0}
+	SwitchPanelDCSBIOSControl{0SWITCHKEY_AVIONICS_MASTER|DCS-BIOS}\o/\o/DCSBIOSInput{AHCP_MASTER_ARM|SET_STATE|1|0}
+	SwitchPanelDCSBIOSControl{1SWITCHKEY_FUEL_PUMP|DCS-BIOS}\o/\o/DCSBIOSInput{AHCP_GUNPAC|SET_STATE|2|0}
+	SwitchPanelDCSBIOSControl{0SWITCHKEY_FUEL_PUMP|DCS-BIOS}\o/\o/DCSBIOSInput{AHCP_GUNPAC|SET_STATE|1|0}
+	SwitchPanelDCSBIOSControl{1SWITCHKEY_DE_ICE|DCS-BIOS}\o/\o/DCSBIOSInput{AHCP_LASER_ARM|SET_STATE|2|0}
+	SwitchPanelDCSBIOSControl{0SWITCHKEY_DE_ICE|DCS-BIOS}\o/\o/DCSBIOSInput{AHCP_LASER_ARM|SET_STATE|1|0}
+	SwitchPanelDCSBIOSControl{1SWITCHKEY_PITOT_HEAT|DCS-BIOS}\o/\o/DCSBIOSInput{AHCP_TGP|SET_STATE|1|0}
+	SwitchPanelDCSBIOSControl{0SWITCHKEY_PITOT_HEAT|DCS-BIOS}\o/\o/DCSBIOSInput{AHCP_TGP|SET_STATE|0|0}
+	SwitchPanelDCSBIOSControl{1KNOB_ENGINE_OFF|DCS-BIOS}\o/\o/DCSBIOSInput{CMSP_MODE|SET_STATE|0|0}
+	SwitchPanelDCSBIOSControl{1KNOB_ENGINE_RIGHT|DCS-BIOS}\o/\o/DCSBIOSInput{CMSP_MODE|SET_STATE|1|0}
+	SwitchPanelDCSBIOSControl{1KNOB_ENGINE_LEFT|DCS-BIOS}\o/\o/DCSBIOSInput{CMSP_MODE|SET_STATE|2|0}
+	SwitchPanelDCSBIOSControl{1KNOB_ENGINE_BOTH|DCS-BIOS}\o/\o/DCSBIOSInput{CMSP_MODE|SET_STATE|3|0}
+	SwitchPanelDCSBIOSControl{1KNOB_ENGINE_START|DCS-BIOS}\o/\o/DCSBIOSInput{CMSP_MODE|SET_STATE|4|0}
 	SwitchPanelLedUp{DARK|DCSBiosOutput{GEAR_N_SAFE|Equals|0}}
-	SwitchPanelLedUp{GREEN|DCSBiosOutput{GEAR_N_SAFE|Equals|1}}
 	SwitchPanelLedUp{YELLOW|DCSBiosOutput{HANDLE_GEAR_WARNING|Equals|1}}
-	SwitchPanelLedRight{DARK|DCSBiosOutput{GEAR_R_SAFE|Equals|0}}
-	SwitchPanelLedRight{GREEN|DCSBiosOutput{GEAR_R_SAFE|Equals|1}}
-	SwitchPanelLedRight{YELLOW|DCSBiosOutput{HANDLE_GEAR_WARNING|Equals|1}}
+	SwitchPanelLedUp{GREEN|DCSBiosOutput{GEAR_N_SAFE|Equals|1}}
 	SwitchPanelLedLeft{DARK|DCSBiosOutput{GEAR_L_SAFE|Equals|0}}
-	SwitchPanelLedLeft{GREEN|DCSBiosOutput{GEAR_L_SAFE|Equals|1}}
 	SwitchPanelLedLeft{YELLOW|DCSBiosOutput{HANDLE_GEAR_WARNING|Equals|1}}
+	SwitchPanelLedLeft{GREEN|DCSBiosOutput{GEAR_L_SAFE|Equals|1}}
+	SwitchPanelLedRight{DARK|DCSBiosOutput{GEAR_R_SAFE|Equals|0}}
+	SwitchPanelLedRight{YELLOW|DCSBiosOutput{HANDLE_GEAR_WARNING|Equals|1}}
+	SwitchPanelLedRight{GREEN|DCSBiosOutput{GEAR_R_SAFE|Equals|1}}
 	ManualLandingGearLEDs{False}
+EndPanel
+
+
+PanelType=PZ70MultiPanel
+PanelInstanceID=\\?\hid#vid_06a3&pid_0d06#8&11e17154&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}
+PanelSettingsVersion=2X
+BeginPanel
+	MultiPanelDCSBIOSControl{CRS}\o/{1LCD_WHEEL_DEC|CRS -}\o/\o/DCSBIOSInput{HSI_CRS_KNOB|VARIABLE_STEP|-1000|0}
+	MultiPanelDCSBIOSControl{CRS}\o/{1LCD_WHEEL_INC|CRS +}\o/\o/DCSBIOSInput{HSI_CRS_KNOB|VARIABLE_STEP|1000|0}
 EndPanel
 
 
@@ -211,3 +234,4 @@ EndPanel
 #	PA1
 #	OEM_CLEAR
 #	VK_NULL
+

@@ -7,7 +7,7 @@ local diff = {
 						["curvature"] = {
 							[1] = 0.1,
 						},
-						["deadzone"] = 0,
+						["deadzone"] = 0.02,
 						["invert"] = false,
 						["saturationX"] = 1,
 						["saturationY"] = 1,
@@ -25,7 +25,7 @@ local diff = {
 						["curvature"] = {
 							[1] = 0.1,
 						},
-						["deadzone"] = 0,
+						["deadzone"] = 0.02,
 						["invert"] = false,
 						["saturationX"] = 1,
 						["saturationY"] = 1,
@@ -81,7 +81,7 @@ local diff = {
 		["d3005pnilu3005cd13vd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN15",
+					["key"] = "JOY_BTN7",
 				},
 			},
 			["name"] = "Sensor Control Switch - Fwd",
@@ -89,7 +89,7 @@ local diff = {
 		["d3006pnilu3006cd13vd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN17",
+					["key"] = "JOY_BTN9",
 				},
 			},
 			["name"] = "Sensor Control Switch - Aft",
@@ -97,7 +97,7 @@ local diff = {
 		["d3007pnilu3007cd13vd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN18",
+					["key"] = "JOY_BTN10",
 				},
 			},
 			["name"] = "Sensor Control Switch - Left",
@@ -105,7 +105,7 @@ local diff = {
 		["d3008pnilu3008cd13vd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN16",
+					["key"] = "JOY_BTN8",
 				},
 			},
 			["name"] = "Sensor Control Switch - Right",
@@ -113,7 +113,7 @@ local diff = {
 		["d3009pnilu3009cd13vd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN13",
+					["key"] = "JOY_BTN15",
 				},
 			},
 			["name"] = "Select Sparrow",
@@ -121,7 +121,7 @@ local diff = {
 		["d3010pnilu3010cd13vd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN11",
+					["key"] = "JOY_BTN17",
 				},
 			},
 			["name"] = "Select Gun",
@@ -129,7 +129,7 @@ local diff = {
 		["d3011pnilu3011cd13vd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN12",
+					["key"] = "JOY_BTN16",
 				},
 			},
 			["name"] = "Select AMRAAM",
@@ -137,7 +137,7 @@ local diff = {
 		["d3012pnilu3012cd13vd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN14",
+					["key"] = "JOY_BTN18",
 				},
 			},
 			["name"] = "Select Sidewinder",
@@ -158,26 +158,18 @@ local diff = {
 			},
 			["name"] = "Autopilot/Nosewheel Steering Disengage (Paddle) Switch",
 		},
-		["d3023pnilu3023cd13vd1vpnilvu0"] = {
+		["d3037pnilu3037cd13vd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN10",
+					["key"] = "JOY_BTN19",
 				},
 			},
-			["name"] = "Throttle Designator Controller - Depress",
-		},
-		["d3031pnilu3031cd13vd1vpnilvu0"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN8",
-				},
-			},
-			["name"] = "Cage/Uncage Button",
+			["name"] = "ATC Engage/Disengage Switch",
 		},
 		["d3045pnilu3045cd13vd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN19",
+					["key"] = "JOY_BTN14",
 				},
 			},
 			["name"] = "Sensor Control Switch - Depress",

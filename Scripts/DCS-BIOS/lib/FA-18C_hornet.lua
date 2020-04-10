@@ -32,6 +32,8 @@ local defineFloat = BIOS.util.defineFloat
 local define8BitFloat = BIOS.util.define8BitFloat
 local defineIntegerFromGetter = BIOS.util.defineIntegerFromGetter
 
+-- remove Arg# Pilot 540
+
 function ValueConvert(actual_value, input, output)
 local range=1
 local real_value=0
@@ -522,8 +524,11 @@ definePushButton("UFC_ENT", 25, 3029, 122, "Up Front Controller (UFC)", "Keyboar
 definePotentiometer("UFC_COMM1_VOL", 25, 3030, 108, {0, 1}, "Up Front Controller (UFC)", "COMM 1 Volume Control Knob")
 definePotentiometer("UFC_COMM2_VOL", 25, 3031, 123, {0, 1}, "Up Front Controller (UFC)", "COMM 2 Volume Control Knob")
 definePotentiometer("UFC_BRT", 25, 3032, 109, {0, 1}, "Up Front Controller (UFC)", "Brightness Control Knob")
+
 defineRotary("UFC_COMM1_CHANNEL_SELECT", 25, 3033, 124, "Up Front Controller (UFC)", "COMM 1 Channel Select Knob")
 defineRotary("UFC_COMM2_CHANNEL_SELECT", 25, 3034, 126, "Up Front Controller (UFC)", "COMM 2 Channel Select Knob")
+BIOS.util.defineFixedStepInput("UFC_COMM1_CHANNEL_SELECT", 25, 3033, {-0.03, 0.03}, "Up Front Controller (UFC)", "COMM 1 Channel Select Knob")
+BIOS.util.defineFixedStepInput("UFC_COMM2_CHANNEL_SELECT", 25, 3034, {-0.03, 0.03}, "Up Front Controller (UFC)", "COMM 2 Channel Select Knob")
 
 local UFC_Comm1Display = ""
 local UFC_Comm2Display = ""
@@ -540,6 +545,18 @@ local UFC_OptionDisplay5 = ""
 local UFC_ScratchPadNumberDisplay = ""
 local UFC_ScratchPadString1Display = ""
 local UFC_ScratchPadString2Display = ""
+
+local function processUfcTwoDigitDisplay(s)
+	if s == "_" then
+		s = "--"
+	end
+	s = s:gsub("^`", "1")
+	s = s:gsub("^~", "2")
+	if s:len() == 1 then
+		s = " " .. s
+	end
+	return s
+end
 
 moduleBeingDefined.exportHooks[#moduleBeingDefined.exportHooks+1] = function()
 	local ufc = parse_indication(6)
@@ -562,7 +579,9 @@ moduleBeingDefined.exportHooks[#moduleBeingDefined.exportHooks+1] = function()
 		return
 	end
 	UFC_Comm1Display 				= coerce_nil_to_string(ufc.UFC_Comm1Display)
+	UFC_Comm1Display = processUfcTwoDigitDisplay(UFC_Comm1Display)
 	UFC_Comm2Display 				= coerce_nil_to_string(ufc.UFC_Comm2Display)
+	UFC_Comm2Display = processUfcTwoDigitDisplay(UFC_Comm2Display)
 	UFC_OptionCueing1 				= coerce_nil_to_string(ufc.UFC_OptionCueing1)
 	UFC_OptionCueing2 				= coerce_nil_to_string(ufc.UFC_OptionCueing2)
 	UFC_OptionCueing3 				= coerce_nil_to_string(ufc.UFC_OptionCueing3)
@@ -574,8 +593,11 @@ moduleBeingDefined.exportHooks[#moduleBeingDefined.exportHooks+1] = function()
 	UFC_OptionDisplay4 				= coerce_nil_to_string(ufc.UFC_OptionDisplay4)
 	UFC_OptionDisplay5 				= coerce_nil_to_string(ufc.UFC_OptionDisplay5)
 	UFC_ScratchPadNumberDisplay 	= coerce_nil_to_string(ufc.UFC_ScratchPadNumberDisplay)
+	UFC_ScratchPadNumberDisplay = (" "):rep(8-UFC_ScratchPadNumberDisplay:len())..UFC_ScratchPadNumberDisplay
 	UFC_ScratchPadString1Display 	= coerce_nil_to_string(ufc.UFC_ScratchPadString1Display)
+	UFC_ScratchPadString1Display = processUfcTwoDigitDisplay(UFC_ScratchPadString1Display)
 	UFC_ScratchPadString2Display 	= coerce_nil_to_string(ufc.UFC_ScratchPadString2Display)
+	UFC_ScratchPadString2Display = processUfcTwoDigitDisplay(UFC_ScratchPadString2Display)
 end
 
 defineString("UFC_COMM1_DISPLAY", function() return UFC_Comm1Display end, 2, "Up Front Controller (UFC)", "Comm 1 Display")
@@ -844,7 +866,7 @@ defineString("IFEI_Z_TEXTURE", function() return ZTexture end, 1, "Integrated Fu
 definePotentiometer("IFEI", 33, 3007, 174, {0, 1}, "HUD Video Record Panel", "Brightness Control Knob")
 define3PosTumb("SELECT_HMD_LDDI_RDDI", 0, 3104, 175, "HUD Video Record Panel", "Selector Switch, HMD/LDDI/RDDI") -- From TODO, will change
 define3PosTumb("SELECT_HUD_LDDI_RDDI", 0, 3105, 176, "HUD Video Record Panel", "Selector Switch, HUD/LDIR/RDDI") -- From TODO, will change
-define3PosTumb("MODE_SELECTOR_SW", 0, 3106, 176, "HUD Video Record Panel", "Mode Selector Switch, MAN/OFF/AUTO") -- From TODO, will change
+define3PosTumb("MODE_SELECTOR_SW", 0, 3106, 314, "HUD Video Record Panel", "Mode Selector Switch, MAN/OFF/AUTO") -- From TODO, will change
 
 -- 24. AMPCD
 definePotentiometer("AMPCD_BRT_CTL", 37, 3001, 203, {0, 1}, "AMPCD", "Brightness Control Knob")
@@ -943,15 +965,15 @@ definePushButton("RWR_BIT_BTN", 53, 3005, 266, "RWR Control Indicator", "ALR-67 
 definePotentiometer("RWR_DMR_CTRL", 53, 3006, 263, {0, 1}, "RWR Control Indicator", "ALR-67 DMR Control Knob")
 defineTumb("RWR_DIS_TYPE_SW", 53, 3007, 261, 0.1, {0.0, 0.4}, nil, false, "RWR Control Indicator", "ALR-67 DIS TYPE Switch, N/I/A/U/F")
 definePotentiometer("RWR_RWR_INTESITY", 53, 3008, 216, {0, 1}, "RWR Control Indicator", "RWR Intensity Knob")
-defineIndicatorLight("RWR_LOWER_LT", 276, "RWR Control Indicator", "ALR-67 LOWER Light")
-defineIndicatorLight("RWR_LIMIT_LT", 273, "RWR Control Indicator", "ALR-67 LIMIT Light")
-defineIndicatorLight("RWR_DISPLAY_LT", 274, "RWR Control Indicator", "ALR-67 DISPLAY Light")
---defineIndicatorLight("RWR_SPECIAL_EN_LT", 270, "RWR Control Indicator", "ALR-67 SPECIAL ENABLE Light")
-defineIndicatorLight("RWR_SPECIAL_LT", 271, "RWR Control Indicator", "ALR-67 SPECIAL Light")
-defineIndicatorLight("RWR_ENABLE_LT", 267, "RWR Control Indicator", "ALR-67 ENABLE Light")
-defineIndicatorLight("RWR_OFFSET_LT", 268, "RWR Control Indicator", "ALR-67 OFFSET Light")
-defineIndicatorLight("RWR_FAIL_LT", 264, "RWR Control Indicator", "ALR-67 FAIL Light")
-defineIndicatorLight("RWR_BIT_LT", 265, "RWR Control Indicator", "ALR-67 BIT Light")
+defineIndicatorLight("RWR_LOWER_LT", 276, "RWR Control Indicator", "ALR-67 LOWER Light (green)")
+defineIndicatorLight("RWR_LIMIT_LT", 273, "RWR Control Indicator", "ALR-67 LIMIT Light (green)")
+defineIndicatorLight("RWR_DISPLAY_LT", 274, "RWR Control Indicator", "ALR-67 DISPLAY Light (green)")
+defineIndicatorLight("RWR_SPECIAL_EN_LT", 270, "RWR Control Indicator", "ALR-67 SPECIAL ENABLE Light (green)")
+defineIndicatorLight("RWR_SPECIAL_LT", 271, "RWR Control Indicator", "ALR-67 SPECIAL Light (green)")
+defineIndicatorLight("RWR_ENABLE_LT", 267, "RWR Control Indicator", "ALR-67 ENABLE Light (green)")
+defineIndicatorLight("RWR_OFFSET_LT", 268, "RWR Control Indicator", "ALR-67 OFFSET Light (green)")
+defineIndicatorLight("RWR_FAIL_LT", 264, "RWR Control Indicator", "ALR-67 FAIL Light (red)")
+defineIndicatorLight("RWR_BIT_LT", 265, "RWR Control Indicator", "ALR-67 BIT Light (green)")
 
 -- 37. Clock
 defineFloat("CLOCK_HOURS", 278, {0, 1}, "Clock", "Hours")
@@ -1118,7 +1140,7 @@ defineFloat("VOLT_U", 400, {0, 1}, "Electrical Power Panel", "Battery U Volts")
 defineFloat("VOLT_E", 401, {0, 1}, "Electrical Power Panel", "Battery E Volts")
 
 -- 2. Environment Control System Panel
-defineTumb("BLEED_AIR_KNOB", 11, 3001, 411, 0.1, {0.0, 0.3}, nil, false, "Environment Control System Panel", "Bleed Air Knob, R OFF/NORM/L OFF/OFF")
+defineTumb("BLEED_AIR_KNOB", 11, 3001, 411, 0.1, {0.0, 0.3}, nil, true, "Environment Control System Panel", "Bleed Air Knob, R OFF/NORM/L OFF/OFF")
 defineToggleSwitch("BLEED_AIR_PULL", 11, 3002, 412, "Environment Control System Panel", "Bleed Air Knob, AUG PULL")
 define3PosTumb("ECS_MODE_SW", 11, 3003, 405, "Environment Control System Panel", "ECS Mode Switch, AUTO/MAN/ OFF/RAM")
 define3PosTumb("CABIN_PRESS_SW", 11, 3004, 408, "Environment Control System Panel", "Cabin Pressure Switch, NORM/DUMP/ RAM/DUMP")
@@ -1143,7 +1165,8 @@ define3PosTumb("FLIR_SW", 62, 3001, 439, "Sensor Panel", "FLIR Switch, ON/STBY/O
 define3PosTumb("LTD_R_SW", 62, 3002, 441, "Sensor Panel", "LTD/R Switch, ---/SAFE/AFT") -- ARM position is handled by another parameter
 defineToggleSwitch("LST_NFLR_SW", 62, 3004, 442, "Sensor Panel", "LST/NFLR Switch, ON/OFF")
 defineToggleSwitch("LTD_R_ARM", 62, 3003, 441, "Sensor Panel", "LTD/R Switch, ARM/SAFE")
-defineTumb("RADAR_SW", 42, 3001, 440, 0.1, {0.0, 0.3}, nil, false, "Sensor Panel", "RADAR Switch (MW to pull), OFF/STBY/OPR/EMERG(PULL)")
+defineTumb("RADAR_SW", 42, 3001, 440, 0.1, {0.0, 0.3}, nil, false, "Sensor Panel", "RADAR Switch Change ,OFF/STBY/OPR/EMERG(PULL)")
+definePushButton("RADAR_SW_PULL", 42, 3002, 440, "Sensor Panel", "RADAR Switch Pull (MW to pull), OFF/STBY/OPR/EMERG(PULL)")
 defineTumb("INS_SW", 44, 3001, 443, 0.1, {0.0, 0.7}, nil, false, "Sensor Panel", "INS Switch, OFF/CV/GND/NAV/IFA/GYRO/GB/TEST")
 
 -- 6. KY-58 Control
@@ -1195,6 +1218,22 @@ defineToggleSwitch("HIDE_STICK_TOGGLE", 7, 3013, 575, "Ejection Seat", "Hide Sti
 -- 2. TODO
 definePushButton("LEFT_VIDEO_BIT", 0, 3127, 315, "TODO", "Left Video Sensor BIT Initiate Pushbutton - Push to initiate BIT")
 definePushButton("RIGHT_VIDEO_BIT", 0, 3128, 318, "TODO", "Right Video Sensor BIT Initiate Pushbutton - Push to initiate BIT")
+definePotentiometer("RWR_AUDIO_CTRL", 0, 3130, 262, {0, 1}, "RWR Control Indicator", "ALR-67 AUDIO Control Knob")
+defineToggleSwitch("NUC_WPN_SW", 0, 3100, 507, "TODO", "NUC WPN Switch, ENABLE/DISABLE (no function)")
+defineTumb("THROTTLE_EXT_L_SW", 13, 3041, 494, 2, {-1, 1}, nil, false, "Throttle Quadrant", "Throttle Exterior Lights Switch, ON/OFF")
+
+defineIndicatorLight("CONSOLE_INT_LT", 460, "Internal Lights", "Console Lightning (light green)")
+defineIndicatorLight("FLOOD_INT_LT", 461, "Internal Lights", "Flood Lightning (light green)")
+defineIndicatorLight("NVG_FLOOD_INT_LT", 462, "Internal Lights", "Nvg Flood Lightning (light green)")
+defineIndicatorLight("CHART_INT_LT", 463, "Internal Lights", "Chart Lightning (light green)")
+defineIndicatorLight("EMERG_INSTR_INT_LT", 464, "Internal Lights", "Emergency Instrument Lightning (light green)")
+defineIndicatorLight("ENG_INSTR_INT_LT", 465, "Internal Lights", "Eng Instrument Flood Lightning (light green)")
+defineIndicatorLight("INSTR_INT_LT", 466, "Internal Lights", "Instrument Lightning (light green)")
+defineIndicatorLight("STBY_COMPASS_INT_LT", 467, "Internal Lights", "Stby Compass Lightning (light green)")
+defineIndicatorLight("IFEI_DISP_INT_LT", 468, "Internal Lights", "IFEI Display Lightning (light green)")
+defineIndicatorLight("IFEI_BTN_INT_LT", 469, "Internal Lights", "IFEI Buttons Lightning (light green)")
+defineIndicatorLight("CMSD_JET_SEL_L", 516, "Dispenser/EMC Panel", "ECM JETT JETT SEL Button Light (green)")
+defineIndicatorLight("RWR_LT_BRIGHT", 520, "RWR Control Indicator", "RWR Lights Brightness")
 
 --Externals
 defineIntegerFromGetter("EXT_SPEED_BRAKE", function()

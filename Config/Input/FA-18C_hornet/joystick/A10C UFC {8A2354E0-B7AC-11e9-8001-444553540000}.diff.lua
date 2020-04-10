@@ -34,6 +34,14 @@ local diff = {
 		},
 	},
 	["keyDiffs"] = {
+		["d3008pnilu3008cd9vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN21",
+				},
+			},
+			["name"] = "MASTER CAUTION Reset Button",
+		},
 		["d3010pnilu3010cd25vd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {

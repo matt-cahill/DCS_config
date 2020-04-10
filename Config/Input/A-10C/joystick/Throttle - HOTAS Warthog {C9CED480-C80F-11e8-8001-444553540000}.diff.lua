@@ -1,24 +1,16 @@
 local diff = {
 	["axisDiffs"] = {
-		["a2012cdnil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_SLIDER1",
-				},
-			},
-			["name"] = "Zoom View",
-		},
 		["a2033cdnil"] = {
 			["changed"] = {
 				[1] = {
 					["filter"] = {
 						["curvature"] = {
-							[1] = 0.3,
+							[1] = 0.2,
 						},
-						["deadzone"] = 0.03,
+						["deadzone"] = 0,
 						["invert"] = false,
 						["saturationX"] = 1,
-						["saturationY"] = 0.3,
+						["saturationY"] = 1,
 						["slider"] = false,
 					},
 					["key"] = "JOY_X",
@@ -31,41 +23,18 @@ local diff = {
 				[1] = {
 					["filter"] = {
 						["curvature"] = {
-							[1] = 0.3,
+							[1] = 0.2,
 						},
-						["deadzone"] = 0.03,
+						["deadzone"] = 0,
 						["invert"] = false,
 						["saturationX"] = 1,
-						["saturationY"] = 0.3,
+						["saturationY"] = 1,
 						["slider"] = false,
 					},
 					["key"] = "JOY_Y",
 				},
 			},
 			["name"] = "HOTAS Slew Vertical",
-		},
-	},
-	["keyDiffs"] = {
-		["d539pnilu543cdnilvdnilvpnilvunil"] = {
-			["name"] = "HOTAS Coolie Switch Up",
-			["removed"] = {
-				[1] = {
-					["key"] = "JOY_BTN_POV1_U",
-				},
-			},
-		},
-		["d540pnilu543cdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN_POV1_U",
-				},
-			},
-			["name"] = "HOTAS Coolie Switch Down",
-			["removed"] = {
-				[1] = {
-					["key"] = "JOY_BTN_POV1_D",
-				},
-			},
 		},
 	},
 }

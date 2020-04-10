@@ -71,17 +71,27 @@ local diff = {
 		["a2012cdnil"] = {
 			["added"] = {
 				[1] = {
+					["filter"] = {
+						["curvature"] = {
+							[1] = -0.3,
+						},
+						["deadzone"] = 0,
+						["invert"] = false,
+						["saturationX"] = 1,
+						["saturationY"] = 1,
+						["slider"] = false,
+					},
 					["key"] = "JOY_SLIDER1",
 				},
 			},
 			["name"] = "Zoom View",
 		},
-		["a3026cd13"] = {
+		["a3043cd13"] = {
 			["added"] = {
 				[1] = {
 					["filter"] = {
 						["curvature"] = {
-							[1] = 0.2,
+							[1] = 0,
 						},
 						["deadzone"] = 0,
 						["invert"] = true,
@@ -92,10 +102,34 @@ local diff = {
 					["key"] = "JOY_Y",
 				},
 			},
-			["name"] = "Radar Elevation Control",
+			["name"] = "Throttle Designator Controller - Vertical Axis",
+		},
+		["a3044cd13"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_X",
+				},
+			},
+			["name"] = "Throttle Designator Controller - Horizontal Axis",
 		},
 	},
 	["keyDiffs"] = {
+		["d3001pnilu3001cd7vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN19",
+				},
+			},
+			["name"] = "Canopy Control Switch - OPEN",
+		},
+		["d3002pnilu3002cd7vd-1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN32",
+				},
+			},
+			["name"] = "Canopy Control Switch - CLOSE",
+		},
 		["d3007pnilu3007cd2vd-1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
@@ -120,37 +154,29 @@ local diff = {
 			},
 			["name"] = "Arresting Hook Handle - Cycle",
 		},
-		["d3019pnilu3019cd13vd1vpnilvu0"] = {
+		["d3023pnilu3023cd13vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN1",
+				},
+			},
+			["name"] = "Throttle Designator Controller - Depress",
+		},
+		["d3024pnilu3024cd13vd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
 					["key"] = "JOY_BTN_POV1_U",
 				},
 			},
-			["name"] = "Throttle Designator Controller - Up",
+			["name"] = "Radar Elevation Control - Up",
 		},
-		["d3020pnilu3020cd13vd1vpnilvu0"] = {
+		["d3025pnilu3025cd13vd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
 					["key"] = "JOY_BTN_POV1_D",
 				},
 			},
-			["name"] = "Throttle Designator Controller - Down",
-		},
-		["d3021pnilu3021cd13vd1vpnilvu0"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN_POV1_L",
-				},
-			},
-			["name"] = "Throttle Designator Controller - Left",
-		},
-		["d3022pnilu3022cd13vd1vpnilvu0"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN_POV1_R",
-				},
-			},
-			["name"] = "Throttle Designator Controller - Right",
+			["name"] = "Radar Elevation Control - Down",
 		},
 		["d3027pnilu3027cd13vd0.2vpnilvu0"] = {
 			["added"] = {
@@ -183,6 +209,14 @@ local diff = {
 				},
 			},
 			["name"] = "COMM Switch - MIDS B",
+		},
+		["d3031pnilu3031cd13vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN2",
+				},
+			},
+			["name"] = "Cage/Uncage Button",
 		},
 		["d3032pnilu3032cd13vd1vpnilvu0"] = {
 			["added"] = {
@@ -224,14 +258,6 @@ local diff = {
 			},
 			["name"] = "Speed Brake Switch - RETRACT/OFF",
 		},
-		["d3037pnilu3037cd13vd1vpnilvu0"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN1",
-				},
-			},
-			["name"] = "ATC Engage/Disengage Switch",
-		},
 		["d3041pnilunilcd13vd0vpnilvunil"] = {
 			["added"] = {
 				[1] = {
@@ -247,6 +273,22 @@ local diff = {
 				},
 			},
 			["name"] = "Exterior Lights Switch - ON",
+		},
+		["d313pnilu311cdnilvd1vpnilvu1"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN30",
+				},
+			},
+			["name"] = "Throttle (Left) - OFF/IDLE",
+		},
+		["d314pnilu312cdnilvd1vpnilvu1"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN29",
+				},
+			},
+			["name"] = "Throttle (Right) - OFF/IDLE",
 		},
 		["dnilp32u214cdnilvdnilvpnilvunil"] = {
 			["name"] = "View Left slow",

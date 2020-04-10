@@ -14,7 +14,7 @@ docdata["I-16"] =
                                                                                          "suggested_step": 3200
                                                                                      } ],
                                                                           "outputs": [ {
-                                                                                             "address": 13342,
+                                                                                             "address": 16414,
                                                                                          "description": "the rotation of the knob in the cockpit (not the value that is controlled by this knob!)",
                                                                                                 "mask": 65535,
                                                                                            "max_value": 65535,
@@ -42,7 +42,7 @@ docdata["I-16"] =
                                                                                             } ],
                                                                      "momentary_positions": "none",
                                                                                  "outputs": [ {
-                                                                                                    "address": 13322,
+                                                                                                    "address": 16394,
                                                                                                 "description": "selector position",
                                                                                                        "mask": 16384,
                                                                                                   "max_value": 1,
@@ -71,7 +71,7 @@ docdata["I-16"] =
                                                                                             } ],
                                                                      "momentary_positions": "none",
                                                                                  "outputs": [ {
-                                                                                                    "address": 13322,
+                                                                                                    "address": 16394,
                                                                                                 "description": "selector position",
                                                                                                        "mask": 32768,
                                                                                                   "max_value": 1,
@@ -97,7 +97,7 @@ docdata["I-16"] =
                                                                                          "suggested_step": 3200
                                                                                      } ],
                                                                           "outputs": [ {
-                                                                                             "address": 13344,
+                                                                                             "address": 16416,
                                                                                          "description": "position of the potentiometer",
                                                                                                 "mask": 65535,
                                                                                            "max_value": 65535,
@@ -121,7 +121,7 @@ docdata["I-16"] =
                                                                                             } ],
                                                                      "momentary_positions": "none",
                                                                                  "outputs": [ {
-                                                                                                    "address": 13340,
+                                                                                                    "address": 16412,
                                                                                                 "description": "selector position",
                                                                                                        "mask": 224,
                                                                                                   "max_value": 4,
@@ -150,7 +150,7 @@ docdata["I-16"] =
                                                                                             } ],
                                                                      "momentary_positions": "none",
                                                                                  "outputs": [ {
-                                                                                                    "address": 13340,
+                                                                                                    "address": 16412,
                                                                                                 "description": "selector position",
                                                                                                        "mask": 512,
                                                                                                   "max_value": 1,
@@ -179,7 +179,7 @@ docdata["I-16"] =
                                                                                             } ],
                                                                      "momentary_positions": "none",
                                                                                  "outputs": [ {
-                                                                                                    "address": 13340,
+                                                                                                    "address": 16412,
                                                                                                 "description": "selector position",
                                                                                                        "mask": 256,
                                                                                                   "max_value": 1,
@@ -210,7 +210,7 @@ docdata["I-16"] =
                                                                                              } ],
                                                                       "momentary_positions": "none",
                                                                                   "outputs": [ {
-                                                                                                     "address": 13312,
+                                                                                                     "address": 16384,
                                                                                                  "description": "selector position",
                                                                                                         "mask": 8,
                                                                                                    "max_value": 1,
@@ -239,7 +239,7 @@ docdata["I-16"] =
                                                                                              } ],
                                                                       "momentary_positions": "none",
                                                                                   "outputs": [ {
-                                                                                                     "address": 13312,
+                                                                                                     "address": 16384,
                                                                                                  "description": "selector position",
                                                                                                         "mask": 1,
                                                                                                    "max_value": 1,
@@ -265,7 +265,7 @@ docdata["I-16"] =
                                                                                           "suggested_step": 3200
                                                                                       } ],
                                                                            "outputs": [ {
-                                                                                              "address": 13316,
+                                                                                              "address": 16388,
                                                                                           "description": "position of the potentiometer",
                                                                                                  "mask": 65535,
                                                                                             "max_value": 65535,
@@ -294,7 +294,7 @@ docdata["I-16"] =
                                                                                              } ],
                                                                       "momentary_positions": "none",
                                                                                   "outputs": [ {
-                                                                                                     "address": 13312,
+                                                                                                     "address": 16384,
                                                                                                  "description": "selector position",
                                                                                                         "mask": 64,
                                                                                                    "max_value": 1,
@@ -324,7 +324,7 @@ docdata["I-16"] =
                                                                                              } ],
                                                                       "momentary_positions": "none",
                                                                                   "outputs": [ {
-                                                                                                     "address": 13312,
+                                                                                                     "address": 16384,
                                                                                                  "description": "selector position",
                                                                                                         "mask": 256,
                                                                                                    "max_value": 1,
@@ -353,7 +353,7 @@ docdata["I-16"] =
                                                                                              } ],
                                                                       "momentary_positions": "none",
                                                                                   "outputs": [ {
-                                                                                                     "address": 13312,
+                                                                                                     "address": 16384,
                                                                                                  "description": "selector position",
                                                                                                         "mask": 4,
                                                                                                    "max_value": 1,
@@ -383,7 +383,7 @@ docdata["I-16"] =
                                                                                              } ],
                                                                       "momentary_positions": "none",
                                                                                   "outputs": [ {
-                                                                                                     "address": 13312,
+                                                                                                     "address": 16384,
                                                                                                  "description": "selector position",
                                                                                                         "mask": 512,
                                                                                                    "max_value": 1,
@@ -412,7 +412,7 @@ docdata["I-16"] =
                                                                                              } ],
                                                                       "momentary_positions": "none",
                                                                                   "outputs": [ {
-                                                                                                     "address": 13312,
+                                                                                                     "address": 16384,
                                                                                                  "description": "selector position",
                                                                                                         "mask": 2,
                                                                                                    "max_value": 1,
@@ -441,7 +441,7 @@ docdata["I-16"] =
                                                                                              } ],
                                                                       "momentary_positions": "none",
                                                                                   "outputs": [ {
-                                                                                                     "address": 13312,
+                                                                                                     "address": 16384,
                                                                                                  "description": "selector position",
                                                                                                         "mask": 32,
                                                                                                    "max_value": 1,
@@ -470,7 +470,7 @@ docdata["I-16"] =
                                                                                              } ],
                                                                       "momentary_positions": "none",
                                                                                   "outputs": [ {
-                                                                                                     "address": 13322,
+                                                                                                     "address": 16394,
                                                                                                  "description": "selector position",
                                                                                                         "mask": 8192,
                                                                                                    "max_value": 1,
@@ -499,7 +499,7 @@ docdata["I-16"] =
                                                                                              } ],
                                                                       "momentary_positions": "none",
                                                                                   "outputs": [ {
-                                                                                                     "address": 13312,
+                                                                                                     "address": 16384,
                                                                                                  "description": "selector position",
                                                                                                         "mask": 16,
                                                                                                    "max_value": 1,
@@ -525,7 +525,7 @@ docdata["I-16"] =
                                                                                           "suggested_step": 3200
                                                                                       } ],
                                                                            "outputs": [ {
-                                                                                              "address": 13314,
+                                                                                              "address": 16386,
                                                                                           "description": "position of the potentiometer",
                                                                                                  "mask": 65535,
                                                                                             "max_value": 65535,
@@ -554,7 +554,7 @@ docdata["I-16"] =
                                                                                              } ],
                                                                       "momentary_positions": "none",
                                                                                   "outputs": [ {
-                                                                                                     "address": 13312,
+                                                                                                     "address": 16384,
                                                                                                  "description": "selector position",
                                                                                                         "mask": 128,
                                                                                                    "max_value": 1,
@@ -573,7 +573,7 @@ docdata["I-16"] =
                                                                                   "identifier": "EXT_POSITION_LIGHT_LEFT",
                                                                                       "inputs": [  ],
                                                                                      "outputs": [ {
-                                                                                                        "address": 13340,
+                                                                                                        "address": 16412,
                                                                                                     "description": "Left Position Light (red)",
                                                                                                            "mask": 4096,
                                                                                                       "max_value": 1,
@@ -589,7 +589,7 @@ docdata["I-16"] =
                                                                                   "identifier": "EXT_POSITION_LIGHT_RIGHT",
                                                                                       "inputs": [  ],
                                                                                      "outputs": [ {
-                                                                                                        "address": 13340,
+                                                                                                        "address": 16412,
                                                                                                     "description": "Right Position Light (green)",
                                                                                                            "mask": 8192,
                                                                                                       "max_value": 1,
@@ -613,7 +613,7 @@ docdata["I-16"] =
                                                                                         "suggested_step": 3200
                                                                                     } ],
                                                                          "outputs": [ {
-                                                                                            "address": 13320,
+                                                                                            "address": 16392,
                                                                                         "description": "the rotation of the knob in the cockpit (not the value that is controlled by this knob!)",
                                                                                                "mask": 65535,
                                                                                           "max_value": 65535,
@@ -631,7 +631,7 @@ docdata["I-16"] =
                                                                            "identifier": "AIRSPEED",
                                                                                "inputs": [  ],
                                                                               "outputs": [ {
-                                                                                                 "address": 13360,
+                                                                                                 "address": 16432,
                                                                                              "description": "gauge position",
                                                                                                     "mask": 65535,
                                                                                                "max_value": 65535,
@@ -647,7 +647,7 @@ docdata["I-16"] =
                                                                            "identifier": "AMPMETER",
                                                                                "inputs": [  ],
                                                                               "outputs": [ {
-                                                                                                 "address": 13394,
+                                                                                                 "address": 16466,
                                                                                              "description": "gauge position",
                                                                                                     "mask": 65535,
                                                                                                "max_value": 65535,
@@ -663,7 +663,7 @@ docdata["I-16"] =
                                                                            "identifier": "BARO_ALT_100",
                                                                                "inputs": [  ],
                                                                               "outputs": [ {
-                                                                                                 "address": 13370,
+                                                                                                 "address": 16442,
                                                                                              "description": "gauge position",
                                                                                                     "mask": 65535,
                                                                                                "max_value": 65535,
@@ -679,7 +679,7 @@ docdata["I-16"] =
                                                                            "identifier": "BARO_ALT_1000",
                                                                                "inputs": [  ],
                                                                               "outputs": [ {
-                                                                                                 "address": 13368,
+                                                                                                 "address": 16440,
                                                                                              "description": "gauge position",
                                                                                                     "mask": 65535,
                                                                                                "max_value": 65535,
@@ -695,7 +695,7 @@ docdata["I-16"] =
                                                                            "identifier": "BARO_ALT_SEL",
                                                                                "inputs": [  ],
                                                                               "outputs": [ {
-                                                                                                 "address": 13372,
+                                                                                                 "address": 16444,
                                                                                              "description": "gauge position",
                                                                                                     "mask": 65535,
                                                                                                "max_value": 65535,
@@ -711,7 +711,7 @@ docdata["I-16"] =
                                                                            "identifier": "CH_TEMP",
                                                                                "inputs": [  ],
                                                                               "outputs": [ {
-                                                                                                 "address": 13374,
+                                                                                                 "address": 16446,
                                                                                              "description": "gauge position",
                                                                                                     "mask": 65535,
                                                                                                "max_value": 65535,
@@ -727,7 +727,7 @@ docdata["I-16"] =
                                                                            "identifier": "CLIMB_INDICATOR",
                                                                                "inputs": [  ],
                                                                               "outputs": [ {
-                                                                                                 "address": 13388,
+                                                                                                 "address": 16460,
                                                                                              "description": "gauge position",
                                                                                                     "mask": 65535,
                                                                                                "max_value": 65535,
@@ -743,7 +743,7 @@ docdata["I-16"] =
                                                                            "identifier": "CLOCK_H",
                                                                                "inputs": [  ],
                                                                               "outputs": [ {
-                                                                                                 "address": 13352,
+                                                                                                 "address": 16424,
                                                                                              "description": "gauge position",
                                                                                                     "mask": 65535,
                                                                                                "max_value": 65535,
@@ -759,7 +759,7 @@ docdata["I-16"] =
                                                                            "identifier": "CLOCK_M",
                                                                                "inputs": [  ],
                                                                               "outputs": [ {
-                                                                                                 "address": 13354,
+                                                                                                 "address": 16426,
                                                                                              "description": "gauge position",
                                                                                                     "mask": 65535,
                                                                                                "max_value": 65535,
@@ -775,7 +775,7 @@ docdata["I-16"] =
                                                                            "identifier": "CLOCK_S",
                                                                                "inputs": [  ],
                                                                               "outputs": [ {
-                                                                                                 "address": 13356,
+                                                                                                 "address": 16428,
                                                                                              "description": "gauge position",
                                                                                                     "mask": 65535,
                                                                                                "max_value": 65535,
@@ -791,7 +791,7 @@ docdata["I-16"] =
                                                                            "identifier": "COMP_BANK",
                                                                                "inputs": [  ],
                                                                               "outputs": [ {
-                                                                                                 "address": 13364,
+                                                                                                 "address": 16436,
                                                                                              "description": "gauge position",
                                                                                                     "mask": 65535,
                                                                                                "max_value": 65535,
@@ -807,7 +807,7 @@ docdata["I-16"] =
                                                                            "identifier": "COMP_CRS",
                                                                                "inputs": [  ],
                                                                               "outputs": [ {
-                                                                                                 "address": 13362,
+                                                                                                 "address": 16434,
                                                                                              "description": "gauge position",
                                                                                                     "mask": 65535,
                                                                                                "max_value": 65535,
@@ -823,7 +823,7 @@ docdata["I-16"] =
                                                                            "identifier": "COMP_PITCH",
                                                                                "inputs": [  ],
                                                                               "outputs": [ {
-                                                                                                 "address": 13366,
+                                                                                                 "address": 16438,
                                                                                              "description": "gauge position",
                                                                                                     "mask": 65535,
                                                                                                "max_value": 65535,
@@ -839,7 +839,7 @@ docdata["I-16"] =
                                                                            "identifier": "DOOR_L",
                                                                                "inputs": [  ],
                                                                               "outputs": [ {
-                                                                                                 "address": 13412,
+                                                                                                 "address": 16484,
                                                                                              "description": "gauge position",
                                                                                                     "mask": 65535,
                                                                                                "max_value": 65535,
@@ -855,7 +855,7 @@ docdata["I-16"] =
                                                                            "identifier": "DOOR_R",
                                                                                "inputs": [  ],
                                                                               "outputs": [ {
-                                                                                                 "address": 13414,
+                                                                                                 "address": 16486,
                                                                                              "description": "gauge position",
                                                                                                     "mask": 65535,
                                                                                                "max_value": 65535,
@@ -871,7 +871,7 @@ docdata["I-16"] =
                                                                            "identifier": "ENG_RPM_G",
                                                                                "inputs": [  ],
                                                                               "outputs": [ {
-                                                                                                 "address": 13358,
+                                                                                                 "address": 16430,
                                                                                              "description": "gauge position",
                                                                                                     "mask": 65535,
                                                                                                "max_value": 65535,
@@ -887,7 +887,7 @@ docdata["I-16"] =
                                                                            "identifier": "FLAPS_INDICATOR",
                                                                                "inputs": [  ],
                                                                               "outputs": [ {
-                                                                                                 "address": 13392,
+                                                                                                 "address": 16464,
                                                                                              "description": "gauge position",
                                                                                                     "mask": 65535,
                                                                                                "max_value": 65535,
@@ -903,7 +903,7 @@ docdata["I-16"] =
                                                                            "identifier": "FUEL_GAUGE",
                                                                                "inputs": [  ],
                                                                               "outputs": [ {
-                                                                                                 "address": 13390,
+                                                                                                 "address": 16462,
                                                                                              "description": "gauge position",
                                                                                                     "mask": 65535,
                                                                                                "max_value": 65535,
@@ -919,7 +919,7 @@ docdata["I-16"] =
                                                                            "identifier": "FUEL_PRESS",
                                                                                "inputs": [  ],
                                                                               "outputs": [ {
-                                                                                                 "address": 13380,
+                                                                                                 "address": 16452,
                                                                                              "description": "gauge position",
                                                                                                     "mask": 65535,
                                                                                                "max_value": 65535,
@@ -935,7 +935,7 @@ docdata["I-16"] =
                                                                            "identifier": "GEAR_POS_L",
                                                                                "inputs": [  ],
                                                                               "outputs": [ {
-                                                                                                 "address": 13408,
+                                                                                                 "address": 16480,
                                                                                              "description": "gauge position",
                                                                                                     "mask": 65535,
                                                                                                "max_value": 65535,
@@ -951,7 +951,7 @@ docdata["I-16"] =
                                                                            "identifier": "GEAR_POS_R",
                                                                                "inputs": [  ],
                                                                               "outputs": [ {
-                                                                                                 "address": 13410,
+                                                                                                 "address": 16482,
                                                                                              "description": "gauge position",
                                                                                                     "mask": 65535,
                                                                                                "max_value": 65535,
@@ -967,7 +967,7 @@ docdata["I-16"] =
                                                                            "identifier": "MANIFOLD_PRESS",
                                                                                "inputs": [  ],
                                                                               "outputs": [ {
-                                                                                                 "address": 13382,
+                                                                                                 "address": 16454,
                                                                                              "description": "gauge position",
                                                                                                     "mask": 65535,
                                                                                                "max_value": 65535,
@@ -983,7 +983,7 @@ docdata["I-16"] =
                                                                            "identifier": "OIL_PRESS",
                                                                                "inputs": [  ],
                                                                               "outputs": [ {
-                                                                                                 "address": 13378,
+                                                                                                 "address": 16450,
                                                                                              "description": "gauge position",
                                                                                                     "mask": 65535,
                                                                                                "max_value": 65535,
@@ -999,7 +999,7 @@ docdata["I-16"] =
                                                                            "identifier": "OIL_TEMP",
                                                                                "inputs": [  ],
                                                                               "outputs": [ {
-                                                                                                 "address": 13376,
+                                                                                                 "address": 16448,
                                                                                              "description": "gauge position",
                                                                                                     "mask": 65535,
                                                                                                "max_value": 65535,
@@ -1015,7 +1015,7 @@ docdata["I-16"] =
                                                                            "identifier": "PANEL_SHAKE_CLOCK",
                                                                                "inputs": [  ],
                                                                               "outputs": [ {
-                                                                                                 "address": 13402,
+                                                                                                 "address": 16474,
                                                                                              "description": "gauge position",
                                                                                                     "mask": 65535,
                                                                                                "max_value": 65535,
@@ -1031,7 +1031,7 @@ docdata["I-16"] =
                                                                            "identifier": "PANEL_SHAKE_FWD",
                                                                                "inputs": [  ],
                                                                               "outputs": [ {
-                                                                                                 "address": 13400,
+                                                                                                 "address": 16472,
                                                                                              "description": "gauge position",
                                                                                                     "mask": 65535,
                                                                                                "max_value": 65535,
@@ -1047,7 +1047,7 @@ docdata["I-16"] =
                                                                            "identifier": "PANEL_SHAKE_HOR",
                                                                                "inputs": [  ],
                                                                               "outputs": [ {
-                                                                                                 "address": 13398,
+                                                                                                 "address": 16470,
                                                                                              "description": "gauge position",
                                                                                                     "mask": 65535,
                                                                                                "max_value": 65535,
@@ -1063,7 +1063,7 @@ docdata["I-16"] =
                                                                            "identifier": "PANEL_SHAKE_VERT",
                                                                                "inputs": [  ],
                                                                               "outputs": [ {
-                                                                                                 "address": 13396,
+                                                                                                 "address": 16468,
                                                                                              "description": "gauge position",
                                                                                                     "mask": 65535,
                                                                                                "max_value": 65535,
@@ -1079,7 +1079,7 @@ docdata["I-16"] =
                                                                            "identifier": "QXY_FLOW",
                                                                                "inputs": [  ],
                                                                               "outputs": [ {
-                                                                                                 "address": 13406,
+                                                                                                 "address": 16478,
                                                                                              "description": "gauge position",
                                                                                                     "mask": 65535,
                                                                                                "max_value": 65535,
@@ -1095,7 +1095,7 @@ docdata["I-16"] =
                                                                            "identifier": "QXY_METER",
                                                                                "inputs": [  ],
                                                                               "outputs": [ {
-                                                                                                 "address": 13404,
+                                                                                                 "address": 16476,
                                                                                              "description": "gauge position",
                                                                                                     "mask": 65535,
                                                                                                "max_value": 65535,
@@ -1111,7 +1111,7 @@ docdata["I-16"] =
                                                                            "identifier": "SLIP_INDICATOR",
                                                                                "inputs": [  ],
                                                                               "outputs": [ {
-                                                                                                 "address": 13386,
+                                                                                                 "address": 16458,
                                                                                              "description": "gauge position",
                                                                                                     "mask": 65535,
                                                                                                "max_value": 65535,
@@ -1127,7 +1127,7 @@ docdata["I-16"] =
                                                                            "identifier": "TURN_INDICATOR",
                                                                                "inputs": [  ],
                                                                               "outputs": [ {
-                                                                                                 "address": 13384,
+                                                                                                 "address": 16456,
                                                                                              "description": "gauge position",
                                                                                                     "mask": 65535,
                                                                                                "max_value": 65535,
@@ -1157,7 +1157,7 @@ docdata["I-16"] =
                                                                                            } ],
                                                                     "momentary_positions": "none",
                                                                                 "outputs": [ {
-                                                                                                   "address": 13312,
+                                                                                                   "address": 16384,
                                                                                                "description": "selector position",
                                                                                                       "mask": 4096,
                                                                                                  "max_value": 1,
@@ -1186,7 +1186,7 @@ docdata["I-16"] =
                                                                                            } ],
                                                                     "momentary_positions": "none",
                                                                                 "outputs": [ {
-                                                                                                   "address": 13312,
+                                                                                                   "address": 16384,
                                                                                                "description": "selector position",
                                                                                                       "mask": 2048,
                                                                                                  "max_value": 1,
@@ -1209,7 +1209,7 @@ docdata["I-16"] =
                                                                                         "suggested_step": 3200
                                                                                     } ],
                                                                          "outputs": [ {
-                                                                                            "address": 13318,
+                                                                                            "address": 16390,
                                                                                         "description": "the rotation of the knob in the cockpit (not the value that is controlled by this knob!)",
                                                                                                "mask": 65535,
                                                                                           "max_value": 65535,
@@ -1237,7 +1237,7 @@ docdata["I-16"] =
                                                                                            } ],
                                                                     "momentary_positions": "none",
                                                                                 "outputs": [ {
-                                                                                                   "address": 13312,
+                                                                                                   "address": 16384,
                                                                                                "description": "selector position",
                                                                                                       "mask": 1024,
                                                                                                  "max_value": 1,
@@ -1262,7 +1262,7 @@ docdata["I-16"] =
                                                                                            "suggested_step": 3200
                                                                                        } ],
                                                                             "outputs": [ {
-                                                                                               "address": 13336,
+                                                                                               "address": 16408,
                                                                                            "description": "the rotation of the knob in the cockpit (not the value that is controlled by this knob!)",
                                                                                                   "mask": 65535,
                                                                                              "max_value": 65535,
@@ -1290,7 +1290,7 @@ docdata["I-16"] =
                                                                                               } ],
                                                                        "momentary_positions": "none",
                                                                                    "outputs": [ {
-                                                                                                      "address": 13322,
+                                                                                                      "address": 16394,
                                                                                                   "description": "selector position",
                                                                                                          "mask": 128,
                                                                                                     "max_value": 1,
@@ -1315,7 +1315,7 @@ docdata["I-16"] =
                                                                                               } ],
                                                                        "momentary_positions": "none",
                                                                                    "outputs": [ {
-                                                                                                      "address": 13312,
+                                                                                                      "address": 16384,
                                                                                                   "description": "selector position",
                                                                                                          "mask": 24576,
                                                                                                     "max_value": 3,
@@ -1345,7 +1345,7 @@ docdata["I-16"] =
                                                                                               } ],
                                                                        "momentary_positions": "none",
                                                                                    "outputs": [ {
-                                                                                                      "address": 13322,
+                                                                                                      "address": 16394,
                                                                                                   "description": "selector position",
                                                                                                          "mask": 256,
                                                                                                     "max_value": 1,
@@ -1368,7 +1368,7 @@ docdata["I-16"] =
                                                                                            "suggested_step": 3200
                                                                                        } ],
                                                                             "outputs": [ {
-                                                                                               "address": 13332,
+                                                                                               "address": 16404,
                                                                                            "description": "the rotation of the knob in the cockpit (not the value that is controlled by this knob!)",
                                                                                                   "mask": 65535,
                                                                                              "max_value": 65535,
@@ -1397,7 +1397,7 @@ docdata["I-16"] =
                                                                                               } ],
                                                                        "momentary_positions": "none",
                                                                                    "outputs": [ {
-                                                                                                      "address": 13312,
+                                                                                                      "address": 16384,
                                                                                                   "description": "selector position",
                                                                                                          "mask": 32768,
                                                                                                     "max_value": 1,
@@ -1420,7 +1420,7 @@ docdata["I-16"] =
                                                                                            "suggested_step": 3200
                                                                                        } ],
                                                                             "outputs": [ {
-                                                                                               "address": 13338,
+                                                                                               "address": 16410,
                                                                                            "description": "the rotation of the knob in the cockpit (not the value that is controlled by this knob!)",
                                                                                                   "mask": 65535,
                                                                                              "max_value": 65535,
@@ -1444,7 +1444,7 @@ docdata["I-16"] =
                                                                                               } ],
                                                                        "momentary_positions": "none",
                                                                                    "outputs": [ {
-                                                                                                      "address": 13322,
+                                                                                                      "address": 16394,
                                                                                                   "description": "selector position",
                                                                                                          "mask": 24,
                                                                                                     "max_value": 2,
@@ -1474,7 +1474,7 @@ docdata["I-16"] =
                                                                                               } ],
                                                                        "momentary_positions": "none",
                                                                                    "outputs": [ {
-                                                                                                      "address": 13322,
+                                                                                                      "address": 16394,
                                                                                                   "description": "selector position",
                                                                                                          "mask": 1,
                                                                                                     "max_value": 1,
@@ -1497,7 +1497,7 @@ docdata["I-16"] =
                                                                                            "suggested_step": 3200
                                                                                        } ],
                                                                             "outputs": [ {
-                                                                                               "address": 13330,
+                                                                                               "address": 16402,
                                                                                            "description": "the rotation of the knob in the cockpit (not the value that is controlled by this knob!)",
                                                                                                   "mask": 65535,
                                                                                              "max_value": 65535,
@@ -1521,7 +1521,7 @@ docdata["I-16"] =
                                                                                               } ],
                                                                        "momentary_positions": "none",
                                                                                    "outputs": [ {
-                                                                                                      "address": 13322,
+                                                                                                      "address": 16394,
                                                                                                   "description": "selector position",
                                                                                                          "mask": 6,
                                                                                                     "max_value": 2,
@@ -1547,7 +1547,7 @@ docdata["I-16"] =
                                                                                            "suggested_step": 3200
                                                                                        } ],
                                                                             "outputs": [ {
-                                                                                               "address": 13326,
+                                                                                               "address": 16398,
                                                                                            "description": "position of the potentiometer",
                                                                                                   "mask": 65535,
                                                                                              "max_value": 65535,
@@ -1572,7 +1572,7 @@ docdata["I-16"] =
                                                                                            "suggested_step": 3200
                                                                                        } ],
                                                                             "outputs": [ {
-                                                                                               "address": 13324,
+                                                                                               "address": 16396,
                                                                                            "description": "position of the potentiometer",
                                                                                                   "mask": 65535,
                                                                                              "max_value": 65535,
@@ -1596,7 +1596,7 @@ docdata["I-16"] =
                                                                                               } ],
                                                                        "momentary_positions": "none",
                                                                                    "outputs": [ {
-                                                                                                      "address": 13322,
+                                                                                                      "address": 16394,
                                                                                                   "description": "selector position",
                                                                                                          "mask": 96,
                                                                                                     "max_value": 2,
@@ -1619,7 +1619,7 @@ docdata["I-16"] =
                                                                                            "suggested_step": 3200
                                                                                        } ],
                                                                             "outputs": [ {
-                                                                                               "address": 13334,
+                                                                                               "address": 16406,
                                                                                            "description": "the rotation of the knob in the cockpit (not the value that is controlled by this knob!)",
                                                                                                   "mask": 65535,
                                                                                              "max_value": 65535,
@@ -1641,7 +1641,7 @@ docdata["I-16"] =
                                                                                            "suggested_step": 3200
                                                                                        } ],
                                                                             "outputs": [ {
-                                                                                               "address": 13328,
+                                                                                               "address": 16400,
                                                                                            "description": "the rotation of the knob in the cockpit (not the value that is controlled by this knob!)",
                                                                                                   "mask": 65535,
                                                                                              "max_value": 65535,
@@ -1665,7 +1665,7 @@ docdata["I-16"] =
                                                                                            "suggested_step": 3200
                                                                                        } ],
                                                                             "outputs": [ {
-                                                                                               "address": 13346,
+                                                                                               "address": 16418,
                                                                                            "description": "the rotation of the knob in the cockpit (not the value that is controlled by this knob!)",
                                                                                                   "mask": 65535,
                                                                                              "max_value": 65535,
@@ -1687,7 +1687,7 @@ docdata["I-16"] =
                                                                                            "suggested_step": 3200
                                                                                        } ],
                                                                             "outputs": [ {
-                                                                                               "address": 13348,
+                                                                                               "address": 16420,
                                                                                            "description": "the rotation of the knob in the cockpit (not the value that is controlled by this knob!)",
                                                                                                   "mask": 65535,
                                                                                              "max_value": 65535,
@@ -1709,7 +1709,7 @@ docdata["I-16"] =
                                                                                            "suggested_step": 3200
                                                                                        } ],
                                                                             "outputs": [ {
-                                                                                               "address": 13350,
+                                                                                               "address": 16422,
                                                                                            "description": "the rotation of the knob in the cockpit (not the value that is controlled by this knob!)",
                                                                                                   "mask": 65535,
                                                                                              "max_value": 65535,
@@ -1727,7 +1727,7 @@ docdata["I-16"] =
                                                                      "identifier": "NEEDLE_GLOW",
                                                                          "inputs": [  ],
                                                                         "outputs": [ {
-                                                                                           "address": 13340,
+                                                                                           "address": 16412,
                                                                                        "description": "0 if light is off, 1 if light is on",
                                                                                               "mask": 2048,
                                                                                          "max_value": 1,
@@ -1743,7 +1743,7 @@ docdata["I-16"] =
                                                                      "identifier": "PANEL_GLOW",
                                                                          "inputs": [  ],
                                                                         "outputs": [ {
-                                                                                           "address": 13340,
+                                                                                           "address": 16412,
                                                                                        "description": "0 if light is off, 1 if light is on",
                                                                                               "mask": 1024,
                                                                                          "max_value": 1,
@@ -1774,7 +1774,7 @@ docdata["I-16"] =
                                                                                                  } ],
                                                                           "momentary_positions": "none",
                                                                                       "outputs": [ {
-                                                                                                         "address": 13322,
+                                                                                                         "address": 16394,
                                                                                                      "description": "selector position",
                                                                                                             "mask": 4096,
                                                                                                        "max_value": 1,
@@ -1804,7 +1804,7 @@ docdata["I-16"] =
                                                                                                  } ],
                                                                           "momentary_positions": "none",
                                                                                       "outputs": [ {
-                                                                                                         "address": 13322,
+                                                                                                         "address": 16394,
                                                                                                      "description": "selector position",
                                                                                                             "mask": 512,
                                                                                                        "max_value": 1,
@@ -1834,7 +1834,7 @@ docdata["I-16"] =
                                                                                                  } ],
                                                                           "momentary_positions": "none",
                                                                                       "outputs": [ {
-                                                                                                         "address": 13322,
+                                                                                                         "address": 16394,
                                                                                                      "description": "selector position",
                                                                                                             "mask": 2048,
                                                                                                        "max_value": 1,
@@ -1864,7 +1864,7 @@ docdata["I-16"] =
                                                                                                  } ],
                                                                           "momentary_positions": "none",
                                                                                       "outputs": [ {
-                                                                                                         "address": 13322,
+                                                                                                         "address": 16394,
                                                                                                      "description": "selector position",
                                                                                                             "mask": 1024,
                                                                                                        "max_value": 1,
@@ -1889,7 +1889,7 @@ docdata["I-16"] =
                                                                                                  } ],
                                                                           "momentary_positions": "none",
                                                                                       "outputs": [ {
-                                                                                                         "address": 13340,
+                                                                                                         "address": 16412,
                                                                                                      "description": "selector position",
                                                                                                             "mask": 31,
                                                                                                        "max_value": 17,

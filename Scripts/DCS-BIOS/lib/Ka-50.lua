@@ -20,7 +20,7 @@ local defineString = BIOS.util.defineString
 local defineMultipositionSwitch = BIOS.util.defineMultipositionSwitch
 local defineIntegerFromGetter = BIOS.util.defineIntegerFromGetter
 
-
+-- remove Arg# Pilot 540
 
 local function defineLedPushButton(msg, device_id, device_command, arg_number, category, description)
 	BIOS.util.defineTumb(msg, device_id, device_command, arg_number, 0.3, {0, 0.3}, nil, false, category, description)
@@ -867,5 +867,11 @@ end, 1, "External Aircraft Model", "Right Position Light (green)")
 defineIntegerFromGetter("EXT_STROBE", function()
 	if LoGetAircraftDrawArgumentValue(193) > 0 then return 1 else return 0 end
 end, 1, "External Aircraft Model", "Strobe Light")
+
+
+defineIndicatorLight("PLAFOND_LAMP", 1000, "Lighting Control Panel", "Plafond Lamp (rear left) (yellow)")
+defineToggleSwitch("LIGHT_CPT_INT", 51, 3009, 1001, "Lighting Control Panel", "Lighting cockpit interior lamp switch")
+defineToggleSwitch("REDU_GEAR_OIL_PRESS", 4, 3024, 258, "Right Panel", "Reducing gear box oil pressure indication selector")---action=3024, stop_action=3025
+defineToggleSwitch("SLING_AUT_MAN", 41, 3004, 259, "Right Panel", "Sling load Auto/Manual")
 
 BIOS.protocol.endModule()
