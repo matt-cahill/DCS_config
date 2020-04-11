@@ -52,6 +52,14 @@ local diff = {
 			},
 			["name"] = "Thrust",
 		},
+		["a3003cd30"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_SLIDER1",
+				},
+			},
+			["name"] = "HMCS SYMBOLOGY INT Knob",
+		},
 		["a3046cd16"] = {
 			["added"] = {
 				[1] = {
