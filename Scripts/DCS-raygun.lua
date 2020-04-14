@@ -13,9 +13,14 @@
 -- Removed unused LuaExportActivityNextEvent function call.
 -- Stored socket port in a varaible.
 
+-- Mod Miguel21 Ver 2.5
+
 RgHost = "127.0.0.1"
 RgPort = 8124
 RgArguments = {[404]="%.1f"}
+local FindAircraft = false
+
+local FC3
 
 -- Simulation id
 RgSimID = string.format("%08x",os.time())
@@ -39,12 +44,24 @@ function RgProcessMainPanel()
 
 	for lArgument, lFormat in pairs(RgArguments) do
 		lArgumentValue = string.format(lFormat,lDevice:get_argument_value(lArgument))
+		if tonumber(lArgumentValue) > 0 then lArgumentValue = "1.0" end
 		RgSendData(lArgument, lArgumentValue)
 	end
 end
 
+function RgProcessMainPanelFC3()
+		local lMCPState = LoGetMCPState() -- Warning Lights
+
+		if lMCPState.MasterWarning  then
+			RgSendData(404, "1.0")
+		else
+			RgSendData(404, "0.0")
+		end
+end
+
 -- Network Functions
 function RgSendData(id, value)
+	local id = 404
 	if string.len(value) > 3 and value == string.sub("-0.00000000",1, string.len(value)) then
 		value = value:sub(2)
 	end
@@ -54,6 +71,7 @@ function RgSendData(id, value)
 		RgLastData[id] = value
 
 		if #RgSendStrings > 140 then
+			-- log.write('MIGUEL.EXPORT SendData',log.INFO,table.concat(RgSendStrings, ":").."\n")
 			socket.try(Rgc:send(table.concat(RgSendStrings, ":").."\n"))
 			RgSendStrings = {RgSimID, '*'}
 		end
@@ -62,6 +80,7 @@ end
 
 function RgFlushData()
 	if #RgSendStrings > 0 then
+		-- log.write('MIGUEL.EXPORT FlushData',log.INFO,table.concat(RgSendStrings, ":").."\n")
 		socket.try(Rgc:send(table.concat(RgSendStrings, ":").."\n"))
 		RgSendStrings = {RgSimID, '*'}
 	end
@@ -79,8 +98,58 @@ function ResetChangeValues()
 end
 
 function RgProcessOutput()
-	RgProcessMainPanel()
-	RgFlushData()
+	-- local aircraft  = LoGetObjectById(LoGetPlayerPlaneId())  -- ne fonctionne pas online si server bloque data
+	local aircraft = LoGetSelfData()
+
+
+
+	if FindAircraft ~= true and  aircraft then
+		if aircraft.Name == "FA-18C_hornet" then
+			RgArguments = {[13]="%.1f"}
+		elseif 	aircraft.Name == "F-14B" then
+			RgArguments = {[9200]="%.1f", [2200]="%.1f"}
+		elseif 	aircraft.Name == "L-39C" or aircraft.Name == "L-39ZA" then
+			RgArguments = {[253]="%.1f", [455]="%.1f"}
+		elseif 	aircraft.Name == "F-15C" then
+			-- RgArguments = {[117]="%.1f"}
+			FC3 = true
+		elseif 	aircraft.Name == "F-5E-3" then
+			RgArguments = {[169]="%.1f"}
+		elseif 	aircraft.Name == "MB-339PAN" then
+			RgArguments = {[209]="%.1f"}
+		elseif 	aircraft.Name == "MiG-21Bis" then
+			RgArguments = {[542]="%.1f"}
+		elseif 	aircraft.Name == "UH-1H" then
+			RgArguments = {[277]="%.1f"}
+		elseif aircraft.Name == "M-2000C" then
+			RgArguments = {[199]="%.1f", [200]="%.1f"}
+		elseif aircraft.Name == "AV8BNA" then
+			RgArguments = {[196]="%.1f", [197]="%.1f"}
+		elseif 	aircraft.Name == "Ka-50" then
+			RgArguments = {[44]="%.1f"}
+		elseif aircraft.Name == "F-16C 50" or aircraft.Name == "F-16C_50" then
+			RgArguments = {[117]="%.1f"}
+		elseif aircraft.Name == "AJS37" then
+			RgArguments = {[444]="%.1f"}
+		else
+			RgArguments = {[404]="%.1f"}	--A10 par défaut
+		end
+
+		log.write('MIGUEL.EXPORT aircraft.Name',log.INFO,aircraft.Name)
+		-- for i_expt, f_expt in pairs(RgArguments) do
+			-- log.write('MIGUEL.EXPORT i_expt',log.INFO,i_expt)
+		-- end
+	end
+
+	if aircraft then FindAircraft = true end
+
+	if FC3 then
+		RgProcessMainPanelFC3()
+		RgFlushData()
+	else
+		RgProcessMainPanel()
+		RgFlushData()
+	end
 end
 
 function LuaExportStart()
