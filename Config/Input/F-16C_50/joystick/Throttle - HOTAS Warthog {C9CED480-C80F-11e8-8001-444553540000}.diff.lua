@@ -130,6 +130,30 @@ local diff = {
 			},
 			["name"] = "Autopilot ROLL Switch - HDG SEL/ATT HOLD",
 		},
+		["d3018pnilu3018cd24vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN15",
+				},
+			},
+			["name"] = "Left MFD OSB 18",
+		},
+		["d3019pnilu3019cd24vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN12",
+				},
+			},
+			["name"] = "Left MFD OSB 19",
+		},
+		["d3020pnilu3020cd24vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN11",
+				},
+			},
+			["name"] = "Left MFD OSB 20",
+		},
 		["d3024pnilu3024cd16vd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
@@ -258,21 +282,21 @@ local diff = {
 				},
 			},
 		},
-		["dnilp3040unilcd16vdnilvp1vunil"] = {
+		["dnilp3033unilcd16vdnilvp1vunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN11",
+					["key"] = "JOY_BTN_POV1_U",
 				},
 			},
-			["name"] = "MAN RNG Knob - CW",
+			["name"] = "ANT ELEV Knob - CW",
 		},
-		["dnilp3041unilcd16vdnilvp-1vunil"] = {
+		["dnilp3034unilcd16vdnilvp-1vunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN12",
+					["key"] = "JOY_BTN_POV1_D",
 				},
 			},
-			["name"] = "MAN RNG Knob - CCW",
+			["name"] = "ANT ELEV Knob - CCW",
 		},
 		["dnilp32u214cdnilvdnilvpnilvunil"] = {
 			["name"] = "View Left slow",
