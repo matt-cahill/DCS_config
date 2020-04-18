@@ -119,6 +119,8 @@ function RgProcessOutput()
 			RgArguments = {[209]="%.1f"}
 		elseif 	aircraft.Name == "MiG-21Bis" then
 			RgArguments = {[542]="%.1f"}
+		elseif 	aircraft.Name == "JF-17" then
+			RgArguments = {[130]="%.1f"}
 		elseif 	aircraft.Name == "UH-1H" then
 			RgArguments = {[277]="%.1f"}
 		elseif aircraft.Name == "M-2000C" then

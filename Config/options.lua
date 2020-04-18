@@ -248,6 +248,8 @@ options = {
 		["M-2000C"] = {
 			["AOA_SHOWINHUD"] = false,
 			["CPLocalList"] = "default",
+			["TDC_GatePPI"] = 5,
+			["TDC_KBPrecission"] = 100,
 			["UNI_ALIGNED"] = false,
 			["UNI_NODRIFT"] = false,
 		},
@@ -373,6 +375,7 @@ options = {
 		},
 	},
 	["sound"] = {
+		["FakeAfterburner"] = false,
 		["GBreathEffect"] = true,
 		["cockpit"] = 100,
 		["gui"] = 100,
