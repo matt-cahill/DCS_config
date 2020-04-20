@@ -122,6 +122,14 @@ local diff = {
 			},
 			["name"] = "ICP Priority Function Button - 9(A-CAL)",
 		},
+		["d3012pnilu3012cd17vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN22",
+				},
+			},
+			["name"] = "ICP COM Override Button - COM1(UHF)",
+		},
 		["d3013pnilu3013cd17vd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
@@ -153,6 +161,14 @@ local diff = {
 				},
 			},
 			["name"] = "ICP Enter Button - ENTR",
+		},
+		["d3017pnilu3017cd17vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN19",
+				},
+			},
+			["name"] = "ICP Recall Button - RCL",
 		},
 		["d3018pnilu3018cd17vd1vpnilvu0"] = {
 			["added"] = {
@@ -189,7 +205,7 @@ local diff = {
 		["d3030pnilu3030cd17vd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN28",
+					["key"] = "JOY_BTN1",
 				},
 			},
 			["name"] = "ICP DED Increment/Decrement Switch - Increment",
@@ -197,10 +213,42 @@ local diff = {
 		["d3031pnilu3031cd17vd-1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN31",
+					["key"] = "JOY_BTN6",
 				},
 			},
 			["name"] = "ICP DED Increment/Decrement Switch - Decrement",
+		},
+		["d3032pnilu3032cd17vd-1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN34",
+				},
+			},
+			["name"] = "ICP Data Control Switch - RET",
+		},
+		["d3033pnilu3033cd17vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN35",
+				},
+			},
+			["name"] = "ICP Data Control Switch - SEQ",
+		},
+		["d3034pnilu3034cd17vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN28",
+				},
+			},
+			["name"] = "ICP Data Control Switch - UP",
+		},
+		["d3035pnilu3035cd17vd-1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN31",
+				},
+			},
+			["name"] = "ICP Data Control Switch - DOWN",
 		},
 	},
 }

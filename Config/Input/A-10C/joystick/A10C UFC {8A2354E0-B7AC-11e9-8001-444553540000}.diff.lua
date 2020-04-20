@@ -253,7 +253,7 @@ local diff = {
 		["d1322pnilu1322cdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN34",
+					["key"] = "JOY_BTN35",
 				},
 			},
 			["name"] = "UFC INTEN INCREASE Rocker switch",
@@ -261,7 +261,7 @@ local diff = {
 		["d1323pnilu1323cdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN35",
+					["key"] = "JOY_BTN34",
 				},
 			},
 			["name"] = "UFC INTEN DECREASE Rocker switch",

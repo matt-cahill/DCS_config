@@ -1,5 +1,5 @@
 #This file can be manually edited using any ASCII editor.
-#File created on 1/03/2020 12:00:00 AM 1/03/2020 3:28:06 PM#
+#File created on 20/04/2020 12:00:00 AM 20/04/2020 10:23:43 PM#
 #
 #IMPORTANT INFO REGARDING the keyboard key AltGr (RAlt as named in DCS) or RMENU as named DCSFP
 #When you press AltGr DCSFP will register RMENU + LCONTROL. This is a bug which "just is". You need to modify that in the profile
@@ -53,6 +53,7 @@ PanelSettingsVersion=2X
 BeginPanel
 	MultiPanelDCSBIOSControl{CRS}\o/{1LCD_WHEEL_DEC|CRS -}\o/\o/DCSBIOSInput{HSI_CRS_KNOB|VARIABLE_STEP|-1000|0}
 	MultiPanelDCSBIOSControl{CRS}\o/{1LCD_WHEEL_INC|CRS +}\o/\o/DCSBIOSInput{HSI_CRS_KNOB|VARIABLE_STEP|1000|0}
+	MultiPanelDCSBIOSControlLCD{ALT}\o/{UpperLCD}\o/DCSBiosOutput{ALT_MSL_FT|Equals|0}
 EndPanel
 
 
