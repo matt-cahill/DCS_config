@@ -1,0 +1,3152 @@
+#This file can be manually edited using any ASCII editor.
+#File created on 21/04/2020 12:00:00 AM 21/04/2020 5:31:56 PM#
+#
+#IMPORTANT INFO REGARDING the keyboard key AltGr (RAlt as named in DCS) or RMENU as named DCSFP
+#When you press AltGr DCSFP will register RMENU + LCONTROL. This is a bug which "just is". You need to modify that in the profile
+#by deleting the + LCONTROL part.
+#So for example AltGr + HOME pressed on the keyboard becomes RMENU + LCONTROL + HOME
+#Open text editor and delete the LCONTROL ==> RMENU + HOME
+
+#  ***Do not change the location nor content of the line below***
+Airframe=F16C
+OperationLevelFlag=3
+UseGenericRadio=False
+
+
+PanelType=PZ55SwitchPanel
+PanelInstanceID=\\?\hid#vid_06a3&pid_0d67#8&3105af1b&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}
+PanelSettingsVersion=0X
+BeginPanel
+	SwitchPanelDCSBIOSControl{1LEVER_GEAR_DOWN|DCS-BIOS}\o/\o/DCSBIOSInput{GEAR_HANDLE|SET_STATE|0|0}
+	SwitchPanelDCSBIOSControl{1LEVER_GEAR_UP|DCS-BIOS}\o/\o/DCSBIOSInput{GEAR_HANDLE|SET_STATE|1|0}
+	SwitchPanelDCSBIOSControl{1SWITCHKEY_MASTER_BAT|Master Arm}\o/\o/DCSBIOSInput{MASTER_ARM_SW|SET_STATE|2|0}
+	SwitchPanelDCSBIOSControl{0SWITCHKEY_MASTER_BAT|Master Arm Off }\o/\o/DCSBIOSInput{MASTER_ARM_SW|SET_STATE|1|0}
+	SwitchPanelDCSBIOSControl{1SWITCHKEY_MASTER_ALT|Laser Arm}\o/\o/DCSBIOSInput{LASER_ARM_SW|SET_STATE|1|0}
+	SwitchPanelDCSBIOSControl{0SWITCHKEY_MASTER_ALT|Laser Arm Off}\o/\o/DCSBIOSInput{LASER_ARM_SW|SET_STATE|0|0}
+	SwitchPanelLedUp{DARK|DCSBiosOutput{LIGHT_GEAR_N|Equals|0}}
+	SwitchPanelLedUp{RED|DCSBiosOutput{LIGHT_GEAR_WARN|Equals|1}}
+	SwitchPanelLedUp{GREEN|DCSBiosOutput{LIGHT_GEAR_N|Equals|1}}
+	SwitchPanelLedLeft{DARK|DCSBiosOutput{LIGHT_GEAR_L|Equals|0}}
+	SwitchPanelLedLeft{RED|DCSBiosOutput{LIGHT_GEAR_WARN|Equals|1}}
+	SwitchPanelLedLeft{GREEN|DCSBiosOutput{LIGHT_GEAR_L|Equals|1}}
+	SwitchPanelLedRight{DARK|DCSBiosOutput{LIGHT_GEAR_R|Equals|0}}
+	SwitchPanelLedRight{RED|DCSBiosOutput{LIGHT_GEAR_WARN|Equals|1}}
+	SwitchPanelLedRight{GREEN|DCSBiosOutput{LIGHT_GEAR_R|Equals|1}}
+	ManualLandingGearLEDs{False}
+EndPanel
+
+
+PanelType=PZ70MultiPanel
+PanelInstanceID=\\?\hid#vid_06a3&pid_0d06#8&11e17154&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}
+PanelSettingsVersion=2X
+BeginPanel
+	MultiPanelDCSBIOSControl{HDG}\o/{1LCD_WHEEL_INC|HDG+}\o/\o/DCSBIOSInput{EHSI_HDG_SET_KNB|VARIABLE_STEP|1500|0}
+	MultiPanelDCSBIOSControl{HDG}\o/{1LCD_WHEEL_DEC|HDG-}\o/\o/DCSBIOSInput{EHSI_HDG_SET_KNB|VARIABLE_STEP|-1500|0}
+	MultiPanelDCSBIOSControl{CRS}\o/{1LCD_WHEEL_INC|CRS+}\o/\o/DCSBIOSInput{EHSI_CRS_SET_KNB|VARIABLE_STEP|1500|0}
+	MultiPanelDCSBIOSControl{CRS}\o/{1LCD_WHEEL_DEC|CRS-}\o/\o/DCSBIOSInput{EHSI_CRS_SET_KNB|VARIABLE_STEP|-1500|0}
+	MultiPanelDCSBIOSControlLCD{ALT}\o/{UpperLCD}\o/DCSBiosOutput{ALT_MSL_FT|Equals|0}
+EndPanel
+
+
+PanelType=StreamDeck
+PanelInstanceID=\\?\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}
+PanelSettingsVersion=2X
+BeginPanelJSON
+{
+  "$type": "System.Collections.Generic.List`1[[NonVisuals.StreamDeck.StreamDeckLayer, NonVisuals]], mscorlib",
+  "$values": [
+    {
+      "$type": "NonVisuals.StreamDeck.StreamDeckLayer, NonVisuals",
+      "Name": "Home",
+      "StreamDeckButtons": {
+        "$type": "System.Collections.Generic.List`1[[NonVisuals.StreamDeck.StreamDeckButton, NonVisuals]], mscorlib",
+        "$values": [
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 2,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\comm1.png",
+              "StreamDeckButtonName": 2,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": null,
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 0,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 3,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\comm2.png",
+              "StreamDeckButtonName": 3,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": null,
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 0,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 4,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\iff.png",
+              "StreamDeckButtonName": 4,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": null,
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 0,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 5,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\list.png",
+              "StreamDeckButtonName": 5,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": null,
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 0,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 6,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\aa.png",
+              "StreamDeckButtonName": 6,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": null,
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 0,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 7,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\ag.png",
+              "StreamDeckButtonName": 7,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": null,
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 0,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 15,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\3.png",
+              "StreamDeckButtonName": 15,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": null,
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 0,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 23,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\6.png",
+              "StreamDeckButtonName": 23,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": null,
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 0,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 31,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\9.png",
+              "StreamDeckButtonName": 31,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": null,
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 0,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 30,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\8.png",
+              "StreamDeckButtonName": 30,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": null,
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 0,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 22,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\5.png",
+              "StreamDeckButtonName": 22,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": null,
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 0,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 14,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\2.png",
+              "StreamDeckButtonName": 14,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": null,
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 0,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 13,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\1.png",
+              "StreamDeckButtonName": 13,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": null,
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 0,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 21,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\4.png",
+              "StreamDeckButtonName": 21,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": null,
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 0,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 29,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\7.png",
+              "StreamDeckButtonName": 29,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": null,
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 0,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 1,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\symbrt.png",
+              "StreamDeckButtonName": 1,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeLayer, NonVisuals",
+              "NavigationType": 0,
+              "TargetLayer": "SYM BRT",
+              "ActionType": 16,
+              "Description": "Layer Navigation",
+              "StreamDeckButtonName": 1,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}"
+            },
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 16,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 8,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\flir.png",
+              "StreamDeckButtonName": 8,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeLayer, NonVisuals",
+              "NavigationType": 0,
+              "TargetLayer": "FLIR",
+              "ActionType": 16,
+              "Description": "Layer Navigation",
+              "StreamDeckButtonName": 8,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}"
+            },
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 16,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 16,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\rcl.png",
+              "StreamDeckButtonName": 16,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": null,
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 0,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 24,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\entr.png",
+              "StreamDeckButtonName": 24,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": null,
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 0,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 32,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\0.png",
+              "StreamDeckButtonName": 32,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": null,
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 0,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 19,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\up2.png",
+              "StreamDeckButtonName": 19,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 19,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_DATA_UP_DN_SW",
+                      "Description": "set the switch position",
+                      "Interface": 1,
+                      "MaxValue": 2,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 2,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_DATA_UP_DN_SW",
+                          "Description": "set the switch position",
+                          "Interface": 1,
+                          "MaxValue": 2,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 2,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_DATA_UP_DN_SW",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Data Control Switch, UP-DN",
+                    "ControlType": null
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "ActionForRelease": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 19,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": false,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_DATA_UP_DN_SW",
+                      "Description": "set the switch position",
+                      "Interface": 1,
+                      "MaxValue": 2,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 1,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_DATA_UP_DN_SW",
+                          "Description": "set the switch position",
+                          "Interface": 1,
+                          "MaxValue": 2,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 1,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_DATA_UP_DN_SW",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Data Control Switch, UP-DN",
+                    "ControlType": null
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "HasConfig": true,
+            "ActionType": 2,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 27,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\down2.png",
+              "StreamDeckButtonName": 27,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 27,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_DATA_UP_DN_SW",
+                      "Description": "set the switch position",
+                      "Interface": 1,
+                      "MaxValue": 2,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 0,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_DATA_UP_DN_SW",
+                          "Description": "set the switch position",
+                          "Interface": 1,
+                          "MaxValue": 2,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_DATA_UP_DN_SW",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Data Control Switch, UP-DN",
+                    "ControlType": null
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "ActionForRelease": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 27,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": false,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_DATA_UP_DN_SW",
+                      "Description": "set the switch position",
+                      "Interface": 1,
+                      "MaxValue": 2,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 1,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_DATA_UP_DN_SW",
+                          "Description": "set the switch position",
+                          "Interface": 1,
+                          "MaxValue": 2,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 1,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_DATA_UP_DN_SW",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Data Control Switch, UP-DN",
+                    "ControlType": null
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "HasConfig": true,
+            "ActionType": 2,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 28,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\seq.png",
+              "StreamDeckButtonName": 28,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 28,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_DATA_RTN_SEQ_SW",
+                      "Description": "set the switch position",
+                      "Interface": 1,
+                      "MaxValue": 2,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 2,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_DATA_RTN_SEQ_SW",
+                          "Description": "set the switch position",
+                          "Interface": 1,
+                          "MaxValue": 2,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 2,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_DATA_RTN_SEQ_SW",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Data Control Switch, RTN-SEQ",
+                    "ControlType": null
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "ActionForRelease": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 28,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": false,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_DATA_RTN_SEQ_SW",
+                      "Description": "set the switch position",
+                      "Interface": 1,
+                      "MaxValue": 2,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 1,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_DATA_RTN_SEQ_SW",
+                          "Description": "set the switch position",
+                          "Interface": 1,
+                          "MaxValue": 2,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 1,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_DATA_RTN_SEQ_SW",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Data Control Switch, RTN-SEQ",
+                    "ControlType": null
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "HasConfig": true,
+            "ActionType": 2,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 26,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\rtn.png",
+              "StreamDeckButtonName": 26,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 26,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_DATA_RTN_SEQ_SW",
+                      "Description": "set the switch position",
+                      "Interface": 1,
+                      "MaxValue": 2,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 0,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_DATA_RTN_SEQ_SW",
+                          "Description": "set the switch position",
+                          "Interface": 1,
+                          "MaxValue": 2,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_DATA_RTN_SEQ_SW",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Data Control Switch, RTN-SEQ",
+                    "ControlType": null
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "ActionForRelease": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 26,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": false,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_DATA_RTN_SEQ_SW",
+                      "Description": "set the switch position",
+                      "Interface": 1,
+                      "MaxValue": 2,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 1,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_DATA_RTN_SEQ_SW",
+                          "Description": "set the switch position",
+                          "Interface": 1,
+                          "MaxValue": 2,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 1,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_DATA_RTN_SEQ_SW",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Data Control Switch, RTN-SEQ",
+                    "ControlType": null
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "HasConfig": true,
+            "ActionType": 2,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 17,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\up.png",
+              "StreamDeckButtonName": 17,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 17,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_DED_SW",
+                      "Description": "set the switch position",
+                      "Interface": 1,
+                      "MaxValue": 2,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 2,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_DED_SW",
+                          "Description": "set the switch position",
+                          "Interface": 1,
+                          "MaxValue": 2,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 2,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_DED_SW",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP DED Increment/Decrement Switch",
+                    "ControlType": null
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "ActionForRelease": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 17,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": false,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_DED_SW",
+                      "Description": "set the switch position",
+                      "Interface": 1,
+                      "MaxValue": 2,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 1,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_DED_SW",
+                          "Description": "set the switch position",
+                          "Interface": 1,
+                          "MaxValue": 2,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 1,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_DED_SW",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP DED Increment/Decrement Switch",
+                    "ControlType": null
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "HasConfig": true,
+            "ActionType": 2,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 25,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\down.png",
+              "StreamDeckButtonName": 25,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 25,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_DED_SW",
+                      "Description": "set the switch position",
+                      "Interface": 1,
+                      "MaxValue": 2,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 0,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_DED_SW",
+                          "Description": "set the switch position",
+                          "Interface": 1,
+                          "MaxValue": 2,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_DED_SW",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP DED Increment/Decrement Switch",
+                    "ControlType": null
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "ActionForRelease": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 25,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": false,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_DED_SW",
+                      "Description": "set the switch position",
+                      "Interface": 1,
+                      "MaxValue": 2,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 1,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_DED_SW",
+                          "Description": "set the switch position",
+                          "Interface": 1,
+                          "MaxValue": 2,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 1,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_DED_SW",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP DED Increment/Decrement Switch",
+                    "ControlType": null
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "HasConfig": true,
+            "ActionType": 2,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 12,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\drift.png",
+              "StreamDeckButtonName": 12,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 12,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_DRIFT_SW",
+                      "Description": "set the switch position",
+                      "Interface": 1,
+                      "MaxValue": 2,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 2,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_DRIFT_SW",
+                          "Description": "set the switch position",
+                          "Interface": 1,
+                          "MaxValue": 2,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 2,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_DRIFT_SW",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP DRIFT CUTOUT/WARN RESET Switch, DRIFT C/O /NORM/WARN RESET",
+                    "ControlType": null
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 2,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 10,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\warn.png",
+              "StreamDeckButtonName": 10,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 10,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_DRIFT_SW",
+                      "Description": "set the switch position",
+                      "Interface": 1,
+                      "MaxValue": 2,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 0,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_DRIFT_SW",
+                          "Description": "set the switch position",
+                          "Interface": 1,
+                          "MaxValue": 2,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_DRIFT_SW",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP DRIFT CUTOUT/WARN RESET Switch, DRIFT C/O /NORM/WARN RESET",
+                    "ControlType": null
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "ActionForRelease": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 10,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": false,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_DRIFT_SW",
+                      "Description": "set the switch position",
+                      "Interface": 1,
+                      "MaxValue": 2,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 1,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_DRIFT_SW",
+                          "Description": "set the switch position",
+                          "Interface": 1,
+                          "MaxValue": 2,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 1,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_DRIFT_SW",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP DRIFT CUTOUT/WARN RESET Switch, DRIFT C/O /NORM/WARN RESET",
+                    "ControlType": null
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "HasConfig": true,
+            "ActionType": 2,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          }
+        ]
+      }
+    },
+    {
+      "$type": "NonVisuals.StreamDeck.StreamDeckLayer, NonVisuals",
+      "Name": "FLIR",
+      "StreamDeckButtons": {
+        "$type": "System.Collections.Generic.List`1[[NonVisuals.StreamDeck.StreamDeckButton, NonVisuals]], mscorlib",
+        "$values": [
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 1,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "D:\\DCS Tools\\DCSFlightpanels_x64_4.0.15_alpha\\\\StreamDeckGallery\\Symbols\\home_white.png",
+              "StreamDeckButtonName": 1,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeLayer, NonVisuals",
+              "NavigationType": 2,
+              "TargetLayer": "Go to Home",
+              "ActionType": 16,
+              "Description": "Layer Navigation",
+              "StreamDeckButtonName": 1,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}"
+            },
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 16,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 28,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.DCSBIOSDecoder, NonVisuals",
+              "Formula": "",
+              "DCSBIOSOutput": {
+                "$type": "DCS_BIOS.DCSBIOSOutput, DCS-BIOS",
+                "ControlId": "ICP_FLIR_GAIN_SW",
+                "Address": 17446,
+                "Mask": 24576,
+                "Debug": false,
+                "Shiftvalue": 13,
+                "DCSBiosOutputType": 1,
+                "DCSBiosOutputComparison": 0,
+                "ControlDescription": "ICP FLIR GAIN/LEVEL Switch, GAIN/LVL/AUTO",
+                "MaxValue": 2,
+                "MaxLength": 0,
+                "ControlType": "3_position_switch"
+              },
+              "DCSBIOSDecoders": {
+                "$type": "System.Collections.Generic.List`1[[NonVisuals.StreamDeck.DCSBIOSNumberToText, NonVisuals]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "NonVisuals.StreamDeck.DCSBIOSNumberToText, NonVisuals",
+                    "Comparator": 0,
+                    "ReferenceValue": 0.0,
+                    "OutputText": "AUTO"
+                  },
+                  {
+                    "$type": "NonVisuals.StreamDeck.DCSBIOSNumberToText, NonVisuals",
+                    "Comparator": 0,
+                    "ReferenceValue": 8192.0,
+                    "OutputText": "LVL"
+                  },
+                  {
+                    "$type": "NonVisuals.StreamDeck.DCSBIOSNumberToText, NonVisuals",
+                    "Comparator": 0,
+                    "ReferenceValue": 16384.0,
+                    "OutputText": "GAIN"
+                  }
+                ]
+              },
+              "FaceType": 4,
+              "ButtonText": "LVL",
+              "TextFont": "MS Gothic, 18pt, style=Bold",
+              "FontColor": "White",
+              "BackgroundColor": "57, 62, 57",
+              "DCSBiosValue": 8192,
+              "StreamDeckButtonName": 28,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 6,
+              "OffsetY": 24
+            },
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 28,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_FLIR_GAIN_SW",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 2,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 0,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_FLIR_GAIN_SW",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_FLIR_GAIN_SW",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 2,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_FLIR_GAIN_SW",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP FLIR GAIN/LEVEL Switch, GAIN/LVL/AUTO",
+                    "ControlType": "3_position_switch"
+                  },
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_FLIR_GAIN_SW",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 2,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 1,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_FLIR_GAIN_SW",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_FLIR_GAIN_SW",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 2,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 1,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_FLIR_GAIN_SW",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP FLIR GAIN/LEVEL Switch, GAIN/LVL/AUTO",
+                    "ControlType": "3_position_switch"
+                  },
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_FLIR_GAIN_SW",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 2,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 2,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_FLIR_GAIN_SW",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_FLIR_GAIN_SW",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 2,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 2,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_FLIR_GAIN_SW",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP FLIR GAIN/LEVEL Switch, GAIN/LVL/AUTO",
+                    "ControlType": "3_position_switch"
+                  },
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_FLIR_GAIN_SW",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 2,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 1,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_FLIR_GAIN_SW",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_FLIR_GAIN_SW",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 2,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 1,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_FLIR_GAIN_SW",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP FLIR GAIN/LEVEL Switch, GAIN/LVL/AUTO",
+                    "ControlType": "3_position_switch"
+                  }
+                ]
+              },
+              "IsSequenced": true
+            },
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 2,
+            "FaceType": 4,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 12,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\flirup.png",
+              "StreamDeckButtonName": 12,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 12,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_FLIR_SW",
+                      "Description": "set the switch position",
+                      "Interface": 1,
+                      "MaxValue": 2,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 2,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_FLIR_SW",
+                          "Description": "set the switch position",
+                          "Interface": 1,
+                          "MaxValue": 2,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 2,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_FLIR_SW",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP FLIR Increment/Decrement Switch",
+                    "ControlType": null
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "ActionForRelease": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 12,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": false,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_FLIR_SW",
+                      "Description": "set the switch position",
+                      "Interface": 1,
+                      "MaxValue": 2,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 1,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_FLIR_SW",
+                          "Description": "set the switch position",
+                          "Interface": 1,
+                          "MaxValue": 2,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 1,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_FLIR_SW",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP FLIR Increment/Decrement Switch",
+                    "ControlType": null
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "HasConfig": true,
+            "ActionType": 2,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 20,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\flirdown.png",
+              "StreamDeckButtonName": 20,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 20,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_FLIR_SW",
+                      "Description": "set the switch position",
+                      "Interface": 1,
+                      "MaxValue": 2,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 0,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_FLIR_SW",
+                          "Description": "set the switch position",
+                          "Interface": 1,
+                          "MaxValue": 2,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_FLIR_SW",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP FLIR Increment/Decrement Switch",
+                    "ControlType": null
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "ActionForRelease": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 20,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": false,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_FLIR_SW",
+                      "Description": "set the switch position",
+                      "Interface": 1,
+                      "MaxValue": 2,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 1,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_FLIR_SW",
+                          "Description": "set the switch position",
+                          "Interface": 1,
+                          "MaxValue": 2,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 1,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_FLIR_SW",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP FLIR Increment/Decrement Switch",
+                    "ControlType": null
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "HasConfig": true,
+            "ActionType": 2,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 4,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\wx.png",
+              "StreamDeckButtonName": 4,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 4,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_WX_BTN",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 1,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_WX_BTN",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_WX_BTN",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 1,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_WX_BTN",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_WX_BTN",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP FLIR Polarity Button, Wx",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "ActionForRelease": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 4,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": false,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_WX_BTN",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 0,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_WX_BTN",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_WX_BTN",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_WX_BTN",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_WX_BTN",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP FLIR Polarity Button, Wx",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "HasConfig": true,
+            "ActionType": 2,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 6,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\retdepr.png",
+              "StreamDeckButtonName": 6,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": null,
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 0,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 8,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\cont.png",
+              "StreamDeckButtonName": 8,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": null,
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 0,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 14,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\dialup.png",
+              "StreamDeckButtonName": 14,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 14,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_RETICLE_DEPRESS_KNB",
+                      "Description": "turn the dial left or right",
+                      "Interface": 3,
+                      "MaxValue": 65535,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 0,
+                      "SpecifiedVariableStepArgument": 1000,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_RETICLE_DEPRESS_KNB",
+                          "Description": "set the position of the dial",
+                          "Interface": 1,
+                          "MaxValue": 65535,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_RETICLE_DEPRESS_KNB",
+                          "Description": "turn the dial left or right",
+                          "Interface": 3,
+                          "MaxValue": 65535,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 1000,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_RETICLE_DEPRESS_KNB",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Reticle Depression Control Knob",
+                    "ControlType": null
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 2,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 22,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\dialdown.png",
+              "StreamDeckButtonName": 22,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 22,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_RETICLE_DEPRESS_KNB",
+                      "Description": "turn the dial left or right",
+                      "Interface": 3,
+                      "MaxValue": 65535,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 0,
+                      "SpecifiedVariableStepArgument": -1000,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_RETICLE_DEPRESS_KNB",
+                          "Description": "set the position of the dial",
+                          "Interface": 1,
+                          "MaxValue": 65535,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_RETICLE_DEPRESS_KNB",
+                          "Description": "turn the dial left or right",
+                          "Interface": 3,
+                          "MaxValue": 65535,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": -1000,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_RETICLE_DEPRESS_KNB",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Reticle Depression Control Knob",
+                    "ControlType": null
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 2,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 16,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\dialup.png",
+              "StreamDeckButtonName": 16,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 16,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_RASTER_CONTR_KNB",
+                      "Description": "turn the dial left or right",
+                      "Interface": 3,
+                      "MaxValue": 65535,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 0,
+                      "SpecifiedVariableStepArgument": 1000,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_RASTER_CONTR_KNB",
+                          "Description": "set the position of the dial",
+                          "Interface": 1,
+                          "MaxValue": 65535,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_RASTER_CONTR_KNB",
+                          "Description": "turn the dial left or right",
+                          "Interface": 3,
+                          "MaxValue": 65535,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 1000,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_RASTER_CONTR_KNB",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Raster Contrast Knob",
+                    "ControlType": null
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 2,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 24,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\dialdown.png",
+              "StreamDeckButtonName": 24,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 24,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_RASTER_CONTR_KNB",
+                      "Description": "turn the dial left or right",
+                      "Interface": 3,
+                      "MaxValue": 65535,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 0,
+                      "SpecifiedVariableStepArgument": -1000,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_RASTER_CONTR_KNB",
+                          "Description": "set the position of the dial",
+                          "Interface": 1,
+                          "MaxValue": 65535,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_RASTER_CONTR_KNB",
+                          "Description": "turn the dial left or right",
+                          "Interface": 3,
+                          "MaxValue": 65535,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": -1000,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_RASTER_CONTR_KNB",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Raster Contrast Knob",
+                    "ControlType": null
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 2,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 3,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\flirdecorator.png",
+              "StreamDeckButtonName": 3,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": null,
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 0,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 11,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\fl.png",
+              "StreamDeckButtonName": 11,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": null,
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 0,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 19,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\ir.png",
+              "StreamDeckButtonName": 19,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": null,
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 0,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 27,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\flirdecorator.png",
+              "StreamDeckButtonName": 27,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": null,
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 0,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          }
+        ]
+      }
+    },
+    {
+      "$type": "NonVisuals.StreamDeck.StreamDeckLayer, NonVisuals",
+      "Name": "SYM BRT",
+      "StreamDeckButtons": {
+        "$type": "System.Collections.Generic.List`1[[NonVisuals.StreamDeck.StreamDeckButton, NonVisuals]], mscorlib",
+        "$values": [
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 1,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "D:\\DCS Tools\\DCSFlightpanels_x64_4.0.15_alpha\\\\StreamDeckGallery\\Symbols\\home_white.png",
+              "StreamDeckButtonName": 1,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeLayer, NonVisuals",
+              "NavigationType": 2,
+              "TargetLayer": "Go to Home",
+              "ActionType": 16,
+              "Description": "Layer Navigation",
+              "StreamDeckButtonName": 1,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}"
+            },
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 16,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 2,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\sym.png",
+              "StreamDeckButtonName": 2,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": null,
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 0,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 10,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\dialup.png",
+              "StreamDeckButtonName": 10,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 10,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_HUD_BRT_KNB",
+                      "Description": "turn the dial left or right",
+                      "Interface": 3,
+                      "MaxValue": 65535,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 0,
+                      "SpecifiedVariableStepArgument": 1000,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_HUD_BRT_KNB",
+                          "Description": "set the position of the dial",
+                          "Interface": 1,
+                          "MaxValue": 65535,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_HUD_BRT_KNB",
+                          "Description": "turn the dial left or right",
+                          "Interface": 3,
+                          "MaxValue": 65535,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 1000,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_HUD_BRT_KNB",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP HUD Symbology Intensity Knob",
+                    "ControlType": null
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 2,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 18,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\dialdown.png",
+              "StreamDeckButtonName": 18,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 18,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_HUD_BRT_KNB",
+                      "Description": "turn the dial left or right",
+                      "Interface": 3,
+                      "MaxValue": 65535,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 0,
+                      "SpecifiedVariableStepArgument": -1000,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_HUD_BRT_KNB",
+                          "Description": "set the position of the dial",
+                          "Interface": 1,
+                          "MaxValue": 65535,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_HUD_BRT_KNB",
+                          "Description": "turn the dial left or right",
+                          "Interface": 3,
+                          "MaxValue": 65535,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": -1000,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_HUD_BRT_KNB",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP HUD Symbology Intensity Knob",
+                    "ControlType": null
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 2,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 26,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\off.png",
+              "StreamDeckButtonName": 26,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": null,
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 0,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 4,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\brt.png",
+              "StreamDeckButtonName": 4,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": null,
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 0,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 12,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\dialup.png",
+              "StreamDeckButtonName": 12,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 12,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_RASTER_BRT_KNB",
+                      "Description": "turn the dial left or right",
+                      "Interface": 3,
+                      "MaxValue": 65535,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 0,
+                      "SpecifiedVariableStepArgument": 1000,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_RASTER_BRT_KNB",
+                          "Description": "set the position of the dial",
+                          "Interface": 1,
+                          "MaxValue": 65535,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_RASTER_BRT_KNB",
+                          "Description": "turn the dial left or right",
+                          "Interface": 3,
+                          "MaxValue": 65535,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 1000,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_RASTER_BRT_KNB",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Raster Intensity Knob",
+                    "ControlType": null
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 2,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 20,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\dialdown.png",
+              "StreamDeckButtonName": 20,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 20,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_RASTER_BRT_KNB",
+                      "Description": "turn the dial left or right",
+                      "Interface": 3,
+                      "MaxValue": 65535,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 0,
+                      "SpecifiedVariableStepArgument": -1000,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_RASTER_BRT_KNB",
+                          "Description": "set the position of the dial",
+                          "Interface": 1,
+                          "MaxValue": 65535,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_RASTER_BRT_KNB",
+                          "Description": "turn the dial left or right",
+                          "Interface": 3,
+                          "MaxValue": 65535,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": -1000,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_RASTER_BRT_KNB",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Raster Intensity Knob",
+                    "ControlType": null
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 2,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 28,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\off.png",
+              "StreamDeckButtonName": 28,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": null,
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 0,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 0,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+              "FaceType": 2,
+              "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f16\\ufc\\brt.png",
+              "StreamDeckButtonName": 0,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 0,
+              "OffsetY": 0
+            },
+            "ActionForPress": null,
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 0,
+            "FaceType": 2,
+            "StreamDeckInstanceId": null
+          }
+        ]
+      }
+    }
+  ]
+}
+EndPanelJSON
+
+
+
+
+#--------------------------------------------------------------------
+#Below are all the Virtual Keycodes in use listed. You can manually edit this file using these codes.
+#	LBUTTON
+#	RBUTTON
+#	CANCEL
+#	MBUTTON
+#	XBUTTON1
+#	XBUTTON2
+#	BACK
+#	TAB
+#	CLEAR
+#	RETURN
+#	SHIFT
+#	CONTROL
+#	MENU
+#	PAUSE
+#	CAPITAL
+#	KANA
+#	HANGEUL
+#	HANGUL
+#	JUNJA
+#	FINAL
+#	HANJA
+#	KANJI
+#	ESCAPE
+#	CONVERT
+#	NONCONVERT
+#	ACCEPT
+#	MODECHANGE
+#	SPACE
+#	PRIOR
+#	NEXT
+#	END
+#	HOME
+#	LEFT
+#	UP
+#	RIGHT
+#	DOWN
+#	SELECT
+#	PRINT
+#	EXECUTE
+#	SNAPSHOT
+#	INSERT
+#	DELETE
+#	HELP
+#	VK_0
+#	VK_1
+#	VK_2
+#	VK_3
+#	VK_4
+#	VK_5
+#	VK_6
+#	VK_7
+#	VK_8
+#	VK_9
+#	VK_A
+#	VK_B
+#	VK_C
+#	VK_D
+#	VK_E
+#	VK_F
+#	VK_G
+#	VK_H
+#	VK_I
+#	VK_J
+#	VK_K
+#	VK_L
+#	VK_M
+#	VK_N
+#	VK_O
+#	VK_P
+#	VK_Q
+#	VK_R
+#	VK_S
+#	VK_T
+#	VK_U
+#	VK_V
+#	VK_W
+#	VK_X
+#	VK_Y
+#	VK_Z
+#	LWIN
+#	RWIN
+#	APPS
+#	SLEEP
+#	NUMPAD0
+#	NUMPAD1
+#	NUMPAD2
+#	NUMPAD3
+#	NUMPAD4
+#	NUMPAD5
+#	NUMPAD6
+#	NUMPAD7
+#	NUMPAD8
+#	NUMPAD9
+#	MULTIPLY
+#	ADD
+#	SEPARATOR
+#	SUBTRACT
+#	DECIMAL
+#	DIVIDE
+#	F1
+#	F2
+#	F3
+#	F4
+#	F5
+#	F6
+#	F7
+#	F8
+#	F9
+#	F10
+#	F11
+#	F12
+#	F13
+#	F14
+#	F15
+#	F16
+#	F17
+#	F18
+#	F19
+#	F20
+#	F21
+#	F22
+#	F23
+#	F24
+#	NUMLOCK
+#	SCROLL
+#	LSHIFT
+#	RSHIFT
+#	LCONTROL
+#	RCONTROL
+#	LMENU
+#	RMENU
+#	BROWSER_BACK
+#	BROWSER_FORWARD
+#	BROWSER_REFRESH
+#	BROWSER_STOP
+#	BROWSER_SEARCH
+#	BROWSER_FAVORITES
+#	BROWSER_HOME
+#	VOLUME_MUTE
+#	VOLUME_DOWN
+#	VOLUME_UP
+#	MEDIA_NEXT_TRACK
+#	MEDIA_PREV_TRACK
+#	MEDIA_STOP
+#	MEDIA_PLAY_PAUSE
+#	LAUNCH_MAIL
+#	LAUNCH_MEDIA_SELECT
+#	LAUNCH_APP1
+#	LAUNCH_APP2
+#	OEM_1
+#	OEM_PLUS
+#	OEM_COMMA
+#	OEM_MINUS
+#	OEM_PERIOD
+#	OEM_2
+#	OEM_3
+#	OEM_4
+#	OEM_5
+#	OEM_6
+#	OEM_7
+#	OEM_8
+#	OEM_102
+#	PROCESSKEY
+#	PACKET
+#	ATTN
+#	CRSEL
+#	EXSEL
+#	EREOF
+#	PLAY
+#	ZOOM
+#	NONAME
+#	PA1
+#	OEM_CLEAR
+#	VK_NULL
+

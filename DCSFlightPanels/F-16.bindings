@@ -1,5 +1,5 @@
 #This file can be manually edited using any ASCII editor.
-#File created on 15/03/2020 12:00:00 AM 15/03/2020 12:27:17 PM#
+#File created on 20/04/2020 12:00:00 AM 20/04/2020 11:08:56 PM#
 #
 #IMPORTANT INFO REGARDING the keyboard key AltGr (RAlt as named in DCS) or RMENU as named DCSFP
 #When you press AltGr DCSFP will register RMENU + LCONTROL. This is a bug which "just is". You need to modify that in the profile
@@ -38,13 +38,11 @@ PanelType=PZ70MultiPanel
 PanelInstanceID=\\?\hid#vid_06a3&pid_0d06#8&11e17154&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}
 PanelSettingsVersion=2X
 BeginPanel
-	MultiPanelDCSBIOSControl{HDG}\o/{1LCD_WHEEL_INC|HDG+}\o/\o/DCSBIOSInput{EHSI_HDG_SET_KNB|VARIABLE_STEP|1000|0}
-	MultiPanelDCSBIOSControl{HDG}\o/{1LCD_WHEEL_DEC|HDG-}\o/\o/DCSBIOSInput{EHSI_HDG_SET_KNB|VARIABLE_STEP|-1000|0}
-	MultiPanelDCSBIOSControl{CRS}\o/{1LCD_WHEEL_INC|CRS+}\o/\o/DCSBIOSInput{EHSI_CRS_SET_KNB|VARIABLE_STEP|1000|0}
-	MultiPanelDCSBIOSControl{CRS}\o/{1LCD_WHEEL_DEC|CRS-}\o/\o/DCSBIOSInput{EHSI_CRS_SET_KNB|VARIABLE_STEP|-1000|0}
+	MultiPanelDCSBIOSControl{HDG}\o/{1LCD_WHEEL_INC|HDG+}\o/\o/DCSBIOSInput{EHSI_HDG_SET_KNB|VARIABLE_STEP|1500|0}
+	MultiPanelDCSBIOSControl{HDG}\o/{1LCD_WHEEL_DEC|HDG-}\o/\o/DCSBIOSInput{EHSI_HDG_SET_KNB|VARIABLE_STEP|-1500|0}
+	MultiPanelDCSBIOSControl{CRS}\o/{1LCD_WHEEL_INC|CRS+}\o/\o/DCSBIOSInput{EHSI_CRS_SET_KNB|VARIABLE_STEP|1500|0}
+	MultiPanelDCSBIOSControl{CRS}\o/{1LCD_WHEEL_DEC|CRS-}\o/\o/DCSBIOSInput{EHSI_CRS_SET_KNB|VARIABLE_STEP|-1500|0}
 	MultiPanelDCSBIOSControlLCD{ALT}\o/{UpperLCD}\o/DCSBiosOutput{ALT_MSL_FT|Equals|0}
-	MultiPanelDCSBIOSControlLCD{HDG}\o/{UpperLCD}\o/DCSBiosOutput{HDG_DEG|Equals|0}
-	MultiPanelDCSBIOSControlLCD{CRS}\o/{UpperLCD}\o/DCSBiosOutput{EHSI_CRS_SET_KNB|Equals|0}
 EndPanel
 
 
