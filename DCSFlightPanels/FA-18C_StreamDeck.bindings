@@ -4971,7 +4971,7 @@ BeginPanelJSON
             "Face": {
               "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
               "FaceType": 2,
-              "ImageFile": "D:\\DCS Tools\\DCSFlightpanels_x64_4.0.15_alpha\\\\StreamDeckGallery\\Symbols\\home_white.png",
+              "ImageFile": "D:\\DCS Tools\\DCSFlightpanels_x64_4.0.18_alpha\\\\StreamDeckGallery\\Symbols\\home_white.png",
               "StreamDeckButtonName": 1,
               "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
               "OffsetX": 0,
@@ -5178,4 +5178,3 @@ EndPanelJSON
 #	PA1
 #	OEM_CLEAR
 #	VK_NULL
-
