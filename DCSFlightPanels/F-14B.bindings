@@ -1,5 +1,5 @@
 #This file can be manually edited using any ASCII editor.
-#File created on 17/06/2019 12:00:00 AM 17/06/2019 7:22:51 PM#
+#File created on 25/04/2020 12:00:00 AM 25/04/2020 10:26:28 AM#
 #
 #IMPORTANT INFO REGARDING the keyboard key AltGr (RAlt as named in DCS) or RMENU as named DCSFP
 #When you press AltGr DCSFP will register RMENU + LCONTROL. This is a bug which "just is". You need to modify that in the profile
@@ -11,6 +11,22 @@
 Airframe=F14B
 OperationLevelFlag=3
 UseGenericRadio=False
+
+
+PanelType=PZ55SwitchPanel
+PanelInstanceID=\\?\hid#vid_06a3&pid_0d67#8&3105af1b&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}
+PanelSettingsVersion=0X
+BeginPanel
+	SwitchPanelDCSBIOSControl{1LEVER_GEAR_UP|DCS-BIOS}\o/\o/DCSBIOSInput{PLT_GEAR_LEVER|SET_STATE|0|0}
+	SwitchPanelDCSBIOSControl{1LEVER_GEAR_DOWN|DCS-BIOS}\o/\o/DCSBIOSInput{PLT_GEAR_LEVER|SET_STATE|1|0}
+	SwitchPanelLedLeft{DARK|DCSBiosOutput{PLT_GEAR_L_IND|Equals|0}}
+	SwitchPanelLedLeft{GREEN|DCSBiosOutput{PLT_GEAR_L_IND|BiggerThan|0}}
+	SwitchPanelLedRight{DARK|DCSBiosOutput{PLT_GEAR_R_IND|Equals|0}}
+	SwitchPanelLedRight{GREEN|DCSBiosOutput{PLT_GEAR_R_IND|BiggerThan|0}}
+	SwitchPanelLedUp{DARK|DCSBiosOutput{PLT_GEAR_NOSE_IND|Equals|0}}
+	SwitchPanelLedUp{GREEN|DCSBiosOutput{PLT_GEAR_NOSE_IND|BiggerThan|0}}
+	ManualLandingGearLEDs{False}
+EndPanel
 
 
 

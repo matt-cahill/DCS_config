@@ -1,5 +1,5 @@
 #This file can be manually edited using any ASCII editor.
-#File created on 22/04/2020 12:00:00 AM 22/04/2020 10:07:47 PM#
+#File created on 23/04/2020 12:00:00 AM 23/04/2020 8:22:00 PM#
 #
 #IMPORTANT INFO REGARDING the keyboard key AltGr (RAlt as named in DCS) or RMENU as named DCSFP
 #When you press AltGr DCSFP will register RMENU + LCONTROL. This is a bug which "just is". You need to modify that in the profile
@@ -73,10 +73,158 @@ BeginPanelJSON
               "OffsetX": 0,
               "OffsetY": 0
             },
-            "ActionForPress": null,
-            "ActionForRelease": null,
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 2,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_COM1_BTN",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 1,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_COM1_BTN",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_COM1_BTN",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 1,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_COM1_BTN",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_COM1_BTN",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP COM Override Button, COM1(UHF)",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "ActionForRelease": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 2,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": false,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_COM1_BTN",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 0,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_COM1_BTN",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_COM1_BTN",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_COM1_BTN",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_COM1_BTN",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP COM Override Button, COM1(UHF)",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
             "HasConfig": true,
-            "ActionType": 0,
+            "ActionType": 2,
             "FaceType": 2,
             "StreamDeckInstanceId": null
           },
@@ -92,10 +240,158 @@ BeginPanelJSON
               "OffsetX": 0,
               "OffsetY": 0
             },
-            "ActionForPress": null,
-            "ActionForRelease": null,
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 3,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_COM2_BTN",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 1,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_COM2_BTN",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_COM2_BTN",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 1,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_COM2_BTN",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_COM2_BTN",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP COM Override Button, COM2(VHF)",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "ActionForRelease": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 3,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": false,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_COM2_BTN",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 0,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_COM2_BTN",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_COM2_BTN",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_COM2_BTN",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_COM2_BTN",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP COM Override Button, COM2(VHF)",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
             "HasConfig": true,
-            "ActionType": 0,
+            "ActionType": 2,
             "FaceType": 2,
             "StreamDeckInstanceId": null
           },
@@ -111,10 +407,158 @@ BeginPanelJSON
               "OffsetX": 0,
               "OffsetY": 0
             },
-            "ActionForPress": null,
-            "ActionForRelease": null,
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 4,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_IFF_BTN",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 1,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_IFF_BTN",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_IFF_BTN",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 1,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_IFF_BTN",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_IFF_BTN",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP IFF Override Button, IFF",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "ActionForRelease": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 4,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": false,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_IFF_BTN",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 0,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_IFF_BTN",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_IFF_BTN",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_IFF_BTN",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_IFF_BTN",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP IFF Override Button, IFF",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
             "HasConfig": true,
-            "ActionType": 0,
+            "ActionType": 2,
             "FaceType": 2,
             "StreamDeckInstanceId": null
           },
@@ -130,10 +574,158 @@ BeginPanelJSON
               "OffsetX": 0,
               "OffsetY": 0
             },
-            "ActionForPress": null,
-            "ActionForRelease": null,
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 5,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_LIST_BTN",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 1,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_LIST_BTN",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_LIST_BTN",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 1,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_LIST_BTN",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_LIST_BTN",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP LIST Override Button, LIST",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "ActionForRelease": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 5,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": false,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_LIST_BTN",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 0,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_LIST_BTN",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_LIST_BTN",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_LIST_BTN",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_LIST_BTN",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP LIST Override Button, LIST",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
             "HasConfig": true,
-            "ActionType": 0,
+            "ActionType": 2,
             "FaceType": 2,
             "StreamDeckInstanceId": null
           },
@@ -149,10 +741,158 @@ BeginPanelJSON
               "OffsetX": 0,
               "OffsetY": 0
             },
-            "ActionForPress": null,
-            "ActionForRelease": null,
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 6,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_AA_MODE_BTN",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 1,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_AA_MODE_BTN",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_AA_MODE_BTN",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 1,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_AA_MODE_BTN",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_AA_MODE_BTN",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Master Mode Button, A-A",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "ActionForRelease": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 6,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": false,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_AA_MODE_BTN",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 0,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_AA_MODE_BTN",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_AA_MODE_BTN",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_AA_MODE_BTN",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_AA_MODE_BTN",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Master Mode Button, A-A",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
             "HasConfig": true,
-            "ActionType": 0,
+            "ActionType": 2,
             "FaceType": 2,
             "StreamDeckInstanceId": null
           },
@@ -168,10 +908,158 @@ BeginPanelJSON
               "OffsetX": 0,
               "OffsetY": 0
             },
-            "ActionForPress": null,
-            "ActionForRelease": null,
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 7,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_AG_MODE_BTN",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 1,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_AG_MODE_BTN",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_AG_MODE_BTN",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 1,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_AG_MODE_BTN",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_AG_MODE_BTN",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Master Mode Button, A-G",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "ActionForRelease": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 7,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": false,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_AG_MODE_BTN",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 0,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_AG_MODE_BTN",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_AG_MODE_BTN",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_AG_MODE_BTN",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_AG_MODE_BTN",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Master Mode Button, A-G",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
             "HasConfig": true,
-            "ActionType": 0,
+            "ActionType": 2,
             "FaceType": 2,
             "StreamDeckInstanceId": null
           },
@@ -187,10 +1075,158 @@ BeginPanelJSON
               "OffsetX": 0,
               "OffsetY": 0
             },
-            "ActionForPress": null,
-            "ActionForRelease": null,
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 15,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_BTN_3",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 1,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_3",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_3",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 1,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_3",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_BTN_3",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Priority Function Button, 3",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "ActionForRelease": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 15,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": false,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_BTN_3",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 0,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_3",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_3",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_3",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_BTN_3",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Priority Function Button, 3",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
             "HasConfig": true,
-            "ActionType": 0,
+            "ActionType": 2,
             "FaceType": 2,
             "StreamDeckInstanceId": null
           },
@@ -206,10 +1242,158 @@ BeginPanelJSON
               "OffsetX": 0,
               "OffsetY": 0
             },
-            "ActionForPress": null,
-            "ActionForRelease": null,
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 23,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_BTN_6",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 1,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_6",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_6",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 1,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_6",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_BTN_6",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Priority Function Button, 6/E(TIME)",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "ActionForRelease": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 23,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": false,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_BTN_6",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 0,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_6",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_6",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_6",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_BTN_6",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Priority Function Button, 6/E(TIME)",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
             "HasConfig": true,
-            "ActionType": 0,
+            "ActionType": 2,
             "FaceType": 2,
             "StreamDeckInstanceId": null
           },
@@ -225,10 +1409,158 @@ BeginPanelJSON
               "OffsetX": 0,
               "OffsetY": 0
             },
-            "ActionForPress": null,
-            "ActionForRelease": null,
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 31,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_BTN_9",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 1,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_9",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_9",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 1,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_9",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_BTN_9",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Priority Function Button, 9(A-CAL)",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "ActionForRelease": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 31,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": false,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_BTN_9",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 0,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_9",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_9",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_9",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_BTN_9",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Priority Function Button, 9(A-CAL)",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
             "HasConfig": true,
-            "ActionType": 0,
+            "ActionType": 2,
             "FaceType": 2,
             "StreamDeckInstanceId": null
           },
@@ -244,10 +1576,158 @@ BeginPanelJSON
               "OffsetX": 0,
               "OffsetY": 0
             },
-            "ActionForPress": null,
-            "ActionForRelease": null,
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 30,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_BTN_8",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 1,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_8",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_8",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 1,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_8",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_BTN_8",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Priority Function Button, 8/S(FIX)",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "ActionForRelease": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 30,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": false,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_BTN_8",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 0,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_8",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_8",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_8",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_BTN_8",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Priority Function Button, 8/S(FIX)",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
             "HasConfig": true,
-            "ActionType": 0,
+            "ActionType": 2,
             "FaceType": 2,
             "StreamDeckInstanceId": null
           },
@@ -263,10 +1743,158 @@ BeginPanelJSON
               "OffsetX": 0,
               "OffsetY": 0
             },
-            "ActionForPress": null,
-            "ActionForRelease": null,
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 22,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_BTN_5",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 1,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_5",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_5",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 1,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_5",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_BTN_5",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Priority Function Button, 5(CRUS)",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "ActionForRelease": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 22,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": false,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_BTN_5",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 0,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_5",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_5",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_5",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_BTN_5",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Priority Function Button, 5(CRUS)",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
             "HasConfig": true,
-            "ActionType": 0,
+            "ActionType": 2,
             "FaceType": 2,
             "StreamDeckInstanceId": null
           },
@@ -282,10 +1910,158 @@ BeginPanelJSON
               "OffsetX": 0,
               "OffsetY": 0
             },
-            "ActionForPress": null,
-            "ActionForRelease": null,
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 14,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_BTN_2",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 1,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_2",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_2",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 1,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_2",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_BTN_2",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Priority Function Button, 2/N(ALOW)",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "ActionForRelease": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 14,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": false,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_BTN_2",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 0,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_2",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_2",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_2",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_BTN_2",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Priority Function Button, 2/N(ALOW)",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
             "HasConfig": true,
-            "ActionType": 0,
+            "ActionType": 2,
             "FaceType": 2,
             "StreamDeckInstanceId": null
           },
@@ -301,10 +2077,158 @@ BeginPanelJSON
               "OffsetX": 0,
               "OffsetY": 0
             },
-            "ActionForPress": null,
-            "ActionForRelease": null,
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 13,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_BTN_1",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 1,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_1",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_1",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 1,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_1",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_BTN_1",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Priority Function Button, 1(T-ILS)",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "ActionForRelease": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 13,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": false,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_BTN_1",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 0,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_1",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_1",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_1",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_BTN_1",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Priority Function Button, 1(T-ILS)",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
             "HasConfig": true,
-            "ActionType": 0,
+            "ActionType": 2,
             "FaceType": 2,
             "StreamDeckInstanceId": null
           },
@@ -320,10 +2244,158 @@ BeginPanelJSON
               "OffsetX": 0,
               "OffsetY": 0
             },
-            "ActionForPress": null,
-            "ActionForRelease": null,
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 21,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_BTN_4",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 1,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_4",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_4",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 1,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_4",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_BTN_4",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Priority Function Button, 4/W(STPT)",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "ActionForRelease": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 21,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": false,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_BTN_4",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 0,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_4",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_4",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_4",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_BTN_4",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Priority Function Button, 4/W(STPT)",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
             "HasConfig": true,
-            "ActionType": 0,
+            "ActionType": 2,
             "FaceType": 2,
             "StreamDeckInstanceId": null
           },
@@ -339,10 +2411,158 @@ BeginPanelJSON
               "OffsetX": 0,
               "OffsetY": 0
             },
-            "ActionForPress": null,
-            "ActionForRelease": null,
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 29,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_BTN_7",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 1,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_7",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_7",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 1,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_7",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_BTN_7",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Priority Function Button, 7(MARK)",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "ActionForRelease": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 29,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": false,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_BTN_7",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 0,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_7",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_7",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_7",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_BTN_7",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Priority Function Button, 7(MARK)",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
             "HasConfig": true,
-            "ActionType": 0,
+            "ActionType": 2,
             "FaceType": 2,
             "StreamDeckInstanceId": null
           },
@@ -412,10 +2632,158 @@ BeginPanelJSON
               "OffsetX": 0,
               "OffsetY": 0
             },
-            "ActionForPress": null,
-            "ActionForRelease": null,
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 16,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_RCL_BTN",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 1,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_RCL_BTN",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_RCL_BTN",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 1,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_RCL_BTN",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_RCL_BTN",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Recall Button, RCL",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "ActionForRelease": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 16,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": false,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_RCL_BTN",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 0,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_RCL_BTN",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_RCL_BTN",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_RCL_BTN",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_RCL_BTN",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Recall Button, RCL",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
             "HasConfig": true,
-            "ActionType": 0,
+            "ActionType": 2,
             "FaceType": 2,
             "StreamDeckInstanceId": null
           },
@@ -431,10 +2799,158 @@ BeginPanelJSON
               "OffsetX": 0,
               "OffsetY": 0
             },
-            "ActionForPress": null,
-            "ActionForRelease": null,
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 24,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_ENTR_BTN",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 1,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_ENTR_BTN",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_ENTR_BTN",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 1,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_ENTR_BTN",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_ENTR_BTN",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Enter Button, ENTR",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "ActionForRelease": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 24,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": false,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_ENTR_BTN",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 0,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_ENTR_BTN",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_ENTR_BTN",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_ENTR_BTN",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_ENTR_BTN",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Enter Button, ENTR",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
             "HasConfig": true,
-            "ActionType": 0,
+            "ActionType": 2,
             "FaceType": 2,
             "StreamDeckInstanceId": null
           },
@@ -450,10 +2966,158 @@ BeginPanelJSON
               "OffsetX": 0,
               "OffsetY": 0
             },
-            "ActionForPress": null,
-            "ActionForRelease": null,
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 32,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_BTN_0",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 1,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_0",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_0",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 1,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_0",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_BTN_0",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Priority Function Button, 0(M-SEL)",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "ActionForRelease": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 32,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": false,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "ICP_BTN_0",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 0,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_0",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_0",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "ICP_BTN_0",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "ICP_BTN_0",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "ICP Priority Function Button, 0(M-SEL)",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
             "HasConfig": true,
-            "ActionType": 0,
+            "ActionType": 2,
             "FaceType": 2,
             "StreamDeckInstanceId": null
           },

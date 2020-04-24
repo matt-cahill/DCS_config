@@ -119,6 +119,17 @@ options = {
 			["INS_GYROHasNAV"] = false,
 			["MPCD_EXPORT"] = false,
 		},
+		["Bf-109K-4"] = {
+			["CPLocalList"] = "default",
+			["aileronTrim"] = 0,
+			["assistance"] = 100,
+			["autoRudder"] = false,
+			["cameraOrigin"] = 0,
+			["rudderTrim"] = 0,
+		},
+		["C-101EB"] = {
+			["CPLocalList"] = "default",
+		},
 		["CA"] = {
 			["ground_aim_helper"] = true,
 			["ground_automatic"] = true,
@@ -154,6 +165,19 @@ options = {
 			["hmdEye"] = 1,
 			["mfdReflections"] = 0,
 		},
+		["F-5E-3"] = {
+			["CPLocalList"] = "default",
+			["JoystickMode"] = 0,
+			["SightCamera"] = 0,
+			["aiHelper"] = false,
+		},
+		["F-86F"] = {
+			["CPLocalList"] = "default",
+			["NoseWheelSteeringSimpleBehaviourF86"] = true,
+			["aiHelper"] = false,
+			["gunCamera"] = 0,
+			["landSeatAdjustF86"] = true,
+		},
 		["F/A-18C"] = {
 			["CPLocalList"] = "default",
 			["F18RealisticTDC"] = true,
@@ -173,9 +197,18 @@ options = {
 			["CPLocalList_Su-27"] = "default",
 			["CPLocalList_Su-33"] = "default",
 		},
+		["FW-190A8"] = {
+			["CPLocalList"] = "default",
+			["assistance"] = 100,
+			["autoRudder"] = false,
+		},
 		["FW-190D9"] = {
 			["CPLocalList"] = "default",
 			["assistance"] = 100,
+			["autoRudder"] = false,
+		},
+		["I-16"] = {
+			["assistance"] = 0,
 			["autoRudder"] = false,
 		},
 		["JF-17"] = {
@@ -245,6 +278,12 @@ options = {
 			["Ka50TrimmingMethod"] = 0,
 			["helmetCircleDisplacement"] = 11,
 		},
+		["L-39C"] = {
+			["CPLocalList"] = "default",
+			["CPLocalZAList"] = "default",
+			["gunCamera"] = 1,
+			["sarpp"] = 1,
+		},
 		["M-2000C"] = {
 			["AOA_SHOWINHUD"] = false,
 			["CPLocalList"] = "default",
@@ -267,6 +306,20 @@ options = {
 			["Mi8TrimmingMethod"] = 0,
 			["controlHelperMi8"] = false,
 			["gunCamera"] = 0,
+		},
+		["MiG-15bis"] = {
+			["CPLocalList"] = "default",
+			["aiHelper"] = false,
+			["autoLeanToAimMiG15"] = true,
+			["gunCamera"] = 0,
+		},
+		["MiG-19P"] = {
+			["ACHS1_System_Time"] = false,
+			["ARK5_Frequency"] = false,
+			["CPLocalList"] = "default",
+			["CPT_Camera_OFF"] = false,
+			["GYROERR_Disable"] = false,
+			["RP5_Ground_Return"] = 0,
 		},
 		["MiG-21Bis"] = {
 			["CPLocalList"] = "default",
@@ -321,6 +374,12 @@ options = {
 			["uh1h_enabled"] = true,
 			["yak52_enabled"] = true,
 		},
+		["P-51D"] = {
+			["CPLocalList_P51D25NA"] = "default",
+			["CPLocalList_P51D30NA"] = "default",
+			["assistance"] = 100,
+			["autoRudder"] = false,
+		},
 		["SA342"] = {
 			["CPLocalList"] = "default",
 			["CPLocalListL"] = "default",
@@ -372,6 +431,13 @@ options = {
 			["UHTrimmingMethod"] = 0,
 			["autoPilot"] = true,
 			["weapTooltips"] = true,
+		},
+		["Yak52"] = {
+			["CPLocalList"] = "default",
+			["aileronTrim"] = 0,
+			["assistance"] = 100,
+			["autoRudder"] = false,
+			["rudderTrim"] = 0,
 		},
 	},
 	["sound"] = {
