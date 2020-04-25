@@ -1,5 +1,5 @@
 #This file can be manually edited using any ASCII editor.
-#File created on 25/04/2020 12:00:00 AM 25/04/2020 1:37:51 PM#
+#File created on 25/04/2020 12:00:00 AM 25/04/2020 1:48:21 PM#
 #
 #IMPORTANT INFO REGARDING the keyboard key AltGr (RAlt as named in DCS) or RMENU as named DCSFP
 #When you press AltGr DCSFP will register RMENU + LCONTROL. This is a bug which "just is". You need to modify that in the profile
@@ -33,6 +33,7 @@ BeginPanel
 	ManualLandingGearLEDs{False}
 EndPanel
 
+
 PanelType=PZ69RadioPanel
 PanelInstanceID=\\?\hid#vid_06a3&pid_0d05#8&d27cb0c&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}
 PanelSettingsVersion=0X
@@ -50,6 +51,7 @@ BeginPanel
 	RadioPanelDCSBIOSControl{LowerNAV1}\o/{1LowerFreqSwitch|DCS-BIOS}\o/\o/DCSBIOSInput{EHSI_CRS_SET|SET_STATE|1|0}
 	RadioPanelDCSBIOSControl{LowerNAV1}\o/{0LowerFreqSwitch|DCS-BIOS}\o/\o/DCSBIOSInput{EHSI_CRS_SET|SET_STATE|0|0}
 EndPanel
+
 
 PanelType=PZ70MultiPanel
 PanelInstanceID=\\?\hid#vid_06a3&pid_0d06#8&11e17154&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}
@@ -241,3 +243,4 @@ EndPanel
 #	PA1
 #	OEM_CLEAR
 #	VK_NULL
+
