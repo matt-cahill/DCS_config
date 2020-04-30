@@ -1,5 +1,5 @@
 #This file can be manually edited using any ASCII editor.
-#File created on 25/04/2020 12:00:00 AM 25/04/2020 1:48:21 PM#
+#File created on 30/04/2020 12:00:00 AM 30/04/2020 11:55:32 AM#
 #
 #IMPORTANT INFO REGARDING the keyboard key AltGr (RAlt as named in DCS) or RMENU as named DCSFP
 #When you press AltGr DCSFP will register RMENU + LCONTROL. This is a bug which "just is". You need to modify that in the profile
@@ -21,6 +21,8 @@ BeginPanel
 	SwitchPanelDCSBIOSControl{1LEVER_GEAR_UP|DCS-BIOS}\o/\o/DCSBIOSInput{GEAR_HANDLE|SET_STATE|1|0}
 	SwitchPanelDCSBIOSControl{1SWITCHKEY_MASTER_BAT|Master Arm}\o/\o/DCSBIOSInput{MASTER_ARM_SW|SET_STATE|2|0}
 	SwitchPanelDCSBIOSControl{0SWITCHKEY_MASTER_BAT|Master Arm Off }\o/\o/DCSBIOSInput{MASTER_ARM_SW|SET_STATE|1|0}
+	SwitchPanelDCSBIOSControl{1SWITCHKEY_MASTER_ALT|Laser Arm}\o/\o/DCSBIOSInput{LASER_ARM_SW|SET_STATE|1|0}
+	SwitchPanelDCSBIOSControl{0SWITCHKEY_MASTER_ALT|Laser Arm Off}\o/\o/DCSBIOSInput{LASER_ARM_SW|SET_STATE|0|0}
 	SwitchPanelLedUp{DARK|DCSBiosOutput{LIGHT_GEAR_N|Equals|0}}
 	SwitchPanelLedUp{RED|DCSBiosOutput{LIGHT_GEAR_WARN|Equals|1}}
 	SwitchPanelLedUp{GREEN|DCSBiosOutput{LIGHT_GEAR_N|Equals|1}}
