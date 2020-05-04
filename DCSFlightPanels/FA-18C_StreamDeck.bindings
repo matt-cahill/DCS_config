@@ -1,5 +1,5 @@
 #This file can be manually edited using any ASCII editor.
-#File created on 20/04/2020 12:00:00 AM 20/04/2020 10:13:41 PM#
+#File created on 4/05/2020 12:00:00 AM 4/05/2020 6:19:51 PM#
 #
 #IMPORTANT INFO REGARDING the keyboard key AltGr (RAlt as named in DCS) or RMENU as named DCSFP
 #When you press AltGr DCSFP will register RMENU + LCONTROL. This is a bug which "just is". You need to modify that in the profile
@@ -79,6 +79,10 @@ BeginPanelJSON
             "Face": {
               "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
               "FaceType": 2,
+              "ConfigurationOK": true,
+              "TextFont": "Consolas, 12pt",
+              "FontColor": "Black",
+              "BackgroundColor": "White",
               "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f18\\ufc\\3.png",
               "StreamDeckButtonName": 12,
               "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
@@ -237,8 +241,7 @@ BeginPanelJSON
             },
             "HasConfig": true,
             "ActionType": 2,
-            "FaceType": 2,
-            "StreamDeckInstanceId": null
+            "FaceType": 2
           },
           {
             "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
@@ -246,6 +249,10 @@ BeginPanelJSON
             "Face": {
               "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
               "FaceType": 2,
+              "ConfigurationOK": true,
+              "TextFont": "Consolas, 12pt",
+              "FontColor": "Black",
+              "BackgroundColor": "White",
               "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f18\\ufc\\clr.png",
               "StreamDeckButtonName": 13,
               "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
@@ -404,8 +411,7 @@ BeginPanelJSON
             },
             "HasConfig": true,
             "ActionType": 2,
-            "FaceType": 2,
-            "StreamDeckInstanceId": null
+            "FaceType": 2
           },
           {
             "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
@@ -413,7 +419,8 @@ BeginPanelJSON
             "Face": {
               "$type": "NonVisuals.StreamDeck.FaceTypeText, NonVisuals",
               "FaceType": 1,
-              "Text": "1",
+              "ConfigurationOK": false,
+              "ButtonTextTemplate": "",
               "TextFont": "Hornet IFEI, 14.2499981pt",
               "FontColor": "Lime",
               "BackgroundColor": "Black",
@@ -426,8 +433,7 @@ BeginPanelJSON
             "ActionForRelease": null,
             "HasConfig": true,
             "ActionType": 0,
-            "FaceType": 1,
-            "StreamDeckInstanceId": null
+            "FaceType": 1
           },
           {
             "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
@@ -435,6 +441,10 @@ BeginPanelJSON
             "Face": {
               "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
               "FaceType": 2,
+              "ConfigurationOK": true,
+              "TextFont": "Consolas, 12pt",
+              "FontColor": "Black",
+              "BackgroundColor": "White",
               "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f18\\ufc\\1.png",
               "StreamDeckButtonName": 10,
               "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
@@ -593,8 +603,7 @@ BeginPanelJSON
             },
             "HasConfig": true,
             "ActionType": 2,
-            "FaceType": 2,
-            "StreamDeckInstanceId": null
+            "FaceType": 2
           },
           {
             "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
@@ -602,6 +611,10 @@ BeginPanelJSON
             "Face": {
               "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
               "FaceType": 2,
+              "ConfigurationOK": true,
+              "TextFont": "Consolas, 12pt",
+              "FontColor": "Black",
+              "BackgroundColor": "White",
               "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f18\\ufc\\2.png",
               "StreamDeckButtonName": 11,
               "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
@@ -760,8 +773,7 @@ BeginPanelJSON
             },
             "HasConfig": true,
             "ActionType": 2,
-            "FaceType": 2,
-            "StreamDeckInstanceId": null
+            "FaceType": 2
           },
           {
             "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
@@ -769,6 +781,10 @@ BeginPanelJSON
             "Face": {
               "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
               "FaceType": 2,
+              "ConfigurationOK": true,
+              "TextFont": "Consolas, 12pt",
+              "FontColor": "Black",
+              "BackgroundColor": "White",
               "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f18\\ufc\\4.png",
               "StreamDeckButtonName": 18,
               "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
@@ -927,8 +943,7 @@ BeginPanelJSON
             },
             "HasConfig": true,
             "ActionType": 2,
-            "FaceType": 2,
-            "StreamDeckInstanceId": null
+            "FaceType": 2
           },
           {
             "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
@@ -936,6 +951,10 @@ BeginPanelJSON
             "Face": {
               "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
               "FaceType": 2,
+              "ConfigurationOK": true,
+              "TextFont": "Consolas, 12pt",
+              "FontColor": "Black",
+              "BackgroundColor": "White",
               "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f18\\ufc\\5.png",
               "StreamDeckButtonName": 19,
               "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
@@ -1094,8 +1113,7 @@ BeginPanelJSON
             },
             "HasConfig": true,
             "ActionType": 2,
-            "FaceType": 2,
-            "StreamDeckInstanceId": null
+            "FaceType": 2
           },
           {
             "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
@@ -1103,6 +1121,10 @@ BeginPanelJSON
             "Face": {
               "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
               "FaceType": 2,
+              "ConfigurationOK": true,
+              "TextFont": "Consolas, 12pt",
+              "FontColor": "Black",
+              "BackgroundColor": "White",
               "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f18\\ufc\\6.png",
               "StreamDeckButtonName": 20,
               "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
@@ -1261,8 +1283,7 @@ BeginPanelJSON
             },
             "HasConfig": true,
             "ActionType": 2,
-            "FaceType": 2,
-            "StreamDeckInstanceId": null
+            "FaceType": 2
           },
           {
             "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
@@ -1270,6 +1291,10 @@ BeginPanelJSON
             "Face": {
               "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
               "FaceType": 2,
+              "ConfigurationOK": true,
+              "TextFont": "Consolas, 12pt",
+              "FontColor": "Black",
+              "BackgroundColor": "White",
               "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f18\\ufc\\7.png",
               "StreamDeckButtonName": 26,
               "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
@@ -1428,8 +1453,7 @@ BeginPanelJSON
             },
             "HasConfig": true,
             "ActionType": 2,
-            "FaceType": 2,
-            "StreamDeckInstanceId": null
+            "FaceType": 2
           },
           {
             "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
@@ -1437,6 +1461,10 @@ BeginPanelJSON
             "Face": {
               "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
               "FaceType": 2,
+              "ConfigurationOK": true,
+              "TextFont": "Consolas, 12pt",
+              "FontColor": "Black",
+              "BackgroundColor": "White",
               "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f18\\ufc\\8.png",
               "StreamDeckButtonName": 27,
               "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
@@ -1595,8 +1623,7 @@ BeginPanelJSON
             },
             "HasConfig": true,
             "ActionType": 2,
-            "FaceType": 2,
-            "StreamDeckInstanceId": null
+            "FaceType": 2
           },
           {
             "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
@@ -1604,6 +1631,10 @@ BeginPanelJSON
             "Face": {
               "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
               "FaceType": 2,
+              "ConfigurationOK": true,
+              "TextFont": "Consolas, 12pt",
+              "FontColor": "Black",
+              "BackgroundColor": "White",
               "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f18\\ufc\\9.png",
               "StreamDeckButtonName": 28,
               "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
@@ -1762,8 +1793,7 @@ BeginPanelJSON
             },
             "HasConfig": true,
             "ActionType": 2,
-            "FaceType": 2,
-            "StreamDeckInstanceId": null
+            "FaceType": 2
           },
           {
             "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
@@ -1771,6 +1801,10 @@ BeginPanelJSON
             "Face": {
               "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
               "FaceType": 2,
+              "ConfigurationOK": true,
+              "TextFont": "Consolas, 12pt",
+              "FontColor": "Black",
+              "BackgroundColor": "White",
               "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f18\\ufc\\ent.png",
               "StreamDeckButtonName": 21,
               "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
@@ -1929,8 +1963,7 @@ BeginPanelJSON
             },
             "HasConfig": true,
             "ActionType": 2,
-            "FaceType": 2,
-            "StreamDeckInstanceId": null
+            "FaceType": 2
           },
           {
             "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
@@ -1938,6 +1971,10 @@ BeginPanelJSON
             "Face": {
               "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
               "FaceType": 2,
+              "ConfigurationOK": true,
+              "TextFont": "Consolas, 12pt",
+              "FontColor": "Black",
+              "BackgroundColor": "White",
               "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f18\\ufc\\0.png",
               "StreamDeckButtonName": 29,
               "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
@@ -2096,8 +2133,7 @@ BeginPanelJSON
             },
             "HasConfig": true,
             "ActionType": 2,
-            "FaceType": 2,
-            "StreamDeckInstanceId": null
+            "FaceType": 2
           },
           {
             "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
@@ -2105,6 +2141,10 @@ BeginPanelJSON
             "Face": {
               "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
               "FaceType": 2,
+              "ConfigurationOK": true,
+              "TextFont": "Consolas, 12pt",
+              "FontColor": "Black",
+              "BackgroundColor": "White",
               "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f18\\ufc\\ap.png",
               "StreamDeckButtonName": 14,
               "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
@@ -2263,8 +2303,7 @@ BeginPanelJSON
             },
             "HasConfig": true,
             "ActionType": 2,
-            "FaceType": 2,
-            "StreamDeckInstanceId": null
+            "FaceType": 2
           },
           {
             "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
@@ -2272,6 +2311,10 @@ BeginPanelJSON
             "Face": {
               "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
               "FaceType": 2,
+              "ConfigurationOK": true,
+              "TextFont": "Consolas, 12pt",
+              "FontColor": "Black",
+              "BackgroundColor": "White",
               "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f18\\ufc\\ils.png",
               "StreamDeckButtonName": 22,
               "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
@@ -2430,8 +2473,7 @@ BeginPanelJSON
             },
             "HasConfig": true,
             "ActionType": 2,
-            "FaceType": 2,
-            "StreamDeckInstanceId": null
+            "FaceType": 2
           },
           {
             "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
@@ -2439,6 +2481,10 @@ BeginPanelJSON
             "Face": {
               "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
               "FaceType": 2,
+              "ConfigurationOK": true,
+              "TextFont": "Consolas, 12pt",
+              "FontColor": "Black",
+              "BackgroundColor": "White",
               "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f18\\ufc\\bcn.png",
               "StreamDeckButtonName": 30,
               "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
@@ -2597,8 +2643,7 @@ BeginPanelJSON
             },
             "HasConfig": true,
             "ActionType": 2,
-            "FaceType": 2,
-            "StreamDeckInstanceId": null
+            "FaceType": 2
           },
           {
             "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
@@ -2606,6 +2651,10 @@ BeginPanelJSON
             "Face": {
               "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
               "FaceType": 2,
+              "ConfigurationOK": true,
+              "TextFont": "Consolas, 12pt",
+              "FontColor": "Black",
+              "BackgroundColor": "White",
               "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f18\\ufc\\iff.png",
               "StreamDeckButtonName": 15,
               "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
@@ -2764,8 +2813,7 @@ BeginPanelJSON
             },
             "HasConfig": true,
             "ActionType": 2,
-            "FaceType": 2,
-            "StreamDeckInstanceId": null
+            "FaceType": 2
           },
           {
             "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
@@ -2773,6 +2821,10 @@ BeginPanelJSON
             "Face": {
               "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
               "FaceType": 2,
+              "ConfigurationOK": true,
+              "TextFont": "Consolas, 12pt",
+              "FontColor": "Black",
+              "BackgroundColor": "White",
               "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f18\\ufc\\dl.png",
               "StreamDeckButtonName": 23,
               "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
@@ -2931,8 +2983,7 @@ BeginPanelJSON
             },
             "HasConfig": true,
             "ActionType": 2,
-            "FaceType": 2,
-            "StreamDeckInstanceId": null
+            "FaceType": 2
           },
           {
             "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
@@ -2940,6 +2991,10 @@ BeginPanelJSON
             "Face": {
               "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
               "FaceType": 2,
+              "ConfigurationOK": true,
+              "TextFont": "Consolas, 12pt",
+              "FontColor": "Black",
+              "BackgroundColor": "White",
               "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f18\\ufc\\onoff.png",
               "StreamDeckButtonName": 31,
               "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
@@ -3098,8 +3153,7 @@ BeginPanelJSON
             },
             "HasConfig": true,
             "ActionType": 2,
-            "FaceType": 2,
-            "StreamDeckInstanceId": null
+            "FaceType": 2
           },
           {
             "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
@@ -3107,6 +3161,10 @@ BeginPanelJSON
             "Face": {
               "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
               "FaceType": 2,
+              "ConfigurationOK": true,
+              "TextFont": "Consolas, 12pt",
+              "FontColor": "Black",
+              "BackgroundColor": "White",
               "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f18\\ufc\\tcn.png",
               "StreamDeckButtonName": 16,
               "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
@@ -3265,8 +3323,7 @@ BeginPanelJSON
             },
             "HasConfig": true,
             "ActionType": 2,
-            "FaceType": 2,
-            "StreamDeckInstanceId": null
+            "FaceType": 2
           },
           {
             "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
@@ -3274,6 +3331,10 @@ BeginPanelJSON
             "Face": {
               "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
               "FaceType": 2,
+              "ConfigurationOK": true,
+              "TextFont": "Consolas, 12pt",
+              "FontColor": "Black",
+              "BackgroundColor": "White",
               "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f18\\ufc\\emcon.png",
               "StreamDeckButtonName": 24,
               "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
@@ -3432,8 +3493,7 @@ BeginPanelJSON
             },
             "HasConfig": true,
             "ActionType": 2,
-            "FaceType": 2,
-            "StreamDeckInstanceId": null
+            "FaceType": 2
           },
           {
             "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
@@ -3441,6 +3501,10 @@ BeginPanelJSON
             "Face": {
               "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
               "FaceType": 2,
+              "ConfigurationOK": true,
+              "TextFont": "Consolas, 12pt",
+              "FontColor": "Black",
+              "BackgroundColor": "White",
               "ImageFile": "C:\\Users\\cahil\\OneDrive\\Documents\\Git\\dcs\\f18\\ufc\\ip.png",
               "StreamDeckButtonName": 9,
               "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
@@ -3599,23 +3663,50 @@ BeginPanelJSON
             },
             "HasConfig": true,
             "ActionType": 2,
-            "FaceType": 2,
-            "StreamDeckInstanceId": null
+            "FaceType": 2
           },
           {
             "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
             "StreamDeckButtonName": 4,
             "Face": {
-              "$type": "NonVisuals.StreamDeck.FaceTypeText, NonVisuals",
-              "FaceType": 1,
-              "Text": ":TEMP",
-              "TextFont": "Hornet IFEI, 14.2499981pt",
+              "$type": "NonVisuals.StreamDeck.DCSBIOSDecoder, NonVisuals",
+              "UseFormula": false,
+              "Formula": "",
+              "DCSBIOSOutput": {
+                "$type": "DCS_BIOS.DCSBIOSOutput, DCS-BIOS",
+                "ControlId": "UFC_OPTION_DISPLAY_1",
+                "Address": 29746,
+                "Mask": 0,
+                "Shiftvalue": 0,
+                "DCSBiosOutputType": 0,
+                "DCSBiosOutputComparison": 0,
+                "ControlDescription": "Option Display 1",
+                "MaxValue": 0,
+                "MaxLength": 4,
+                "ControlType": null
+              },
+              "DCSBIOSConverters": {
+                "$type": "System.Collections.Generic.List`1[[NonVisuals.StreamDeck.DCSBIOSConverter, NonVisuals]], mscorlib",
+                "$values": []
+              },
+              "TreatStringAsNumber": false,
+              "RawTextFont": "Hornet IFEI, 24pt",
+              "RawFontColor": "Lime",
+              "RawBackgroundColor": "Black",
+              "DecoderSourceType": 0,
+              "DecoderOutputType": 0,
+              "FaceType": 4,
+              "ConfigurationOK": true,
+              "ButtonTextTemplate": "{dcsbios}",
+              "TextFont": "Hornet IFEI, 24pt",
               "FontColor": "Lime",
               "BackgroundColor": "Black",
+              "UintDcsBiosValue": 4294967295,
+              "StringDcsBiosValue": "GRCV",
               "StreamDeckButtonName": 4,
               "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
-              "OffsetX": 10,
-              "OffsetY": 28
+              "OffsetX": 2,
+              "OffsetY": 22
             },
             "ActionForPress": {
               "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
@@ -3769,23 +3860,50 @@ BeginPanelJSON
             },
             "HasConfig": true,
             "ActionType": 2,
-            "FaceType": 1,
-            "StreamDeckInstanceId": null
+            "FaceType": 4
           },
           {
             "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
             "StreamDeckButtonName": 5,
             "Face": {
-              "$type": "NonVisuals.StreamDeck.FaceTypeText, NonVisuals",
-              "FaceType": 1,
-              "Text": ":TEMP",
-              "TextFont": "Hornet IFEI, 14.2499981pt",
+              "$type": "NonVisuals.StreamDeck.DCSBIOSDecoder, NonVisuals",
+              "UseFormula": false,
+              "Formula": "",
+              "DCSBIOSOutput": {
+                "$type": "DCS_BIOS.DCSBIOSOutput, DCS-BIOS",
+                "ControlId": "UFC_OPTION_DISPLAY_1",
+                "Address": 29746,
+                "Mask": 0,
+                "Shiftvalue": 0,
+                "DCSBiosOutputType": 0,
+                "DCSBiosOutputComparison": 0,
+                "ControlDescription": "Option Display 1",
+                "MaxValue": 0,
+                "MaxLength": 4,
+                "ControlType": null
+              },
+              "DCSBIOSConverters": {
+                "$type": "System.Collections.Generic.List`1[[NonVisuals.StreamDeck.DCSBIOSConverter, NonVisuals]], mscorlib",
+                "$values": []
+              },
+              "TreatStringAsNumber": false,
+              "RawTextFont": "Hornet IFEI, 24pt",
+              "RawFontColor": "Lime",
+              "RawBackgroundColor": "Black",
+              "DecoderSourceType": 0,
+              "DecoderOutputType": 0,
+              "FaceType": 4,
+              "ConfigurationOK": true,
+              "ButtonTextTemplate": "{dcsbios}",
+              "TextFont": "Hornet IFEI, 24pt",
               "FontColor": "Lime",
               "BackgroundColor": "Black",
+              "UintDcsBiosValue": 4294967295,
+              "StringDcsBiosValue": "GRCV",
               "StreamDeckButtonName": 5,
               "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
-              "OffsetX": 10,
-              "OffsetY": 28
+              "OffsetX": 2,
+              "OffsetY": 22
             },
             "ActionForPress": {
               "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
@@ -3939,23 +4057,50 @@ BeginPanelJSON
             },
             "HasConfig": true,
             "ActionType": 2,
-            "FaceType": 1,
-            "StreamDeckInstanceId": null
+            "FaceType": 4
           },
           {
             "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
             "StreamDeckButtonName": 6,
             "Face": {
-              "$type": "NonVisuals.StreamDeck.FaceTypeText, NonVisuals",
-              "FaceType": 1,
-              "Text": ":TEMP",
-              "TextFont": "Hornet IFEI, 14.2499981pt",
+              "$type": "NonVisuals.StreamDeck.DCSBIOSDecoder, NonVisuals",
+              "UseFormula": false,
+              "Formula": "",
+              "DCSBIOSOutput": {
+                "$type": "DCS_BIOS.DCSBIOSOutput, DCS-BIOS",
+                "ControlId": "UFC_OPTION_DISPLAY_1",
+                "Address": 29746,
+                "Mask": 0,
+                "Shiftvalue": 0,
+                "DCSBiosOutputType": 0,
+                "DCSBiosOutputComparison": 0,
+                "ControlDescription": "Option Display 1",
+                "MaxValue": 0,
+                "MaxLength": 4,
+                "ControlType": null
+              },
+              "DCSBIOSConverters": {
+                "$type": "System.Collections.Generic.List`1[[NonVisuals.StreamDeck.DCSBIOSConverter, NonVisuals]], mscorlib",
+                "$values": []
+              },
+              "TreatStringAsNumber": false,
+              "RawTextFont": "Hornet IFEI, 24pt",
+              "RawFontColor": "Lime",
+              "RawBackgroundColor": "Black",
+              "DecoderSourceType": 0,
+              "DecoderOutputType": 0,
+              "FaceType": 4,
+              "ConfigurationOK": true,
+              "ButtonTextTemplate": "{dcsbios}",
+              "TextFont": "Hornet IFEI, 24pt",
               "FontColor": "Lime",
               "BackgroundColor": "Black",
+              "UintDcsBiosValue": 4294967295,
+              "StringDcsBiosValue": "GRCV",
               "StreamDeckButtonName": 6,
               "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
-              "OffsetX": 10,
-              "OffsetY": 28
+              "OffsetX": 2,
+              "OffsetY": 22
             },
             "ActionForPress": {
               "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
@@ -4109,23 +4254,50 @@ BeginPanelJSON
             },
             "HasConfig": true,
             "ActionType": 2,
-            "FaceType": 1,
-            "StreamDeckInstanceId": null
+            "FaceType": 4
           },
           {
             "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
             "StreamDeckButtonName": 7,
             "Face": {
-              "$type": "NonVisuals.StreamDeck.FaceTypeText, NonVisuals",
-              "FaceType": 1,
-              "Text": ":TEMP",
-              "TextFont": "Hornet IFEI, 14.2499981pt",
+              "$type": "NonVisuals.StreamDeck.DCSBIOSDecoder, NonVisuals",
+              "UseFormula": false,
+              "Formula": "",
+              "DCSBIOSOutput": {
+                "$type": "DCS_BIOS.DCSBIOSOutput, DCS-BIOS",
+                "ControlId": "UFC_OPTION_DISPLAY_1",
+                "Address": 29746,
+                "Mask": 0,
+                "Shiftvalue": 0,
+                "DCSBiosOutputType": 0,
+                "DCSBiosOutputComparison": 0,
+                "ControlDescription": "Option Display 1",
+                "MaxValue": 0,
+                "MaxLength": 4,
+                "ControlType": null
+              },
+              "DCSBIOSConverters": {
+                "$type": "System.Collections.Generic.List`1[[NonVisuals.StreamDeck.DCSBIOSConverter, NonVisuals]], mscorlib",
+                "$values": []
+              },
+              "TreatStringAsNumber": false,
+              "RawTextFont": "Hornet IFEI, 24pt",
+              "RawFontColor": "Lime",
+              "RawBackgroundColor": "Black",
+              "DecoderSourceType": 0,
+              "DecoderOutputType": 0,
+              "FaceType": 4,
+              "ConfigurationOK": true,
+              "ButtonTextTemplate": "{dcsbios}",
+              "TextFont": "Hornet IFEI, 24pt",
               "FontColor": "Lime",
               "BackgroundColor": "Black",
+              "UintDcsBiosValue": 4294967295,
+              "StringDcsBiosValue": "GRCV",
               "StreamDeckButtonName": 7,
               "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
-              "OffsetX": 10,
-              "OffsetY": 28
+              "OffsetX": 2,
+              "OffsetY": 22
             },
             "ActionForPress": {
               "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
@@ -4279,23 +4451,50 @@ BeginPanelJSON
             },
             "HasConfig": true,
             "ActionType": 2,
-            "FaceType": 1,
-            "StreamDeckInstanceId": null
+            "FaceType": 4
           },
           {
             "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
             "StreamDeckButtonName": 8,
             "Face": {
-              "$type": "NonVisuals.StreamDeck.FaceTypeText, NonVisuals",
-              "FaceType": 1,
-              "Text": ":TEMP",
-              "TextFont": "Hornet IFEI, 14.2499981pt",
+              "$type": "NonVisuals.StreamDeck.DCSBIOSDecoder, NonVisuals",
+              "UseFormula": false,
+              "Formula": "",
+              "DCSBIOSOutput": {
+                "$type": "DCS_BIOS.DCSBIOSOutput, DCS-BIOS",
+                "ControlId": "UFC_OPTION_DISPLAY_1",
+                "Address": 29746,
+                "Mask": 0,
+                "Shiftvalue": 0,
+                "DCSBiosOutputType": 0,
+                "DCSBiosOutputComparison": 0,
+                "ControlDescription": "Option Display 1",
+                "MaxValue": 0,
+                "MaxLength": 4,
+                "ControlType": null
+              },
+              "DCSBIOSConverters": {
+                "$type": "System.Collections.Generic.List`1[[NonVisuals.StreamDeck.DCSBIOSConverter, NonVisuals]], mscorlib",
+                "$values": []
+              },
+              "TreatStringAsNumber": false,
+              "RawTextFont": "Hornet IFEI, 24pt",
+              "RawFontColor": "Lime",
+              "RawBackgroundColor": "Black",
+              "DecoderSourceType": 0,
+              "DecoderOutputType": 0,
+              "FaceType": 4,
+              "ConfigurationOK": true,
+              "ButtonTextTemplate": "{dcsbios}",
+              "TextFont": "Hornet IFEI, 24pt",
               "FontColor": "Lime",
               "BackgroundColor": "Black",
+              "UintDcsBiosValue": 4294967295,
+              "StringDcsBiosValue": "GRCV",
               "StreamDeckButtonName": 8,
               "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
-              "OffsetX": 10,
-              "OffsetY": 28
+              "OffsetX": 2,
+              "OffsetY": 22
             },
             "ActionForPress": {
               "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
@@ -4449,8 +4648,947 @@ BeginPanelJSON
             },
             "HasConfig": true,
             "ActionType": 2,
-            "FaceType": 1,
-            "StreamDeckInstanceId": null
+            "FaceType": 4
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 25,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.DCSBIOSDecoder, NonVisuals",
+              "UseFormula": false,
+              "Formula": "",
+              "DCSBIOSOutput": {
+                "$type": "DCS_BIOS.DCSBIOSOutput, DCS-BIOS",
+                "ControlId": "COMM1_CHANNEL_NUMERIC",
+                "Address": 29700,
+                "Mask": 65535,
+                "Shiftvalue": 0,
+                "DCSBiosOutputType": 1,
+                "DCSBiosOutputComparison": 0,
+                "ControlDescription": "Comm 1 Channel as number",
+                "MaxValue": 65535,
+                "MaxLength": 0,
+                "ControlType": null
+              },
+              "DCSBIOSConverters": {
+                "$type": "System.Collections.Generic.List`1[[NonVisuals.StreamDeck.DCSBIOSConverter, NonVisuals]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "NonVisuals.StreamDeck.DCSBIOSConverter, NonVisuals",
+                    "FaceTypeText": {
+                      "$type": "NonVisuals.StreamDeck.FaceTypeText, NonVisuals",
+                      "FaceType": 1,
+                      "ConfigurationOK": true,
+                      "ButtonTextTemplate": "G",
+                      "TextFont": "Hornet IFEI, 35.9999962pt",
+                      "FontColor": "Lime",
+                      "BackgroundColor": "Black",
+                      "StreamDeckButtonName": 0,
+                      "StreamDeckInstanceId": null,
+                      "OffsetX": 18,
+                      "OffsetY": 14
+                    },
+                    "FaceTypeImage": {
+                      "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+                      "FaceType": 2,
+                      "ConfigurationOK": false,
+                      "TextFont": "Consolas, 12pt",
+                      "FontColor": "Black",
+                      "BackgroundColor": "White",
+                      "ImageFile": "",
+                      "StreamDeckButtonName": 0,
+                      "StreamDeckInstanceId": null,
+                      "OffsetX": 0,
+                      "OffsetY": 0
+                    },
+                    "FaceTypeDCSBIOSOverlay": {
+                      "$type": "NonVisuals.StreamDeck.FaceTypeDCSBIOSOverlay, NonVisuals",
+                      "FaceType": 8,
+                      "BackgroundBitmapPath": "",
+                      "ConfigurationOK": false,
+                      "ButtonTextTemplate": "",
+                      "TextFont": "Consolas, 12pt",
+                      "FontColor": "Black",
+                      "BackgroundColor": "White",
+                      "UintDcsBiosValue": 0,
+                      "StringDcsBiosValue": "",
+                      "StreamDeckButtonName": 0,
+                      "StreamDeckInstanceId": null,
+                      "OffsetX": 0,
+                      "OffsetY": 0
+                    },
+                    "ConverterOutputType": 1,
+                    "Comparator1": 0,
+                    "ReferenceValue1": 21.0,
+                    "Comparator2": 10,
+                    "ReferenceValue2": 0.0
+                  },
+                  {
+                    "$type": "NonVisuals.StreamDeck.DCSBIOSConverter, NonVisuals",
+                    "FaceTypeText": {
+                      "$type": "NonVisuals.StreamDeck.FaceTypeText, NonVisuals",
+                      "FaceType": 1,
+                      "ConfigurationOK": true,
+                      "ButtonTextTemplate": "{dcsbios}",
+                      "TextFont": "Hornet IFEI, 35.9999962pt",
+                      "FontColor": "Lime",
+                      "BackgroundColor": "Black",
+                      "StreamDeckButtonName": 0,
+                      "StreamDeckInstanceId": null,
+                      "OffsetX": 6,
+                      "OffsetY": 14
+                    },
+                    "FaceTypeImage": {
+                      "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+                      "FaceType": 2,
+                      "ConfigurationOK": false,
+                      "TextFont": "Consolas, 12pt",
+                      "FontColor": "Black",
+                      "BackgroundColor": "White",
+                      "ImageFile": "",
+                      "StreamDeckButtonName": 0,
+                      "StreamDeckInstanceId": null,
+                      "OffsetX": 0,
+                      "OffsetY": 0
+                    },
+                    "FaceTypeDCSBIOSOverlay": {
+                      "$type": "NonVisuals.StreamDeck.FaceTypeDCSBIOSOverlay, NonVisuals",
+                      "FaceType": 8,
+                      "BackgroundBitmapPath": "",
+                      "ConfigurationOK": false,
+                      "ButtonTextTemplate": "",
+                      "TextFont": "Consolas, 12pt",
+                      "FontColor": "Black",
+                      "BackgroundColor": "White",
+                      "UintDcsBiosValue": 0,
+                      "StringDcsBiosValue": "",
+                      "StreamDeckButtonName": 0,
+                      "StreamDeckInstanceId": null,
+                      "OffsetX": 0,
+                      "OffsetY": 0
+                    },
+                    "ConverterOutputType": 1,
+                    "Comparator1": 3,
+                    "ReferenceValue1": 20.0,
+                    "Comparator2": 10,
+                    "ReferenceValue2": 0.0
+                  },
+                  {
+                    "$type": "NonVisuals.StreamDeck.DCSBIOSConverter, NonVisuals",
+                    "FaceTypeText": {
+                      "$type": "NonVisuals.StreamDeck.FaceTypeText, NonVisuals",
+                      "FaceType": 1,
+                      "ConfigurationOK": true,
+                      "ButtonTextTemplate": "M",
+                      "TextFont": "Hornet IFEI, 35.9999962pt",
+                      "FontColor": "Lime",
+                      "BackgroundColor": "Black",
+                      "StreamDeckButtonName": 0,
+                      "StreamDeckInstanceId": null,
+                      "OffsetX": 18,
+                      "OffsetY": 14
+                    },
+                    "FaceTypeImage": {
+                      "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+                      "FaceType": 2,
+                      "ConfigurationOK": false,
+                      "TextFont": "Consolas, 12pt",
+                      "FontColor": "Black",
+                      "BackgroundColor": "White",
+                      "ImageFile": "",
+                      "StreamDeckButtonName": 0,
+                      "StreamDeckInstanceId": null,
+                      "OffsetX": 0,
+                      "OffsetY": 0
+                    },
+                    "FaceTypeDCSBIOSOverlay": {
+                      "$type": "NonVisuals.StreamDeck.FaceTypeDCSBIOSOverlay, NonVisuals",
+                      "FaceType": 8,
+                      "BackgroundBitmapPath": "",
+                      "ConfigurationOK": false,
+                      "ButtonTextTemplate": "",
+                      "TextFont": "Consolas, 12pt",
+                      "FontColor": "Black",
+                      "BackgroundColor": "White",
+                      "UintDcsBiosValue": 0,
+                      "StringDcsBiosValue": "",
+                      "StreamDeckButtonName": 0,
+                      "StreamDeckInstanceId": null,
+                      "OffsetX": 0,
+                      "OffsetY": 0
+                    },
+                    "ConverterOutputType": 1,
+                    "Comparator1": 0,
+                    "ReferenceValue1": 22.0,
+                    "Comparator2": 10,
+                    "ReferenceValue2": 0.0
+                  },
+                  {
+                    "$type": "NonVisuals.StreamDeck.DCSBIOSConverter, NonVisuals",
+                    "FaceTypeText": {
+                      "$type": "NonVisuals.StreamDeck.FaceTypeText, NonVisuals",
+                      "FaceType": 1,
+                      "ConfigurationOK": true,
+                      "ButtonTextTemplate": "C",
+                      "TextFont": "Hornet IFEI, 35.9999962pt",
+                      "FontColor": "Lime",
+                      "BackgroundColor": "Black",
+                      "StreamDeckButtonName": 0,
+                      "StreamDeckInstanceId": null,
+                      "OffsetX": 18,
+                      "OffsetY": 14
+                    },
+                    "FaceTypeImage": {
+                      "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+                      "FaceType": 2,
+                      "ConfigurationOK": false,
+                      "TextFont": "Consolas, 12pt",
+                      "FontColor": "Black",
+                      "BackgroundColor": "White",
+                      "ImageFile": "",
+                      "StreamDeckButtonName": 0,
+                      "StreamDeckInstanceId": null,
+                      "OffsetX": 0,
+                      "OffsetY": 0
+                    },
+                    "FaceTypeDCSBIOSOverlay": {
+                      "$type": "NonVisuals.StreamDeck.FaceTypeDCSBIOSOverlay, NonVisuals",
+                      "FaceType": 8,
+                      "BackgroundBitmapPath": "",
+                      "ConfigurationOK": false,
+                      "ButtonTextTemplate": "",
+                      "TextFont": "Consolas, 12pt",
+                      "FontColor": "Black",
+                      "BackgroundColor": "White",
+                      "UintDcsBiosValue": 0,
+                      "StringDcsBiosValue": "",
+                      "StreamDeckButtonName": 0,
+                      "StreamDeckInstanceId": null,
+                      "OffsetX": 0,
+                      "OffsetY": 0
+                    },
+                    "ConverterOutputType": 1,
+                    "Comparator1": 0,
+                    "ReferenceValue1": 23.0,
+                    "Comparator2": 10,
+                    "ReferenceValue2": 0.0
+                  },
+                  {
+                    "$type": "NonVisuals.StreamDeck.DCSBIOSConverter, NonVisuals",
+                    "FaceTypeText": {
+                      "$type": "NonVisuals.StreamDeck.FaceTypeText, NonVisuals",
+                      "FaceType": 1,
+                      "ConfigurationOK": true,
+                      "ButtonTextTemplate": "S",
+                      "TextFont": "Hornet IFEI, 35.9999962pt",
+                      "FontColor": "Lime",
+                      "BackgroundColor": "Black",
+                      "StreamDeckButtonName": 0,
+                      "StreamDeckInstanceId": null,
+                      "OffsetX": 18,
+                      "OffsetY": 14
+                    },
+                    "FaceTypeImage": {
+                      "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+                      "FaceType": 2,
+                      "ConfigurationOK": false,
+                      "TextFont": "Hornet IFEI, 35.9999962pt",
+                      "FontColor": "Black",
+                      "BackgroundColor": "Black",
+                      "ImageFile": "",
+                      "StreamDeckButtonName": 0,
+                      "StreamDeckInstanceId": null,
+                      "OffsetX": 0,
+                      "OffsetY": 0
+                    },
+                    "FaceTypeDCSBIOSOverlay": {
+                      "$type": "NonVisuals.StreamDeck.FaceTypeDCSBIOSOverlay, NonVisuals",
+                      "FaceType": 8,
+                      "BackgroundBitmapPath": "",
+                      "ConfigurationOK": false,
+                      "ButtonTextTemplate": "",
+                      "TextFont": "Hornet IFEI, 35.9999962pt",
+                      "FontColor": "Black",
+                      "BackgroundColor": "Black",
+                      "UintDcsBiosValue": 0,
+                      "StringDcsBiosValue": "",
+                      "StreamDeckButtonName": 0,
+                      "StreamDeckInstanceId": null,
+                      "OffsetX": 0,
+                      "OffsetY": 0
+                    },
+                    "ConverterOutputType": 1,
+                    "Comparator1": 0,
+                    "ReferenceValue1": 24.0,
+                    "Comparator2": 10,
+                    "ReferenceValue2": 0.0
+                  }
+                ]
+              },
+              "TreatStringAsNumber": false,
+              "RawTextFont": "Hornet IFEI, 35.9999962pt",
+              "RawFontColor": "Lime",
+              "RawBackgroundColor": "Black",
+              "DecoderSourceType": 1,
+              "DecoderOutputType": 1,
+              "FaceType": 4,
+              "ConfigurationOK": true,
+              "ButtonTextTemplate": "{dcsbios}",
+              "TextFont": "Hornet IFEI, 35.9999962pt",
+              "FontColor": "Lime",
+              "BackgroundColor": "Black",
+              "UintDcsBiosValue": 13,
+              "StringDcsBiosValue": "",
+              "StreamDeckButtonName": 25,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 6,
+              "OffsetY": 16
+            },
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 25,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "UFC_COMM1_PULL",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 1,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "UFC_COMM1_PULL",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "UFC_COMM1_PULL",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 1,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "UFC_COMM1_PULL",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "UFC_COMM1_PULL",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "COMM 1 Channel Selector Knob Pull",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "ActionForRelease": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 25,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": false,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "UFC_COMM1_PULL",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 0,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "UFC_COMM1_PULL",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "UFC_COMM1_PULL",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "UFC_COMM1_PULL",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "UFC_COMM1_PULL",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "COMM 1 Channel Selector Knob Pull",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "HasConfig": true,
+            "ActionType": 2,
+            "FaceType": 4
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 32,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.DCSBIOSDecoder, NonVisuals",
+              "UseFormula": false,
+              "Formula": "",
+              "DCSBIOSOutput": {
+                "$type": "DCS_BIOS.DCSBIOSOutput, DCS-BIOS",
+                "ControlId": "COMM2_CHANNEL_NUMERIC",
+                "Address": 29702,
+                "Mask": 65535,
+                "Shiftvalue": 0,
+                "DCSBiosOutputType": 1,
+                "DCSBiosOutputComparison": 0,
+                "ControlDescription": "Comm 2 Channel as number",
+                "MaxValue": 65535,
+                "MaxLength": 0,
+                "ControlType": null
+              },
+              "DCSBIOSConverters": {
+                "$type": "System.Collections.Generic.List`1[[NonVisuals.StreamDeck.DCSBIOSConverter, NonVisuals]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "NonVisuals.StreamDeck.DCSBIOSConverter, NonVisuals",
+                    "FaceTypeText": {
+                      "$type": "NonVisuals.StreamDeck.FaceTypeText, NonVisuals",
+                      "FaceType": 1,
+                      "ConfigurationOK": true,
+                      "ButtonTextTemplate": "G",
+                      "TextFont": "Hornet IFEI, 35.9999962pt",
+                      "FontColor": "Lime",
+                      "BackgroundColor": "Black",
+                      "StreamDeckButtonName": 0,
+                      "StreamDeckInstanceId": null,
+                      "OffsetX": 18,
+                      "OffsetY": 14
+                    },
+                    "FaceTypeImage": {
+                      "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+                      "FaceType": 2,
+                      "ConfigurationOK": false,
+                      "TextFont": "Consolas, 12pt",
+                      "FontColor": "Black",
+                      "BackgroundColor": "White",
+                      "ImageFile": "",
+                      "StreamDeckButtonName": 0,
+                      "StreamDeckInstanceId": null,
+                      "OffsetX": 0,
+                      "OffsetY": 0
+                    },
+                    "FaceTypeDCSBIOSOverlay": {
+                      "$type": "NonVisuals.StreamDeck.FaceTypeDCSBIOSOverlay, NonVisuals",
+                      "FaceType": 8,
+                      "BackgroundBitmapPath": "",
+                      "ConfigurationOK": false,
+                      "ButtonTextTemplate": "",
+                      "TextFont": "Consolas, 12pt",
+                      "FontColor": "Black",
+                      "BackgroundColor": "White",
+                      "UintDcsBiosValue": 0,
+                      "StringDcsBiosValue": "",
+                      "StreamDeckButtonName": 0,
+                      "StreamDeckInstanceId": null,
+                      "OffsetX": 0,
+                      "OffsetY": 0
+                    },
+                    "ConverterOutputType": 1,
+                    "Comparator1": 0,
+                    "ReferenceValue1": 21.0,
+                    "Comparator2": 10,
+                    "ReferenceValue2": 0.0
+                  },
+                  {
+                    "$type": "NonVisuals.StreamDeck.DCSBIOSConverter, NonVisuals",
+                    "FaceTypeText": {
+                      "$type": "NonVisuals.StreamDeck.FaceTypeText, NonVisuals",
+                      "FaceType": 1,
+                      "ConfigurationOK": true,
+                      "ButtonTextTemplate": "{dcsbios}",
+                      "TextFont": "Hornet IFEI, 35.9999962pt",
+                      "FontColor": "Lime",
+                      "BackgroundColor": "Black",
+                      "StreamDeckButtonName": 0,
+                      "StreamDeckInstanceId": null,
+                      "OffsetX": 6,
+                      "OffsetY": 14
+                    },
+                    "FaceTypeImage": {
+                      "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+                      "FaceType": 2,
+                      "ConfigurationOK": false,
+                      "TextFont": "Consolas, 12pt",
+                      "FontColor": "Black",
+                      "BackgroundColor": "White",
+                      "ImageFile": "",
+                      "StreamDeckButtonName": 0,
+                      "StreamDeckInstanceId": null,
+                      "OffsetX": 0,
+                      "OffsetY": 0
+                    },
+                    "FaceTypeDCSBIOSOverlay": {
+                      "$type": "NonVisuals.StreamDeck.FaceTypeDCSBIOSOverlay, NonVisuals",
+                      "FaceType": 8,
+                      "BackgroundBitmapPath": "",
+                      "ConfigurationOK": false,
+                      "ButtonTextTemplate": "",
+                      "TextFont": "Consolas, 12pt",
+                      "FontColor": "Black",
+                      "BackgroundColor": "White",
+                      "UintDcsBiosValue": 0,
+                      "StringDcsBiosValue": "",
+                      "StreamDeckButtonName": 0,
+                      "StreamDeckInstanceId": null,
+                      "OffsetX": 0,
+                      "OffsetY": 0
+                    },
+                    "ConverterOutputType": 1,
+                    "Comparator1": 3,
+                    "ReferenceValue1": 20.0,
+                    "Comparator2": 10,
+                    "ReferenceValue2": 0.0
+                  },
+                  {
+                    "$type": "NonVisuals.StreamDeck.DCSBIOSConverter, NonVisuals",
+                    "FaceTypeText": {
+                      "$type": "NonVisuals.StreamDeck.FaceTypeText, NonVisuals",
+                      "FaceType": 1,
+                      "ConfigurationOK": true,
+                      "ButtonTextTemplate": "M",
+                      "TextFont": "Hornet IFEI, 35.9999962pt",
+                      "FontColor": "Lime",
+                      "BackgroundColor": "Black",
+                      "StreamDeckButtonName": 0,
+                      "StreamDeckInstanceId": null,
+                      "OffsetX": 18,
+                      "OffsetY": 14
+                    },
+                    "FaceTypeImage": {
+                      "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+                      "FaceType": 2,
+                      "ConfigurationOK": false,
+                      "TextFont": "Consolas, 12pt",
+                      "FontColor": "Black",
+                      "BackgroundColor": "White",
+                      "ImageFile": "",
+                      "StreamDeckButtonName": 0,
+                      "StreamDeckInstanceId": null,
+                      "OffsetX": 0,
+                      "OffsetY": 0
+                    },
+                    "FaceTypeDCSBIOSOverlay": {
+                      "$type": "NonVisuals.StreamDeck.FaceTypeDCSBIOSOverlay, NonVisuals",
+                      "FaceType": 8,
+                      "BackgroundBitmapPath": "",
+                      "ConfigurationOK": false,
+                      "ButtonTextTemplate": "",
+                      "TextFont": "Consolas, 12pt",
+                      "FontColor": "Black",
+                      "BackgroundColor": "White",
+                      "UintDcsBiosValue": 0,
+                      "StringDcsBiosValue": "",
+                      "StreamDeckButtonName": 0,
+                      "StreamDeckInstanceId": null,
+                      "OffsetX": 0,
+                      "OffsetY": 0
+                    },
+                    "ConverterOutputType": 1,
+                    "Comparator1": 0,
+                    "ReferenceValue1": 22.0,
+                    "Comparator2": 10,
+                    "ReferenceValue2": 0.0
+                  },
+                  {
+                    "$type": "NonVisuals.StreamDeck.DCSBIOSConverter, NonVisuals",
+                    "FaceTypeText": {
+                      "$type": "NonVisuals.StreamDeck.FaceTypeText, NonVisuals",
+                      "FaceType": 1,
+                      "ConfigurationOK": true,
+                      "ButtonTextTemplate": "C",
+                      "TextFont": "Hornet IFEI, 35.9999962pt",
+                      "FontColor": "Lime",
+                      "BackgroundColor": "Black",
+                      "StreamDeckButtonName": 0,
+                      "StreamDeckInstanceId": null,
+                      "OffsetX": 18,
+                      "OffsetY": 14
+                    },
+                    "FaceTypeImage": {
+                      "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+                      "FaceType": 2,
+                      "ConfigurationOK": false,
+                      "TextFont": "Consolas, 12pt",
+                      "FontColor": "Black",
+                      "BackgroundColor": "White",
+                      "ImageFile": "",
+                      "StreamDeckButtonName": 0,
+                      "StreamDeckInstanceId": null,
+                      "OffsetX": 0,
+                      "OffsetY": 0
+                    },
+                    "FaceTypeDCSBIOSOverlay": {
+                      "$type": "NonVisuals.StreamDeck.FaceTypeDCSBIOSOverlay, NonVisuals",
+                      "FaceType": 8,
+                      "BackgroundBitmapPath": "",
+                      "ConfigurationOK": false,
+                      "ButtonTextTemplate": "",
+                      "TextFont": "Consolas, 12pt",
+                      "FontColor": "Black",
+                      "BackgroundColor": "White",
+                      "UintDcsBiosValue": 0,
+                      "StringDcsBiosValue": "",
+                      "StreamDeckButtonName": 0,
+                      "StreamDeckInstanceId": null,
+                      "OffsetX": 0,
+                      "OffsetY": 0
+                    },
+                    "ConverterOutputType": 1,
+                    "Comparator1": 0,
+                    "ReferenceValue1": 23.0,
+                    "Comparator2": 10,
+                    "ReferenceValue2": 0.0
+                  },
+                  {
+                    "$type": "NonVisuals.StreamDeck.DCSBIOSConverter, NonVisuals",
+                    "FaceTypeText": {
+                      "$type": "NonVisuals.StreamDeck.FaceTypeText, NonVisuals",
+                      "FaceType": 1,
+                      "ConfigurationOK": true,
+                      "ButtonTextTemplate": "S",
+                      "TextFont": "Hornet IFEI, 35.9999962pt",
+                      "FontColor": "Lime",
+                      "BackgroundColor": "Black",
+                      "StreamDeckButtonName": 0,
+                      "StreamDeckInstanceId": null,
+                      "OffsetX": 18,
+                      "OffsetY": 14
+                    },
+                    "FaceTypeImage": {
+                      "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
+                      "FaceType": 2,
+                      "ConfigurationOK": false,
+                      "TextFont": "Hornet IFEI, 35.9999962pt",
+                      "FontColor": "Black",
+                      "BackgroundColor": "Black",
+                      "ImageFile": "",
+                      "StreamDeckButtonName": 0,
+                      "StreamDeckInstanceId": null,
+                      "OffsetX": 0,
+                      "OffsetY": 0
+                    },
+                    "FaceTypeDCSBIOSOverlay": {
+                      "$type": "NonVisuals.StreamDeck.FaceTypeDCSBIOSOverlay, NonVisuals",
+                      "FaceType": 8,
+                      "BackgroundBitmapPath": "",
+                      "ConfigurationOK": false,
+                      "ButtonTextTemplate": "",
+                      "TextFont": "Hornet IFEI, 35.9999962pt",
+                      "FontColor": "Black",
+                      "BackgroundColor": "Black",
+                      "UintDcsBiosValue": 0,
+                      "StringDcsBiosValue": "",
+                      "StreamDeckButtonName": 0,
+                      "StreamDeckInstanceId": null,
+                      "OffsetX": 0,
+                      "OffsetY": 0
+                    },
+                    "ConverterOutputType": 1,
+                    "Comparator1": 0,
+                    "ReferenceValue1": 24.0,
+                    "Comparator2": 10,
+                    "ReferenceValue2": 0.0
+                  }
+                ]
+              },
+              "TreatStringAsNumber": false,
+              "RawTextFont": "Hornet IFEI, 35.9999962pt",
+              "RawFontColor": "Lime",
+              "RawBackgroundColor": "Black",
+              "DecoderSourceType": 1,
+              "DecoderOutputType": 1,
+              "FaceType": 4,
+              "ConfigurationOK": true,
+              "ButtonTextTemplate": "{dcsbios}",
+              "TextFont": "Hornet IFEI, 35.9999962pt",
+              "FontColor": "Lime",
+              "BackgroundColor": "Black",
+              "UintDcsBiosValue": 19,
+              "StringDcsBiosValue": "",
+              "StreamDeckButtonName": 32,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 6,
+              "OffsetY": 16
+            },
+            "ActionForPress": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 32,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": true,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "UFC_COMM2_PULL",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 1,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "UFC_COMM2_PULL",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "UFC_COMM2_PULL",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 1,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "UFC_COMM2_PULL",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "UFC_COMM2_PULL",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "COMM 2 Channel Selector Knob Pull",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "ActionForRelease": {
+              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
+              "ActionType": 2,
+              "StreamDeckButtonName": 32,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "WhenTurnedOn": false,
+              "Description": "DCS-BIOS",
+              "DCSBIOSInputs": {
+                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
+                    "SelectedDCSBIOSInput": {
+                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                      "Delay": 0,
+                      "ControlId": "UFC_COMM2_PULL",
+                      "Description": "set position",
+                      "Interface": 1,
+                      "MaxValue": 1,
+                      "SpecifiedActionArgument": null,
+                      "SpecifiedSetStateArgument": 0,
+                      "SpecifiedVariableStepArgument": 0,
+                      "SpecifiedFixedStepArgument": 0
+                    },
+                    "DCSBIOSInputObjects": {
+                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
+                      "$values": [
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "UFC_COMM2_PULL",
+                          "Description": "switch to previous or next state",
+                          "Interface": 0,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "UFC_COMM2_PULL",
+                          "Description": "set position",
+                          "Interface": 1,
+                          "MaxValue": 1,
+                          "SpecifiedActionArgument": null,
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        },
+                        {
+                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
+                          "Delay": 0,
+                          "ControlId": "UFC_COMM2_PULL",
+                          "Description": "Toggle switch state",
+                          "Interface": 2,
+                          "MaxValue": 0,
+                          "SpecifiedActionArgument": "TOGGLE",
+                          "SpecifiedSetStateArgument": 0,
+                          "SpecifiedVariableStepArgument": 0,
+                          "SpecifiedFixedStepArgument": 0
+                        }
+                      ]
+                    },
+                    "ControlId": "UFC_COMM2_PULL",
+                    "Delay": 0,
+                    "Debug": false,
+                    "ControlDescription": "COMM 2 Channel Selector Knob Pull",
+                    "ControlType": "push_button"
+                  }
+                ]
+              },
+              "IsSequenced": false
+            },
+            "HasConfig": true,
+            "ActionType": 2,
+            "FaceType": 4
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 2,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeText, NonVisuals",
+              "FaceType": 1,
+              "ConfigurationOK": false,
+              "ButtonTextTemplate": "",
+              "TextFont": "Hornet IFEI, 14.2499981pt",
+              "FontColor": "Lime",
+              "BackgroundColor": "Black",
+              "StreamDeckButtonName": 2,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 30,
+              "OffsetY": 28
+            },
+            "ActionForPress": null,
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 0,
+            "FaceType": 1
+          },
+          {
+            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
+            "StreamDeckButtonName": 3,
+            "Face": {
+              "$type": "NonVisuals.StreamDeck.FaceTypeText, NonVisuals",
+              "FaceType": 1,
+              "ConfigurationOK": false,
+              "ButtonTextTemplate": "",
+              "TextFont": "Hornet IFEI, 14.2499981pt",
+              "FontColor": "Lime",
+              "BackgroundColor": "Black",
+              "StreamDeckButtonName": 3,
+              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+              "OffsetX": 2,
+              "OffsetY": 28
+            },
+            "ActionForPress": null,
+            "ActionForRelease": null,
+            "HasConfig": true,
+            "ActionType": 0,
+            "FaceType": 1
           },
           {
             "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
@@ -4458,14 +5596,15 @@ BeginPanelJSON
             "Face": {
               "$type": "NonVisuals.StreamDeck.FaceTypeText, NonVisuals",
               "FaceType": 1,
-              "Text": "Extras",
-              "TextFont": "Hornet IFEI, 14.2499981pt",
-              "FontColor": "Lime",
-              "BackgroundColor": "Black",
+              "ConfigurationOK": true,
+              "ButtonTextTemplate": "Extras",
+              "TextFont": "Hornet IFEI, 35.9999962pt",
+              "FontColor": "240, 233, 238",
+              "BackgroundColor": "70, 85, 79",
               "StreamDeckButtonName": 17,
               "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
-              "OffsetX": 6,
-              "OffsetY": 26
+              "OffsetX": 14,
+              "OffsetY": 14
             },
             "ActionForPress": {
               "$type": "NonVisuals.StreamDeck.ActionTypeLayer, NonVisuals",
@@ -4479,485 +5618,12 @@ BeginPanelJSON
             "ActionForRelease": null,
             "HasConfig": true,
             "ActionType": 16,
-            "FaceType": 1,
-            "StreamDeckInstanceId": null
-          },
-          {
-            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
-            "StreamDeckButtonName": 25,
-            "Face": {
-              "$type": "NonVisuals.StreamDeck.DCSBIOSDecoder, NonVisuals",
-              "Formula": "",
-              "DCSBIOSOutput": {
-                "$type": "DCS_BIOS.DCSBIOSOutput, DCS-BIOS",
-                "ControlId": "COMM1_CHANNEL_NUMERIC",
-                "Address": 29700,
-                "Mask": 65535,
-                "Debug": false,
-                "Shiftvalue": 0,
-                "DCSBiosOutputType": 1,
-                "DCSBiosOutputComparison": 0,
-                "ControlDescription": "Comm 1 Channel as number",
-                "MaxValue": 65535,
-                "MaxLength": 0,
-                "ControlType": null
-              },
-              "DCSBIOSDecoders": {
-                "$type": "System.Collections.Generic.List`1[[NonVisuals.StreamDeck.DCSBIOSNumberToText, NonVisuals]], mscorlib",
-                "$values": [
-                  {
-                    "$type": "NonVisuals.StreamDeck.DCSBIOSNumberToText, NonVisuals",
-                    "Comparator": 0,
-                    "ReferenceValue": 22.0,
-                    "OutputText": "M"
-                  },
-                  {
-                    "$type": "NonVisuals.StreamDeck.DCSBIOSNumberToText, NonVisuals",
-                    "Comparator": 0,
-                    "ReferenceValue": 21.0,
-                    "OutputText": "G"
-                  },
-                  {
-                    "$type": "NonVisuals.StreamDeck.DCSBIOSNumberToText, NonVisuals",
-                    "Comparator": 0,
-                    "ReferenceValue": 23.0,
-                    "OutputText": "C"
-                  },
-                  {
-                    "$type": "NonVisuals.StreamDeck.DCSBIOSNumberToText, NonVisuals",
-                    "Comparator": 0,
-                    "ReferenceValue": 24.0,
-                    "OutputText": "S"
-                  }
-                ]
-              },
-              "FaceType": 4,
-              "ButtonText": "1",
-              "TextFont": "Hornet IFEI, 35.9999962pt",
-              "FontColor": "Lime",
-              "BackgroundColor": "Black",
-              "DCSBiosValue": 1,
-              "StreamDeckButtonName": 25,
-              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
-              "OffsetX": 6,
-              "OffsetY": 16
-            },
-            "ActionForPress": {
-              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
-              "ActionType": 2,
-              "StreamDeckButtonName": 25,
-              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
-              "WhenTurnedOn": true,
-              "Description": "DCS-BIOS",
-              "DCSBIOSInputs": {
-                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
-                "$values": [
-                  {
-                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
-                    "SelectedDCSBIOSInput": {
-                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
-                      "Delay": 0,
-                      "ControlId": "UFC_COMM1_PULL",
-                      "Description": "set position",
-                      "Interface": 1,
-                      "MaxValue": 1,
-                      "SpecifiedActionArgument": null,
-                      "SpecifiedSetStateArgument": 1,
-                      "SpecifiedVariableStepArgument": 0,
-                      "SpecifiedFixedStepArgument": 0
-                    },
-                    "DCSBIOSInputObjects": {
-                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
-                      "$values": [
-                        {
-                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
-                          "Delay": 0,
-                          "ControlId": "UFC_COMM1_PULL",
-                          "Description": "switch to previous or next state",
-                          "Interface": 0,
-                          "MaxValue": 0,
-                          "SpecifiedActionArgument": null,
-                          "SpecifiedSetStateArgument": 0,
-                          "SpecifiedVariableStepArgument": 0,
-                          "SpecifiedFixedStepArgument": 0
-                        },
-                        {
-                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
-                          "Delay": 0,
-                          "ControlId": "UFC_COMM1_PULL",
-                          "Description": "set position",
-                          "Interface": 1,
-                          "MaxValue": 1,
-                          "SpecifiedActionArgument": null,
-                          "SpecifiedSetStateArgument": 1,
-                          "SpecifiedVariableStepArgument": 0,
-                          "SpecifiedFixedStepArgument": 0
-                        },
-                        {
-                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
-                          "Delay": 0,
-                          "ControlId": "UFC_COMM1_PULL",
-                          "Description": "Toggle switch state",
-                          "Interface": 2,
-                          "MaxValue": 0,
-                          "SpecifiedActionArgument": "TOGGLE",
-                          "SpecifiedSetStateArgument": 0,
-                          "SpecifiedVariableStepArgument": 0,
-                          "SpecifiedFixedStepArgument": 0
-                        }
-                      ]
-                    },
-                    "ControlId": "UFC_COMM1_PULL",
-                    "Delay": 0,
-                    "Debug": false,
-                    "ControlDescription": "COMM 1 Channel Selector Knob Pull",
-                    "ControlType": "push_button"
-                  }
-                ]
-              },
-              "IsSequenced": false
-            },
-            "ActionForRelease": {
-              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
-              "ActionType": 2,
-              "StreamDeckButtonName": 25,
-              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
-              "WhenTurnedOn": false,
-              "Description": "DCS-BIOS",
-              "DCSBIOSInputs": {
-                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
-                "$values": [
-                  {
-                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
-                    "SelectedDCSBIOSInput": {
-                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
-                      "Delay": 0,
-                      "ControlId": "UFC_COMM1_PULL",
-                      "Description": "set position",
-                      "Interface": 1,
-                      "MaxValue": 1,
-                      "SpecifiedActionArgument": null,
-                      "SpecifiedSetStateArgument": 0,
-                      "SpecifiedVariableStepArgument": 0,
-                      "SpecifiedFixedStepArgument": 0
-                    },
-                    "DCSBIOSInputObjects": {
-                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
-                      "$values": [
-                        {
-                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
-                          "Delay": 0,
-                          "ControlId": "UFC_COMM1_PULL",
-                          "Description": "switch to previous or next state",
-                          "Interface": 0,
-                          "MaxValue": 0,
-                          "SpecifiedActionArgument": null,
-                          "SpecifiedSetStateArgument": 0,
-                          "SpecifiedVariableStepArgument": 0,
-                          "SpecifiedFixedStepArgument": 0
-                        },
-                        {
-                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
-                          "Delay": 0,
-                          "ControlId": "UFC_COMM1_PULL",
-                          "Description": "set position",
-                          "Interface": 1,
-                          "MaxValue": 1,
-                          "SpecifiedActionArgument": null,
-                          "SpecifiedSetStateArgument": 0,
-                          "SpecifiedVariableStepArgument": 0,
-                          "SpecifiedFixedStepArgument": 0
-                        },
-                        {
-                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
-                          "Delay": 0,
-                          "ControlId": "UFC_COMM1_PULL",
-                          "Description": "Toggle switch state",
-                          "Interface": 2,
-                          "MaxValue": 0,
-                          "SpecifiedActionArgument": "TOGGLE",
-                          "SpecifiedSetStateArgument": 0,
-                          "SpecifiedVariableStepArgument": 0,
-                          "SpecifiedFixedStepArgument": 0
-                        }
-                      ]
-                    },
-                    "ControlId": "UFC_COMM1_PULL",
-                    "Delay": 0,
-                    "Debug": false,
-                    "ControlDescription": "COMM 1 Channel Selector Knob Pull",
-                    "ControlType": "push_button"
-                  }
-                ]
-              },
-              "IsSequenced": false
-            },
-            "HasConfig": true,
-            "ActionType": 2,
-            "FaceType": 4,
-            "StreamDeckInstanceId": null
-          },
-          {
-            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
-            "StreamDeckButtonName": 32,
-            "Face": {
-              "$type": "NonVisuals.StreamDeck.DCSBIOSDecoder, NonVisuals",
-              "Formula": "",
-              "DCSBIOSOutput": {
-                "$type": "DCS_BIOS.DCSBIOSOutput, DCS-BIOS",
-                "ControlId": "COMM2_CHANNEL_NUMERIC",
-                "Address": 29702,
-                "Mask": 65535,
-                "Debug": false,
-                "Shiftvalue": 0,
-                "DCSBiosOutputType": 1,
-                "DCSBiosOutputComparison": 0,
-                "ControlDescription": "Comm 2 Channel as number",
-                "MaxValue": 65535,
-                "MaxLength": 0,
-                "ControlType": null
-              },
-              "DCSBIOSDecoders": {
-                "$type": "System.Collections.Generic.List`1[[NonVisuals.StreamDeck.DCSBIOSNumberToText, NonVisuals]], mscorlib",
-                "$values": [
-                  {
-                    "$type": "NonVisuals.StreamDeck.DCSBIOSNumberToText, NonVisuals",
-                    "Comparator": 0,
-                    "ReferenceValue": 21.0,
-                    "OutputText": "G"
-                  },
-                  {
-                    "$type": "NonVisuals.StreamDeck.DCSBIOSNumberToText, NonVisuals",
-                    "Comparator": 0,
-                    "ReferenceValue": 22.0,
-                    "OutputText": "M"
-                  },
-                  {
-                    "$type": "NonVisuals.StreamDeck.DCSBIOSNumberToText, NonVisuals",
-                    "Comparator": 0,
-                    "ReferenceValue": 23.0,
-                    "OutputText": "C"
-                  },
-                  {
-                    "$type": "NonVisuals.StreamDeck.DCSBIOSNumberToText, NonVisuals",
-                    "Comparator": 0,
-                    "ReferenceValue": 24.0,
-                    "OutputText": "S"
-                  }
-                ]
-              },
-              "FaceType": 4,
-              "ButtonText": "1",
-              "TextFont": "Hornet IFEI, 35.9999962pt",
-              "FontColor": "Lime",
-              "BackgroundColor": "Black",
-              "DCSBiosValue": 1,
-              "StreamDeckButtonName": 32,
-              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
-              "OffsetX": 6,
-              "OffsetY": 16
-            },
-            "ActionForPress": {
-              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
-              "ActionType": 2,
-              "StreamDeckButtonName": 32,
-              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
-              "WhenTurnedOn": true,
-              "Description": "DCS-BIOS",
-              "DCSBIOSInputs": {
-                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
-                "$values": [
-                  {
-                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
-                    "SelectedDCSBIOSInput": {
-                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
-                      "Delay": 0,
-                      "ControlId": "UFC_COMM2_PULL",
-                      "Description": "set position",
-                      "Interface": 1,
-                      "MaxValue": 1,
-                      "SpecifiedActionArgument": null,
-                      "SpecifiedSetStateArgument": 1,
-                      "SpecifiedVariableStepArgument": 0,
-                      "SpecifiedFixedStepArgument": 0
-                    },
-                    "DCSBIOSInputObjects": {
-                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
-                      "$values": [
-                        {
-                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
-                          "Delay": 0,
-                          "ControlId": "UFC_COMM2_PULL",
-                          "Description": "switch to previous or next state",
-                          "Interface": 0,
-                          "MaxValue": 0,
-                          "SpecifiedActionArgument": null,
-                          "SpecifiedSetStateArgument": 0,
-                          "SpecifiedVariableStepArgument": 0,
-                          "SpecifiedFixedStepArgument": 0
-                        },
-                        {
-                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
-                          "Delay": 0,
-                          "ControlId": "UFC_COMM2_PULL",
-                          "Description": "set position",
-                          "Interface": 1,
-                          "MaxValue": 1,
-                          "SpecifiedActionArgument": null,
-                          "SpecifiedSetStateArgument": 1,
-                          "SpecifiedVariableStepArgument": 0,
-                          "SpecifiedFixedStepArgument": 0
-                        },
-                        {
-                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
-                          "Delay": 0,
-                          "ControlId": "UFC_COMM2_PULL",
-                          "Description": "Toggle switch state",
-                          "Interface": 2,
-                          "MaxValue": 0,
-                          "SpecifiedActionArgument": "TOGGLE",
-                          "SpecifiedSetStateArgument": 0,
-                          "SpecifiedVariableStepArgument": 0,
-                          "SpecifiedFixedStepArgument": 0
-                        }
-                      ]
-                    },
-                    "ControlId": "UFC_COMM2_PULL",
-                    "Delay": 0,
-                    "Debug": false,
-                    "ControlDescription": "COMM 2 Channel Selector Knob Pull",
-                    "ControlType": "push_button"
-                  }
-                ]
-              },
-              "IsSequenced": false
-            },
-            "ActionForRelease": {
-              "$type": "NonVisuals.StreamDeck.ActionTypeDCSBIOS, NonVisuals",
-              "ActionType": 2,
-              "StreamDeckButtonName": 32,
-              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
-              "WhenTurnedOn": false,
-              "Description": "DCS-BIOS",
-              "DCSBIOSInputs": {
-                "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInput, DCS-BIOS]], mscorlib",
-                "$values": [
-                  {
-                    "$type": "DCS_BIOS.DCSBIOSInput, DCS-BIOS",
-                    "SelectedDCSBIOSInput": {
-                      "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
-                      "Delay": 0,
-                      "ControlId": "UFC_COMM2_PULL",
-                      "Description": "set position",
-                      "Interface": 1,
-                      "MaxValue": 1,
-                      "SpecifiedActionArgument": null,
-                      "SpecifiedSetStateArgument": 0,
-                      "SpecifiedVariableStepArgument": 0,
-                      "SpecifiedFixedStepArgument": 0
-                    },
-                    "DCSBIOSInputObjects": {
-                      "$type": "System.Collections.Generic.List`1[[DCS_BIOS.DCSBIOSInputObject, DCS-BIOS]], mscorlib",
-                      "$values": [
-                        {
-                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
-                          "Delay": 0,
-                          "ControlId": "UFC_COMM2_PULL",
-                          "Description": "switch to previous or next state",
-                          "Interface": 0,
-                          "MaxValue": 0,
-                          "SpecifiedActionArgument": null,
-                          "SpecifiedSetStateArgument": 0,
-                          "SpecifiedVariableStepArgument": 0,
-                          "SpecifiedFixedStepArgument": 0
-                        },
-                        {
-                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
-                          "Delay": 0,
-                          "ControlId": "UFC_COMM2_PULL",
-                          "Description": "set position",
-                          "Interface": 1,
-                          "MaxValue": 1,
-                          "SpecifiedActionArgument": null,
-                          "SpecifiedSetStateArgument": 0,
-                          "SpecifiedVariableStepArgument": 0,
-                          "SpecifiedFixedStepArgument": 0
-                        },
-                        {
-                          "$type": "DCS_BIOS.DCSBIOSInputObject, DCS-BIOS",
-                          "Delay": 0,
-                          "ControlId": "UFC_COMM2_PULL",
-                          "Description": "Toggle switch state",
-                          "Interface": 2,
-                          "MaxValue": 0,
-                          "SpecifiedActionArgument": "TOGGLE",
-                          "SpecifiedSetStateArgument": 0,
-                          "SpecifiedVariableStepArgument": 0,
-                          "SpecifiedFixedStepArgument": 0
-                        }
-                      ]
-                    },
-                    "ControlId": "UFC_COMM2_PULL",
-                    "Delay": 0,
-                    "Debug": false,
-                    "ControlDescription": "COMM 2 Channel Selector Knob Pull",
-                    "ControlType": "push_button"
-                  }
-                ]
-              },
-              "IsSequenced": false
-            },
-            "HasConfig": true,
-            "ActionType": 2,
-            "FaceType": 4,
-            "StreamDeckInstanceId": null
-          },
-          {
-            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
-            "StreamDeckButtonName": 2,
-            "Face": {
-              "$type": "NonVisuals.StreamDeck.FaceTypeText, NonVisuals",
-              "FaceType": 1,
-              "Text": "-",
-              "TextFont": "Hornet IFEI, 14.2499981pt",
-              "FontColor": "Lime",
-              "BackgroundColor": "Black",
-              "StreamDeckButtonName": 2,
-              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
-              "OffsetX": 30,
-              "OffsetY": 28
-            },
-            "ActionForPress": null,
-            "ActionForRelease": null,
-            "HasConfig": true,
-            "ActionType": 0,
-            "FaceType": 1,
-            "StreamDeckInstanceId": null
-          },
-          {
-            "$type": "NonVisuals.StreamDeck.StreamDeckButton, NonVisuals",
-            "StreamDeckButtonName": 3,
-            "Face": {
-              "$type": "NonVisuals.StreamDeck.FaceTypeText, NonVisuals",
-              "FaceType": 1,
-              "Text": "305.000",
-              "TextFont": "Hornet IFEI, 14.2499981pt",
-              "FontColor": "Lime",
-              "BackgroundColor": "Black",
-              "StreamDeckButtonName": 3,
-              "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
-              "OffsetX": 2,
-              "OffsetY": 28
-            },
-            "ActionForPress": null,
-            "ActionForRelease": null,
-            "HasConfig": true,
-            "ActionType": 0,
-            "FaceType": 1,
-            "StreamDeckInstanceId": null
+            "FaceType": 1
           }
         ]
-      }
+      },
+      "IsVisible": true,
+      "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}"
     },
     {
       "$type": "NonVisuals.StreamDeck.StreamDeckLayer, NonVisuals",
@@ -4971,7 +5637,11 @@ BeginPanelJSON
             "Face": {
               "$type": "NonVisuals.StreamDeck.FaceTypeImage, NonVisuals",
               "FaceType": 2,
-              "ImageFile": "StreamDeckGallery\\Symbols\\home_white.png",
+              "ConfigurationOK": true,
+              "TextFont": "Hornet IFEI, 35.9999962pt",
+              "FontColor": "Black",
+              "BackgroundColor": "Black",
+              "ImageFile": "D:\\DCS Tools\\DCSFlightpanels_x64_4.0.39_alpha\\\\StreamDeckGallery\\Symbols\\home_white.png",
               "StreamDeckButtonName": 1,
               "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
               "OffsetX": 0,
@@ -4989,11 +5659,12 @@ BeginPanelJSON
             "ActionForRelease": null,
             "HasConfig": true,
             "ActionType": 16,
-            "FaceType": 2,
-            "StreamDeckInstanceId": null
+            "FaceType": 2
           }
         ]
-      }
+      },
+      "IsVisible": true,
+      "StreamDeckInstanceId": "\\\\?\\hid#vid_0fd9&pid_006c#6&27db50b8&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}"
     }
   ]
 }
@@ -5178,3 +5849,4 @@ EndPanelJSON
 #	PA1
 #	OEM_CLEAR
 #	VK_NULL
+
