@@ -10,12 +10,12 @@ local parse_indication = BIOS.util.parse_indication
 local defineFloat = BIOS.util.defineFloat
 local defineIndicatorLight = BIOS.util.defineIndicatorLight
 local definePotentiometer = BIOS.util.definePotentiometer
+local define3Pos2CommandSwitchWW2 = BIOS.util.define3Pos2CommandSwitchWW2
 local defineRotary = BIOS.util.defineRotary
 local defineTumb = BIOS.util.defineTumb
 local defineFixedStepTumb = BIOS.util.defineFixedStepTumb
 local definePushButton = BIOS.util.definePushButton
 local defineIntegerFromGetter = BIOS.util.defineIntegerFromGetter
-
 
 -- remove Arg# Pilot 165
 
@@ -63,8 +63,8 @@ defineTumb("BOOSTER_COVER",2, 3025, 66, 1, {0,1}, nil, false, "Engine", "Booster
 --Booster Coil Button
 defineTumb("BOOSTER",2, 3027, 67, 1, {0,1}, nil, false, "Engine", "Booster Coil")
 --Primer Pump
-definePotentiometer("PRIMER_TURN",1, 3030, 69, {0,1}, "Engine", "Primer Pump Turn")
-definePushButton("PRIMER_PULL",1, 3029, 68, "Engine", "Primer Pump Pull")
+definePotentiometer("PRIMER_TURN",2, 3029, 68, {0,1}, "Engine", "Primer Pump Turn")
+definePushButton("PRIMER_PULL",2, 3030, 69, "Engine", "Primer Pump Pull")
 --Tank Pressurizer Lever
 defineTumb("TANK_PRS",2, 3033, 70, 1, {0,1}, nil, false, "Engine", "Fuel Tank Pressure On/Off")
 --Magnetic Compass
@@ -104,9 +104,7 @@ defineTumb("RCTRL_DIM",15, 3006, 125, 1, {0,1}, nil, false, "Radio", "Radio Chan
 --Transmit Lock Toggle
 defineTumb("RCTRL_TLOCK",15, 3017, 155, 1, {0,1}, nil, false, "Radio", "Switch Locking Lever")
 --Mode Selector
---TODO NOT WORKING PROPERLY
-defineTumb("RCTRL_T_MODE1",15, 3007, 156, 1, {0,1}, nil, false, "Radio", "Radio Mode 1")
-defineTumb("RCTRL_T_MODE2",15, 3008, 156, 1, {-1,0}, nil, false, "Radio", "Radio Mode 2")
+define3Pos2CommandSwitchWW2("RCTRL_T_MODE", 15, 3008, 3007, 156, "Radio", "Radio Mode Switch")
 -- Throttle Quadrant
 --Bomb Drop Button
 definePushButton("BUTTON_BOMB",5, 3015, 128, "Weapons", "Drop Bombs")
@@ -184,9 +182,9 @@ defineTumb("HATCH_JETTISON", 1, 3057, 140, 1, {0,1}, nil, false, "Cockpit", "Jet
 defineTumb("SIDE_DOOR",1, 3059, 147, 1, {0,1}, nil, false, "Cockpit", "Side Door Open/Close")
 
 -- Indicators
-defineFloat("CANOPY_TRUCKS", 162, {0, 1}, "Indicator", "Canopy_Trucks")
-defineFloat("CANOPY_VISIBILITY", 163, {0, 1}, "Indicator", "Canopy_Visibility")
-defineFloat("CANOPY_CRANK", 147, {0.0, 1.0}, "Indicator", "Canopy_Crank")
+defineFloat("CANOPY_TRUCKS", 162, {0, 1}, "Indicator", "Canopy_Trucks") --not Working
+defineFloat("CANOPY_VISIBILITY", 163, {0, 1}, "Indicator", "Canopy_Visibility") --not Working
+defineFloat("CANOPY_CRANK", 147, {0.0, 1.0}, "Indicator", "Canopy_Crank") --not Working
 defineFloat("OXYGENDELIVERYGAUGE", 11, {0.0, 0.4}, "Indicator", "OxygenDeliveryGauge")
 defineFloat("OXYGENSUPPLYGAUGE", 12, {0.0, 1.0}, "Indicator", "OxygenSupplyGauge")
 defineFloat("TRIMGAUGE", 17, {-1.0, 1.0}, "Indicator", "TrimGauge")
@@ -226,8 +224,34 @@ defineIntegerFromGetter("EXT_POSITION_LIGHT_LEFT", function()
 	if LoGetAircraftDrawArgumentValue(190) > 0 then return 1 else return 0 end
 end, 1, "External Aircraft Model", "Left Position Light (red)")
 defineIntegerFromGetter("EXT_POSITION_LIGHT_RIGHT", function()
-	if LoGetAircraftDrawArgumentValue(192) > 0 then return 1 else return 0 end
+	if LoGetAircraftDrawArgumentValue(191) > 0 then return 1 else return 0 end
 end, 1, "External Aircraft Model", "Right Position Light (green)")
+defineIntegerFromGetter("EXT_POSITION_LIGHT_TAIL", function()
+	if LoGetAircraftDrawArgumentValue(192) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Tail Position Light (White)")
+defineIntegerFromGetter("EXT_POSITION_LIGHT_TOP", function()
+	if LoGetAircraftDrawArgumentValue(193) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Top Position Light (White)")
+defineIntegerFromGetter("EXT_POSITION_LIGHT_BOTTOM", function()
+	if LoGetAircraftDrawArgumentValue(194) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Bottom Position Light (White)")
 
+defineIntegerFromGetter("EXT_WOW_TAIL", function()
+	if LoGetAircraftDrawArgumentValue(1) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Weight ON Wheels Tail Gear")
+defineIntegerFromGetter("EXT_WOW_RIGHT", function()
+	if LoGetAircraftDrawArgumentValue(4) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Weight ON Wheels Right Gear")
+defineIntegerFromGetter("EXT_WOW_LEFT", function()
+	if LoGetAircraftDrawArgumentValue(6) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Weight ON Wheels Left Gear")
+
+defineFloat("CANOPY_POS", 138, {0, 1}, "Indicator", "Canopy Position")
+defineFloat("PANEL_SHAKE_Z", 142, {-0.8, 0.8}, "Indicator", "Common Panel Shaker (Z Axis)")
+defineFloat("PANEL_SHAKE_Y", 143, {-0.8, 0.8}, "Indicator", "Common Panel Shaker (Y Axis)")
+defineFloat("PANEL_SHAKE_X", 144, {-0.8, 0.8}, "Indicator", "Common Panel Shaker (X Axis)")
+defineFloat("COMPASS_PITCH", 71, {-1, 1}, "Indicator", "Compass Pitch")
+defineFloat("COMPASS_BANK", 72, {-1, 1}, "Indicator", "Compass Bank")
+defineFloat("COMPASS_HDG", 73, {-1, 1}, "Indicator", "Compass Heading")
 
 BIOS.protocol.endModule()

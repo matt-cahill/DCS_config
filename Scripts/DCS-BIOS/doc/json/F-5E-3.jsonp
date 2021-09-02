@@ -1455,6 +1455,54 @@ docdata["F-5E-3"] =
                                                                                                       "suffix": "",
                                                                                                         "type": "integer"
                                                                                              } ]
+                                                                         },
+                                                         "EXT_WOW_LEFT": {
+                                                                                 "category": "External Aircraft Model",
+                                                                             "control_type": "metadata",
+                                                                              "description": "Weight ON Wheels Left Gear",
+                                                                               "identifier": "EXT_WOW_LEFT",
+                                                                                   "inputs": [  ],
+                                                                                  "outputs": [ {
+                                                                                                     "address": 30474,
+                                                                                                 "description": "Weight ON Wheels Left Gear",
+                                                                                                        "mask": 4096,
+                                                                                                   "max_value": 1,
+                                                                                                    "shift_by": 12,
+                                                                                                      "suffix": "",
+                                                                                                        "type": "integer"
+                                                                                             } ]
+                                                                         },
+                                                         "EXT_WOW_NOSE": {
+                                                                                 "category": "External Aircraft Model",
+                                                                             "control_type": "metadata",
+                                                                              "description": "Weight ON Wheels Nose Gear",
+                                                                               "identifier": "EXT_WOW_NOSE",
+                                                                                   "inputs": [  ],
+                                                                                  "outputs": [ {
+                                                                                                     "address": 30474,
+                                                                                                 "description": "Weight ON Wheels Nose Gear",
+                                                                                                        "mask": 1024,
+                                                                                                   "max_value": 1,
+                                                                                                    "shift_by": 10,
+                                                                                                      "suffix": "",
+                                                                                                        "type": "integer"
+                                                                                             } ]
+                                                                         },
+                                                        "EXT_WOW_RIGHT": {
+                                                                                 "category": "External Aircraft Model",
+                                                                             "control_type": "metadata",
+                                                                              "description": "Weight ON Wheels Right Gear",
+                                                                               "identifier": "EXT_WOW_RIGHT",
+                                                                                   "inputs": [  ],
+                                                                                  "outputs": [ {
+                                                                                                     "address": 30474,
+                                                                                                 "description": "Weight ON Wheels Right Gear",
+                                                                                                        "mask": 2048,
+                                                                                                   "max_value": 1,
+                                                                                                    "shift_by": 11,
+                                                                                                      "suffix": "",
+                                                                                                        "type": "integer"
+                                                                                             } ]
                                                                          }
                                             },
                          "External Lights": {
@@ -2872,6 +2920,54 @@ docdata["F-5E-3"] =
                                                                                "inputs": [  ],
                                                                               "outputs": [ {
                                                                                                  "address": 30358,
+                                                                                             "description": "gauge position",
+                                                                                                    "mask": 65535,
+                                                                                               "max_value": 65535,
+                                                                                                "shift_by": 0,
+                                                                                                  "suffix": "",
+                                                                                                    "type": "integer"
+                                                                                         } ]
+                                                                     },
+                                                 "SBY_COMPASS_BANK": {
+                                                                             "category": "Gauges",
+                                                                         "control_type": "analog_gauge",
+                                                                          "description": "Standby Compass Bank",
+                                                                           "identifier": "SBY_COMPASS_BANK",
+                                                                               "inputs": [  ],
+                                                                              "outputs": [ {
+                                                                                                 "address": 30490,
+                                                                                             "description": "gauge position",
+                                                                                                    "mask": 65535,
+                                                                                               "max_value": 65535,
+                                                                                                "shift_by": 0,
+                                                                                                  "suffix": "",
+                                                                                                    "type": "integer"
+                                                                                         } ]
+                                                                     },
+                                                  "SBY_COMPASS_HDG": {
+                                                                             "category": "Gauges",
+                                                                         "control_type": "analog_gauge",
+                                                                          "description": "Standby Compass Heading",
+                                                                           "identifier": "SBY_COMPASS_HDG",
+                                                                               "inputs": [  ],
+                                                                              "outputs": [ {
+                                                                                                 "address": 30486,
+                                                                                             "description": "gauge position",
+                                                                                                    "mask": 65535,
+                                                                                               "max_value": 65535,
+                                                                                                "shift_by": 0,
+                                                                                                  "suffix": "",
+                                                                                                    "type": "integer"
+                                                                                         } ]
+                                                                     },
+                                                "SBY_COMPASS_PITCH": {
+                                                                             "category": "Gauges",
+                                                                         "control_type": "analog_gauge",
+                                                                          "description": "Standby Compass Pitch",
+                                                                           "identifier": "SBY_COMPASS_PITCH",
+                                                                               "inputs": [  ],
+                                                                              "outputs": [ {
+                                                                                                 "address": 30488,
                                                                                              "description": "gauge position",
                                                                                                     "mask": 65535,
                                                                                                "max_value": 65535,

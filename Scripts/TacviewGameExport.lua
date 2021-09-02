@@ -14,7 +14,7 @@ do
 
 		local tacviewModPath = lfs.writedir()..'Mods\\tech\\Tacview\\bin\\'
 		package.cpath = package.cpath..';'..tacviewModPath..'?.dll;'
-		log.write('TACVIEW.EXPORT',log.INFO,'Loading C++ flight data recorder from ['..tacviewModPath..']')
+		log.write('TACVIEW.EXPORT.LUA',log.INFO,'Loading C++ flight data recorder from ['..tacviewModPath..']')
 
 		local status,tacview = pcall(require,'tacview')
 
@@ -25,7 +25,7 @@ do
 
 			tacviewModPath = os.getenv('TACVIEW_DCS2ACMI_PATH')..'Mods\\tech\\Tacview\\bin\\'
 			package.cpath = package.cpath..';'..tacviewModPath..'?.dll;'
-			log.write('TACVIEW.EXPORT',log.INFO,'Loading C++ flight data recorder from ['..tacviewModPath..']')
+			log.write('TACVIEW.EXPORT.LUA',log.INFO,'Loading C++ flight data recorder from ['..tacviewModPath..']')
 
 			status,tacview = pcall(require,'tacview')
 
@@ -33,7 +33,7 @@ do
 
 		-- Register Callbacks in DCS World Export environment
 
-		local tacviewName = 'Tacview 1.8.1 C++ flight data recorder';
+		local tacviewName = 'Tacview 1.8.6.201 C++ flight data recorder';
 
 		if status then
 
@@ -81,13 +81,13 @@ do
 				end
 			end
 
-			log.write('TACVIEW.EXPORT',log.INFO,tacviewName..' successfully loaded')
+			log.write('TACVIEW.EXPORT.LUA',log.INFO,tacviewName..' successfully loaded.')
 
 		-- Failed to load Tacview DLL
 
 		else
 
-			log.write('TACVIEW.EXPORT',log.ERROR,'Failed to load '..tacviewName)
+			log.write('TACVIEW.EXPORT.LUA',log.ERROR,'Failed to load '..tacviewName..'.')
 			tacview = nil
 
 		end

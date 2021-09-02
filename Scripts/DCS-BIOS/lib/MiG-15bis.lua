@@ -1,5 +1,6 @@
 BIOS.protocol.beginModule("MiG-15bis", 0x2400)
 BIOS.protocol.setExportModuleAircrafts({"MiG-15bis"})
+--by WarLord (aka BlackLibrary)
 
 local documentation = moduleBeingDefined.documentation
 
@@ -15,7 +16,6 @@ local defineRotary = BIOS.util.defineRotary
 local defineTumb = BIOS.util.defineTumb
 local define3PosTumb = BIOS.util.define3PosTumb
 local defineToggleSwitch = BIOS.util.defineToggleSwitch
-local defineRockerSwitch = BIOS.util.defineRockerSwitch
 local defineIntegerFromGetter = BIOS.util.defineIntegerFromGetter
 
 -- Draw pilot = 540
@@ -250,6 +250,9 @@ defineFloat("OIL_TEMP", 45, {0.0, 1.0}, "Gauges", "Oil Temperature")
 defineFloat("OIL_PRESS", 44, {0.0, 1.0}, "Gauges", "Oil Pressure")
 defineFloat("ENG_FUEL_PRESS", 43, {0.0, 1.0}, "Gauges", "Engine Fuel Pressure")
 defineFloat("FUEL_PRESS", 46, {0.0, 1.0}, "Gauges", "Fuel Pressure")
+defineFloat("SBY_COMPASS_HDG", 3, {-1, 1}, "Gauges", "Standby Compass Heading")
+defineFloat("SBY_COMPASS_PITCH", 2, {-1, 1}, "Gauges", "Standby Compass Pitch")
+defineFloat("SBY_COMPASS_BANK", 1, {-1, 1}, "Gauges", "Standby Compass Bank")
 
 -- Warning, Caution and IndicatorLights
 defineIndicatorLight("FIRE_TEST_LIGHT", 135, "Warning, Caution and IndicatorLights","Fire Alarm Test Light (red)")
@@ -286,5 +289,15 @@ end, 1, "External Aircraft Model", "Left Position Light (red)")
 defineIntegerFromGetter("EXT_POSITION_LIGHT_RIGHT", function()
 	if LoGetAircraftDrawArgumentValue(191) > 0 then return 1 else return 0 end
 end, 1, "External Aircraft Model", "Right Position Light (green)")
+
+defineIntegerFromGetter("EXT_WOW_NOSE", function()
+	if LoGetAircraftDrawArgumentValue(1) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Weight ON Wheels Nose Gear")
+defineIntegerFromGetter("EXT_WOW_RIGHT", function()
+	if LoGetAircraftDrawArgumentValue(4) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Weight ON Wheels Right Gear")
+defineIntegerFromGetter("EXT_WOW_LEFT", function()
+	if LoGetAircraftDrawArgumentValue(6) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Weight ON Wheels Left Gear")
 
 BIOS.protocol.endModule()

@@ -12,17 +12,12 @@ local defineIndicatorLight = BIOS.util.defineIndicatorLight
 local definePushButton = BIOS.util.definePushButton
 local definePotentiometer = BIOS.util.definePotentiometer
 local defineRotary = BIOS.util.defineRotary
-local defineSetCommandTumb = BIOS.util.defineSetCommandTumb
 local defineTumb = BIOS.util.defineTumb
 local defineToggleSwitch = BIOS.util.defineToggleSwitch
-local defineToggleSwitchToggleOnly = BIOS.util.defineToggleSwitchToggleOnly
 local defineFixedStepTumb = BIOS.util.defineFixedStepTumb
-local defineFixedStepInput = BIOS.util.defineFixedStepInput
-local defineVariableStepTumb = BIOS.util.defineVariableStepTumb
-local defineString = BIOS.util.defineString
-local defineRockerSwitch = BIOS.util.defineRockerSwitch
 local defineMultipositionSwitch = BIOS.util.defineMultipositionSwitch
 local defineIntegerFromGetter = BIOS.util.defineIntegerFromGetter
+local defineRadioWheel = BIOS.util.defineRadioWheel
 
 defineToggleSwitch("GEN", 14, 3003, 102, "Right Switch Panel", "Generator")
 defineToggleSwitch("BAT", 14, 3001, 103, "Right Switch Panel", "Battery")
@@ -68,8 +63,8 @@ defineMultipositionSwitch("FUEL_SELECTOR_VALVE", 9, 3001, 85, 5, 0.1, "Fuel Syst
 defineToggleSwitch("FUEL_SHUT_OFF_VALVE", 9, 3005, 86, "Fuel System", "Fuel Shut-Off Valve")
 definePotentiometer("LEFT_FLUORESCENT_LIGHT", 10, 3002, 90, {0, 1}, "Light System", "Left Fluorescent Light")
 defineToggleSwitch("LANDING_LIGHT", 10, 3003, 89, "Light System", "Landing Light On/Off")
-defineIndicatorLight("LANDING_GEAR_GREEN", 80, "Light System", "Landing Gear Green Light")
-defineIndicatorLight("LANDING_GEAR_RED", 82, "Light System", "Landing Gear Red Light")
+defineIndicatorLight("LANDING_GEAR_GREEN", 80, "Light System", "Landing Gear Green Light (green)")
+defineIndicatorLight("LANDING_GEAR_RED", 82, "Light System", "Landing Gear Red Light (red)")
 definePotentiometer("DEFROSTER", 11, 3001, 157, {0, 1}, "Environment System", "Defroster")
 definePotentiometer("COLD_AIR", 11, 3002, 158, {0, 1}, "Environment System", "Cold Air")
 definePotentiometer("HOT_AIR", 11, 3003, 159, {0, 1}, "Environment System", "Hot Air")
@@ -129,20 +124,20 @@ definePushButton("VHF_RADIO_CHAN_A", 24, 3002, 118, "VHF Radio", "VHF Radio Chan
 definePushButton("VHF_RADIO_CHAN_B", 24, 3003, 119, "VHF Radio", "VHF Radio Channel B")
 definePushButton("VHF_RADIO_CHAN_C", 24, 3004, 120, "VHF Radio", "VHF Radio Channel C")
 definePushButton("VHF_RADIO_CHAN_D", 24, 3005, 121, "VHF Radio", "VHF Radio Channel D")
-definePotentiometer("RADIO_LIGHTS_DIMMER", 24, 3006, 127, {0, 1}, "VHF Radio", "Radio Lights Dimmer")
+defineToggleSwitch("RADIO_LIGHTS_DIMMER", 24, 3006, 127, "VHF Radio", "Radio Lights Dimmer")
 definePotentiometer("RADIO_VOLUME", 24, 3015, 116, {0, 1}, "VHF Radio", "Radio Audio Volume ")
 defineToggleSwitch("VHF_LOCKING_LEVER", 24, 3017, 129, "VHF Radio", "Switch Locking Lever")
 defineFixedStepTumb("RADIO_MODE2", 24, 3021, 128, 1, {-1,1}, {-1, 1}, nil, "VHF Radio", "Radio Mode2")
 defineFixedStepTumb("RADIO_MODE3", 24, 3008, 128, 1, {-1,1}, {-1, 1}, nil, "VHF Radio", "Radio Mode3")
-defineIndicatorLight("VHF_RADIO_A_LIGHT", 122, "VHF Radio", "VHF Radio A Light")
-defineIndicatorLight("VHF_RADIO_B_LIGHT", 123, "VHF Radio", "VHF Radio B Light")
-defineIndicatorLight("VHF_RADIO_C_LIGHT", 124, "VHF Radio", "VHF Radio C Light")
-defineIndicatorLight("VHF_RADIO_D_LIGHT", 125, "VHF Radio", "VHF Radio D Light")
-defineIndicatorLight("VHF_RADIO_TX_LIGHT", 126, "VHF Radio", "VHF Radio TX Light")
+defineIndicatorLight("VHF_RADIO_A_LIGHT", 122, "VHF Radio", "VHF Radio A Light (green)")
+defineIndicatorLight("VHF_RADIO_B_LIGHT", 123, "VHF Radio", "VHF Radio B Light (green)")
+defineIndicatorLight("VHF_RADIO_C_LIGHT", 124, "VHF Radio", "VHF Radio C Light (green)")
+defineIndicatorLight("VHF_RADIO_D_LIGHT", 125, "VHF Radio", "VHF Radio D Light (green)")
+defineIndicatorLight("VHF_RADIO_TX_LIGHT", 126, "VHF Radio", "VHF Radio TX Light (white)")
 defineToggleSwitch("WARNING_RADAR_POWER", 25, 3001, 114, "Tail Warning Radar", "Tail Warning Radar Power")
 definePushButton("WARNING_RADAR_TEST", 25, 3003, 115, "Tail Warning Radar", "Tail Warning Radar Test")
 definePotentiometer("WARNING_RADAR_LIGHT", 25, 3004, 113, {0, 1}, "Tail Warning Radar", "Tail Warning Radar Light Control")
-defineIndicatorLight("RADAR_WARNING_LIGHT", 161, "Tail Warning Radar", "Radar Warning Light")
+defineIndicatorLight("RADAR_WARNING_LIGHT", 161, "Tail Warning Radar", "Radar Warning Light (yellow)")
 definePotentiometer("DETROLA_FREQUENCY", 26, 3001, 137, {0, 1}, "Detrola", "Detrola Frequency Selector")
 definePotentiometer("DETROLA_VOLUME", 26, 3002, 138, {0, 1}, "Detrola", "Detrola Volume")
 defineToggleSwitch("OFF_POWER", 27, 3001, 140, "IFF", "IFF Power On/Off")
@@ -179,10 +174,6 @@ defineFloat("FUEL_TANK_RIGHT", 156, {0.0, 1.0}, "Fuel System", "Fuel Tank Right"
 defineFloat("FUEL_TANK_FUSELAGE", 160, {0.0, 1.0}, "Fuel System", "Fuel Tank Fuselage")
 
 --Externals
-defineIntegerFromGetter("EXT_FORMATION_LIGHTS", function()
-	return math.floor(LoGetAircraftDrawArgumentValue(200)*65535)
-end, 65535, "External Aircraft Model", "Formation Lights")
-
 
 defineIntegerFromGetter("EXT_POSITION_LIGHT_LEFT", function()
 	if LoGetAircraftDrawArgumentValue(190) > 0 then return 1 else return 0 end
@@ -190,6 +181,18 @@ end, 1, "External Aircraft Model", "Left Position Light (red)")
 defineIntegerFromGetter("EXT_POSITION_LIGHT_RIGHT", function()
 	if LoGetAircraftDrawArgumentValue(191) > 0 then return 1 else return 0 end
 end, 1, "External Aircraft Model", "Right Position Light (green)")
+defineIntegerFromGetter("EXT_POSITION_LIGHT_TAIL", function()
+	if LoGetAircraftDrawArgumentValue(192) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Tail Position Light (white)")
+defineIntegerFromGetter("EXT_RECOC_LIGHT_RD", function()
+	if LoGetAircraftDrawArgumentValue(200) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Red Recognition Light (red)")
+defineIntegerFromGetter("EXT_RECOC_LIGHT_GN", function()
+	if LoGetAircraftDrawArgumentValue(201) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Green Recognition Light (green)")
+defineIntegerFromGetter("EXT_RECOC_LIGHT_YE", function()
+	if LoGetAircraftDrawArgumentValue(202) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Amber Recognition Light (yellow)")
 
 --[[--Gauge Values--]]--
 
@@ -347,5 +350,31 @@ local function getAccel()
 end
 defineIntegerFromGetter("ACCELEROMETER_VALUE", getAccel, 65000,
 "Gauge Values", "Accelerometer")
+
+defineIndicatorLight("WINDSHIELDOIL", 412, "Damage", "Windshield Oil Splashes")
+defineFloat("WINDSHIELDCRACKS", 413, {0.0, 1.0}, "Damage", "Windshield Crack Holes")
+
+defineIntegerFromGetter("EXT_WOW_TAIL", function()
+	if LoGetAircraftDrawArgumentValue(1) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Weight ON Wheels Tail Gear")
+
+defineIntegerFromGetter("EXT_WOW_RIGHT", function()
+	if LoGetAircraftDrawArgumentValue(4) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Weight ON Wheels Right Gear")
+
+defineIntegerFromGetter("EXT_WOW_LEFT", function()
+	if LoGetAircraftDrawArgumentValue(6) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Weight ON Wheels Left Gear")
+
+defineIntegerFromGetter("EXT_LANDING_LIGHT", function()
+	if LoGetAircraftDrawArgumentValue(208) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Landing Light (white)")
+
+defineFloat("CANOPY_POS", 162, {0, 1}, "Cockpit Mechanical", "Canopy Position")
+defineRadioWheel("RKT_COUNT_CON", 4, 3009, 3010, {-0.1, 0.1}, 75, 0.1, {0, 1.0}, nil, "Weapon Control", "Rockets Counter Control")
+defineFloat("AILERON_TRIM_G", 170, {-1.0, 1.0}, "Control System", "Aileron Trim Gauge")
+defineFloat("RUDDER_TRIM_G", 172, {-1.0, 1.0}, "Control System", "Rudder Trim Gauge")
+defineFloat("ELEVATOR_TRIM_G", 171, {-1.0, 1.0}, "Control System", "Elevator Trim Gauge")
+defineFloat("CONTR_LOCK_BRACK", 174, {0.0, 1.0}, "Control System", "Control Lock Bracket")
 
 BIOS.protocol.endModule()

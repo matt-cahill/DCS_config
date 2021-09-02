@@ -1,5 +1,6 @@
 BIOS.protocol.beginModule("MiG-19P", 0x1600)
 BIOS.protocol.setExportModuleAircrafts({"MiG-19P"})
+--by WarLord (aka BlackLibrary)
 
 local documentation = moduleBeingDefined.documentation
 
@@ -33,18 +34,19 @@ definePushButton("GEAR_LIGHT_TEST", 10, 3333, 333, "Landing Gear Panel", "PPS-2 
 defineToggleSwitch("EMERG_BRAKE", 4, 3301, 301, "Landing Gear Panel", "Emergency Brake")
 defineToggleSwitch("NOSE_GEAR_BRAKE", 4, 3302, 302, "Landing Gear Panel", "Nose Gear Brake System On/Off")
 
-defineMultipositionSwitch("NAV_LIGHTS", 5, 3261, 261, 5, 0.2,"Exterior Lights Panel" ,"Navigation Lights")
+defineMultipositionSwitch("NAV_LIGHTS", 5, 3261, 261, 6, 0.2,"Exterior Lights Panel" ,"Navigation Lights")
 define3PosTumb("NOSE_LIGHTS", 5, 3262, 262, "Exterior Lights Panel", "Nose Lights Switch, LANDING/OFF/TAXI")
 
 definePushButton("GIK1_ALIGN", 9, 3224, 224, "Flight Instruments Panel", "GIK-1 Needle Alignment")
 definePushButton("ARU2V_LAMP_TEST", 4, 3300, 300, "Flight Instruments Panel", "ARU-2V Lamp Test Button")
-defineRotary("GIK1_CRS_SEL", 9, 3359, 3359, "Flight Instruments Panel", "GIK-1 Course Selector")
+defineRotary("GIK1_CRS_SEL", 9, 3359, 359, "Flight Instruments Panel", "GIK-1 Course Selector")
 definePotentiometer("AGI1_TRIM", 9, 3360, 360, {-1, 1}, "Flight Instruments Panel", "AGI-1 Artificial Horizon Pitch Trim Knob")
 defineToggleSwitch("AGI1_CAGE", 9, 3361, 361, "Landing Gear Panel", "AGI-1 Artificial Horizon Cage Button - Push to cage")
 defineRotary("BALT_PRESS_SEL", 9, 3362, 362, "Flight Instruments Panel", "Barometric Altimeter Setting (bars)")
+defineToggleSwitch("INST_L_DAY_NIGHT", 6, 3363, 363, "Flight Instruments Panel", "Instruments Lamps Day/Night Mode Switch")
 defineRotary("CLOCK_R_KNOB_TURN", 9, 3364, 364, "Flight Instruments Panel", "AChS-1 Chronograph Right Knob (Turn)")
 definePushButton("CLOCK_R_KNOB_PRESS", 4, 3508, 508, "Flight Instruments Panel", "AChS-1 Chronograph Right Knob (Press)")
-defineRotary("CLOCK_L_KNOB_TURN", 9, 3365, 3645, "Flight Instruments Panel", "AChS-1 Chronograph Left Knob (Turn)")
+defineRotary("CLOCK_L_KNOB_TURN", 9, 3365, 365, "Flight Instruments Panel", "AChS-1 Chronograph Left Knob (Turn)")
 define3PosTumb("CLOCK_L_KNOB_PRESS", 9, 3366, 366, "Flight Instruments Panel", "AChS-1 Chronograph Left Knob (PRESS)")
 definePushButton("GMETER_RESET", 9, 3515, 515, "Flight Instruments Panel", "AM-10 Accelerometer Min/Max G Reset Button")
 
@@ -104,7 +106,7 @@ defineToggleSwitch("R_ENG_AIR_START_COVER", 2, 3278, 278, "Bulkhead Panel 5", "R
 definePushButton("L_ENG_AIR_START", 2, 3328, 328, "Bulkhead Panel 5", "Left Air Engine Start")
 definePushButton("R_ENG_AIR_START", 2, 3329, 329, "Bulkhead Panel 5", "Right Air Engine Start")
 
-defineMultipositionSwitch("ASP5_AIM_MODE", 7, 3344, 344, 3, 0.1,"Armament Sight Panel" ,"ASP-5 Sight Aiming Mode")
+defineMultipositionSwitch("ASP5_AIM_MODE", 7, 3344, 344, 4, 0.1,"Armament Sight Panel" ,"ASP-5 Sight Aiming Mode")
 defineToggleSwitch("ASP5_OP_MODE", 11, 3345, 345, "Armament Sight Panel", "ASP-5 Sight Operational Mode (Radar/Optic)")
 defineToggleSwitch("BOMB_REL_MODE", 7, 3346, 346, "Armament Sight Panel", "Bomb Release Mode (Single/Auto)")
 
@@ -114,8 +116,8 @@ defineToggleSwitch("ROCKET_COUNTER_MODE", 7, 3337, 337, "Rocket Pod Panel", "Roc
 defineToggleSwitch("RADAR_ECCM", 14, 3338, 338, "Radar Control Panel", "RP-5 Radar ECCM Mode Switch, ON/OFF")
 definePushButton("RADAR_BIT_TEST", 14, 3339, 339, "Radar Control Panel", "RP-5 Radar Built-In Test (BIT) Button - Press 2 seconds to start test")
 defineToggleSwitch("RADAR_GAUGE_MODE", 14, 3340, 340, "Radar Control Panel", "RP-5 Radar Gauge Display Mode Switch, VOLTAGE/AIR PRESSURE")
-defineMultipositionSwitch("RADAR_MODE", 14, 3341, 341, 3, 0.5,"Radar Control Panel" ,"RP-5 Radar Mode Control Switch, ON/STANDBY/OFF")
-defineRotary("RADAR_ANT_ELEVATION", 14, 3342, 3342, "Flight Instruments Panel", "RP-5 Radar Electronic Horizon Elevation Adjustment Knob")
+defineMultipositionSwitch("RADAR_MODE", 14, 3341, 341, 4, 0.5,"Radar Control Panel" ,"RP-5 Radar Mode Control Switch, ON/STANDBY/OFF")
+defineRotary("RADAR_ANT_ELEVATION", 14, 3342, 342, "Flight Instruments Panel", "RP-5 Radar Electronic Horizon Elevation Adjustment Knob")
 defineToggleSwitch("RADAR_SCR_MODE", 14, 3343, 343, "Radar Control Panel", "RP-5 Radar Screen Mode Switch, DAY/NIGHT")
 defineToggleSwitch("RADAR_TGT_LOCK", 14, 3434, 434, "Radar Control Panel", "RP-5 Radar Target Lock Switch (AR-18-16 Tracking Antenna), ON/OFF")
 definePotentiometer("RADAR_SCR_BRIGHT", 14, 3486, 486, {0, 1}, "Radar Control Panel", "RP-5 Radar Screen Brightness Adjustment Knob")
@@ -195,14 +197,15 @@ defineToggleSwitch("IFF_PW_COVER", 16, 3267, 267, "Bulkhead Panel 2", "SRO-2 IFF
 defineToggleSwitch("IFF_PW", 16, 3268, 268, "Bulkhead Panel 2", "SRO-2 IFF Power Switch, ON/OFF")
 defineToggleSwitch("FLOOD_LAMP_R", 6, 3522, 522, "Bulkhead Panel 2", "Right Side Flood Lamp Switch, ON/OFF")
 
-defineMultipositionSwitch("ARK5_CHAN_SEL", 20, 3335, 335, 2, 0.5,"ARK5 Panel" ,"ARK-5 NEAR Frequency Band Selector Switch")
+defineMultipositionSwitch("ARK5_CHAN_SEL", 20, 3335, 335, 3, 0.5,"ARK5 Panel" ,"ARK-5 NEAR Frequency Band Selector Switch")
 defineToggleSwitch("ARK5_RECV_MODE", 20, 3347, 347, "ARK5 Panel", "ARK-5 Receiver Mode Switch, TLG(Telegraph)/TLF(Telephony)")
-defineMultipositionSwitch("ARK5_FREQ_SEL", 20, 3348, 348, 2, 0.5,"ARK5 Panel" ,"ARK-5 FAR/NDB Frequency Band Selector Switch")
-defineMultipositionSwitch("ARK5_MODE", 20, 3349, 349, 3, 0.1,"ARK5 Panel" ,"ARK-5 Function Selector Switch, OFF/COMP/ANT./LOOP")
-defineToggleSwitch("ARK5_ANT_MOV", 20, 3350, 350, "ARK5 Panel", "ARK-5 Loop Antenna Rotation Switch, L(EFT)/R(IGHT)")
+defineMultipositionSwitch("ARK5_FREQ_SEL", 20, 3348, 348, 3, 0.5,"ARK5 Panel" ,"ARK-5 FAR/NDB Frequency Band Selector Switch")
+defineMultipositionSwitch("ARK5_MODE", 20, 3349, 349, 4, 0.1,"ARK5 Panel" ,"ARK-5 Function Selector Switch, OFF/COMP/ANT./LOOP")
+define3PosTumb("ARK5_ANT_MOV", 20, 3350, 350, "ARK5 Panel", "ARK-5 Loop Antenna Rotation Switch, L(EFT)/R(IGHT)")
 definePotentiometer("ARK5_INST_LIGHT", 20, 3351, 351, {0, 1}, "ARK5 Panel", "ARK-5 Frequency Scale Backlight Knob")
 definePotentiometer("ARK5_VOL", 20, 3352, 352, {0, 1}, "ARK5 Panel", "ARK-5 Audio Volume Knob")
-defineRotary("ARK5_FREQ_ZUNE", 20, 3353, 353, "ARK5 Panel", "ARK-5 Frequency Fine Tuning Handle")
+defineRotary("ARK5_FREQ_TUNE", 20, 3353, 353, "ARK5 Panel", "ARK-5 Frequency Fine Tuning Handle") ----
+
 
 defineToggleSwitch("EMERG_GEAR", 4, 3222, 222, "Right Console", "Landing Gear Emergency Deployment")
 defineToggleSwitch("EMERG_FLAPS", 4, 3223, 223, "Right Console", "Flaps Emergency Deployment")
@@ -223,10 +226,11 @@ defineToggleSwitch("CB_AILERON_ACT", 3, 3239, 239, "Circuit Breakers", "BU-13M A
 defineToggleSwitch("CB_ROCKET_PODS", 3, 3240, 240, "Circuit Breakers", "Rocket Pods Circuit Breaker")
 
 -- CANOPY
-defineToggleSwitch("CANOPY_LOCK_L", 4, 3429, 429, "Canopy", "Canopy Lock Lever L")
-defineToggleSwitch("CANOPY_LOCK_R", 4, 3430, 430, "Canopy", "Canopy Lock Lever R")
+defineToggleSwitch("CANOPY_LOCK_L", 4, 3436, 429, "Canopy", "Canopy Lock Lever L")
+defineToggleSwitch("CANOPY_LOCK_R", 4, 3429, 429, "Canopy", "Canopy Lock Lever R")
 defineToggleSwitch("CANOPY_PRESS", 4, 3431, 431, "Canopy", "Canopy Pressurization Switch")
-defineToggleSwitch("EMERG_CANOPY", 4, 3229, 229, "Canopy", "Canopy Pressurization Switch")
+defineToggleSwitch("EMERG_CANOPY", 4, 3229, 229, "Canopy", "Emergency Canopy Release Lever")
+defineToggleSwitch("CANOPY_OPEN", 4, 3204, 204, "Canopy", "Canopy Open/Close Handle")
 
 -- Warning, Caution and IndicatorLights
 defineIndicatorLight("IFF_SELFDESTRUCT_LAMP", 205, "Warning, Caution and IndicatorLights","SRO-2 Self-destruction Lamp (red)")
@@ -285,9 +289,13 @@ defineIndicatorLight("N_GEAR_DOWN", 493, "Warning, Caution and IndicatorLights",
 defineIndicatorLight("R_GEAR_DOWN", 494, "Warning, Caution and IndicatorLights","Right Gear DOWN Lamp (green)")
 defineIndicatorLight("SRO2B_RWR_PW", 496, "Warning, Caution and IndicatorLights","Radar Warning Receiver Power Lamp (red)")
 defineIndicatorLight("SRO2B_RWR_LOCK", 497, "Warning, Caution and IndicatorLights","Radar Warning Receiver LOCK Lamp (red)")
+defineIndicatorLight("ARK5_FREQ_SCALE_L", 519, "Warning, Caution and IndicatorLights","ARK5 Frequency Scale Light (yellow)")
 
 -- Gauges 
 defineFloat("ARK5_FREQ_SCALE", 354, {-1, 1}, "Gauges", "ARK5 Frequency Scale")
+defineFloat("ARK5_FREQ_150_SCALE", 413, {0, 1}, "Gauges", "ARK5 Frequency 150-310 Scale")
+defineFloat("ARK5_FREQ_310_SCALE", 414, {0, 1}, "Gauges", "ARK5 Frequency 310-640 Scale")
+defineFloat("ARK5_FREQ_640_SCALE", 415, {0, 1}, "Gauges", "ARK5 Frequency 640-1300 Scale")
 defineFloat("VOLT_MANOMETER_GAUGE", 370, {0.0, 0.3}, "Gauges", "Voltmeter/Manometer Gauge")
 defineFloat("OXY_PRESS_GAUGE", 371, {0, 1}, "Gauges", "IK-18 Oxygen Pressure")
 defineFloat("OXY_FLOW_INDICATOR", 435, {0, 1}, "Gauges", "IK-18 Oxygen Flow Indicator")
@@ -344,6 +352,8 @@ defineFloat("ASP5N_DIVE_ANGLE", 417, {0, 1}, "Gauges", "ASP-5N Dive Angle Select
 defineFloat("USB1_L_AMMO_COUNT", 418, {0, 1}, "Gauges", "USB-1 Left Cannon Ammo Counter")
 defineFloat("USB1_R_AMMO_COUNT", 419, {0, 1}, "Gauges", "USB-1 Right Cannon Ammo Counter")
 
+defineToggleSwitch("EMERG_GEAR_HND", 4, 3505, 505, "Landing Gear Panel", "Landing Gear Emergency Handle")
+
 --Externals
 defineIntegerFromGetter("EXT_SPEED_BRAKE_RIGHT", function()
 	return math.floor(LoGetAircraftDrawArgumentValue(183)*65535)
@@ -358,5 +368,15 @@ end, 1, "External Aircraft Model", "Left Position Light (red)")
 defineIntegerFromGetter("EXT_POSITION_LIGHT_RIGHT", function()
 	if LoGetAircraftDrawArgumentValue(192) > 0 then return 1 else return 0 end
 end, 1, "External Aircraft Model", "Right Position Light (green)")
+
+defineIntegerFromGetter("EXT_WOW_NOSE", function()
+	if LoGetAircraftDrawArgumentValue(1) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Weight ON Wheels Nose Gear")
+defineIntegerFromGetter("EXT_WOW_RIGHT", function()
+	if LoGetAircraftDrawArgumentValue(4) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Weight ON Wheels Right Gear")
+defineIntegerFromGetter("EXT_WOW_LEFT", function()
+	if LoGetAircraftDrawArgumentValue(6) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Weight ON Wheels Left Gear")
 
 BIOS.protocol.endModule()

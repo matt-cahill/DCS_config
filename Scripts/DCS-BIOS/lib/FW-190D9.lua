@@ -45,7 +45,7 @@ defineTumb("RKT_EMG_REL_CVR",20, 3009,137, 1, {0,1}, nil, false, "Weapon Control
 defineTumb("RKT_EMG_REL",20, 3010,108, 1, {0,1}, nil, false, "Weapon Control", "Rocket Emergency Release")
 defineTumb("JETT_FUS_STORES",20, 3012,92, 1, {0,1}, nil, false, "Cockpit", "Jettison Fuselage Stores")
 defineTumb("SIGHT_GYRO",21, 3001,132, 1, {0,1}, nil, false, "Gun Sight", "EZ42 Gunsight Gyro Power Switch, ON/OFF")
-defineRotary("SIGHT_WING_SPAN",21, 3002, 131, "Gun Sight", "EZ42 Gunsight Target Wingspan Knob")
+definePotentiometer("SIGHT_WING_SPAN",21, 3002, 131,{0.0, 1.0},"Gun Sight", "EZ42 Gunsight Target Wingspan Knob")
 defineTumb("SIGHT_NIGHT",21, 3011,134, 1, {0,1}, nil, false, "Gun Sight", "EZ42 Gunsight Night Lens Filter, ON/OFF")
 defineRotary("SIGHT_DISC_CTRL",21, 3003,4, "Gun Sight", "EZ42 Gunsight Target Distance Control")
 defineRotary("SIGHT_BRIGHT",21, 3004, 135, "Gun Sight", "EZ42 Gunsight Brightness Control")
@@ -68,7 +68,7 @@ defineTumb("MAGNETO",2, 3004,75, 0.3, {0,0.9}, nil, false, "Cockpit", "Magneto S
 defineTumb("STARTER_SWITCH",2, 3008, 105, 0.5, {0,1}, nil, false, "Cockpit", "Starter Switch. Starter Power")
 defineTumb("MBG_EMG_HNDL",2, 3013, 91, 1, {0,1}, nil, false, "Cockpit", "MBG Emergency Mode Handle")
 defineTumb("FUEL_TNK_SEL",6, 3001, 90, 0.1, {0,0.3}, nil, false, "Cockpit", "Fuel Tank Selector Valve (CLOSE/FORWARD/AFT/BOTH)")
-defineTumb("FUEL_GAUGE_SEL",6, 3002, 99, 0.5, {-0.5,1}, nil, false, "Cockpit", "Fuel Gauge Selector (FORWARD/NONE/AFT)")
+defineTumb("FUEL_GAUGE_SEL",6, 3002, 99, 0.5, {0,1}, nil, false, "Cockpit", "Fuel Gauge Selector (FORWARD/NONE/AFT)")
 defineTumb("FUEL_MWB4_SEL",6, 3003, 161, 1, {0,1}, nil, false, "Cockpit", "MW-B4 Selector (Not Functional)")
 defineTumb("FUEL_PRIM_PMPL",6, 3009, 162, 1, {0,1}, nil, false,"Cockpit", "Primer Pump")
 defineTumb("FL_TR_HOR_PWR_ON",1, 3005, 141, 1, {0,1}, nil, false, "Electric System", "Flaps, Trimmer, Artificial Horizon Power On")
@@ -188,5 +188,18 @@ end, 1, "External Aircraft Model", "Left Position Light (red)")
 defineIntegerFromGetter("EXT_POSITION_LIGHT_RIGHT", function()
 	if LoGetAircraftDrawArgumentValue(191) > 0 then return 1 else return 0 end
 end, 1, "External Aircraft Model", "Right Position Light (green)")
+defineIntegerFromGetter("EXT_POSITION_LIGHT_TAIL", function()
+	if LoGetAircraftDrawArgumentValue(192) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Tail Position Light (White)")
+
+defineIntegerFromGetter("EXT_WOW_TAIL", function()
+	if LoGetAircraftDrawArgumentValue(1) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Weight ON Wheels Tail Gear")
+defineIntegerFromGetter("EXT_WOW_RIGHT", function()
+	if LoGetAircraftDrawArgumentValue(4) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Weight ON Wheels Right Gear")
+defineIntegerFromGetter("EXT_WOW_LEFT", function()
+	if LoGetAircraftDrawArgumentValue(6) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Weight ON Wheels Left Gear")
 
 BIOS.protocol.endModule()

@@ -13,13 +13,8 @@ local defineIndicatorLightInverted = BIOS.util.defineIndicatorLightInverted
 local definePushButton = BIOS.util.definePushButton
 local definePotentiometer = BIOS.util.definePotentiometer
 local defineRotary = BIOS.util.defineRotary
-local defineSetCommandTumb = BIOS.util.defineSetCommandTumb
 local defineTumb = BIOS.util.defineTumb
 local defineToggleSwitch = BIOS.util.defineToggleSwitch
-local defineToggleSwitchToggleOnly = BIOS.util.defineToggleSwitchToggleOnly
-local defineFixedStepTumb = BIOS.util.defineFixedStepTumb
-local defineFixedStepInput = BIOS.util.defineFixedStepInput
-local defineVariableStepTumb = BIOS.util.defineVariableStepTumb
 local defineString = BIOS.util.defineString
 local defineRockerSwitch = BIOS.util.defineRockerSwitch
 local defineMultipositionSwitch = BIOS.util.defineMultipositionSwitch
@@ -84,19 +79,19 @@ defineTumb("LND_LIGHT", 46, 3033, 323, 0.5, {0.0, 1}, nil, false, "Landing Gear 
 
 --Warning Lights
 definePushButton("FUEL_WARN_LIGHT_TEST", 47, 3034, 369, "Main Warning Lights", "Fuel Warn Lights Test")
-defineToggleSwitch("FUEL_WARN_LIGHTS_BRT", 47, 3074, 195, "Main Warning Lights", "Fuel Warn Lights Brightness")
+definePotentiometer("FUEL_WARN_LIGHTS_BRT", 47, 3074, 195, {0, 1}, "Main Warning Lights", "Fuel Warn Lights Brightness")
 definePushButton("MAIN_WARN_LIGHT_TEST", 47, 3035, 370, "Main Warning Lights", "Main Warn Lights Test")
-defineToggleSwitch("MAIN_WARN_LIGHTS_BRT", 47, 3075, 196, "Main Warning Lights", "Main Warn Lights Brightness")
+definePotentiometer("MAIN_WARN_LIGHTS_BRT", 47, 3075, 196, {0, 1}, "Main Warning Lights", "Main Warn Lights Brightness")
 definePushButton("CTR_WARN_LIGHT_TEST", 47, 3036, 371, "Engine Status Panel", "Center Warn Lights Test")
-defineToggleSwitch("CTR_WARN_LIGHTS_BRT", 47, 3076, 273, "Engine Status Panel", "Center Warn Lights Brightness")
+definePotentiometer("CTR_WARN_LIGHTS_BRT", 47, 3076, 273, {0, 1}, "Engine Status Panel", "Center Warn Lights Brightness")
 definePushButton("PYL_EMPTY_WARN_LIGHT_TEST", 47, 3037, 372, "Center Pedestal Panel", "Pylon Empty Warn Lights Test")
-defineToggleSwitch("PYL_EMPTY_WARN_LIGHTS_BRT", 47, 3077, 282, "Center Pedestal Panel", "Pylon Empty Warn Lights Brightness")
+definePotentiometer("PYL_EMPTY_WARN_LIGHTS_BRT", 47, 3077, 282, {0, 1}, "Center Pedestal Panel", "Pylon Empty Warn Lights Brightness")
 definePushButton("PYL_LD_WARN_LIGHT_TEST", 47, 3038, 373, "Center Pedestal Panel", "Pylon Loaded Warn Lights Test")
-defineToggleSwitch("PYL_LD_WARN_LIGHTS_BRT", 47, 3078, 283, "Center Pedestal Panel", "Pylon Loaded Warn Lights Brightness")
+definePotentiometer("PYL_LD_WARN_LIGHTS_BRT", 47, 3078, 283, {0, 1}, "Center Pedestal Panel", "Pylon Loaded Warn Lights Brightness")
 definePushButton("GEAR_WARN_LIGHT_TEST", 47, 3039, 374, "Landing Gear Control", "Gear Warn Lights Test")
-defineToggleSwitch("GEAR_WARN_LIGHTS_BRT", 47, 3079, 322, "Landing Gear Control", "Gear Warn Lights Brightness")
+definePotentiometer("GEAR_WARN_LIGHTS_BRT", 47, 3079, 322, {0, 1}, "Landing Gear Control", "Gear Warn Lights Brightness")
 definePushButton("MASTER_WARN_LIGHT_TEST", 47, 3040, 255, "Flight Status/Navigation Panel", "Master Warn Light Test/Acknowledge")
-defineToggleSwitch("MASTER_WARN_LIGHT_BRT", 47, 3277, 657, "Flight Status/Navigation Panel", "Master Warn Light Brightness")
+definePotentiometer("MASTER_WARN_LIGHT_BRT", 47, 3277, 657, {0, 1}, "Flight Status/Navigation Panel", "Master Warn Light Brightness")
 
 
 --RADIO
@@ -311,7 +306,7 @@ defineToggleSwitch("WPN_REL_CVR", 42, 3192, 383, "Stick", "Weapons Release Cover
 --Helmet Visor
 defineToggleSwitch("HELM_HEAT_MODE", 45, 3205, 306, "Left Vertical Mid Panel", "Helmet Heat Auto/Manual")
 definePushButton("HELM_QUICK_HEAT", 45, 3206, 310, "Left Vertical Mid Panel", "Helmet Quick Heat")
-defineToggleSwitch("HELM_VSR", 45, 3207, 369, "Left Vertical Mid Panel", "Helmet Visor On/Off")
+defineToggleSwitch("HELM_VSR", 45, 3207, 595, "Left Vertical Mid Panel", "Helmet Visor On/Off")
 
 --Air Conditioning
 defineTumb("CPT_AIR_CND", 50, 3208, 292, 0.33, {0, 0.99}, nil, true, "Left Vertical Mid Panel", "Air Conditioning Select")
@@ -431,7 +426,7 @@ defineFloat("RALT_ND", 103, {0, 1}, "Flight Status/Navigation Panel", "Radio Alt
 defineIndicatorLight("LOW_ALT_LIGHT", 500, "Flight Status/Navigation Panel", "Low Altitude Warn Light")
 
 --UUA/AOA
-defineFloat("AOA_ND", 105, {-0.2857, 1}, "Accelerometer, AoA Gauge Panel", "AOA Gauge")
+defineFloat("AOA_ND", 105, {-0.30, 1}, "Accelerometer, AoA Gauge Panel", "AOA Gauge")
 defineIndicatorLight("AOA_WARN_LGHT", 537, "Canopy Frame", "AOA Warning Lights")
 
 --DA-200 Subgroup
@@ -443,7 +438,7 @@ defineFloat("KPP_BANK", 108, {-1, 1}, "Flight Status/Navigation Panel", "KPP Ban
 defineFloat("KPP_PITCH", 109, {-1, 1}, "Flight Status/Navigation Panel", "KPP Pitch")
 
 --Accelerometer
-defineFloat("ACCEL_ND", 110, {-0.41, 1}, "Accelerometer, AoA Gauge Panel", "Accelerometer Needle")
+defineFloat("ACCEL_ND", 110, {-0.394, 1}, "Accelerometer, AoA Gauge Panel", "Accelerometer Needle")
 defineFloat("ACCEL_MAX", 113, {0, 1}, "Accelerometer, AoA Gauge Panel", "Accelerometer Max G Marker")
 defineFloat("ACCEL_MIN", 114, {0, 1}, "Accelerometer, AoA Gauge Panel", "Accelerometer Min G Marker")
 
@@ -575,9 +570,9 @@ defineIndicatorLight("SOD_ANS", 606, "SPO RWR", "SOD Answer Light")
 
 --SRZO (labelled as a second SOD category in mainpanel_init)
 defineIndicatorLight("SRZO_PWR_LGHT", 607, "Avionics Power Panel", "SRZO Power Light")
-defineIndicatorLight("SRZO_CODE", 608, "Avionics Power Panel", "SRZO Code Light")
-defineIndicatorLight("SRZO_CIPH", 609, "Avionics Power Panel", "SRZO Cipher Light")
-defineIndicatorLight("SRZO_ERR", 611, "SRZO/Fuse Panel", "SOD Error Light")
+defineIndicatorLight("SRZO_CODE_L", 608, "Avionics Power Panel", "SRZO Code Light")
+defineIndicatorLight("SRZO_CIPH_L", 609, "Avionics Power Panel", "SRZO Cipher Light")
+defineIndicatorLight("SRZO_ERR_L", 611, "SRZO/Fuse Panel", "SOD Error Light")
 
 --Backlights Intensity (Under SRZO category in mainpanel_init)
 defineIndicatorLight("ASP_LGHT_ON", 613, "Backlighting", "ASP Backlight On") --When sight is powered off, all ASP lighting shuts off; Unsure if this will be useful
@@ -595,7 +590,7 @@ defineFloat("H_TRI_M", 658, {0, 1}, "Flight Status/Navigation Panel", "Altimeter
 
 --Cockpit Pressure Gauge
 defineFloat("PIT_PRES_ALT", 655, {0, 1}, "Center Pedestal Panel", "Cockpit Pressure Altimeter")
-defineFloat("H_TRI_M", 656, {0, 1}, "Center Pedestal Panel", "Cockpit Pressure Gauge")
+defineFloat("PIT_PRES_GAUGE", 656, {0, 1}, "Center Pedestal Panel", "Cockpit Pressure Gauge")
 
 defineIndicatorLight("WARN_L_CHECK_STAT", 407, "Main Warning Lights", "WARNING LIGHTS CHECK STATE")
 
@@ -624,5 +619,14 @@ defineIntegerFromGetter("EXT_STROBE", function()
 	if LoGetAircraftDrawArgumentValue(192) > 0 then return 1 else return 0 end
 end, 1, "External Aircraft Model", "Strobe Light")
 
+defineIntegerFromGetter("EXT_WOW_NOSE", function()
+	if LoGetAircraftDrawArgumentValue(1) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Weight ON Wheels Nose Gear")
+defineIntegerFromGetter("EXT_WOW_RIGHT", function()
+	if LoGetAircraftDrawArgumentValue(4) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Weight ON Wheels Right Gear")
+defineIntegerFromGetter("EXT_WOW_LEFT", function()
+	if LoGetAircraftDrawArgumentValue(6) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Weight ON Wheels Left Gear")
 
 BIOS.protocol.endModule()

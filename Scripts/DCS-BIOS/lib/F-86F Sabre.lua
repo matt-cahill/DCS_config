@@ -12,16 +12,9 @@ local defineIndicatorLight = BIOS.util.defineIndicatorLight
 local definePushButton = BIOS.util.definePushButton
 local definePotentiometer = BIOS.util.definePotentiometer
 local defineRotary = BIOS.util.defineRotary
-local defineSetCommandTumb = BIOS.util.defineSetCommandTumb
 local defineTumb = BIOS.util.defineTumb
 local defineToggleSwitch = BIOS.util.defineToggleSwitch
-local defineToggleSwitchToggleOnly = BIOS.util.defineToggleSwitchToggleOnly
-local defineFixedStepTumb = BIOS.util.defineFixedStepTumb
-local defineFixedStepInput = BIOS.util.defineFixedStepInput
-local defineVariableStepTumb = BIOS.util.defineVariableStepTumb
 local defineString = BIOS.util.defineString
-local defineRockerSwitch = BIOS.util.defineRockerSwitch
-local defineMultipositionSwitch = BIOS.util.defineMultipositionSwitch
 local defineIntegerFromGetter = BIOS.util.defineIntegerFromGetter
 
 defineTumb("BAT_START",1, 3001, 653, 1, {-1,1}, nil, false, "Electrics", "Battery-Starter Switch, BATTERY/OFF/STARTER")
@@ -46,7 +39,7 @@ defineTumb("LDG_LGHTS_CONT",1, 3020, 768, 1, {0,1}, nil, false, "Electrics", "LD
 defineTumb("LDG_LGHTS",1, 3021, 769, 1, {0,1}, nil, false, "Electrics", "LDG Lights")
 defineTumb("FIRE_WARN",1, 3023, 770, 1, {0,1}, nil, false, "Electrics", "Fire Warn.")
 defineTumb("BUS_TIE_CTRL",1, 3024, 771, 1, {0,1}, nil, false, "Electrics", "Bus Tie-In Control")
-defineTumb("SPD_BRAKE",1, 3025, 772, 1, {0,1}, nil, false, "Electrics", "Speed Brake")
+defineTumb("SPD_BRAKE_CB",1, 3025, 772, 1, {0,1}, nil, false, "Electrics", "Speed Brake Circuit Breaker")
 defineTumb("AIR_OIL_TMP_SEL",1, 3026, 773, 1, {0,1}, nil, false, "Electrics", "Free Air & Oil Temp & Air Sel.")
 defineTumb("LDG_GEAR_WARN",1, 3027, 774, 1, {0,1}, nil, false, "Electrics", "LDG Gear Warn.")
 defineTumb("LDG_GEAR_WARN_CTRL",1, 3028, 775, 1, {0,1}, nil, false, "Electrics", "LDG Gear Control")
@@ -76,11 +69,9 @@ defineTumb("ALT_ON_TEST",2, 3007, 684, 1, {0,1}, nil, false, "Hydraulics", "Alte
 defineTumb("ALT_ON_EMG_HANDLE",2, 3008, 706, 1, {0,1}, nil, false, "Hydraulics", "Alternate Hydraulic Emergency Override Handle, IN/OUT")
 defineTumb("FL_CTRL_SWITCH",2, 3003, 647, 1, {-1,1}, nil, false, "Hydraulics", "Flight Control Switch, ALTERNATE ON/NORMAL/RESET")
 defineTumb("LDG_GEAR_HORN",2, 3009, 815, 1, {0,1}, nil, false, "Hydraulics", "Landing Gear Warning Horn Cutout Button (Push to silence horn)")
-defineTumb("SPD_BRAKE",2, 3005, 211, 1, {-1,1}, nil, false, "Hydraulics", "Speed Brake Switch, OUT/HOLD/IN")
+defineTumb("SPD_BRAKE_SW",2, 3005, 211, 1, {-1,1}, nil, false, "Hydraulics", "Speed Brake Switch, OUT/HOLD/IN")
 defineTumb("PRK_BRAKE",2, 3014, 217, 1, {0,1}, nil, false, "Hydraulics", "Parking Brake Handle, ON/OFF")
 
---12294 / 2048
---defineToggleSwitch("FUEL_DENS_SEL", 3, 3001, 672, "Fuel", "Fuel Densitometer Selection Switch, IN/OUT")
 defineTumb("FUEL_DENS_SEL",3, 3001, 672, 1, {0,1}, nil, false, "Fuel", "Fuel Densitometer Selection Switch, IN/OUT")
 
 defineTumb("FUEL_DENS_SEL_CVR",3, 3002, 673, 1, {0,1}, nil, false, "Fuel", "Fuel Densitometer Selection Switch Cover")
@@ -134,10 +125,10 @@ definePotentiometer("CONS_LGTH",17,3001, 812, {0, 1},"Lights", "Console and Pane
 definePotentiometer("ARC_27_VOL",26,3002, 806, {0.1, 0.9},"Radio", "AN/ARC-27 UHF Audio Volume Knob")
 definePotentiometer("ARN_6_VOL",27,3004, 802, {0.1, 0.9},"Radio", "AN/ARN-6 Audio Volume Control")
 definePotentiometer("J8_ATT_PTC_TRIM",24,3002, 200, {0.0, 1.0},"Attitude Indicator", "J-8 Attitude Indicator Pitch Trim Knob")
-defineRotary("ARN_6_TUNE",27, 3003, nil, "Radio", "AN/ARN-6 Tuning Crank")
+defineRotary("ARN_6_TUNE",27, 3003, 801, "Radio", "AN/ARN-6 Tuning Crank")
 defineRotary("ARN_6_E_W_VAR",27, 3008, 826, "Radio", "AN/ARN-6 East/West Variation Knob")
 defineRotary("ALT_MET_REF_PRESS",7, 3001, 218, "Cockpit", "Altimeter reference pressure adjusting knob")
-defineRotary("COMP_DIRECTION",20, 3001, nil, "Gyro Compass", "Compass Correction")
+defineRotary("COMP_DIRECTION",20, 3001, 199, "Gyro Compass", "Compass Correction")
 
 defineTumb("CANOPY",25, 3001, 718, 1, {-1,1}, nil, false, "Cockpit", "Canopy Switch, OPEN/OFF/CLOSE")
 defineTumb("EMG_JETT_HANDLE",25, 3008, 818, 1, {0,1}, nil, false, "Cockpit", "Emergency Jettison Handle, RELEASE ALL/RELEASE OUTBD ONLY")
@@ -261,7 +252,7 @@ defineFloat("FUEL_QUANTITY", 22, {-1.0, 1.0}, "Indicator", "Fuel_Quantity")
 defineFloat("OXYGEN_PRESSURE", 353, {0, 1}, "Indicator", "Oxygen_Pressure")
 defineFloat("OXYGENFLOWBLINKER", 705, {0.0, 1.0}, "Indicator", "OxygenFlowBlinker")
 defineFloat("COCKPITALTIMETER", 114, {0.0, 1.0}, "Indicator", "CockpitAltimeter")
-defineFloat("ARN6_BAND", 804, {0.0, 1.0}, "Indicator", "ARN6_Band")
+defineFloat("ARN6_BAND", 804, {0.0, 1.0}, "Indicator", "ARN6 Band")
 defineFloat("ARN6_TUNINGMETER", 800, {0.0, 1.0}, "Indicator", "ARN6_TuningMeter")
 defineFloat("ARN6_TUNING", 800, {0.0, 1.0}, "Indicator", "ARN6_Tuning")
 defineFloat("ARN6_BEARING", 800, {0.0, 1.0}, "Indicator", "ARN6_Bearing")
@@ -307,13 +298,23 @@ defineIntegerFromGetter("EXT_STROBE_BOTTOM", function()
 	if LoGetAircraftDrawArgumentValue(194) > 0 then return 1 else return 0 end
 end, 1, "External Aircraft Model", "Bottom Strobe Light")
 
+defineIntegerFromGetter("EXT_WOW_NOSE", function()
+	if LoGetAircraftDrawArgumentValue(1) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Weight ON Wheels Nose Gear")
+defineIntegerFromGetter("EXT_WOW_RIGHT", function()
+	if LoGetAircraftDrawArgumentValue(4) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Weight ON Wheels Right Gear")
+defineIntegerFromGetter("EXT_WOW_LEFT", function()
+	if LoGetAircraftDrawArgumentValue(6) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Weight ON Wheels Left Gear")
+
 --[[--Gauge Values--]]--
 
 local function getBand()
      local returnValue = (((GetDevice(0):get_argument_value(804))*3)+1)
      return returnValue
 end
-defineIntegerFromGetter("ARN6_BAND", getBand, 65000, 
+defineIntegerFromGetter("ARN6_BAND_DISP", getBand, 65000, 
 "Gauge Values", "ARN-6 Band")
 
 local function getARN6Freq()

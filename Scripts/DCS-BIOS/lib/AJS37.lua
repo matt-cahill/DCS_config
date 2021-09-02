@@ -1,7 +1,6 @@
 BIOS.protocol.beginModule("AJS37", 0x4600)
 BIOS.protocol.setExportModuleAircrafts({"AJS37"})
 
-local inputProcessors = moduleBeingDefined.inputProcessors
 local documentation = moduleBeingDefined.documentation
 
 local document = BIOS.util.document  
@@ -13,17 +12,105 @@ local defineIndicatorLight = BIOS.util.defineIndicatorLight
 local definePushButton = BIOS.util.definePushButton
 local definePotentiometer = BIOS.util.definePotentiometer
 local defineRotary = BIOS.util.defineRotary
-local defineSetCommandTumb = BIOS.util.defineSetCommandTumb
 local defineTumb = BIOS.util.defineTumb
 local defineToggleSwitch = BIOS.util.defineToggleSwitch
 local defineToggleSwitchToggleOnly = BIOS.util.defineToggleSwitchToggleOnly
 local defineFixedStepTumb = BIOS.util.defineFixedStepTumb
-local defineFixedStepInput = BIOS.util.defineFixedStepInput
-local defineVariableStepTumb = BIOS.util.defineVariableStepTumb
 local defineString = BIOS.util.defineString
-local defineRockerSwitch = BIOS.util.defineRockerSwitch
-local defineMultipositionSwitch = BIOS.util.defineMultipositionSwitch
 local defineIntegerFromGetter = BIOS.util.defineIntegerFromGetter
+
+local function defineIndicatorLight1(msg, arg_number, category, description)
+	local value = moduleBeingDefined.memoryMap:allocateInt {
+		maxValue = 1
+	}
+	assert(value.shiftBy ~= nil)
+	moduleBeingDefined.exportHooks[#moduleBeingDefined.exportHooks+1] = function(dev0)
+		if dev0:get_argument_value(arg_number) >= 0.3 then
+			value:setValue(1)
+		else
+		    value:setValue(0)
+		end
+	end
+	document {
+		identifier = msg,
+		category = category,
+		description = description,
+		control_type = "led",
+		inputs = {},
+		outputs = {
+			{ ["type"] = "integer",
+			  suffix = "",
+			  address = value.address,
+			  mask = value.mask,
+			  shift_by = value.shiftBy,
+			  max_value = 1,
+			  description = "Afterburner Stage Light 1"
+			}
+		}
+	}
+end
+
+local function defineIndicatorLight2(msg, arg_number, category, description)
+	local value = moduleBeingDefined.memoryMap:allocateInt {
+		maxValue = 1
+	}
+	assert(value.shiftBy ~= nil)
+	moduleBeingDefined.exportHooks[#moduleBeingDefined.exportHooks+1] = function(dev0)
+		if dev0:get_argument_value(arg_number) >= 0.6 then
+			value:setValue(1)
+		else
+		    value:setValue(0)
+		end
+	end
+	document {
+		identifier = msg,
+		category = category,
+		description = description,
+		control_type = "led",
+		inputs = {},
+		outputs = {
+			{ ["type"] = "integer",
+			  suffix = "",
+			  address = value.address,
+			  mask = value.mask,
+			  shift_by = value.shiftBy,
+			  max_value = 1,
+			  description = "Afterburner Stage Light 2"
+			}
+		}
+	}
+end
+
+local function defineIndicatorLight3(msg, arg_number, category, description)
+	local value = moduleBeingDefined.memoryMap:allocateInt {
+		maxValue = 1
+	}
+	assert(value.shiftBy ~= nil)
+	moduleBeingDefined.exportHooks[#moduleBeingDefined.exportHooks+1] = function(dev0)
+		if dev0:get_argument_value(arg_number) >= 0.9 then
+			value:setValue(1)
+		else
+		    value:setValue(0)
+		end
+	end
+	document {
+		identifier = msg,
+		category = category,
+		description = description,
+		control_type = "led",
+		inputs = {},
+		outputs = {
+			{ ["type"] = "integer",
+			  suffix = "",
+			  address = value.address,
+			  mask = value.mask,
+			  shift_by = value.shiftBy,
+			  max_value = 1,
+			  description = "Afterburner Stage Light 3"
+			}
+		}
+	}
+end
 
 -- remove Arg# Pilot 3333
 
@@ -34,7 +121,7 @@ definePushButton("WEAPON_RELEASE", 2, 3303, 261, "Weapon System", "Weapon Emerge
 defineToggleSwitch("TANK_RELEASE_COVER", 2, 3402, 262, "Weapon System", "External Tank Release Cover")
 definePushButton("TANK_RELEASE", 2, 3320, 263, "Weapon System", "External Tank Release Button")
 defineTumb("WEAPON_SELECT", 2, 3304, 264, 0.1, {0.0, 0.5}, nil, false, "Weapon System", "Weapon Selector Knob")
-defineTumb("WEAPON_INTERVAL", 2, 3305, 265, 0.1, {0.0, 1.0}, nil, false, "Weapon System", "Weapon Interval Selector Mode Knob")
+defineTumb("WEAPON_INTERVAL", 2, 3305, 265, 0.1, {0, 1}, nil, false, "Weapon System", "Weapon Interval Selector Mode Knob")
 defineToggleSwitch("WEAPON_REL_MODE", 2, 3306, 266, "Weapon System", "Weapon Release Mode Switch")
 defineToggleSwitch("RB_BK_REL_MODE",2, 3307, 267, "Weapon System", "RB-04/RB-15/BK Release Mode Switch")
 
@@ -44,7 +131,7 @@ defineToggleSwitch("RADAR_GAIN", 5, 3209, 214, "Radar", "Lin/Log Radar Gain Swit
 defineToggleSwitch("RADAR_PULSE_NORMAL_SHORT", 5, 3328, 218, "Radar", "Pulse Normal/Short Switch")
 defineToggleSwitch("RADAR_RECCE_ON_OFF", 5, 3350, 216, "Radar", "Passive Recce On/Off Switch")
 defineToggleSwitch("RADAR_MAINTENANCE_TEST", 5, 3914, 1006, "Radar", "Radar/EL Maintenance Test")
-defineToggleSwitch("RADAR_IGNITION_COILS", 5, 3918, 395, "Radar", "Ignition Coils")
+defineToggleSwitch("RADAR_IGNITION_COILS", 18, 3918, 395, "Radar", "Ignition Coils")
 definePushButton("RADAR_IFF_ID", 5, 3922, 1205, "Radar", "IFF Identification")
 
 --[[--Reversal--]]--
@@ -103,8 +190,8 @@ defineToggleSwitch("IFF_CHANNEL", 18, 3921, 1204, "Engine Panel", "IFF Channel S
 defineToggleSwitch("DME_SELECTOR", 18, 3919, 1206, "Engine Panel", "DME Selector")
 defineToggleSwitch("IGNITION_SYSTEM", 18, 3003, 205, "Engine Panel", "Ignition System")
 defineToggleSwitch("MAN_AFTERBURN_FUEL_REG", 18, 3006, 313, "Engine Panel", "Manual Afterburner Fuel Regulator")
-defineTumb("FLIGHT_RECORDER", 18, 3924, 384, 0.5, {0.0, 1.0}, nil, false, "Engine Panel", "Flight Recorder")
-definePushButton("RESTART", 18, 3004, 208, "Engine Panel", "Restart")
+defineTumb("FLIGHT_RECORDER", 18, 3924, 384, 0.5, {0, 1}, nil, false, "Engine Panel", "Flight Recorder")
+definePushButton("RESTART", 18, 3401, 208, "Engine Panel", "Restart")
 defineTumb("AFK_LEVER", 18, 3304, 13, 1.138, {0, 1.138}, nil, false, "Engine Panel", "AFK Lever")
 defineToggleSwitch("DATA_CARTRIDGE", 18, 3925, 4200, "Engine Panel", "Insert/Remove Data Cartridge")
 definePushButton("MISSILE_SELECT_BUTTON", 18, 3000, 400, "Engine Panel", "Missile Select Button")
@@ -125,7 +212,7 @@ defineToggleSwitch("GEAR_HANDLE", 22, 3719, 12, "Flight Data Unit", "Gear Handle
 definePushButton("SPAK", 22, 3301, 401,  "Flight Data Unit",  "SPAK")
 definePushButton("ATTITUDE_HOLD", 22, 3302, 402, "Flight Data Unit", "Attitude Hold")
 definePushButton("ALTITUDE_HOLD", 22, 3303, 403, "Flight Data Unit", "Altitude Hold")
-defineTumb("TILS_CHANNEL_SELECT", 22, 3512, 282, 0.1, {0.0, 1.0}, nil, false, "Flight Data Unit", "TILS Channel Selection")
+defineTumb("TILS_CHANNEL_SELECT", 22, 3512, 282, 0.1, {0, 1}, nil, false, "Flight Data Unit", "TILS Channel Selection")
 defineToggleSwitch("TILS_CHANNEL_LAYER", 22, 3511, 285, "Flight Data Unit", "TILS Channel Layer Selection")
 defineToggleSwitch("EJECTION_SEAT_ARM", 22, 3405, 21, "Flight Data Unit", "Ejection Seat Arm")
 defineToggleSwitch("SLAV_SI", 22, 3201, 323, "Flight Data Unit", "Slav SI")
@@ -139,8 +226,8 @@ definePushButton("COUNTERMEASURE_FAST_RELEASE", 22, 3001, 184, "Flight Data Unit
 defineToggleSwitch("EMERGENCY_ROLL_TRIM", 22, 3716, 390, "Flight Data Unit", "Emergency Roll Trim")
 defineToggleSwitch("EMERGENCY_PITCH_TRIM", 22, 3717, 389, "Flight Data Unit", "Emergency Pitch Trim")
 defineToggleSwitch("EMERGENCY_YAW_TRIM", 22, 3918, 388, "Flight Data Unit", "Emergency Yaw Trim")
-defineToggleSwitch("MAG_DEC_COVER", 22, 3742, 1200, "Flight Data Unit", "Magnetic Declination Cover")
-defineToggleSwitch("YAW_TRIM_COVER", 22, 3741, 493, "Flight Data Unit", "Autopilot Yaw Trim Cover")
+defineToggleSwitch("MAG_DEC_COVER", 22, 3742, 666, "Flight Data Unit", "Magnetic Declination Cover")
+defineToggleSwitch("AUTO_YAW_TRIM_COVER", 22, 3741, 493, "Flight Data Unit", "Autopilot Yaw Trim Cover")
 defineToggleSwitchToggleOnly("PARKING_BRAKE", 22, 3408, 22, "Flight Data Unit", "Parking Brake")
 defineToggleSwitchToggleOnly("HUD_GLASS_POSITION", 22, 3401, 11, "Flight Data Unit", "HUD Reflector Glass Position")
 defineToggleSwitchToggleOnly("AFK_MODE_3", 22, 3402, 464, "Flight Data Unit", "AFK Mode 3")
@@ -219,44 +306,44 @@ defineIndicatorLight("ATT_LAMP", 402, "Indicator Lights", "ATT Lamp")
 defineIndicatorLight("HOJD_LAMP", 403, "Indicator Lights", "HOJD Lamp")
 
 --[[--Error Panel Indicators--]]--
-defineIndicatorLight("BRAND_1", 406, "Error Panel", "Engine Fire 1")
-defineIndicatorLight("BRAND_2", 407, "Error Panel", "Engine Fire 2")
-defineIndicatorLight("BRA_UPPF", 408, "Error Panel", "Fuel Distribution Low Pressure")
-defineIndicatorLight("X_TANK_BRA", 409, "Error Panel", "External Fuel Tank Feed System")
-defineIndicatorLight("TANK_PUMP", 410, "Error Panel", "Fuel Pump")
-defineIndicatorLight("LANDSTALL", 411, "Error Panel", "Landing Gear")
-defineIndicatorLight("FORV_FORB", 412, "Error Panel", "Thrust Reverser Warning")
-defineIndicatorLight("NOSSTALL", 413, "Error Panel", "Nose Gear")
-defineIndicatorLight("VSTALL", 414, "Error Panel", "Left Gear")
-defineIndicatorLight("HSTALL", 415, "Error Panel", "Right Gear")
-defineIndicatorLight("TIPPVAXEL", 416, "Error Panel", "Pitch Gearing")
-defineIndicatorLight("ELFEL", 417, "Error Panel", "Electrical System")
-defineIndicatorLight("RESERVEFF", 418, "Error Panel", "Backup Hydraulic")
-defineIndicatorLight("HYDRA_TA_2", 419, "Error Panel", "Hydraulic System 2 Pressure")
-defineIndicatorLight("HYDRA_TA_1", 420, "Error Panel", "Hydraulic System 1 Pressure")
-defineIndicatorLight("AFK_FEL", 421, "Error Panel", "Autothrottle")
-defineIndicatorLight("EJ_REV", 422, "Error Panel", "Thrust Reverser Inoperable")
-defineIndicatorLight("OLJETRYCK", 423, "Error Panel", "Oil Pressure")
-defineIndicatorLight("SPAK_ERROR", 424, "Error Panel", "SPAK Error")
-defineIndicatorLight("HALL_FUNK", 425, "Error Panel", "Autopilot Hold")
-defineIndicatorLight("RHM_FEL", 426, "Error Panel", "Radar Altimeter")
-defineIndicatorLight("ROLL_VAXEL", 427, "Error Panel", "Roll Gearing")
-defineIndicatorLight("CK", 428, "Error Panel", "Computer")
-defineIndicatorLight("KABINHOJD", 429, "Error Panel", "Cabin Pressure")
-defineIndicatorLight("HUV_O_STOL", 430, "Error Panel", "Ejection Seat/Canopy")
-defineIndicatorLight("TANDSYST", 431, "Error Panel", "Ignition System")
-defineIndicatorLight("STARTSYST", 432, "Error Panel", "Starter System")
-defineIndicatorLight("MAN_BG_REG", 433, "Error Panel", "Manual Fuel Regulator")
-defineIndicatorLight("SYRGAS", 434, "Error Panel", "Oxygen")
-defineIndicatorLight("BRA_24", 435, "Error Panel", "Low Fuel")
-defineIndicatorLight("BRAND_GTS", 436, "Error Panel", "Turbine Starter Fire")
-defineIndicatorLight("TILS", 437, "Error Panel", "TILS")
-defineIndicatorLight("NAV_SYST", 438, "Error Panel", "Navigation System")
-defineIndicatorLight("KB_V_SLUT", 439, "Error Panel", "Left Countermeasures Pod Empty")
-defineIndicatorLight("KB_H_KA_SL", 440, "Error Panel", "Right Countermeasures Pod Empty/ECM Failure")
-defineIndicatorLight("FACKL_SL", 441, "Error Panel", "Flares Empty")
-defineIndicatorLight("MOTVERK", 442, "Error Panel", "Countermeasures/RWR")
-defineIndicatorLight("LUFTBROMS", 443, "Error Panel", "Airbrakes")
+defineIndicatorLight("BRAND_1", 406, "Error Panel", "Engine Fire 1 (red)")
+defineIndicatorLight("BRAND_2", 407, "Error Panel", "Engine Fire 2 (red)")
+defineIndicatorLight("BRA_UPPF", 408, "Error Panel", "Fuel Distribution Low Pressure (yellow)")
+defineIndicatorLight("X_TANK_BRA", 409, "Error Panel", "External Fuel Tank Feed System (yellow)")
+defineIndicatorLight("TANK_PUMP", 410, "Error Panel", "Fuel Pump (yellow)")
+defineIndicatorLight("LANDSTALL", 411, "Error Panel", "Landing Gear (yellow)")
+defineIndicatorLight("FORV_FORB", 412, "Error Panel", "Thrust Reverser Warning (red)")
+defineIndicatorLight("NOSSTALL", 413, "Error Panel", "Nose Gear (green)")
+defineIndicatorLight("VSTALL", 414, "Error Panel", "Left Gear (green)")
+defineIndicatorLight("HSTALL", 415, "Error Panel", "Right Gear (green)")
+defineIndicatorLight("TIPPVAXEL", 416, "Error Panel", "Pitch Gearing (red)")
+defineIndicatorLight("ELFEL", 417, "Error Panel", "Electrical System (red)")
+defineIndicatorLight("RESERVEFF", 418, "Error Panel", "Backup Hydraulic (red)")
+defineIndicatorLight("HYDRA_TA_2", 419, "Error Panel", "Hydraulic System 2 Pressure (red)")
+defineIndicatorLight("HYDRA_TA_1", 420, "Error Panel", "Hydraulic System 1 Pressure (red)")
+defineIndicatorLight("AFK_FEL", 421, "Error Panel", "Autothrottle (red)")
+defineIndicatorLight("EJ_REV", 422, "Error Panel", "Thrust Reverser Inoperable (red)")
+defineIndicatorLight("OLJETRYCK", 423, "Error Panel", "Oil Pressure (red)")
+defineIndicatorLight("SPAK_ERROR", 424, "Error Panel", "SPAK Error (yellow)")
+defineIndicatorLight("HALL_FUNK", 425, "Error Panel", "Autopilot Hold (yellow)")
+defineIndicatorLight("RHM_FEL", 426, "Error Panel", "Radar Altimeter (yellow)")
+defineIndicatorLight("ROLL_VAXEL", 427, "Error Panel", "Roll Gearing (yellow)")
+defineIndicatorLight("CK", 428, "Error Panel", "Computer (yellow)")
+defineIndicatorLight("KABINHOJD", 429, "Error Panel", "Cabin Pressure (yellow)")
+defineIndicatorLight("HUV_O_STOL", 430, "Error Panel", "Ejection Seat/Canopy (yellow)")
+defineIndicatorLight("TANDSYST", 431, "Error Panel", "Ignition System (yellow)")
+defineIndicatorLight("STARTSYST", 432, "Error Panel", "Starter System (yellow)")
+defineIndicatorLight("MAN_BG_REG", 433, "Error Panel", "Manual Fuel Regulator (yellow)")
+defineIndicatorLight("SYRGAS", 434, "Error Panel", "Oxygen (yellow)")
+defineIndicatorLight("BRA_24", 435, "Error Panel", "Low Fuel (yellow)")
+defineIndicatorLight("BRAND_GTS", 436, "Error Panel", "Turbine Starter Fire (red)")
+defineIndicatorLight("TILS", 437, "Error Panel", "TILS (green)")
+defineIndicatorLight("NAV_SYST", 438, "Error Panel", "Navigation System (yellow)")
+defineIndicatorLight("KB_V_SLUT", 439, "Error Panel", "Left Countermeasures Pod Empty (yellow)")
+defineIndicatorLight("KB_H_KA_SL", 440, "Error Panel", "Right Countermeasures Pod Empty/ECM Failure (yellow)")
+defineIndicatorLight("FACKL_SL", 441, "Error Panel", "Flares Empty (yellow)")
+defineIndicatorLight("MOTVERK", 442, "Error Panel", "Countermeasures/RWR (yellow)")
+defineIndicatorLight("LUFTBROMS", 443, "Error Panel", "Airbrakes (green)")
 
 --[[--Actual Gauge Values--]]--
 
@@ -338,57 +425,72 @@ defineIntegerFromGetter("EXT_FORMATION_LIGHTS", function()
 	if LoGetAircraftDrawArgumentValue(812) > 0 then return 1 else return 0 end
 end, 1, "External Aircraft Model", "Formation Lights")
 
- ---- added by Warlord
-definePushButton("MAX_G_RESET", 25, 3722, 175, "Flight Data Unit", "Max G Reset")
-definePushButton("BACK_ADI_CAGE", 25, 3720, 123, "Flight Data Unit", "Backup ADI Cage")
-definePushButton("ROLL_CENTER", 25, 3305, 212, "Flight Data Unit", "Roll Centering")
-definePotentiometer("ALT_SET", 25, 3306, 2005, {0, 1},"Flight Data Unit" , "Altimeter Setting")
-definePotentiometer("HUD_BRIGHT", 25, 3409, 180, {0, 1},"Flight Data Unit" , "HUD Brightness Knob")
-definePotentiometer("MAG_CORRECTION", 25, 3724, 1201, {0, 1},"Flight Data Unit" , "Magnetic Declination Correction")
-definePotentiometer("AUTO_YAW_TRIM", 25, 3732, 211, {0, 1},"Flight Data Unit" , "Autopilot Yaw Trim")
-definePotentiometer("CLOCK_SET", 25, 3801, 135, {0, 1},"Flight Data Unit" , "Clock Setting")
+defineIntegerFromGetter("EXT_WOW_NOSE", function()
+	if LoGetAircraftDrawArgumentValue(1) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Weight ON Wheels Nose Gear")
+defineIntegerFromGetter("EXT_WOW_RIGHT", function()
+	if LoGetAircraftDrawArgumentValue(4) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Weight ON Wheels Right Gear")
+defineIntegerFromGetter("EXT_WOW_LEFT", function()
+	if LoGetAircraftDrawArgumentValue(6) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Weight ON Wheels Left Gear")
 
-definePushButton("FR22_FLIGHT_0", 34, 3210,372, "FR22 Radio", "Flight 0")
-definePushButton("FR22_FLIGHT_1", 34, 3211,373, "FR22 Radio", "Flight 1")
-definePushButton("FR22_FLIGHT_2", 34, 3212,374, "FR22 Radio", "Flight 2")
-definePushButton("FR22_FLIGHT_3", 34, 3213,375, "FR22 Radio", "Flight 3")
-definePushButton("FR22_FLIGHT_4", 34, 3214,376, "FR22 Radio", "Flight 4")
-definePushButton("FR22_FLIGHT_5", 34, 3215,377, "FR22 Radio", "Flight 5")
-definePushButton("FR22_FLIGHT_6", 34, 3216,378, "FR22 Radio", "Flight 6")
-definePushButton("FR22_FLIGHT_7", 34, 3217,379, "FR22 Radio", "Flight 7")
-definePushButton("FR22_FLIGHT_8", 34, 3218,380, "FR22 Radio", "Flight 8")
-definePushButton("FR22_FLIGHT_9", 34, 3219,381, "FR22 Radio", "Flight 9")
-definePushButton("FR22_CHANNEL_H", 34, 3200,362, "FR22 Radio", "Channel H")
-definePushButton("FR22_SPECIAL_1", 34, 3201,363, "FR22 Radio", "Special 1")
-definePushButton("FR22_SPECIAL_2", 34, 3202,364, "FR22 Radio", "Special 2")
-definePushButton("FR22_SPECIAL_3", 34, 3203,365, "FR22 Radio", "Special 3")
-definePushButton("FR22_MINUS", 34, 3204,366, "FR22 Radio", "Minus")
-definePushButton("FR22_CHANNEL_AG", 34, 3205,367, "FR22 Radio", "Channel A/G")
-definePushButton("FR22_CHANNEL_B", 34, 3206,368, "FR22 Radio", "Channel B")
-definePushButton("FR22_CHANNEL_CF", 34, 3207,369, "FR22 Radio", "Channel C/F")
-definePushButton("FR22_CHANNEL_C2", 34, 3208,370, "FR22 Radio", "Channel C2")
-definePushButton("FR22_CHANNEL_DE", 34, 3209,371, "FR22 Radio", "Channel D/E")
-definePushButton("FR22_GROUND_COM", 34, 3011,382, "FR22 Radio", "Ground Intercom")
-defineTumb("FR22_MODE", 34, 3110, 386, 0.1, {0.0, 0.5}, nil, false, "FR22 Radio", "FR22 Mode Selector")
-defineTumb("FR22_BASE", 34, 3230, 2002, 0.1, {0.0, 1.0}, nil, false, "FR22 Radio", "FR22 Base Selector")
-defineTumb("FR22_GROUP", 34, 3307, 360, 0.1, {0.0, 1.0}, nil, false, "FR22 Radio", "FR22 Group Selector")
+ ---- added by Warlord
+definePushButton("MAX_G_RESET", 22, 3722, 175, "Flight Data Unit", "Max G Reset")
+definePushButton("BACK_ADI_CAGE", 22, 3720, 3402, "Flight Data Unit", "Backup ADI Cage")
+definePushButton("ROLL_CENTER", 22, 3305, 2003, "Flight Data Unit", "Roll Trim Reset / Centre")
+defineRotary("ALT_SET", 22, 3306, 2005, "Flight Data Unit", "Altimeter Setting")
+defineRotary("HUD_BRIGHT", 22, 3409, 9999, "Flight Data Unit", "HUD Brightness Knob")
+defineRotary("MAG_CORRECTION", 22, 3724, 1201, "Flight Data Unit", "Magnetic Declination Correction")
+definePotentiometer("AUTO_YAW_TRIM", 22, 3732, 211, {-1, 1}, "Flight Data Unit", "Autopilot Yaw Trim")
+defineRotary("CLOCK_SET", 22, 3801, 135, "Flight Data Unit", "Clock Setting")
+
+definePushButton("FR22_FLIGHT_0", 31, 3210,372, "FR22 Radio", "Flight 0")
+definePushButton("FR22_FLIGHT_1", 31, 3211,373, "FR22 Radio", "Flight 1")
+definePushButton("FR22_FLIGHT_2", 31, 3212,374, "FR22 Radio", "Flight 2")
+definePushButton("FR22_FLIGHT_3", 31, 3213,375, "FR22 Radio", "Flight 3")
+definePushButton("FR22_FLIGHT_4", 31, 3214,376, "FR22 Radio", "Flight 4")
+definePushButton("FR22_FLIGHT_5", 31, 3215,377, "FR22 Radio", "Flight 5")
+definePushButton("FR22_FLIGHT_6", 31, 3216,378, "FR22 Radio", "Flight 6")
+definePushButton("FR22_FLIGHT_7", 31, 3217,379, "FR22 Radio", "Flight 7")
+definePushButton("FR22_FLIGHT_8", 31, 3218,380, "FR22 Radio", "Flight 8")
+definePushButton("FR22_FLIGHT_9", 31, 3219,381, "FR22 Radio", "Flight 9")
+definePushButton("FR22_CHANNEL_H", 31, 3200,362, "FR22 Radio", "Channel H")
+definePushButton("FR22_SPECIAL_1", 31, 3201,363, "FR22 Radio", "Special 1")
+definePushButton("FR22_SPECIAL_2", 31, 3202,364, "FR22 Radio", "Special 2")
+definePushButton("FR22_SPECIAL_3", 31, 3203,365, "FR22 Radio", "Special 3")
+definePushButton("FR22_MINUS", 31, 3204,366, "FR22 Radio", "Minus")
+definePushButton("FR22_CHANNEL_AG", 31, 3205,367, "FR22 Radio", "Channel A/G")
+definePushButton("FR22_CHANNEL_B", 31, 3206,368, "FR22 Radio", "Channel B")
+definePushButton("FR22_CHANNEL_CF", 31, 3207,369, "FR22 Radio", "Channel C/F")
+definePushButton("FR22_CHANNEL_C2", 31, 3208,370, "FR22 Radio", "Channel C2")
+definePushButton("FR22_CHANNEL_DE", 31, 3209,371, "FR22 Radio", "Channel D/E")
+definePushButton("FR22_GROUND_COM", 31, 3011,382, "FR22 Radio", "Ground Intercom")
+defineTumb("FR24_MODE", 31, 3110, 386, 0.1, {0.0, 0.5}, nil, false, "FR22 Radio", "FR24 Mode Selector")
+defineTumb("FR22_BASE", 31, 3230, 492, 0.05, {0, 1}, nil, false, "FR22 Radio", "FR22 Base Selector")
+defineTumb("FR22_GROUP", 31, 3307, 360, 0.1, {0, 1}, nil, false, "FR22 Radio", "FR22 Group Selector")
 defineRotary("FR22_VOL", 21, 3112, 385, "FR22 Radio" , "Radio Volume")
 
-defineToggleSwitch("IFF_POWER", 21, 3000, 308, "Radar", "IFF Power")
-defineTumb("IFF_CODE", 21, 3000, 309, 0.1, {0.0, 1.0}, nil, false, "Radar", "IFF Code")
-definePotentiometer("DE-ICE", 21, 3912, 286, {0, 1},"Engine Panel" , "Windscreen De-Ice")
-definePotentiometer("TEST_MODE", 21, 3913, 675, {0, 1},"Engine Panel" , "Maintenance Testing Mode")
-definePotentiometer("DRYSUIT", 21, 3917, 396, {0, 1},"Engine Panel" , "Drysuit Ventilation Adjustment")
-defineToggleSwitch("CABIN_AIR_VALVE", 21, 3000, 398, "Engine Panel", "Cabin Air Valve")
+defineToggleSwitch("IFF_POWER", 18, 3001, 1203, "Radar", "IFF Power")
+defineTumb("IFF_CODE", 18, 3000, 309, 0.1, {0, 1}, nil, false, "Radar", "IFF Code")
+definePotentiometer("DE-ICE", 18, 3912, 286, {0, 1},"Engine Panel" , "Windscreen De-Ice")
+defineRotary("TEST_MODE", 18, 3913, 675, "Engine Panel" , "Maintenance Testing Mode")
+defineRotary("DRYSUIT", 18, 3917, 396,"Engine Panel" , "Drysuit Ventilation Adjustment")
+defineToggleSwitch("CABIN_AIR_VALVE", 18, 3000, 398, "Engine Panel", "Cabin Air Valve")
 
-definePotentiometer("MASTER_VOL", 27, 3006, 399, {0, 1},"RWR" , "Master Volume / Sidewinder Tone")
+definePotentiometer("MASTER_VOL", 24, 3006, 399, {0, 1},"RWR" , "Master Volume / Sidewinder Tone")
 definePotentiometer("RADAR_BRIGHT", 5, 3923, 391, {0, 1},"Radar" , "Radar Brightness")
+definePushButton("STOPWATCH_START_STOP", 25, 3802, 134, "Flight Data Unit", "Stopwatch Start/Stop/Reset")
+
+definePotentiometer("EP13_BRIGHT", 2, 3318, 6901, {0, 1},"Weapon System", "EP-13 Brightness")
+definePotentiometer("EP13_CONTR", 2, 3319, 6902, {0, 1},"Weapon System", "EP-13 Contrast")
+definePotentiometer("CI_FILTER", 5, 3801, 6905, {0, 1},"Radar" , "CI filter")
 
 --found no argument
+definePushButton("MISL_SEL_BTN", 2, 3800, 400, "Test", "Missile Select Button (IR-RB FRAMSTEGN)")
+
 -- elements["SnabbresM-PTR"] = default_button(_("Snabbresning"), devices.FLIGHTDATAUNIT, 3091, 0) left bottom radar display
--- elements["PNT_CLOCK_RIGHT"] = default_button(_("Stopwatch Start/Stop/Reset"),devices.FLIGHTDATAUNIT, 3802, 0) right upper clock
 -- elements["PNT_POOP"] = default_axis_limited("Radar Night Filter", 5, 3800, -666, 1, 0.1, true, true)
--- elements["PNT_400"] = default_1_position_tumb("Missile Select Button (IR-RB FRAMSTEGN)", 2, 3800, -666)
 -- elements["PNT_CMEASURES"] = multiposition_switch_limited("Countermeasure Dispense", 28, 3805, -666, 3, 1, false, -1.0)
 
 local function getAJS37NavIndicator1()
@@ -486,8 +588,54 @@ return "X"
 end
  
 defineString("AJS37_NAV_INDICATOR_DATA_6", getAJS37NavIndicator6, 1, "Navigation Panel", "Navigataion Panel Data Digit 6")
+defineIndicatorLight("HUVUDVARNING_L", 444, "Front Panel Lights", "Master Caution Light left (red)")
+defineIndicatorLight("HUVUDVARNING_R", 445, "Front Panel Lights", "Master Caution Light right (red)")
 
+local function getAJS37DestIndicator1()
+	local li = list_indication(1)
+	local m = li:gmatch("-----------------------------------------\n([^\n]+)\n([^\n]*)\n")
+	while true do
+		local name, value = m()
+        if not name then break end
+		if name == "Dest1"
+			then
+			return value:sub(1)
+		end
+    end
+return "X"
+end
+ 
+defineString("AJS37_DEST_INDICATOR_DATA_1", getAJS37DestIndicator1, 1, "Destination", "Destination Data Digit 1")
 
-
+local function getAJS37DestIndicator2()
+	local li = list_indication(1)
+	local m = li:gmatch("-----------------------------------------\n([^\n]+)\n([^\n]*)\n")
+	while true do
+		local name, value = m()
+        if not name then break end
+		if name == "Dest2"
+			then
+			return value:sub(1)
+		end
+    end
+return "X"
+end
+ 
+defineString("AJS37_DEST_INDICATOR_DATA_2", getAJS37DestIndicator2, 1, "Destination", "Destination Data Digit 2")
+defineIndicatorLight("ALT_WARNING_LAMP", 450, "Front Panel Lights", "Altitude Warning Lamp (red)")
+defineIndicatorLight("FALLD_LAST_LAMP", 461, "Front Panel Lights", "Falld Last (Stores Released) Lamp (red)")
+defineIndicatorLight("REV_TRANSONIC_LAMP", 462, "Front Panel Lights", "Revadvr Transonic Lamp (red)")
+defineIndicatorLight("AFK_ENABLED_L", 463, "Front Panel Lights", "AFK Enabled Lamp (red)")
+defineIndicatorLight("AOA_15_L", 464, "Front Panel Lights", "AOA 15deg Lamp (white)")
+defineIndicatorLight("RDR_UR_L", 451, "Front Panel Lights", "Radar Display upper/right Lamp (white)")
+defineIndicatorLight("RDR_R_L", 452, "Front Panel Lights", "Radar Display right Lamp (white)")
+defineIndicatorLight("RDR_LR_L", 453, "Front Panel Lights", "Radar Display lower/right Lamp (white)")
+defineIndicatorLight("RDR_LL_L", 454, "Front Panel Lights", "Radar Display lower/left Lamp (white)")
+defineIndicatorLight("RDR_L_L", 455, "Front Panel Lights", "Radar Display left Lamp (white)")
+defineIndicatorLight("RDR_UL_L", 456, "Front Panel Lights", "Radar Display upper/left Lamp (white)")
+defineIndicatorLight("REVERSAL_L", 460, "Front Panel Lights", "Thrust Reverser Light (green)")
+defineIndicatorLight1("BURNER_STAGE1_L", 405, "Front Panel Lights", "Afterburner Stage 1 Lamp (white)")
+defineIndicatorLight2("BURNER_STAGE2_L", 405, "Front Panel Lights", "Afterburner Stage 2 Lamp (white)")
+defineIndicatorLight3("BURNER_STAGE3_L", 405, "Front Panel Lights", "Afterburner Stage 3 Lamp (white)")
 
 BIOS.protocol.endModule()

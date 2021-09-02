@@ -1,5 +1,6 @@
 BIOS.protocol.beginModule("A-10C", 0x1000)
-BIOS.protocol.setExportModuleAircrafts({"A-10C"})
+BIOS.protocol.setExportModuleAircrafts({"A-10C", "A-10C_2"})
+--overhaul by WarLord
 
 local inputProcessors = moduleBeingDefined.inputProcessors
 local documentation = moduleBeingDefined.documentation
@@ -7,7 +8,6 @@ local documentation = moduleBeingDefined.documentation
 local document = BIOS.util.document
 
 local parse_indication = BIOS.util.parse_indication
-
 
 local defineIndicatorLight = BIOS.util.defineIndicatorLight
 local definePushButton = BIOS.util.definePushButton
@@ -17,7 +17,6 @@ local defineSetCommandTumb = BIOS.util.defineSetCommandTumb
 local defineTumb = BIOS.util.defineTumb
 local define3PosTumb = BIOS.util.define3PosTumb
 local defineToggleSwitch = BIOS.util.defineToggleSwitch
-local defineToggleSwitchToggleOnly = BIOS.util.defineToggleSwitchToggleOnly
 local defineFixedStepTumb = BIOS.util.defineFixedStepTumb
 local defineVariableStepTumb = BIOS.util.defineVariableStepTumb
 local defineString = BIOS.util.defineString
@@ -27,28 +26,11 @@ local defineElectricallyHeldSwitch = BIOS.util.defineElectricallyHeldSwitch
 local defineFloat = BIOS.util.defineFloat
 local define8BitFloat = BIOS.util.define8BitFloat
 local defineIntegerFromGetter = BIOS.util.defineIntegerFromGetter
-
-
-local function defineRadioWheel(msg, device_id, command1, command2, command_args, arg_number, step, limits, output_map, category, description)
-	defineTumb(msg, device_id, command1, arg_number, step, limits, output_map, "skiplast", category, description)
-	local docentry = moduleBeingDefined.documentation[category][msg]
-	assert(docentry.inputs[2].interface == "set_state")
-	docentry.inputs[2] = nil
-	moduleBeingDefined.documentation[category][msg].control_type = "discrete_dial"
-	inputProcessors[msg] = function(state)
-		if state == "INC" then
-			GetDevice(device_id):performClickableAction(command2, command_args[2])
-		end
-		if state == "DEC" then
-			GetDevice(device_id):performClickableAction(command1, command_args[1])
-		end
-	end
-end
+local defineRadioWheel = BIOS.util.defineRadioWheel
 
 local function define3PosTumb1(msg, device_id, command, arg_number, category, description)
 	defineTumb(msg, device_id, command, arg_number, 0.1, {0.0, 0.2}, nil, false, category, description)
 end
-
 
 local function getCMSPDisplayLines(dev0)
 	local cmsp = BIOS.util.parse_indication(7)
@@ -85,6 +67,7 @@ end
 
 
 local vhf_lut1 = {
+    ["0.0"] = "3",
     ["0.15"] = "3",
     ["0.20"] = "4",
     ["0.25"] = "5",
@@ -102,18 +85,26 @@ local vhf_lut1 = {
 
 local function getVhfAmFreqency()
     local freq1 = vhf_lut1[string.format("%.2f",GetDevice(0):get_argument_value(143))]
+	if freq1 == nil then freq1 = "3" end
     local freq2 = string.format("%1.1f", GetDevice(0):get_argument_value(144)):sub(3)
+	if freq2 == nil then freq2 = "0" end
     local freq3 = string.format("%1.1f", GetDevice(0):get_argument_value(145)):sub(3)
+	if freq3 == nil then freq3 = "0" end
     local freq4 = string.format("%1.2f", GetDevice(0):get_argument_value(146)):sub(3)
+	if freq4 == nil then freq4 = "00" end
 
     return freq1 .. freq2 .. "." .. freq3 .. freq4
 end
 
 local function getVhfFmFreqency()
     local freq1 = vhf_lut1[string.format("%.2f",GetDevice(0):get_argument_value(157))]
+	if freq1 == nil then freq1 = "3" end
     local freq2 = string.format("%1.1f", GetDevice(0):get_argument_value(158)):sub(3)
+	if freq2 == nil then freq2 = "0" end
     local freq3 = string.format("%1.1f", GetDevice(0):get_argument_value(159)):sub(3)
+	if freq3 == nil then freq3 = "0" end
     local freq4 = string.format("%1.2f", GetDevice(0):get_argument_value(160)):sub(3)
+	if freq4 == nil then freq4 = "00" end
 
     return freq1 .. freq2 .. "." .. freq3 .. freq4
 end
@@ -161,7 +152,9 @@ local function getILSFrequency()
         ["0.9"] = "95"
     }
     local mhz = ils_mhz_lut[string.format("%.1f", GetDevice(0):get_argument_value(251))]
+	if mhz == nil then mhz = "108" end
     local khz = ils_khz_lut[string.format("%.01f", GetDevice(0):get_argument_value(252))]
+	if khz == nil then khz = "10" end
     return mhz .. "." .. khz
 end
 
@@ -271,9 +264,9 @@ defineFloat("ALT_PRESSURE1", 58, {0, 1}, "Altimeter", "Barometric Pressure Digit
 defineFloat("ALT_PRESSURE2", 57, {0, 1}, "Altimeter", "Barometric Pressure Digit 2")
 defineFloat("ALT_PRESSURE3", 56, {0, 1}, "Altimeter", "Barometric Pressure Digit 3")
 
-defineIndicatorLight("CMSC_LAUNCH", 372, "CMSC", "Missile Launch Indicator")
-defineIndicatorLight("CMSC_PRIO", 373, "CMSC", "Priority Status Indicator")
-defineIndicatorLight("CMSC_UNKN", 374, "CMSC", "Unknown Status Indicator")
+defineIndicatorLight("CMSC_LAUNCH", 372, "CMSC", "Missile Launch Indicator (red)")
+defineIndicatorLight("CMSC_PRIO", 373, "CMSC", "Priority Status Indicator (green)")
+defineIndicatorLight("CMSC_UNKN", 374, "CMSC", "Unknown Status Indicator (green)")
 local cmscData = nil
 moduleBeingDefined.exportHooks[#moduleBeingDefined.exportHooks+1] = function()
 	cmscData = parse_indication(8)
@@ -324,93 +317,91 @@ defineFloat("FUEL_QTY_10000", 90, {0, 1}, "Fuel Panel", "Fuel Quantity Counter 1
 defineFloat("FUEL_QTY_1000", 91, {0, 1}, "Fuel Panel", "Fuel Quantity Counter 1000")
 defineFloat("FUEL_QTY_100", 92, {0, 1}, "Fuel Panel", "Fuel Quantity Counter 100")
 
-defineIndicatorLight("MASTER_CAUTION", 404, "UFC", "Master Caution Light")
+defineIndicatorLight("MASTER_CAUTION", 404, "UFC", "Master Caution Light (yellow)")
 
 -- The order in this file roughly follows clickabledata.lua
 -- the following 12 indicators are "out of order" to ensure that
 -- the caution lights begin on a 16-bit boundary
-defineIndicatorLight("AOA_INDEXER_HIGH", 540, "HUD", "AOA Indexer High")
-defineIndicatorLight("AOA_INDEXER_NORMAL", 541, "HUD", "AOA Indexer Normal")
-defineIndicatorLight("AOA_INDEXER_LOW", 542, "HUD", "AOA Indexer Low")
-defineIndicatorLight("AIR_REFUEL_READY", 730, "HUD", "Air Refuel READY")
-defineIndicatorLight("AIR_REFUEL_LATCHED", 731, "HUD", "Air Refuel LATCHED")
-defineIndicatorLight("AIR_REFUEL_DISCONNECT", 732, "HUD", "Air Refuel DISCONNECT")
+defineIndicatorLight("AOA_INDEXER_HIGH", 540, "HUD", "AOA Indexer High (green)")
+defineIndicatorLight("AOA_INDEXER_NORMAL", 541, "HUD", "AOA Indexer Normal (green)")
+defineIndicatorLight("AOA_INDEXER_LOW", 542, "HUD", "AOA Indexer Low (green)")
+defineIndicatorLight("AIR_REFUEL_READY", 730, "HUD", "Air Refuel READY Light (green)")
+defineIndicatorLight("AIR_REFUEL_LATCHED", 731, "HUD", "Air Refuel LATCHED Light (green)")
+defineIndicatorLight("AIR_REFUEL_DISCONNECT", 732, "HUD", "Air Refuel DISCONNECT Light (green)")
 
-defineIndicatorLight("TAKE_OFF_TRIM", 191, "SAS Panel", "TAKEOFF TRIM Indicator Light")
+defineIndicatorLight("TAKE_OFF_TRIM", 191, "SAS Panel", "TAKEOFF TRIM Indicator Light (green)")
 
-defineIndicatorLight("GEAR_N_SAFE", 659, "Landing Gear and Flap Control Panel", "Nose Gear Safe")
-defineIndicatorLight("GEAR_L_SAFE", 660, "Landing Gear and Flap Control Panel", "Left Gear Safe")
-defineIndicatorLight("GEAR_R_SAFE", 661, "Landing Gear and Flap Control Panel", "Right Gear Safe")
-defineIndicatorLight("HANDLE_GEAR_WARNING", 737, "Landing Gear and Flap Control Panel", "Handle Gear Warning Light")
+defineIndicatorLight("GEAR_N_SAFE", 659, "Landing Gear and Flap Control Panel", "Nose Gear Safe (green)")
+defineIndicatorLight("GEAR_L_SAFE", 660, "Landing Gear and Flap Control Panel", "Left Gear Safe (green)")
+defineIndicatorLight("GEAR_R_SAFE", 661, "Landing Gear and Flap Control Panel", "Right Gear Safe (green)")
+defineIndicatorLight("HANDLE_GEAR_WARNING", 737, "Landing Gear and Flap Control Panel", "Handle Gear Warning Light (red)")
 
-defineIndicatorLight("GUN_READY", 662, "Front Dash", "GUN READY Indicator")
+defineIndicatorLight("GUN_READY", 662, "Front Dash", "GUN READY Indicator (green)")
 
--- caution lights
-defineIndicatorLight("CL_A1", 480, "Caution Lights Panel", "ENG START CYCLE")
-defineIndicatorLight("CL_A2", 481, "Caution Lights Panel", "L-HYD PRESS")
-defineIndicatorLight("CL_A3", 482, "Caution Lights Panel", "R-HYD PRESS")
-defineIndicatorLight("CL_A4", 483, "Caution Lights Panel", "GUN UNSAFE")
-defineIndicatorLight("CL_B1", 484, "Caution Lights Panel", "ANTI-SKID")
-defineIndicatorLight("CL_B2", 485, "Caution Lights Panel", "L-HYD RES")
-defineIndicatorLight("CL_B3", 486, "Caution Lights Panel", "R-HYD RES")
-defineIndicatorLight("CL_B4", 487, "Caution Lights Panel", "OXY LOW")
-defineIndicatorLight("CL_C1", 488, "Caution Lights Panel", "ELEV DISENG")
-defineIndicatorLight("CL_C2", 489, "Caution Lights Panel", "VOID1")
-defineIndicatorLight("CL_C3", 490, "Caution Lights Panel", "SEAT NOT ARMED")
-defineIndicatorLight("CL_C4", 491, "Caution Lights Panel", "BLEED AIR LEAK")
-defineIndicatorLight("CL_D1", 492, "Caution Lights Panel", "AIL DISENG")
-defineIndicatorLight("CL_D2", 493, "Caution Lights Panel", "L-AIL TAB")
-defineIndicatorLight("CL_D3", 494, "Caution Lights Panel", "R-AIL TAB")
-defineIndicatorLight("CL_D4", 495, "Caution Lights Panel", "SERVICE AIR HOT")
-defineIndicatorLight("CL_E1", 496, "Caution Lights Panel", "PITCH SAS")
-defineIndicatorLight("CL_E2", 497, "Caution Lights Panel", "L-ENG HOT")
-defineIndicatorLight("CL_E3", 498, "Caution Lights Panel", "R-ENG HOT")
-defineIndicatorLight("CL_E4", 499, "Caution Lights Panel", "WINDSHIELD HOT")
-defineIndicatorLight("CL_F1", 500, "Caution Lights Panel", "YAW SAS")
-defineIndicatorLight("CL_F2", 501, "Caution Lights Panel", "L-ENG OIL PRESS")
-defineIndicatorLight("CL_F3", 502, "Caution Lights Panel", "R-ENG OIL PRESS")
-defineIndicatorLight("CL_F4", 503, "Caution Lights Panel", "CICU")
-defineIndicatorLight("CL_G1", 504, "Caution Lights Panel", "GCAS")
-defineIndicatorLight("CL_G2", 505, "Caution Lights Panel", "L-MAIN PUMP")
-defineIndicatorLight("CL_G3", 506, "Caution Lights Panel", "R-MAIN PUMP")
-defineIndicatorLight("CL_G4", 507, "Caution Lights Panel", "VOID2")
-defineIndicatorLight("CL_H1", 508, "Caution Lights Panel", "LASTE")
-defineIndicatorLight("CL_H2", 509, "Caution Lights Panel", "L-WING PUMP")
-defineIndicatorLight("CL_H3", 510, "Caution Lights Panel", "R-WING PUMP")
-defineIndicatorLight("CL_H4", 511, "Caution Lights Panel", "HARS")
-defineIndicatorLight("CL_I1", 512, "Caution Lights Panel", "IFF MODE-4")
-defineIndicatorLight("CL_I2", 513, "Caution Lights Panel", "L-MAIN FUEL LOW")
-defineIndicatorLight("CL_I3", 514, "Caution Lights Panel", "R-MAIN FUEL LOW")
-defineIndicatorLight("CL_I4", 515, "Caution Lights Panel", "L-R TKS UNEQUAL")
-defineIndicatorLight("CL_J1", 516, "Caution Lights Panel", "EAC")
-defineIndicatorLight("CL_J2", 517, "Caution Lights Panel", "L-FUEL PRESS")
-defineIndicatorLight("CL_J3", 518, "Caution Lights Panel", "R-FUEL PRESS")
-defineIndicatorLight("CL_J4", 519, "Caution Lights Panel", "NAV")
-defineIndicatorLight("CL_K1", 520, "Caution Lights Panel", "STALL SYS")
-defineIndicatorLight("CL_K2", 521, "Caution Lights Panel", "L-CONV")
-defineIndicatorLight("CL_K3", 522, "Caution Lights Panel", "R-CONV")
-defineIndicatorLight("CL_K4", 523, "Caution Lights Panel", "CADC")
-defineIndicatorLight("CL_L1", 524, "Caution Lights Panel", "APU GEN")
-defineIndicatorLight("CL_L2", 525, "Caution Lights Panel", "L-GEN")
-defineIndicatorLight("CL_L3", 526, "Caution Lights Panel", "R-GEN")
-defineIndicatorLight("CL_L4", 527, "Caution Lights Panel", "INST INV")
+-- Caution Lights
+defineIndicatorLight("CL_A1", 480, "Caution Lights Panel", "ENG START CYCLE Light (green)")
+defineIndicatorLight("CL_A2", 481, "Caution Lights Panel", "L-HYD PRESS Light (green)")
+defineIndicatorLight("CL_A3", 482, "Caution Lights Panel", "R-HYD PRESS Light (green)")
+defineIndicatorLight("CL_A4", 483, "Caution Lights Panel", "GUN UNSAFE Light (green)")
+defineIndicatorLight("CL_B1", 484, "Caution Lights Panel", "ANTI-SKID Light (green)")
+defineIndicatorLight("CL_B2", 485, "Caution Lights Panel", "L-HYD RES Light (green)")
+defineIndicatorLight("CL_B3", 486, "Caution Lights Panel", "R-HYD RES Light (green)")
+defineIndicatorLight("CL_B4", 487, "Caution Lights Panel", "OXY LOW Light (green)")
+defineIndicatorLight("CL_C1", 488, "Caution Lights Panel", "ELEV DISENG Light (green)")
+defineIndicatorLight("CL_C2", 489, "Caution Lights Panel", "VOID1 Light (green)")
+defineIndicatorLight("CL_C3", 490, "Caution Lights Panel", "SEAT NOT ARMED Light (green)")
+defineIndicatorLight("CL_C4", 491, "Caution Lights Panel", "BLEED AIR LEAK Light (green)")
+defineIndicatorLight("CL_D1", 492, "Caution Lights Panel", "AIL DISENG Light (green)")
+defineIndicatorLight("CL_D2", 493, "Caution Lights Panel", "L-AIL TAB Light (green)")
+defineIndicatorLight("CL_D3", 494, "Caution Lights Panel", "R-AIL TAB Light (green)")
+defineIndicatorLight("CL_D4", 495, "Caution Lights Panel", "SERVICE AIR HOT Light (green)")
+defineIndicatorLight("CL_E1", 496, "Caution Lights Panel", "PITCH SAS Light (green)")
+defineIndicatorLight("CL_E2", 497, "Caution Lights Panel", "L-ENG HOT Light (green)")
+defineIndicatorLight("CL_E3", 498, "Caution Lights Panel", "R-ENG HOT Light (green)")
+defineIndicatorLight("CL_E4", 499, "Caution Lights Panel", "WINDSHIELD HOT Light (green)")
+defineIndicatorLight("CL_F1", 500, "Caution Lights Panel", "YAW SAS Light (green)")
+defineIndicatorLight("CL_F2", 501, "Caution Lights Panel", "L-ENG OIL PRESS Light (green)")
+defineIndicatorLight("CL_F3", 502, "Caution Lights Panel", "R-ENG OIL PRESS Light (green)")
+defineIndicatorLight("CL_F4", 503, "Caution Lights Panel", "CICU Light (green)")
+defineIndicatorLight("CL_G1", 504, "Caution Lights Panel", "GCAS Light (green)")
+defineIndicatorLight("CL_G2", 505, "Caution Lights Panel", "L-MAIN PUMP Light (green)")
+defineIndicatorLight("CL_G3", 506, "Caution Lights Panel", "R-MAIN PUMP Light (green)")
+defineIndicatorLight("CL_G4", 507, "Caution Lights Panel", "VOID2 Light (green)")
+defineIndicatorLight("CL_H1", 508, "Caution Lights Panel", "LASTE Light (green)")
+defineIndicatorLight("CL_H2", 509, "Caution Lights Panel", "L-WING PUMP Light (green)")
+defineIndicatorLight("CL_H3", 510, "Caution Lights Panel", "R-WING PUMP Light (green)")
+defineIndicatorLight("CL_H4", 511, "Caution Lights Panel", "HARS Light (green)")
+defineIndicatorLight("CL_I1", 512, "Caution Lights Panel", "IFF MODE-4 Light (green)")
+defineIndicatorLight("CL_I2", 513, "Caution Lights Panel", "L-MAIN FUEL LOW Light (green)")
+defineIndicatorLight("CL_I3", 514, "Caution Lights Panel", "R-MAIN FUEL LOW Light (green)")
+defineIndicatorLight("CL_I4", 515, "Caution Lights Panel", "L-R TKS UNEQUAL Light (green)")
+defineIndicatorLight("CL_J1", 516, "Caution Lights Panel", "EAC Light (green)")
+defineIndicatorLight("CL_J2", 517, "Caution Lights Panel", "L-FUEL PRESS Light (green)")
+defineIndicatorLight("CL_J3", 518, "Caution Lights Panel", "R-FUEL PRESS Light (green)")
+defineIndicatorLight("CL_J4", 519, "Caution Lights Panel", "NAV Light (green)")
+defineIndicatorLight("CL_K1", 520, "Caution Lights Panel", "STALL SYS Light (green)")
+defineIndicatorLight("CL_K2", 521, "Caution Lights Panel", "L-CONV Light (green)")
+defineIndicatorLight("CL_K3", 522, "Caution Lights Panel", "R-CONV Light (green)")
+defineIndicatorLight("CL_K4", 523, "Caution Lights Panel", "CADC Light (green)")
+defineIndicatorLight("CL_L1", 524, "Caution Lights Panel", "APU GEN Light (green)")
+defineIndicatorLight("CL_L2", 525, "Caution Lights Panel", "L-GEN Light (green)")
+defineIndicatorLight("CL_L3", 526, "Caution Lights Panel", "R-GEN Light (green)")
+defineIndicatorLight("CL_L4", 527, "Caution Lights Panel", "INST INV Light (green)")
 
-defineIndicatorLight("NOSEWHEEL_STEERING", 663, "Front Dash", "Nosewheel Steering Indicator")
-defineIndicatorLight("MARKER_BEACON", 664, "Front Dash", "MARKER BEACON Indicator")
-defineIndicatorLight("CANOPY_UNLOCKED", 665, "Front Dash", "CANOPY UNLOCKED Indicator")
+defineIndicatorLight("NOSEWHEEL_STEERING", 663, "Front Dash", "Nosewheel Steering Indicator (green)")
+defineIndicatorLight("MARKER_BEACON", 664, "Front Dash", "MARKER BEACON Indicator (green)")
+defineIndicatorLight("CANOPY_UNLOCKED", 665, "Front Dash", "CANOPY UNLOCKED Indicator (green)")
 
-defineIndicatorLight("L_ENG_FIRE", 215, "Glare Shield", "Left Engine Fire Indicator")
-defineIndicatorLight("APU_FIRE", 216, "Glare Shield", "APU Fire Indicator")
-defineIndicatorLight("R_ENG_FIRE", 217, "Glare Shield", "Right Engine Fire Indicator")
+defineIndicatorLight("L_ENG_FIRE", 215, "Glare Shield", "Left Engine Fire Indicator (yellow)")
+defineIndicatorLight("APU_FIRE", 216, "Glare Shield", "APU Fire Indicator (yellow)")
+defineIndicatorLight("R_ENG_FIRE", 217, "Glare Shield", "Right Engine Fire Indicator (yellow)")
 
-defineIndicatorLight("L_AILERON_EMER_DISENGAGE", 178, "Emergency Flight Control Panel", "Left Aileron EMER DISENG Indicator")
-defineIndicatorLight("R_AILERON_EMER_DISENGAGE", 179, "Emergency Flight Control Panel", "Right Aileron EMER DISENG Indicator")
-defineIndicatorLight("L_ELEVATOR_EMER_DISENGAGE", 181, "Emergency Flight Control Panel", "Left Elevator EMER DISENG Indicator")
-defineIndicatorLight("R_ELEVATOR_EMER_DISENGAGE", 182, "Emergency Flight Control Panel", "Right Elevator EMER DISENG Indicator")
+defineIndicatorLight("L_AILERON_EMER_DISENGAGE", 178, "Emergency Flight Control Panel", "Left Aileron EMER DISENG Indicator (yellow)")
+defineIndicatorLight("R_AILERON_EMER_DISENGAGE", 179, "Emergency Flight Control Panel", "Right Aileron EMER DISENG Indicator (yellow)")
+defineIndicatorLight("L_ELEVATOR_EMER_DISENGAGE", 181, "Emergency Flight Control Panel", "Left Elevator EMER DISENG Indicator (yellow)")
+defineIndicatorLight("R_ELEVATOR_EMER_DISENGAGE", 182, "Emergency Flight Control Panel", "Right Elevator EMER DISENG Indicator (yellow)")
 
-defineIndicatorLight("TACAN_TEST", 260, "TACAN Panel", "TACAN Test Indicator Light")
-
-
+defineIndicatorLight("TACAN_TEST", 260, "TACAN Panel", "TACAN Test Indicator Light (green)")
 
 definePushButton("LMFD_01", 2, 3001, 300, "Left MFCD", "OSB 1")
 definePushButton("LMFD_02", 2, 3002, 301, "Left MFCD", "OSB 2")
@@ -465,7 +456,6 @@ defineRockerSwitch("RMFD_BRT", 3, 3027, 3029, 3028, 3029, 348, "Right MFCD", "BR
 defineRockerSwitch("RMFD_CON", 3, 3030, 3032, 3031, 3032, 349, "Right MFCD", "CON")
 defineRockerSwitch("RMFD_SYM", 3, 3033, 3035, 3034, 3035, 350, "Right MFCD", "SYM")
 defineTumb("RMFD_PWR", 3, 3036, 351, 0.1, {0.0, 0.2}, nil, false, "Right MFCD", "PWR OFF - NT - DAY")
-
 
 definePushButton("CMSP_ARW1", 4, 3001, 352, "CMSP", "SET Button 1")
 definePushButton("CMSP_ARW2", 4, 3002, 353, "CMSP", "SET Button 2")
@@ -651,7 +641,7 @@ definePushButton("CDU_BCK", 9, 3056, 467, "CDU", "BCK")
 definePushButton("CDU_SPC", 9, 3057, 468, "CDU", "SPC")
 definePushButton("CDU_CLR", 9, 3058, 470, "CDU", "CLR")
 definePushButton("CDU_FA", 9, 3059, 471, "CDU", "FA")
-defineRockerSwitch("CDU_BRT", 9, 3060, 3060, 3061, 3061, 424, "CDU", "DIMBRT Rocker (No Function)")
+defineRockerSwitch("CDU_BRT", 9, 3060, 3060, 3061, 3061, 424, "CDU", "CDU Display Brightness Adjustment")
 defineRockerSwitch("CDU_PG", 9, 3062, 3062, 3063, 3063, 463, "CDU", "PG Rocker")
 defineRockerSwitch("CDU_SCROLL", 9, 3064, 3064, 3065, 3065, 469, "CDU", "Scroll Waypoint Names (Blank Rocker)")
 defineRockerSwitch("CDU_DATA", 9, 3066, 3066, 3067, 3067, 472, "CDU", "+/- Rocker")
@@ -783,19 +773,19 @@ defineElectricallyHeldSwitch("ANTI_SKID_SWITCH", 38, 3028, 3029, 654, "Landing G
 
 
 definePushButton("NMSP_HARS_BTN", 46, 3001, 605, "NMSP", "HARS Button")
-defineIndicatorLight("NMSP_HARS_LED", 606, "NMSP", "HARS Button LED")
+defineIndicatorLight("NMSP_HARS_LED", 606, "NMSP", "HARS Button LED (green)")
 definePushButton("NMSP_EGI_BTN", 46, 3002, 607, "NMSP", "EGI Button")
-defineIndicatorLight("NMSP_EGI_LED", 608, "NMSP", "EGI Button LED")
+defineIndicatorLight("NMSP_EGI_LED", 608, "NMSP", "EGI Button LED (green)")
 definePushButton("NMSP_TISL_BTN", 46, 3003, 609, "NMSP", "TISL Button (No Function)")
-defineIndicatorLight("NMSP_TISL_LED", 610, "NMSP", "TISL Button LED")
+defineIndicatorLight("NMSP_TISL_LED", 610, "NMSP", "TISL Button LED (green)")
 definePushButton("NMSP_STEERPT_BTN", 46, 3004, 611, "NMSP", "STEERPT Button")
-defineIndicatorLight("NMSP_STEERPT_LED", 612, "NMSP", "STEERPT Button LED")
+defineIndicatorLight("NMSP_STEERPT_LED", 612, "NMSP", "STEERPT Button LED (green)")
 definePushButton("NMSP_ANCHR_BTN", 46, 3005, 613, "NMSP", "ANCHR Button")
-defineIndicatorLight("NMSP_ANCHR_LED", 614, "NMSP", "ANCHR Button LED")
+defineIndicatorLight("NMSP_ANCHR_LED", 614, "NMSP", "ANCHR Button LED (green)")
 definePushButton("NMSP_TCN_BTN", 46, 3006, 615, "NMSP", "TCN Button")
-defineIndicatorLight("NMSP_TCN_LED", 616, "NMSP", "TCN Button LED")
+defineIndicatorLight("NMSP_TCN_LED", 616, "NMSP", "TCN Button LED (green)")
 definePushButton("NMSP_ILS_BTN", 46, 3007, 617, "NMSP", "ILS Button")
-defineIndicatorLight("NMSP_ILS_LED", 618, "NMSP", "ILS Button LED")
+defineIndicatorLight("NMSP_ILS_LED", 618, "NMSP", "ILS Button LED (green)")
 defineToggleSwitch("NMSP_ABLE_STOW", 46, 3008, 621, "NMSP", "Able/Stow Localizer Bars")
 
 
@@ -844,7 +834,7 @@ defineTumb("OXY_EMERGENCY", 40, 3003, 601, 1, {-1, 1}, nil, false, "Oxygen Regul
 defineToggleSwitch("OXY_DILUTER", 40, 3002, 602, "Oxygen Regulator Panel", "Oxygen Normal/100%")
 defineToggleSwitch("OXY_SUPPLY", 40, 3001, 603, "Oxygen Regulator Panel", "Oxygen Supply On/Off")
 defineFloat("OXY_PRESS", 604, {0, 1}, "Oxygen Regulator Panel", "Oxygen Pressure Indicator")
-defineIndicatorLight("OXY_FLOW", 600, "Oxygen Regulator Panel", "Flow Indicator (on/off)")
+defineIndicatorLight("OXY_FLOW", 600, "Oxygen Regulator Panel", "Flow Indicator (on/off) (white)")
 
 defineFloat("OXY_VOLUME", 274, {0, 1}, "Environment Control Panel", "Oxygen Volume (0 to 5 liters)")
 defineFloat("CABIN_PRESS_ALT", 281, {0, 1}, "Environment Control Panel", "Cabin Pressure Altitude")
@@ -947,10 +937,10 @@ define3PosTumb1("FIRE_EXT_DISCH", 50, 3004, 105, "Glare Shield", "Fire Extinguis
 defineVariableStepTumb("HSI_CRS_KNOB", 45, 3002, 44, 1.0, "HSI", "Course Select Knob")
 defineVariableStepTumb("HSI_HDG_KNOB", 45, 3001, 45, 1.0, "HSI", "Heading Select Knob")
 
-definePotentiometer("ADI_PITCH_TRIM", 47, 3001, 22, {-.5, .5}, "ADI", "ADI Pitch Trim")
+definePotentiometer("ADI_PITCH_TRIM", 47, 3001, 22, {-0.5, 0.5}, "ADI", "ADI Pitch Trim")
 
 definePushButton("SAI_CAGE", 48, 3002, 67, "Standby Attitude Indicator", "Cage SAI")
-defineRotary("SAI_PITCH_TRIM", 48, 3003, 66, "Standby Attitude Indicator", "SAI Pitch Trim")
+definePotentiometer("SAI_PITCH_TRIM", 48, 3003, 66, {-1, 1}, "Standby Attitude Indicator", "SAI Pitch Trim")
 
 defineString("TACAN_CHANNEL", getTacanChannel, 4, "TACAN Panel", "TACAN Channel")
 definePushButton("TACAN_TEST_BTN", 74, 3004, 259, "TACAN Panel", "TACAN Test Button")
@@ -1014,7 +1004,7 @@ moduleBeingDefined.inputProcessors["SET_UHF"] = function(freq)
 	GetDevice(54):set_frequency(freq*1000)
 end
 
-defineSetCommandTumb("VHFAM_PRESET", 55, 3001, 137, 0.01, {0.0, 0.19}, {" 1", " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"}, true, "VHF AM Radio", "Preset Channel Selector")
+defineTumb("VHFAM_PRESET", 55, 3001, 137, 0.01, {0, 0.19}, {" 1", " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"}, false, "VHF AM Radio", "Preset Channel Selector")
 defineMultipositionSwitch("VHFAM_MODE", 55, 3003, 138, 3, 0.1, "VHF AM Radio", "Mode OFF/TR/DF")
 defineMultipositionSwitch("VHFAM_FREQEMER", 55, 3004, 135, 4, 0.1, "VHF AM Radio", "Frequency Selection Dial FM/AM/MAN/PRE")
 definePotentiometer("VHFAM_VOL", 55, 3005, 133, {0, 1}, "VHF AM Radio", "VHF AM Volume Control")
@@ -1033,7 +1023,7 @@ moduleBeingDefined.inputProcessors["SET_VHF_AM"] = function(freq)
 	GetDevice(55):set_frequency(freq*1000)
 end
 
-defineSetCommandTumb("VHFFM_PRESET", 56, 3001, 151, 0.01, {0.0, 0.19}, {" 1", " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"}, true, "VHF FM Radio", "Preset Channel Selector")
+defineTumb("VHFFM_PRESET", 56, 3001, 151, 0.01, {0, 0.19}, {" 1", " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"}, false, "VHF FM Radio", "Preset Channel Selector")
 defineMultipositionSwitch("VHFFM_MODE", 56, 3003, 152, 3, 0.1, "VHF FM Radio", "Mode OFF/TR/DF")
 defineMultipositionSwitch("VHFFM_FREQEMER", 56, 3004, 149, 4, 0.1, "VHF FM Radio", "Frequency Selection Dial FM/AM/MAN/PRE")
 definePotentiometer("VHFFM_VOL", 56, 3005, 147, {0, 1}, "VHF FM Radio", "VHF FM Volume Control")
@@ -1076,7 +1066,7 @@ defineTumb("INT_TCN_UNMUTE", 58, 3015, 236, 1, {0, 1}, nil, false, "Intercom Pan
 
 defineToggleSwitch("INT_HM", 58, 3017, 237, "Intercom Panel", "HM Switch")
 definePotentiometer("INT_VOL", 58, 3018, 238, {0, 1}, "Intercom Panel", "Intercom Volume")
-defineTumb("INT_MODE", 58, 3019, 239, 0.1, {0.0, 0.4}, nil, false, "Intercom Panel", "Intercom Selector Switch: INT / FM / VHF / HF / Blank")
+defineTumb("INT_MODE", 58, 3019, 239, 0.1, {0.0, 0.4}, nil, false, "Intercom Panel", "Intercom Selector Switch INT/FM/VHF/HF/Blank")
 definePushButton("INT_CALL", 58, 3020, 240, "Intercom Panel", "Call Button")
 
 definePushButton("HARS_FAST_ERECT", 44, 3001, 711, "HARS", "HARS Fast Erect Button")
@@ -1104,12 +1094,12 @@ defineTumb("SEAT_ARM", 39, 3010, 733, 1, {0, 1}, nil, false, "Misc", "Seat Arm H
 defineToggleSwitch("LADDER_EXTEND_COVER", 39, 3011, 787, "Misc", "Extend Boarding Ladder Button Cover")
 definePushButton("LADDER_EXTEND", 39, 3012, 788, "Misc", "Extend Boarding Ladder Button")
 
-definePushButton("ACCEL_PTS", 72, 3001, 904, "Accelerometer", "Push to Set")
+definePushButton("ACCEL_PTS", 72, 3001, 904, "Accelerometer", "Accelerometer Button")
 
 defineMultipositionSwitch("DVADR_FUNCTION", 73, 3001, 789, 3, 0.1, "DVADR", "Function Control Toggle Switch")
 defineMultipositionSwitch("DVADR_VIDEO", 73, 3002, 790, 3, 0.1, "DVADR", "Video Selector Toggle Switch")
-defineIndicatorLight("DVADR_EOT", 791, "DVADR", "DVADR End of Tape Indicator Light")
-defineIndicatorLight("DVADR_REC_REMOTE", 794, "DVADR", "DVADR Record (On) Remote Panel Indicator Light")
+defineIndicatorLight("DVADR_EOT", 791, "DVADR", "DVADR End of Tape Indicator Light (yellow)")
+defineIndicatorLight("DVADR_REC_REMOTE", 794, "DVADR", "DVADR Record (On) Remote Panel Indicator Light (green)")
 
 definePushButton("SUIT_TEST", 41, 3014, 776, "Misc", "Anti-G Suit Valve Test Button")
 
@@ -1117,14 +1107,11 @@ defineToggleSwitch("CANOPY_DISENGAGE", 39, 3013, 777, "Misc", "Canopy actuator d
 defineToggleSwitch("CANOPY_JTSN", 39, 3014, 785, "Misc", "Canopy Jettison")
 defineToggleSwitch("CANOPY_JTSN_UNLOCK", 39, 3015, 786, "Misc", "Canopy Jettison Unlock")
 
-
 defineMultipositionSwitch("ANT_IFF", 43, 3019, 706, 3, 0.5, "Antenna Panel", "IFF Antenna Switch")
 defineMultipositionSwitch("ANT_UHF", 54, 3016, 707, 3, 0.5, "Antenna Panel", "UHF Antenna Switch")
 defineToggleSwitch("ANT_EGIHQTOD", 54, 3017, 708, "Antenna Panel", "EGI HQ TOD Switch")
 
-
 definePotentiometer("RWR_BRT", 29, 3001, 16, {0.15, 0.85}, "RWR", "Display Brightness")
-
 
 local JSON = loadfile([[Scripts\JSON.lua]])()
 local cdu_indicator_data_file = io.open(lfs.writedir()..[[Scripts\DCS-BIOS\lib\CDU.json]], "r")
@@ -1307,14 +1294,12 @@ defineIntegerFromGetter("EXT_FORMATION_LIGHTS", function()
 	return math.floor(LoGetAircraftDrawArgumentValue(200)*65535)
 end, 65535, "External Aircraft Model", "Formation Lights")
 
-
 defineIntegerFromGetter("EXT_POSITION_LIGHT_LEFT", function()
 	if LoGetAircraftDrawArgumentValue(190) > 0 then return 1 else return 0 end
 end, 1, "External Aircraft Model", "Left Position Light (red)")
 defineIntegerFromGetter("EXT_POSITION_LIGHT_RIGHT", function()
 	if LoGetAircraftDrawArgumentValue(191) > 0 then return 1 else return 0 end
 end, 1, "External Aircraft Model", "Right Position Light (green)")
-
 
 defineIntegerFromGetter("EXT_STROBE_TAIL", function()
 	if LoGetAircraftDrawArgumentValue(192) > 0 then return 1 else return 0 end
@@ -1326,6 +1311,16 @@ defineIntegerFromGetter("EXT_STROBE_RIGHT", function()
 	if LoGetAircraftDrawArgumentValue(196) > 0 then return 1 else return 0 end
 end, 1, "External Aircraft Model", "Right Strobe Light")
 
+defineIntegerFromGetter("EXT_WOW_NOSE", function()
+	if LoGetAircraftDrawArgumentValue(1) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Weight ON Wheels Nose Gear")
+defineIntegerFromGetter("EXT_WOW_RIGHT", function()
+	if LoGetAircraftDrawArgumentValue(4) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Weight ON Wheels Right Gear")
+defineIntegerFromGetter("EXT_WOW_LEFT", function()
+	if LoGetAircraftDrawArgumentValue(6) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Weight ON Wheels Left Gear")
+
 defineFloat("CANOPY_VALUE", 7, {0.0, 1.0}, "Misc", "Canopy Position")
 
 definePushButton("TISL_OVERTEMP", 57, 3012, 630, "TISL Panel", "TISL OVER TEMP")
@@ -1334,8 +1329,8 @@ defineIndicatorLight("TISL_ENTER_L", 629, "TISL Panel", "TISL ENTER Light")
 defineIndicatorLight("TISL_OVERTEMP_L", 631, "TISL Panel", "TISL OVER TEMP Light")
 defineIndicatorLight("TISL_BITE_L", 633, "TISL Panel", "TISL BITE Light")
 defineIndicatorLight("TISL_TRACK_L", 635, "TISL Panel", "TISL TRACK Light")
-defineIndicatorLight("IFF_REPLY", 798, "IFF", "IFF REPLY Light")
-defineIndicatorLight("IFF_TEST", 799, "IFF", "IFF TEST Light")
+defineIndicatorLight("IFF_REPLY", 798, "IFF", "IFF REPLY Light (green)")
+defineIndicatorLight("IFF_TEST", 799, "IFF", "IFF TEST Light (green)")
 defineIndicatorLight("DVADR_EOT_REMOTE", 793, "DVADR", "DVADR End of Tape Remote Panel Indicator Light")
 defineIndicatorLight("DVADR_REC", 792, "DVADR", "DVADR Record (On) Indicator Light")
 
@@ -1345,5 +1340,31 @@ definePushButton("CMSC_UNK", 5, 3005, 371, "CMSC", "Display Unknown Threats")
 defineString("ILS_FREQUENCY_S", getILSFrequency, 6, "ILS Panel", "ILS Frequency (String)")
 defineString("VHF_AM_FREQUENCY_S", getVhfAmFreqency, 7, "VHF AM Radio", "VHF AM Frequency (String)")
 defineString("VHF_FM_FREQUENCY_S", getVhfFmFreqency, 7, "VHF FM Radio", "VHF FM Frequency (String)")
+
+defineFloat("INT_CONSOLE_L_BRIGHT", 800, {0, 1}, "Light System Control Panel", "Console Light Brightness")
+defineFloat("INT_ENG_INST_L_BRIGHT", 801, {0, 1}, "Light System Control Panel", "Engine Instrument Light Brightness")
+defineFloat("INT_FLT_INST_L_BRIGHT", 802, {0, 1}, "Light System Control Panel", "Flight Instruments Light Brightness")
+defineFloat("INT_AUX_INST_L_BRIGHT", 803, {0, 1}, "Light System Control Panel", "Auxiliary Instruments Light Brightness")
+defineFloat("INT_FLOOD_L_BRIGHT", 806, {0, 1}, "Light System Control Panel", "Flood Light Brightness")
+defineFloat("INT_CAUTION_L_BRIGHT", 905, {0, 1}, "Light System Control Panel", "Caution Lights Brightness")
+
+defineToggleSwitch("MIRROR_TOGGLE", 0, 3001, 719, "Misc", "Toggle Mirrors")
+defineFloat("OXY_FLOW_G", 600, {0, 1}, "Oxygen Regulator Panel", "Flow Indicator (on/off) (as Gauge)")
+
+-- Scorpion HMCS
+define3PosTumb("A102_HMCS_PW", 75, 3001, 550, "HMCS Panel", "Scorpion HMCS Power BAT/OFF/ON (A-10C II only)")
+
+defineToggleSwitch("STICK_VIS", 39, 3016, 999, "Misc", "Hide Stick toggle")
+
+definePotentiometer("UHF4", 54, 3020, 554, {0, 1}, "UHF Radio", "UHF-4")
+definePotentiometer("UHF5", 54, 3016, 555, {0, 1}, "UHF Radio", "UHF-5")
+definePotentiometer("UHF6", 54, 3017, 556, {0, 1}, "UHF Radio", "UHF-6")
+definePotentiometer("UHF7", 54, 3018, 557, {0, 1}, "UHF Radio", "UHF-7")
+definePotentiometer("UHF8", 54, 3019, 558, {0, 1}, "UHF Radio", "UHF-8")
+defineFloat("INTERNAL_CONSOLE_LIGHTS", 800, {0, 1}, "zAdditional Parameters", "Console Lights")
+defineFloat("INTERNAL_ENG_INST_LIGHTS", 801, {0, 1}, "zAdditional Parameters", "Engine Instrument Lights")
+defineFloat("INTERNAL_FLT_INST_LIGHTS", 802, {0, 1}, "zAdditional Parameters", "Flight Instruments Lights")
+defineFloat("INTERNAL_AUX_INST_LIGHTS", 803, {0, 1}, "zAdditional Parameters", "Auxiliary Instruments Lights")
+defineFloat("INTERNAL_FLOOD_LIGHTS", 806, {0, 1}, "zAdditional Parameters", "Flood Lights")
 
 BIOS.protocol.endModule()

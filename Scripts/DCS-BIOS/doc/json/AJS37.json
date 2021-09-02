@@ -155,6 +155,36 @@
                                                                                   "physical_variant": "limited_rotary"
                                                                            }
                                },
+                "Destination": {
+                                   "AJS37_DEST_INDICATOR_DATA_1": {
+                                                                          "category": "Destination",
+                                                                      "control_type": "display",
+                                                                       "description": "Destination Data Digit 1",
+                                                                        "identifier": "AJS37_DEST_INDICATOR_DATA_1",
+                                                                            "inputs": [  ],
+                                                                           "outputs": [ {
+                                                                                              "address": 18100,
+                                                                                          "description": "Destination Data Digit 1",
+                                                                                           "max_length": 1,
+                                                                                               "suffix": "",
+                                                                                                 "type": "string"
+                                                                                      } ]
+                                                                  },
+                                   "AJS37_DEST_INDICATOR_DATA_2": {
+                                                                          "category": "Destination",
+                                                                      "control_type": "display",
+                                                                       "description": "Destination Data Digit 2",
+                                                                        "identifier": "AJS37_DEST_INDICATOR_DATA_2",
+                                                                            "inputs": [  ],
+                                                                           "outputs": [ {
+                                                                                              "address": 18102,
+                                                                                          "description": "Destination Data Digit 2",
+                                                                                           "max_length": 1,
+                                                                                               "suffix": "",
+                                                                                                 "type": "string"
+                                                                                      } ]
+                                                                  }
+                               },
                     "Doppler": {
                                    "DOPPLER_LAND_SEA_MODE": {
                                                                            "category": "Doppler",
@@ -317,11 +347,11 @@
                                                                                         } ],
                                                                  "momentary_positions": "none",
                                                                              "outputs": [ {
-                                                                                                "address": 18076,
+                                                                                                "address": 18070,
                                                                                             "description": "selector position",
-                                                                                                   "mask": 1,
+                                                                                                   "mask": 16,
                                                                                               "max_value": 1,
-                                                                                               "shift_by": 0,
+                                                                                               "shift_by": 4,
                                                                                                  "suffix": "",
                                                                                                    "type": "integer"
                                                                                         } ],
@@ -546,7 +576,7 @@
                                                                                      "suggested_step": 3200
                                                                                  } ],
                                                                       "outputs": [ {
-                                                                                         "address": 18070,
+                                                                                         "address": 18072,
                                                                                      "description": "position of the potentiometer",
                                                                                             "mask": 65535,
                                                                                        "max_value": 65535,
@@ -585,27 +615,24 @@
                                                                     "physical_variant": "toggle_switch"
                                                              },
                                                   "DRYSUIT": {
+                                                                  "api_variant": "multiturn",
                                                                      "category": "Engine Panel",
-                                                                 "control_type": "limited_dial",
+                                                                 "control_type": "analog_dial",
                                                                   "description": "Drysuit Ventilation Adjustment",
                                                                    "identifier": "DRYSUIT",
                                                                        "inputs": [ {
-                                                                                     "description": "set the position of the dial",
-                                                                                       "interface": "set_state",
-                                                                                       "max_value": 65535
-                                                                                 }, {
                                                                                         "description": "turn the dial left or right",
                                                                                           "interface": "variable_step",
                                                                                           "max_value": 65535,
                                                                                      "suggested_step": 3200
                                                                                  } ],
                                                                       "outputs": [ {
-                                                                                         "address": 18074,
-                                                                                     "description": "position of the potentiometer",
+                                                                                         "address": 18076,
+                                                                                     "description": "the rotation of the knob in the cockpit (not the value that is controlled by this knob!)",
                                                                                             "mask": 65535,
                                                                                        "max_value": 65535,
                                                                                         "shift_by": 0,
-                                                                                          "suffix": "",
+                                                                                          "suffix": "_KNOB_POS",
                                                                                             "type": "integer"
                                                                                  } ]
                                                              },
@@ -956,27 +983,24 @@
                                                                     "physical_variant": "toggle_switch"
                                                              },
                                                 "TEST_MODE": {
+                                                                  "api_variant": "multiturn",
                                                                      "category": "Engine Panel",
-                                                                 "control_type": "limited_dial",
+                                                                 "control_type": "analog_dial",
                                                                   "description": "Maintenance Testing Mode",
                                                                    "identifier": "TEST_MODE",
                                                                        "inputs": [ {
-                                                                                     "description": "set the position of the dial",
-                                                                                       "interface": "set_state",
-                                                                                       "max_value": 65535
-                                                                                 }, {
                                                                                         "description": "turn the dial left or right",
                                                                                           "interface": "variable_step",
                                                                                           "max_value": 65535,
                                                                                      "suggested_step": 3200
                                                                                  } ],
                                                                       "outputs": [ {
-                                                                                         "address": 18072,
-                                                                                     "description": "position of the potentiometer",
+                                                                                         "address": 18074,
+                                                                                     "description": "the rotation of the knob in the cockpit (not the value that is controlled by this knob!)",
                                                                                             "mask": 65535,
                                                                                        "max_value": 65535,
                                                                                         "shift_by": 0,
-                                                                                          "suffix": "",
+                                                                                          "suffix": "_KNOB_POS",
                                                                                             "type": "integer"
                                                                                  } ]
                                                              }
@@ -985,7 +1009,7 @@
                                       "AFK_FEL": {
                                                          "category": "Error Panel",
                                                      "control_type": "led",
-                                                      "description": "Autothrottle",
+                                                      "description": "Autothrottle (red)",
                                                        "identifier": "AFK_FEL",
                                                            "inputs": [  ],
                                                           "outputs": [ {
@@ -1001,7 +1025,7 @@
                                       "BRAND_1": {
                                                          "category": "Error Panel",
                                                      "control_type": "led",
-                                                      "description": "Engine Fire 1",
+                                                      "description": "Engine Fire 1 (red)",
                                                        "identifier": "BRAND_1",
                                                            "inputs": [  ],
                                                           "outputs": [ {
@@ -1017,7 +1041,7 @@
                                       "BRAND_2": {
                                                          "category": "Error Panel",
                                                      "control_type": "led",
-                                                      "description": "Engine Fire 2",
+                                                      "description": "Engine Fire 2 (red)",
                                                        "identifier": "BRAND_2",
                                                            "inputs": [  ],
                                                           "outputs": [ {
@@ -1033,7 +1057,7 @@
                                     "BRAND_GTS": {
                                                          "category": "Error Panel",
                                                      "control_type": "led",
-                                                      "description": "Turbine Starter Fire",
+                                                      "description": "Turbine Starter Fire (red)",
                                                        "identifier": "BRAND_GTS",
                                                            "inputs": [  ],
                                                           "outputs": [ {
@@ -1049,7 +1073,7 @@
                                        "BRA_24": {
                                                          "category": "Error Panel",
                                                      "control_type": "led",
-                                                      "description": "Low Fuel",
+                                                      "description": "Low Fuel (yellow)",
                                                        "identifier": "BRA_24",
                                                            "inputs": [  ],
                                                           "outputs": [ {
@@ -1065,7 +1089,7 @@
                                      "BRA_UPPF": {
                                                          "category": "Error Panel",
                                                      "control_type": "led",
-                                                      "description": "Fuel Distribution Low Pressure",
+                                                      "description": "Fuel Distribution Low Pressure (yellow)",
                                                        "identifier": "BRA_UPPF",
                                                            "inputs": [  ],
                                                           "outputs": [ {
@@ -1081,7 +1105,7 @@
                                            "CK": {
                                                          "category": "Error Panel",
                                                      "control_type": "led",
-                                                      "description": "Computer",
+                                                      "description": "Computer (yellow)",
                                                        "identifier": "CK",
                                                            "inputs": [  ],
                                                           "outputs": [ {
@@ -1097,7 +1121,7 @@
                                        "EJ_REV": {
                                                          "category": "Error Panel",
                                                      "control_type": "led",
-                                                      "description": "Thrust Reverser Inoperable",
+                                                      "description": "Thrust Reverser Inoperable (red)",
                                                        "identifier": "EJ_REV",
                                                            "inputs": [  ],
                                                           "outputs": [ {
@@ -1113,7 +1137,7 @@
                                         "ELFEL": {
                                                          "category": "Error Panel",
                                                      "control_type": "led",
-                                                      "description": "Electrical System",
+                                                      "description": "Electrical System (red)",
                                                        "identifier": "ELFEL",
                                                            "inputs": [  ],
                                                           "outputs": [ {
@@ -1129,7 +1153,7 @@
                                      "FACKL_SL": {
                                                          "category": "Error Panel",
                                                      "control_type": "led",
-                                                      "description": "Flares Empty",
+                                                      "description": "Flares Empty (yellow)",
                                                        "identifier": "FACKL_SL",
                                                            "inputs": [  ],
                                                           "outputs": [ {
@@ -1145,7 +1169,7 @@
                                     "FORV_FORB": {
                                                          "category": "Error Panel",
                                                      "control_type": "led",
-                                                      "description": "Thrust Reverser Warning",
+                                                      "description": "Thrust Reverser Warning (red)",
                                                        "identifier": "FORV_FORB",
                                                            "inputs": [  ],
                                                           "outputs": [ {
@@ -1161,7 +1185,7 @@
                                     "HALL_FUNK": {
                                                          "category": "Error Panel",
                                                      "control_type": "led",
-                                                      "description": "Autopilot Hold",
+                                                      "description": "Autopilot Hold (yellow)",
                                                        "identifier": "HALL_FUNK",
                                                            "inputs": [  ],
                                                           "outputs": [ {
@@ -1177,7 +1201,7 @@
                                        "HSTALL": {
                                                          "category": "Error Panel",
                                                      "control_type": "led",
-                                                      "description": "Right Gear",
+                                                      "description": "Right Gear (green)",
                                                        "identifier": "HSTALL",
                                                            "inputs": [  ],
                                                           "outputs": [ {
@@ -1193,7 +1217,7 @@
                                    "HUV_O_STOL": {
                                                          "category": "Error Panel",
                                                      "control_type": "led",
-                                                      "description": "Ejection Seat/Canopy",
+                                                      "description": "Ejection Seat/Canopy (yellow)",
                                                        "identifier": "HUV_O_STOL",
                                                            "inputs": [  ],
                                                           "outputs": [ {
@@ -1209,7 +1233,7 @@
                                    "HYDRA_TA_1": {
                                                          "category": "Error Panel",
                                                      "control_type": "led",
-                                                      "description": "Hydraulic System 1 Pressure",
+                                                      "description": "Hydraulic System 1 Pressure (red)",
                                                        "identifier": "HYDRA_TA_1",
                                                            "inputs": [  ],
                                                           "outputs": [ {
@@ -1225,7 +1249,7 @@
                                    "HYDRA_TA_2": {
                                                          "category": "Error Panel",
                                                      "control_type": "led",
-                                                      "description": "Hydraulic System 2 Pressure",
+                                                      "description": "Hydraulic System 2 Pressure (red)",
                                                        "identifier": "HYDRA_TA_2",
                                                            "inputs": [  ],
                                                           "outputs": [ {
@@ -1241,7 +1265,7 @@
                                     "KABINHOJD": {
                                                          "category": "Error Panel",
                                                      "control_type": "led",
-                                                      "description": "Cabin Pressure",
+                                                      "description": "Cabin Pressure (yellow)",
                                                        "identifier": "KABINHOJD",
                                                            "inputs": [  ],
                                                           "outputs": [ {
@@ -1257,7 +1281,7 @@
                                    "KB_H_KA_SL": {
                                                          "category": "Error Panel",
                                                      "control_type": "led",
-                                                      "description": "Right Countermeasures Pod Empty/ECM Failure",
+                                                      "description": "Right Countermeasures Pod Empty/ECM Failure (yellow)",
                                                        "identifier": "KB_H_KA_SL",
                                                            "inputs": [  ],
                                                           "outputs": [ {
@@ -1273,7 +1297,7 @@
                                     "KB_V_SLUT": {
                                                          "category": "Error Panel",
                                                      "control_type": "led",
-                                                      "description": "Left Countermeasures Pod Empty",
+                                                      "description": "Left Countermeasures Pod Empty (yellow)",
                                                        "identifier": "KB_V_SLUT",
                                                            "inputs": [  ],
                                                           "outputs": [ {
@@ -1289,7 +1313,7 @@
                                     "LANDSTALL": {
                                                          "category": "Error Panel",
                                                      "control_type": "led",
-                                                      "description": "Landing Gear",
+                                                      "description": "Landing Gear (yellow)",
                                                        "identifier": "LANDSTALL",
                                                            "inputs": [  ],
                                                           "outputs": [ {
@@ -1305,7 +1329,7 @@
                                     "LUFTBROMS": {
                                                          "category": "Error Panel",
                                                      "control_type": "led",
-                                                      "description": "Airbrakes",
+                                                      "description": "Airbrakes (green)",
                                                        "identifier": "LUFTBROMS",
                                                            "inputs": [  ],
                                                           "outputs": [ {
@@ -1321,7 +1345,7 @@
                                    "MAN_BG_REG": {
                                                          "category": "Error Panel",
                                                      "control_type": "led",
-                                                      "description": "Manual Fuel Regulator",
+                                                      "description": "Manual Fuel Regulator (yellow)",
                                                        "identifier": "MAN_BG_REG",
                                                            "inputs": [  ],
                                                           "outputs": [ {
@@ -1337,7 +1361,7 @@
                                       "MOTVERK": {
                                                          "category": "Error Panel",
                                                      "control_type": "led",
-                                                      "description": "Countermeasures/RWR",
+                                                      "description": "Countermeasures/RWR (yellow)",
                                                        "identifier": "MOTVERK",
                                                            "inputs": [  ],
                                                           "outputs": [ {
@@ -1353,7 +1377,7 @@
                                      "NAV_SYST": {
                                                          "category": "Error Panel",
                                                      "control_type": "led",
-                                                      "description": "Navigation System",
+                                                      "description": "Navigation System (yellow)",
                                                        "identifier": "NAV_SYST",
                                                            "inputs": [  ],
                                                           "outputs": [ {
@@ -1369,7 +1393,7 @@
                                      "NOSSTALL": {
                                                          "category": "Error Panel",
                                                      "control_type": "led",
-                                                      "description": "Nose Gear",
+                                                      "description": "Nose Gear (green)",
                                                        "identifier": "NOSSTALL",
                                                            "inputs": [  ],
                                                           "outputs": [ {
@@ -1385,7 +1409,7 @@
                                     "OLJETRYCK": {
                                                          "category": "Error Panel",
                                                      "control_type": "led",
-                                                      "description": "Oil Pressure",
+                                                      "description": "Oil Pressure (red)",
                                                        "identifier": "OLJETRYCK",
                                                            "inputs": [  ],
                                                           "outputs": [ {
@@ -1401,7 +1425,7 @@
                                     "RESERVEFF": {
                                                          "category": "Error Panel",
                                                      "control_type": "led",
-                                                      "description": "Backup Hydraulic",
+                                                      "description": "Backup Hydraulic (red)",
                                                        "identifier": "RESERVEFF",
                                                            "inputs": [  ],
                                                           "outputs": [ {
@@ -1417,7 +1441,7 @@
                                       "RHM_FEL": {
                                                          "category": "Error Panel",
                                                      "control_type": "led",
-                                                      "description": "Radar Altimeter",
+                                                      "description": "Radar Altimeter (yellow)",
                                                        "identifier": "RHM_FEL",
                                                            "inputs": [  ],
                                                           "outputs": [ {
@@ -1433,7 +1457,7 @@
                                    "ROLL_VAXEL": {
                                                          "category": "Error Panel",
                                                      "control_type": "led",
-                                                      "description": "Roll Gearing",
+                                                      "description": "Roll Gearing (yellow)",
                                                        "identifier": "ROLL_VAXEL",
                                                            "inputs": [  ],
                                                           "outputs": [ {
@@ -1449,7 +1473,7 @@
                                    "SPAK_ERROR": {
                                                          "category": "Error Panel",
                                                      "control_type": "led",
-                                                      "description": "SPAK Error",
+                                                      "description": "SPAK Error (yellow)",
                                                        "identifier": "SPAK_ERROR",
                                                            "inputs": [  ],
                                                           "outputs": [ {
@@ -1465,7 +1489,7 @@
                                     "STARTSYST": {
                                                          "category": "Error Panel",
                                                      "control_type": "led",
-                                                      "description": "Starter System",
+                                                      "description": "Starter System (yellow)",
                                                        "identifier": "STARTSYST",
                                                            "inputs": [  ],
                                                           "outputs": [ {
@@ -1481,7 +1505,7 @@
                                        "SYRGAS": {
                                                          "category": "Error Panel",
                                                      "control_type": "led",
-                                                      "description": "Oxygen",
+                                                      "description": "Oxygen (yellow)",
                                                        "identifier": "SYRGAS",
                                                            "inputs": [  ],
                                                           "outputs": [ {
@@ -1497,7 +1521,7 @@
                                      "TANDSYST": {
                                                          "category": "Error Panel",
                                                      "control_type": "led",
-                                                      "description": "Ignition System",
+                                                      "description": "Ignition System (yellow)",
                                                        "identifier": "TANDSYST",
                                                            "inputs": [  ],
                                                           "outputs": [ {
@@ -1513,7 +1537,7 @@
                                     "TANK_PUMP": {
                                                          "category": "Error Panel",
                                                      "control_type": "led",
-                                                      "description": "Fuel Pump",
+                                                      "description": "Fuel Pump (yellow)",
                                                        "identifier": "TANK_PUMP",
                                                            "inputs": [  ],
                                                           "outputs": [ {
@@ -1529,7 +1553,7 @@
                                          "TILS": {
                                                          "category": "Error Panel",
                                                      "control_type": "led",
-                                                      "description": "TILS",
+                                                      "description": "TILS (green)",
                                                        "identifier": "TILS",
                                                            "inputs": [  ],
                                                           "outputs": [ {
@@ -1545,7 +1569,7 @@
                                     "TIPPVAXEL": {
                                                          "category": "Error Panel",
                                                      "control_type": "led",
-                                                      "description": "Pitch Gearing",
+                                                      "description": "Pitch Gearing (red)",
                                                        "identifier": "TIPPVAXEL",
                                                            "inputs": [  ],
                                                           "outputs": [ {
@@ -1561,7 +1585,7 @@
                                        "VSTALL": {
                                                          "category": "Error Panel",
                                                      "control_type": "led",
-                                                      "description": "Left Gear",
+                                                      "description": "Left Gear (green)",
                                                        "identifier": "VSTALL",
                                                            "inputs": [  ],
                                                           "outputs": [ {
@@ -1577,7 +1601,7 @@
                                    "X_TANK_BRA": {
                                                          "category": "Error Panel",
                                                      "control_type": "led",
-                                                      "description": "External Fuel Tank Feed System",
+                                                      "description": "External Fuel Tank Feed System (yellow)",
                                                        "identifier": "X_TANK_BRA",
                                                            "inputs": [  ],
                                                           "outputs": [ {
@@ -1703,6 +1727,54 @@
                                                                                          "suffix": "",
                                                                                            "type": "integer"
                                                                                 } ]
+                                                            },
+                                            "EXT_WOW_LEFT": {
+                                                                    "category": "External Aircraft Model",
+                                                                "control_type": "metadata",
+                                                                 "description": "Weight ON Wheels Left Gear",
+                                                                  "identifier": "EXT_WOW_LEFT",
+                                                                      "inputs": [  ],
+                                                                     "outputs": [ {
+                                                                                        "address": 18032,
+                                                                                    "description": "Weight ON Wheels Left Gear",
+                                                                                           "mask": 1024,
+                                                                                      "max_value": 1,
+                                                                                       "shift_by": 10,
+                                                                                         "suffix": "",
+                                                                                           "type": "integer"
+                                                                                } ]
+                                                            },
+                                            "EXT_WOW_NOSE": {
+                                                                    "category": "External Aircraft Model",
+                                                                "control_type": "metadata",
+                                                                 "description": "Weight ON Wheels Nose Gear",
+                                                                  "identifier": "EXT_WOW_NOSE",
+                                                                      "inputs": [  ],
+                                                                     "outputs": [ {
+                                                                                        "address": 18032,
+                                                                                    "description": "Weight ON Wheels Nose Gear",
+                                                                                           "mask": 256,
+                                                                                      "max_value": 1,
+                                                                                       "shift_by": 8,
+                                                                                         "suffix": "",
+                                                                                           "type": "integer"
+                                                                                } ]
+                                                            },
+                                           "EXT_WOW_RIGHT": {
+                                                                    "category": "External Aircraft Model",
+                                                                "control_type": "metadata",
+                                                                 "description": "Weight ON Wheels Right Gear",
+                                                                  "identifier": "EXT_WOW_RIGHT",
+                                                                      "inputs": [  ],
+                                                                     "outputs": [ {
+                                                                                        "address": 18032,
+                                                                                    "description": "Weight ON Wheels Right Gear",
+                                                                                           "mask": 512,
+                                                                                      "max_value": 1,
+                                                                                       "shift_by": 9,
+                                                                                         "suffix": "",
+                                                                                           "type": "integer"
+                                                                                } ]
                                                             }
                                },
                  "FR22 Radio": {
@@ -1717,15 +1789,15 @@
                                                                                        }, {
                                                                                            "description": "set position",
                                                                                              "interface": "set_state",
-                                                                                             "max_value": 10
+                                                                                             "max_value": 20
                                                                                        } ],
                                                                 "momentary_positions": "none",
                                                                             "outputs": [ {
                                                                                                "address": 18066,
                                                                                            "description": "selector position",
-                                                                                                  "mask": 120,
-                                                                                             "max_value": 10,
-                                                                                              "shift_by": 3,
+                                                                                                  "mask": 1984,
+                                                                                             "max_value": 20,
+                                                                                              "shift_by": 6,
                                                                                                 "suffix": "",
                                                                                                   "type": "integer"
                                                                                        } ],
@@ -1753,9 +1825,9 @@
                                                                             "outputs": [ {
                                                                                                "address": 18064,
                                                                                            "description": "selector position",
-                                                                                                  "mask": 1024,
+                                                                                                  "mask": 8192,
                                                                                              "max_value": 1,
-                                                                                              "shift_by": 10,
+                                                                                              "shift_by": 13,
                                                                                                 "suffix": "",
                                                                                                   "type": "integer"
                                                                                        } ],
@@ -1783,9 +1855,9 @@
                                                                             "outputs": [ {
                                                                                                "address": 18064,
                                                                                            "description": "selector position",
-                                                                                                  "mask": 2048,
+                                                                                                  "mask": 16384,
                                                                                              "max_value": 1,
-                                                                                              "shift_by": 11,
+                                                                                              "shift_by": 14,
                                                                                                 "suffix": "",
                                                                                                   "type": "integer"
                                                                                        } ],
@@ -1811,11 +1883,11 @@
                                                                                        } ],
                                                                 "momentary_positions": "none",
                                                                             "outputs": [ {
-                                                                                               "address": 18064,
+                                                                                               "address": 18066,
                                                                                            "description": "selector position",
-                                                                                                  "mask": 8192,
+                                                                                                  "mask": 1,
                                                                                              "max_value": 1,
-                                                                                              "shift_by": 13,
+                                                                                              "shift_by": 0,
                                                                                                 "suffix": "",
                                                                                                   "type": "integer"
                                                                                        } ],
@@ -1843,9 +1915,9 @@
                                                                             "outputs": [ {
                                                                                                "address": 18064,
                                                                                            "description": "selector position",
-                                                                                                  "mask": 4096,
+                                                                                                  "mask": 32768,
                                                                                              "max_value": 1,
-                                                                                              "shift_by": 12,
+                                                                                              "shift_by": 15,
                                                                                                 "suffix": "",
                                                                                                   "type": "integer"
                                                                                        } ],
@@ -1871,11 +1943,11 @@
                                                                                        } ],
                                                                 "momentary_positions": "none",
                                                                             "outputs": [ {
-                                                                                               "address": 18064,
+                                                                                               "address": 18066,
                                                                                            "description": "selector position",
-                                                                                                  "mask": 16384,
+                                                                                                  "mask": 2,
                                                                                              "max_value": 1,
-                                                                                              "shift_by": 14,
+                                                                                              "shift_by": 1,
                                                                                                 "suffix": "",
                                                                                                   "type": "integer"
                                                                                        } ],
@@ -1903,9 +1975,9 @@
                                                                             "outputs": [ {
                                                                                                "address": 18064,
                                                                                            "description": "selector position",
-                                                                                                  "mask": 32,
+                                                                                                  "mask": 256,
                                                                                              "max_value": 1,
-                                                                                              "shift_by": 5,
+                                                                                              "shift_by": 8,
                                                                                                 "suffix": "",
                                                                                                   "type": "integer"
                                                                                        } ],
@@ -1933,9 +2005,9 @@
                                                                             "outputs": [ {
                                                                                                "address": 18032,
                                                                                            "description": "selector position",
-                                                                                                  "mask": 2048,
+                                                                                                  "mask": 16384,
                                                                                              "max_value": 1,
-                                                                                              "shift_by": 11,
+                                                                                              "shift_by": 14,
                                                                                                 "suffix": "",
                                                                                                   "type": "integer"
                                                                                        } ],
@@ -1963,9 +2035,9 @@
                                                                             "outputs": [ {
                                                                                                "address": 18032,
                                                                                            "description": "selector position",
-                                                                                                  "mask": 4096,
+                                                                                                  "mask": 32768,
                                                                                              "max_value": 1,
-                                                                                              "shift_by": 12,
+                                                                                              "shift_by": 15,
                                                                                                 "suffix": "",
                                                                                                   "type": "integer"
                                                                                        } ],
@@ -1991,11 +2063,11 @@
                                                                                        } ],
                                                                 "momentary_positions": "none",
                                                                             "outputs": [ {
-                                                                                               "address": 18032,
+                                                                                               "address": 18064,
                                                                                            "description": "selector position",
-                                                                                                  "mask": 8192,
+                                                                                                  "mask": 1,
                                                                                              "max_value": 1,
-                                                                                              "shift_by": 13,
+                                                                                              "shift_by": 0,
                                                                                                 "suffix": "",
                                                                                                   "type": "integer"
                                                                                        } ],
@@ -2021,11 +2093,11 @@
                                                                                        } ],
                                                                 "momentary_positions": "none",
                                                                             "outputs": [ {
-                                                                                               "address": 18032,
+                                                                                               "address": 18064,
                                                                                            "description": "selector position",
-                                                                                                  "mask": 16384,
+                                                                                                  "mask": 2,
                                                                                              "max_value": 1,
-                                                                                              "shift_by": 14,
+                                                                                              "shift_by": 1,
                                                                                                 "suffix": "",
                                                                                                   "type": "integer"
                                                                                        } ],
@@ -2051,11 +2123,11 @@
                                                                                        } ],
                                                                 "momentary_positions": "none",
                                                                             "outputs": [ {
-                                                                                               "address": 18032,
+                                                                                               "address": 18064,
                                                                                            "description": "selector position",
-                                                                                                  "mask": 32768,
+                                                                                                  "mask": 4,
                                                                                              "max_value": 1,
-                                                                                              "shift_by": 15,
+                                                                                              "shift_by": 2,
                                                                                                 "suffix": "",
                                                                                                   "type": "integer"
                                                                                        } ],
@@ -2083,9 +2155,9 @@
                                                                             "outputs": [ {
                                                                                                "address": 18064,
                                                                                            "description": "selector position",
-                                                                                                  "mask": 1,
+                                                                                                  "mask": 8,
                                                                                              "max_value": 1,
-                                                                                              "shift_by": 0,
+                                                                                              "shift_by": 3,
                                                                                                 "suffix": "",
                                                                                                   "type": "integer"
                                                                                        } ],
@@ -2113,9 +2185,9 @@
                                                                             "outputs": [ {
                                                                                                "address": 18064,
                                                                                            "description": "selector position",
-                                                                                                  "mask": 2,
+                                                                                                  "mask": 16,
                                                                                              "max_value": 1,
-                                                                                              "shift_by": 1,
+                                                                                              "shift_by": 4,
                                                                                                 "suffix": "",
                                                                                                   "type": "integer"
                                                                                        } ],
@@ -2143,9 +2215,9 @@
                                                                             "outputs": [ {
                                                                                                "address": 18064,
                                                                                            "description": "selector position",
-                                                                                                  "mask": 4,
+                                                                                                  "mask": 32,
                                                                                              "max_value": 1,
-                                                                                              "shift_by": 2,
+                                                                                              "shift_by": 5,
                                                                                                 "suffix": "",
                                                                                                   "type": "integer"
                                                                                        } ],
@@ -2173,9 +2245,9 @@
                                                                             "outputs": [ {
                                                                                                "address": 18064,
                                                                                            "description": "selector position",
-                                                                                                  "mask": 8,
+                                                                                                  "mask": 64,
                                                                                              "max_value": 1,
-                                                                                              "shift_by": 3,
+                                                                                              "shift_by": 6,
                                                                                                 "suffix": "",
                                                                                                   "type": "integer"
                                                                                        } ],
@@ -2203,9 +2275,9 @@
                                                                             "outputs": [ {
                                                                                                "address": 18064,
                                                                                            "description": "selector position",
-                                                                                                  "mask": 16,
+                                                                                                  "mask": 128,
                                                                                              "max_value": 1,
-                                                                                              "shift_by": 4,
+                                                                                              "shift_by": 7,
                                                                                                 "suffix": "",
                                                                                                   "type": "integer"
                                                                                        } ],
@@ -2231,11 +2303,11 @@
                                                                                        } ],
                                                                 "momentary_positions": "none",
                                                                             "outputs": [ {
-                                                                                               "address": 18064,
+                                                                                               "address": 18066,
                                                                                            "description": "selector position",
-                                                                                                  "mask": 32768,
+                                                                                                  "mask": 4,
                                                                                              "max_value": 1,
-                                                                                              "shift_by": 15,
+                                                                                              "shift_by": 2,
                                                                                                 "suffix": "",
                                                                                                   "type": "integer"
                                                                                        } ],
@@ -2258,9 +2330,9 @@
                                                                             "outputs": [ {
                                                                                                "address": 18066,
                                                                                            "description": "selector position",
-                                                                                                  "mask": 1920,
+                                                                                                  "mask": 30720,
                                                                                              "max_value": 10,
-                                                                                              "shift_by": 7,
+                                                                                              "shift_by": 11,
                                                                                                 "suffix": "",
                                                                                                   "type": "integer"
                                                                                        } ],
@@ -2332,38 +2404,13 @@
                                                                             "outputs": [ {
                                                                                                "address": 18064,
                                                                                            "description": "selector position",
-                                                                                                  "mask": 512,
+                                                                                                  "mask": 4096,
                                                                                              "max_value": 1,
-                                                                                              "shift_by": 9,
+                                                                                              "shift_by": 12,
                                                                                                 "suffix": "",
                                                                                                   "type": "integer"
                                                                                        } ],
                                                                    "physical_variant": "push_button"
-                                                            },
-                                               "FR22_MODE": {
-                                                                           "category": "FR22 Radio",
-                                                                       "control_type": "selector",
-                                                                        "description": "FR22 Mode Selector",
-                                                                         "identifier": "FR22_MODE",
-                                                                             "inputs": [ {
-                                                                                           "description": "switch to previous or next state",
-                                                                                             "interface": "fixed_step"
-                                                                                       }, {
-                                                                                           "description": "set position",
-                                                                                             "interface": "set_state",
-                                                                                             "max_value": 5
-                                                                                       } ],
-                                                                "momentary_positions": "none",
-                                                                            "outputs": [ {
-                                                                                               "address": 18066,
-                                                                                           "description": "selector position",
-                                                                                                  "mask": 7,
-                                                                                             "max_value": 5,
-                                                                                              "shift_by": 0,
-                                                                                                "suffix": "",
-                                                                                                  "type": "integer"
-                                                                                       } ],
-                                                                   "physical_variant": "limited_rotary"
                                                             },
                                     "FR22_OUTER_LEFT_KNOB": {
                                                                  "api_variant": "multiturn",
@@ -2453,9 +2500,9 @@
                                                                             "outputs": [ {
                                                                                                "address": 18064,
                                                                                            "description": "selector position",
-                                                                                                  "mask": 64,
+                                                                                                  "mask": 512,
                                                                                              "max_value": 1,
-                                                                                              "shift_by": 6,
+                                                                                              "shift_by": 9,
                                                                                                 "suffix": "",
                                                                                                   "type": "integer"
                                                                                        } ],
@@ -2483,9 +2530,9 @@
                                                                             "outputs": [ {
                                                                                                "address": 18064,
                                                                                            "description": "selector position",
-                                                                                                  "mask": 128,
+                                                                                                  "mask": 1024,
                                                                                              "max_value": 1,
-                                                                                              "shift_by": 7,
+                                                                                              "shift_by": 10,
                                                                                                 "suffix": "",
                                                                                                   "type": "integer"
                                                                                        } ],
@@ -2513,9 +2560,9 @@
                                                                             "outputs": [ {
                                                                                                "address": 18064,
                                                                                            "description": "selector position",
-                                                                                                  "mask": 256,
+                                                                                                  "mask": 2048,
                                                                                              "max_value": 1,
-                                                                                              "shift_by": 8,
+                                                                                              "shift_by": 11,
                                                                                                 "suffix": "",
                                                                                                   "type": "integer"
                                                                                        } ],
@@ -2542,6 +2589,31 @@
                                                                                          "suffix": "_KNOB_POS",
                                                                                            "type": "integer"
                                                                                 } ]
+                                                            },
+                                               "FR24_MODE": {
+                                                                           "category": "FR22 Radio",
+                                                                       "control_type": "selector",
+                                                                        "description": "FR24 Mode Selector",
+                                                                         "identifier": "FR24_MODE",
+                                                                             "inputs": [ {
+                                                                                           "description": "switch to previous or next state",
+                                                                                             "interface": "fixed_step"
+                                                                                       }, {
+                                                                                           "description": "set position",
+                                                                                             "interface": "set_state",
+                                                                                             "max_value": 5
+                                                                                       } ],
+                                                                "momentary_positions": "none",
+                                                                            "outputs": [ {
+                                                                                               "address": 18066,
+                                                                                           "description": "selector position",
+                                                                                                  "mask": 56,
+                                                                                             "max_value": 5,
+                                                                                              "shift_by": 3,
+                                                                                                "suffix": "",
+                                                                                                  "type": "integer"
+                                                                                       } ],
+                                                                   "physical_variant": "limited_rotary"
                                                             }
                                },
            "Flight Data Unit": {
@@ -2620,15 +2692,12 @@
                                                                          "physical_variant": "push_button"
                                                                   },
                                                        "ALT_SET": {
+                                                                       "api_variant": "multiturn",
                                                                           "category": "Flight Data Unit",
-                                                                      "control_type": "limited_dial",
+                                                                      "control_type": "analog_dial",
                                                                        "description": "Altimeter Setting",
                                                                         "identifier": "ALT_SET",
                                                                             "inputs": [ {
-                                                                                          "description": "set the position of the dial",
-                                                                                            "interface": "set_state",
-                                                                                            "max_value": 65535
-                                                                                      }, {
                                                                                              "description": "turn the dial left or right",
                                                                                                "interface": "variable_step",
                                                                                                "max_value": 65535,
@@ -2636,11 +2705,11 @@
                                                                                       } ],
                                                                            "outputs": [ {
                                                                                               "address": 18054,
-                                                                                          "description": "position of the potentiometer",
+                                                                                          "description": "the rotation of the knob in the cockpit (not the value that is controlled by this knob!)",
                                                                                                  "mask": 65535,
                                                                                             "max_value": 65535,
                                                                                              "shift_by": 0,
-                                                                                               "suffix": "",
+                                                                                               "suffix": "_KNOB_POS",
                                                                                                  "type": "integer"
                                                                                       } ]
                                                                   },
@@ -2699,6 +2768,35 @@
                                                                                                  "type": "integer"
                                                                                       } ]
                                                                   },
+                                           "AUTO_YAW_TRIM_COVER": {
+                                                                                 "category": "Flight Data Unit",
+                                                                             "control_type": "selector",
+                                                                              "description": "Autopilot Yaw Trim Cover",
+                                                                               "identifier": "AUTO_YAW_TRIM_COVER",
+                                                                                   "inputs": [ {
+                                                                                                 "description": "switch to previous or next state",
+                                                                                                   "interface": "fixed_step"
+                                                                                             }, {
+                                                                                                 "description": "set position",
+                                                                                                   "interface": "set_state",
+                                                                                                   "max_value": 1
+                                                                                             }, {
+                                                                                                    "argument": "TOGGLE",
+                                                                                                 "description": "Toggle switch state",
+                                                                                                   "interface": "action"
+                                                                                             } ],
+                                                                      "momentary_positions": "none",
+                                                                                  "outputs": [ {
+                                                                                                     "address": 17940,
+                                                                                                 "description": "selector position",
+                                                                                                        "mask": 256,
+                                                                                                   "max_value": 1,
+                                                                                                    "shift_by": 8,
+                                                                                                      "suffix": "",
+                                                                                                        "type": "integer"
+                                                                                             } ],
+                                                                         "physical_variant": "toggle_switch"
+                                                                  },
                                             "BACKUP_ALT_SETTING": {
                                                                           "category": "Flight Data Unit",
                                                                       "control_type": "limited_dial",
@@ -2746,9 +2844,9 @@
                                                                                   "outputs": [ {
                                                                                                      "address": 18032,
                                                                                                  "description": "selector position",
-                                                                                                        "mask": 512,
+                                                                                                        "mask": 4096,
                                                                                                    "max_value": 1,
-                                                                                                    "shift_by": 9,
+                                                                                                    "shift_by": 12,
                                                                                                       "suffix": "",
                                                                                                         "type": "integer"
                                                                                              } ],
@@ -2810,15 +2908,12 @@
                                                                          "physical_variant": "limited_rotary"
                                                                   },
                                                      "CLOCK_SET": {
+                                                                       "api_variant": "multiturn",
                                                                           "category": "Flight Data Unit",
-                                                                      "control_type": "limited_dial",
+                                                                      "control_type": "analog_dial",
                                                                        "description": "Clock Setting",
                                                                         "identifier": "CLOCK_SET",
                                                                             "inputs": [ {
-                                                                                          "description": "set the position of the dial",
-                                                                                            "interface": "set_state",
-                                                                                            "max_value": 65535
-                                                                                      }, {
                                                                                              "description": "turn the dial left or right",
                                                                                                "interface": "variable_step",
                                                                                                "max_value": 65535,
@@ -2826,11 +2921,11 @@
                                                                                       } ],
                                                                            "outputs": [ {
                                                                                               "address": 18062,
-                                                                                          "description": "position of the potentiometer",
+                                                                                          "description": "the rotation of the knob in the cockpit (not the value that is controlled by this knob!)",
                                                                                                  "mask": 65535,
                                                                                             "max_value": 65535,
                                                                                              "shift_by": 0,
-                                                                                               "suffix": "",
+                                                                                               "suffix": "_KNOB_POS",
                                                                                                  "type": "integer"
                                                                                       } ]
                                                                   },
@@ -3039,15 +3134,12 @@
                                                                          "physical_variant": "toggle_switch"
                                                                   },
                                                     "HUD_BRIGHT": {
+                                                                       "api_variant": "multiturn",
                                                                           "category": "Flight Data Unit",
-                                                                      "control_type": "limited_dial",
+                                                                      "control_type": "analog_dial",
                                                                        "description": "HUD Brightness Knob",
                                                                         "identifier": "HUD_BRIGHT",
                                                                             "inputs": [ {
-                                                                                          "description": "set the position of the dial",
-                                                                                            "interface": "set_state",
-                                                                                            "max_value": 65535
-                                                                                      }, {
                                                                                              "description": "turn the dial left or right",
                                                                                                "interface": "variable_step",
                                                                                                "max_value": 65535,
@@ -3055,11 +3147,11 @@
                                                                                       } ],
                                                                            "outputs": [ {
                                                                                               "address": 18056,
-                                                                                          "description": "position of the potentiometer",
+                                                                                          "description": "the rotation of the knob in the cockpit (not the value that is controlled by this knob!)",
                                                                                                  "mask": 65535,
                                                                                             "max_value": 65535,
                                                                                              "shift_by": 0,
-                                                                                               "suffix": "",
+                                                                                               "suffix": "_KNOB_POS",
                                                                                                  "type": "integer"
                                                                                       } ]
                                                                   },
@@ -3086,15 +3178,12 @@
                                                                          "physical_variant": "limited_rotary"
                                                                   },
                                                 "MAG_CORRECTION": {
+                                                                       "api_variant": "multiturn",
                                                                           "category": "Flight Data Unit",
-                                                                      "control_type": "limited_dial",
+                                                                      "control_type": "analog_dial",
                                                                        "description": "Magnetic Declination Correction",
                                                                         "identifier": "MAG_CORRECTION",
                                                                             "inputs": [ {
-                                                                                          "description": "set the position of the dial",
-                                                                                            "interface": "set_state",
-                                                                                            "max_value": 65535
-                                                                                      }, {
                                                                                              "description": "turn the dial left or right",
                                                                                                "interface": "variable_step",
                                                                                                "max_value": 65535,
@@ -3102,11 +3191,11 @@
                                                                                       } ],
                                                                            "outputs": [ {
                                                                                               "address": 18058,
-                                                                                          "description": "position of the potentiometer",
+                                                                                          "description": "the rotation of the knob in the cockpit (not the value that is controlled by this knob!)",
                                                                                                  "mask": 65535,
                                                                                             "max_value": 65535,
                                                                                              "shift_by": 0,
-                                                                                               "suffix": "",
+                                                                                               "suffix": "_KNOB_POS",
                                                                                                  "type": "integer"
                                                                                       } ]
                                                                   },
@@ -3186,9 +3275,9 @@
                                                                                   "outputs": [ {
                                                                                                      "address": 18032,
                                                                                                  "description": "selector position",
-                                                                                                        "mask": 256,
+                                                                                                        "mask": 2048,
                                                                                                    "max_value": 1,
-                                                                                                    "shift_by": 8,
+                                                                                                    "shift_by": 11,
                                                                                                       "suffix": "",
                                                                                                         "type": "integer"
                                                                                              } ],
@@ -3278,7 +3367,7 @@
                                                                               "api_variant": "momentary_last_position",
                                                                                  "category": "Flight Data Unit",
                                                                              "control_type": "selector",
-                                                                              "description": "Roll Centering",
+                                                                              "description": "Roll Trim Reset / Centre",
                                                                                "identifier": "ROLL_CENTER",
                                                                                    "inputs": [ {
                                                                                                  "description": "switch to previous or next state",
@@ -3296,9 +3385,9 @@
                                                                                   "outputs": [ {
                                                                                                      "address": 18032,
                                                                                                  "description": "selector position",
-                                                                                                        "mask": 1024,
+                                                                                                        "mask": 8192,
                                                                                                    "max_value": 1,
-                                                                                                    "shift_by": 10,
+                                                                                                    "shift_by": 13,
                                                                                                       "suffix": "",
                                                                                                         "type": "integer"
                                                                                              } ],
@@ -3363,6 +3452,36 @@
                                                                                              } ],
                                                                          "physical_variant": "push_button"
                                                                   },
+                                          "STOPWATCH_START_STOP": {
+                                                                              "api_variant": "momentary_last_position",
+                                                                                 "category": "Flight Data Unit",
+                                                                             "control_type": "selector",
+                                                                              "description": "Stopwatch Start/Stop/Reset",
+                                                                               "identifier": "STOPWATCH_START_STOP",
+                                                                                   "inputs": [ {
+                                                                                                 "description": "switch to previous or next state",
+                                                                                                   "interface": "fixed_step"
+                                                                                             }, {
+                                                                                                 "description": "set position",
+                                                                                                   "interface": "set_state",
+                                                                                                   "max_value": 1
+                                                                                             }, {
+                                                                                                    "argument": "TOGGLE",
+                                                                                                 "description": "Toggle switch state",
+                                                                                                   "interface": "action"
+                                                                                             } ],
+                                                                      "momentary_positions": "none",
+                                                                                  "outputs": [ {
+                                                                                                     "address": 18070,
+                                                                                                 "description": "selector position",
+                                                                                                        "mask": 32,
+                                                                                                   "max_value": 1,
+                                                                                                    "shift_by": 5,
+                                                                                                      "suffix": "",
+                                                                                                        "type": "integer"
+                                                                                             } ],
+                                                                         "physical_variant": "push_button"
+                                                                  },
                                             "TILS_CHANNEL_LAYER": {
                                                                                  "category": "Flight Data Unit",
                                                                              "control_type": "selector",
@@ -3416,36 +3535,281 @@
                                                                                                         "type": "integer"
                                                                                              } ],
                                                                          "physical_variant": "limited_rotary"
-                                                                  },
-                                                "YAW_TRIM_COVER": {
-                                                                                 "category": "Flight Data Unit",
-                                                                             "control_type": "selector",
-                                                                              "description": "Autopilot Yaw Trim Cover",
-                                                                               "identifier": "YAW_TRIM_COVER",
-                                                                                   "inputs": [ {
-                                                                                                 "description": "switch to previous or next state",
-                                                                                                   "interface": "fixed_step"
-                                                                                             }, {
-                                                                                                 "description": "set position",
-                                                                                                   "interface": "set_state",
-                                                                                                   "max_value": 1
-                                                                                             }, {
-                                                                                                    "argument": "TOGGLE",
-                                                                                                 "description": "Toggle switch state",
-                                                                                                   "interface": "action"
-                                                                                             } ],
-                                                                      "momentary_positions": "none",
-                                                                                  "outputs": [ {
-                                                                                                     "address": 17940,
-                                                                                                 "description": "selector position",
-                                                                                                        "mask": 256,
-                                                                                                   "max_value": 1,
-                                                                                                    "shift_by": 8,
-                                                                                                      "suffix": "",
-                                                                                                        "type": "integer"
-                                                                                             } ],
-                                                                         "physical_variant": "toggle_switch"
                                                                   }
+                               },
+         "Front Panel Lights": {
+                                        "AFK_ENABLED_L": {
+                                                                 "category": "Front Panel Lights",
+                                                             "control_type": "led",
+                                                              "description": "AFK Enabled Lamp (red)",
+                                                               "identifier": "AFK_ENABLED_L",
+                                                                   "inputs": [  ],
+                                                                  "outputs": [ {
+                                                                                     "address": 18070,
+                                                                                 "description": "0 if light is off, 1 if light is on",
+                                                                                        "mask": 4096,
+                                                                                   "max_value": 1,
+                                                                                    "shift_by": 12,
+                                                                                      "suffix": "",
+                                                                                        "type": "integer"
+                                                                             } ]
+                                                         },
+                                     "ALT_WARNING_LAMP": {
+                                                                 "category": "Front Panel Lights",
+                                                             "control_type": "led",
+                                                              "description": "Altitude Warning Lamp (red)",
+                                                               "identifier": "ALT_WARNING_LAMP",
+                                                                   "inputs": [  ],
+                                                                  "outputs": [ {
+                                                                                     "address": 18070,
+                                                                                 "description": "0 if light is off, 1 if light is on",
+                                                                                        "mask": 512,
+                                                                                   "max_value": 1,
+                                                                                    "shift_by": 9,
+                                                                                      "suffix": "",
+                                                                                        "type": "integer"
+                                                                             } ]
+                                                         },
+                                             "AOA_15_L": {
+                                                                 "category": "Front Panel Lights",
+                                                             "control_type": "led",
+                                                              "description": "AOA 15deg Lamp (white)",
+                                                               "identifier": "AOA_15_L",
+                                                                   "inputs": [  ],
+                                                                  "outputs": [ {
+                                                                                     "address": 18070,
+                                                                                 "description": "0 if light is off, 1 if light is on",
+                                                                                        "mask": 8192,
+                                                                                   "max_value": 1,
+                                                                                    "shift_by": 13,
+                                                                                      "suffix": "",
+                                                                                        "type": "integer"
+                                                                             } ]
+                                                         },
+                                      "BURNER_STAGE1_L": {
+                                                                 "category": "Front Panel Lights",
+                                                             "control_type": "led",
+                                                              "description": "Afterburner Stage 1 Lamp (white)",
+                                                               "identifier": "BURNER_STAGE1_L",
+                                                                   "inputs": [  ],
+                                                                  "outputs": [ {
+                                                                                     "address": 18088,
+                                                                                 "description": "Afterburner Stage Light 1",
+                                                                                        "mask": 8192,
+                                                                                   "max_value": 1,
+                                                                                    "shift_by": 13,
+                                                                                      "suffix": "",
+                                                                                        "type": "integer"
+                                                                             } ]
+                                                         },
+                                      "BURNER_STAGE2_L": {
+                                                                 "category": "Front Panel Lights",
+                                                             "control_type": "led",
+                                                              "description": "Afterburner Stage 2 Lamp (white)",
+                                                               "identifier": "BURNER_STAGE2_L",
+                                                                   "inputs": [  ],
+                                                                  "outputs": [ {
+                                                                                     "address": 18088,
+                                                                                 "description": "Afterburner Stage Light 2",
+                                                                                        "mask": 16384,
+                                                                                   "max_value": 1,
+                                                                                    "shift_by": 14,
+                                                                                      "suffix": "",
+                                                                                        "type": "integer"
+                                                                             } ]
+                                                         },
+                                      "BURNER_STAGE3_L": {
+                                                                 "category": "Front Panel Lights",
+                                                             "control_type": "led",
+                                                              "description": "Afterburner Stage 3 Lamp (white)",
+                                                               "identifier": "BURNER_STAGE3_L",
+                                                                   "inputs": [  ],
+                                                                  "outputs": [ {
+                                                                                     "address": 18088,
+                                                                                 "description": "Afterburner Stage Light 3",
+                                                                                        "mask": 32768,
+                                                                                   "max_value": 1,
+                                                                                    "shift_by": 15,
+                                                                                      "suffix": "",
+                                                                                        "type": "integer"
+                                                                             } ]
+                                                         },
+                                      "FALLD_LAST_LAMP": {
+                                                                 "category": "Front Panel Lights",
+                                                             "control_type": "led",
+                                                              "description": "Falld Last (Stores Released) Lamp (red)",
+                                                               "identifier": "FALLD_LAST_LAMP",
+                                                                   "inputs": [  ],
+                                                                  "outputs": [ {
+                                                                                     "address": 18070,
+                                                                                 "description": "0 if light is off, 1 if light is on",
+                                                                                        "mask": 1024,
+                                                                                   "max_value": 1,
+                                                                                    "shift_by": 10,
+                                                                                      "suffix": "",
+                                                                                        "type": "integer"
+                                                                             } ]
+                                                         },
+                                       "HUVUDVARNING_L": {
+                                                                 "category": "Front Panel Lights",
+                                                             "control_type": "led",
+                                                              "description": "Master Caution Light left (red)",
+                                                               "identifier": "HUVUDVARNING_L",
+                                                                   "inputs": [  ],
+                                                                  "outputs": [ {
+                                                                                     "address": 18070,
+                                                                                 "description": "0 if light is off, 1 if light is on",
+                                                                                        "mask": 128,
+                                                                                   "max_value": 1,
+                                                                                    "shift_by": 7,
+                                                                                      "suffix": "",
+                                                                                        "type": "integer"
+                                                                             } ]
+                                                         },
+                                       "HUVUDVARNING_R": {
+                                                                 "category": "Front Panel Lights",
+                                                             "control_type": "led",
+                                                              "description": "Master Caution Light right (red)",
+                                                               "identifier": "HUVUDVARNING_R",
+                                                                   "inputs": [  ],
+                                                                  "outputs": [ {
+                                                                                     "address": 18070,
+                                                                                 "description": "0 if light is off, 1 if light is on",
+                                                                                        "mask": 256,
+                                                                                   "max_value": 1,
+                                                                                    "shift_by": 8,
+                                                                                      "suffix": "",
+                                                                                        "type": "integer"
+                                                                             } ]
+                                                         },
+                                             "RDR_LL_L": {
+                                                                 "category": "Front Panel Lights",
+                                                             "control_type": "led",
+                                                              "description": "Radar Display lower/left Lamp (white)",
+                                                               "identifier": "RDR_LL_L",
+                                                                   "inputs": [  ],
+                                                                  "outputs": [ {
+                                                                                     "address": 18088,
+                                                                                 "description": "0 if light is off, 1 if light is on",
+                                                                                        "mask": 512,
+                                                                                   "max_value": 1,
+                                                                                    "shift_by": 9,
+                                                                                      "suffix": "",
+                                                                                        "type": "integer"
+                                                                             } ]
+                                                         },
+                                             "RDR_LR_L": {
+                                                                 "category": "Front Panel Lights",
+                                                             "control_type": "led",
+                                                              "description": "Radar Display lower/right Lamp (white)",
+                                                               "identifier": "RDR_LR_L",
+                                                                   "inputs": [  ],
+                                                                  "outputs": [ {
+                                                                                     "address": 18088,
+                                                                                 "description": "0 if light is off, 1 if light is on",
+                                                                                        "mask": 256,
+                                                                                   "max_value": 1,
+                                                                                    "shift_by": 8,
+                                                                                      "suffix": "",
+                                                                                        "type": "integer"
+                                                                             } ]
+                                                         },
+                                              "RDR_L_L": {
+                                                                 "category": "Front Panel Lights",
+                                                             "control_type": "led",
+                                                              "description": "Radar Display left Lamp (white)",
+                                                               "identifier": "RDR_L_L",
+                                                                   "inputs": [  ],
+                                                                  "outputs": [ {
+                                                                                     "address": 18088,
+                                                                                 "description": "0 if light is off, 1 if light is on",
+                                                                                        "mask": 1024,
+                                                                                   "max_value": 1,
+                                                                                    "shift_by": 10,
+                                                                                      "suffix": "",
+                                                                                        "type": "integer"
+                                                                             } ]
+                                                         },
+                                              "RDR_R_L": {
+                                                                 "category": "Front Panel Lights",
+                                                             "control_type": "led",
+                                                              "description": "Radar Display right Lamp (white)",
+                                                               "identifier": "RDR_R_L",
+                                                                   "inputs": [  ],
+                                                                  "outputs": [ {
+                                                                                     "address": 18070,
+                                                                                 "description": "0 if light is off, 1 if light is on",
+                                                                                        "mask": 32768,
+                                                                                   "max_value": 1,
+                                                                                    "shift_by": 15,
+                                                                                      "suffix": "",
+                                                                                        "type": "integer"
+                                                                             } ]
+                                                         },
+                                             "RDR_UL_L": {
+                                                                 "category": "Front Panel Lights",
+                                                             "control_type": "led",
+                                                              "description": "Radar Display upper/left Lamp (white)",
+                                                               "identifier": "RDR_UL_L",
+                                                                   "inputs": [  ],
+                                                                  "outputs": [ {
+                                                                                     "address": 18088,
+                                                                                 "description": "0 if light is off, 1 if light is on",
+                                                                                        "mask": 2048,
+                                                                                   "max_value": 1,
+                                                                                    "shift_by": 11,
+                                                                                      "suffix": "",
+                                                                                        "type": "integer"
+                                                                             } ]
+                                                         },
+                                             "RDR_UR_L": {
+                                                                 "category": "Front Panel Lights",
+                                                             "control_type": "led",
+                                                              "description": "Radar Display upper/right Lamp (white)",
+                                                               "identifier": "RDR_UR_L",
+                                                                   "inputs": [  ],
+                                                                  "outputs": [ {
+                                                                                     "address": 18070,
+                                                                                 "description": "0 if light is off, 1 if light is on",
+                                                                                        "mask": 16384,
+                                                                                   "max_value": 1,
+                                                                                    "shift_by": 14,
+                                                                                      "suffix": "",
+                                                                                        "type": "integer"
+                                                                             } ]
+                                                         },
+                                           "REVERSAL_L": {
+                                                                 "category": "Front Panel Lights",
+                                                             "control_type": "led",
+                                                              "description": "Thrust Reverser Light (green)",
+                                                               "identifier": "REVERSAL_L",
+                                                                   "inputs": [  ],
+                                                                  "outputs": [ {
+                                                                                     "address": 18088,
+                                                                                 "description": "0 if light is off, 1 if light is on",
+                                                                                        "mask": 4096,
+                                                                                   "max_value": 1,
+                                                                                    "shift_by": 12,
+                                                                                      "suffix": "",
+                                                                                        "type": "integer"
+                                                                             } ]
+                                                         },
+                                   "REV_TRANSONIC_LAMP": {
+                                                                 "category": "Front Panel Lights",
+                                                             "control_type": "led",
+                                                              "description": "Revadvr Transonic Lamp (red)",
+                                                               "identifier": "REV_TRANSONIC_LAMP",
+                                                                   "inputs": [  ],
+                                                                  "outputs": [ {
+                                                                                     "address": 18070,
+                                                                                 "description": "0 if light is off, 1 if light is on",
+                                                                                        "mask": 2048,
+                                                                                   "max_value": 1,
+                                                                                    "shift_by": 11,
+                                                                                      "suffix": "",
+                                                                                        "type": "integer"
+                                                                             } ]
+                                                         }
                                },
                "Gauge Values": {
                                              "AIRSPEED_VALUE": {
@@ -4569,7 +4933,7 @@
                                                                        "identifier": "AJS37_NAV_INDICATOR_DATA_1",
                                                                            "inputs": [  ],
                                                                           "outputs": [ {
-                                                                                             "address": 18082,
+                                                                                             "address": 18088,
                                                                                          "description": "Navigataion Panel Data Digit 1",
                                                                                           "max_length": 1,
                                                                                               "suffix": "",
@@ -4583,7 +4947,7 @@
                                                                        "identifier": "AJS37_NAV_INDICATOR_DATA_2",
                                                                            "inputs": [  ],
                                                                           "outputs": [ {
-                                                                                             "address": 18084,
+                                                                                             "address": 18090,
                                                                                          "description": "Navigataion Panel Data Digit 2",
                                                                                           "max_length": 1,
                                                                                               "suffix": "",
@@ -4597,7 +4961,7 @@
                                                                        "identifier": "AJS37_NAV_INDICATOR_DATA_3",
                                                                            "inputs": [  ],
                                                                           "outputs": [ {
-                                                                                             "address": 18086,
+                                                                                             "address": 18092,
                                                                                          "description": "Navigataion Panel Data Digit 3",
                                                                                           "max_length": 1,
                                                                                               "suffix": "",
@@ -4611,7 +4975,7 @@
                                                                        "identifier": "AJS37_NAV_INDICATOR_DATA_4",
                                                                            "inputs": [  ],
                                                                           "outputs": [ {
-                                                                                             "address": 18088,
+                                                                                             "address": 18094,
                                                                                          "description": "Navigataion Panel Data Digit 4",
                                                                                           "max_length": 1,
                                                                                               "suffix": "",
@@ -4625,7 +4989,7 @@
                                                                        "identifier": "AJS37_NAV_INDICATOR_DATA_5",
                                                                            "inputs": [  ],
                                                                           "outputs": [ {
-                                                                                             "address": 18090,
+                                                                                             "address": 18096,
                                                                                          "description": "Navigataion Panel Data Digit 5",
                                                                                           "max_length": 1,
                                                                                               "suffix": "",
@@ -4639,7 +5003,7 @@
                                                                        "identifier": "AJS37_NAV_INDICATOR_DATA_6",
                                                                            "inputs": [  ],
                                                                           "outputs": [ {
-                                                                                             "address": 18092,
+                                                                                             "address": 18098,
                                                                                          "description": "Navigataion Panel Data Digit 6",
                                                                                           "max_length": 1,
                                                                                               "suffix": "",
@@ -4838,6 +5202,31 @@
                                                                                           } ],
                                                                       "physical_variant": "limited_rotary"
                                                                },
+                                                  "CI_FILTER": {
+                                                                       "category": "Radar",
+                                                                   "control_type": "limited_dial",
+                                                                    "description": "CI filter",
+                                                                     "identifier": "CI_FILTER",
+                                                                         "inputs": [ {
+                                                                                       "description": "set the position of the dial",
+                                                                                         "interface": "set_state",
+                                                                                         "max_value": 65535
+                                                                                   }, {
+                                                                                          "description": "turn the dial left or right",
+                                                                                            "interface": "variable_step",
+                                                                                            "max_value": 65535,
+                                                                                       "suggested_step": 3200
+                                                                                   } ],
+                                                                        "outputs": [ {
+                                                                                           "address": 18086,
+                                                                                       "description": "position of the potentiometer",
+                                                                                              "mask": 65535,
+                                                                                         "max_value": 65535,
+                                                                                          "shift_by": 0,
+                                                                                            "suffix": "",
+                                                                                              "type": "integer"
+                                                                                   } ]
+                                                               },
                                                    "IFF_CODE": {
                                                                               "category": "Radar",
                                                                           "control_type": "selector",
@@ -4853,11 +5242,11 @@
                                                                                           } ],
                                                                    "momentary_positions": "none",
                                                                                "outputs": [ {
-                                                                                                  "address": 18066,
+                                                                                                  "address": 18070,
                                                                                               "description": "selector position",
-                                                                                                     "mask": 61440,
+                                                                                                     "mask": 15,
                                                                                                 "max_value": 10,
-                                                                                                 "shift_by": 12,
+                                                                                                 "shift_by": 0,
                                                                                                    "suffix": "",
                                                                                                      "type": "integer"
                                                                                           } ],
@@ -4884,9 +5273,9 @@
                                                                                "outputs": [ {
                                                                                                   "address": 18066,
                                                                                               "description": "selector position",
-                                                                                                     "mask": 2048,
+                                                                                                     "mask": 32768,
                                                                                                 "max_value": 1,
-                                                                                                 "shift_by": 11,
+                                                                                                 "shift_by": 15,
                                                                                                    "suffix": "",
                                                                                                      "type": "integer"
                                                                                           } ],
@@ -5718,6 +6107,38 @@
                                                                                     } ]
                                                                 }
                                },
+                       "Test": {
+                                   "MISL_SEL_BTN": {
+                                                               "api_variant": "momentary_last_position",
+                                                                  "category": "Test",
+                                                              "control_type": "selector",
+                                                               "description": "Missile Select Button (IR-RB FRAMSTEGN)",
+                                                                "identifier": "MISL_SEL_BTN",
+                                                                    "inputs": [ {
+                                                                                  "description": "switch to previous or next state",
+                                                                                    "interface": "fixed_step"
+                                                                              }, {
+                                                                                  "description": "set position",
+                                                                                    "interface": "set_state",
+                                                                                    "max_value": 1
+                                                                              }, {
+                                                                                     "argument": "TOGGLE",
+                                                                                  "description": "Toggle switch state",
+                                                                                    "interface": "action"
+                                                                              } ],
+                                                       "momentary_positions": "none",
+                                                                   "outputs": [ {
+                                                                                      "address": 18070,
+                                                                                  "description": "selector position",
+                                                                                         "mask": 64,
+                                                                                    "max_value": 1,
+                                                                                     "shift_by": 6,
+                                                                                       "suffix": "",
+                                                                                         "type": "integer"
+                                                                              } ],
+                                                          "physical_variant": "push_button"
+                                                   }
+                               },
             "Thrust Reverser": {
                                    "REVERSAL": {
                                                               "category": "Thrust Reverser",
@@ -5841,6 +6262,56 @@
                                                             }
                                },
               "Weapon System": {
+                                              "EP13_BRIGHT": {
+                                                                     "category": "Weapon System",
+                                                                 "control_type": "limited_dial",
+                                                                  "description": "EP-13 Brightness",
+                                                                   "identifier": "EP13_BRIGHT",
+                                                                       "inputs": [ {
+                                                                                     "description": "set the position of the dial",
+                                                                                       "interface": "set_state",
+                                                                                       "max_value": 65535
+                                                                                 }, {
+                                                                                        "description": "turn the dial left or right",
+                                                                                          "interface": "variable_step",
+                                                                                          "max_value": 65535,
+                                                                                     "suggested_step": 3200
+                                                                                 } ],
+                                                                      "outputs": [ {
+                                                                                         "address": 18082,
+                                                                                     "description": "position of the potentiometer",
+                                                                                            "mask": 65535,
+                                                                                       "max_value": 65535,
+                                                                                        "shift_by": 0,
+                                                                                          "suffix": "",
+                                                                                            "type": "integer"
+                                                                                 } ]
+                                                             },
+                                               "EP13_CONTR": {
+                                                                     "category": "Weapon System",
+                                                                 "control_type": "limited_dial",
+                                                                  "description": "EP-13 Contrast",
+                                                                   "identifier": "EP13_CONTR",
+                                                                       "inputs": [ {
+                                                                                     "description": "set the position of the dial",
+                                                                                       "interface": "set_state",
+                                                                                       "max_value": 65535
+                                                                                 }, {
+                                                                                        "description": "turn the dial left or right",
+                                                                                          "interface": "variable_step",
+                                                                                          "max_value": 65535,
+                                                                                     "suggested_step": 3200
+                                                                                 } ],
+                                                                      "outputs": [ {
+                                                                                         "address": 18084,
+                                                                                     "description": "position of the potentiometer",
+                                                                                            "mask": 65535,
+                                                                                       "max_value": 65535,
+                                                                                        "shift_by": 0,
+                                                                                          "suffix": "",
+                                                                                            "type": "integer"
+                                                                                 } ]
+                                                             },
                                            "RB_BK_REL_MODE": {
                                                                             "category": "Weapon System",
                                                                         "control_type": "selector",

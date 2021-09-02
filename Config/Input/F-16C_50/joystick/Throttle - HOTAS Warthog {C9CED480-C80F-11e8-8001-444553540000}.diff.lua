@@ -154,22 +154,6 @@ local diff = {
 			},
 			["name"] = "Left MFD OSB 20",
 		},
-		["d3024pnilu3024cd16vd1vpnilvu0"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN5",
-				},
-			},
-			["name"] = "Transmit Switch - VHF",
-		},
-		["d3025pnilu3025cd16vd1vpnilvu0"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN3",
-				},
-			},
-			["name"] = "Transmit Switch - UHF",
-		},
 		["d3026pnilu3026cd16vd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
@@ -181,7 +165,7 @@ local diff = {
 		["d3027pnilu3027cd16vd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN4",
+					["key"] = "JOY_BTN3",
 				},
 			},
 			["name"] = "Transmit Switch - IFF IN",

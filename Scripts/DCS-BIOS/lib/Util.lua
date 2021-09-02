@@ -119,6 +119,11 @@ BIOS.util.StringAllocation = {
 }
 function BIOS.util.StringAllocation:setValue(value)
 	local i = 1
+	--------------ammo
+        if value == nil then 
+            error("item " .. msg .. " is sending a nil value")
+        end
+--------------
 	while i <= value:len() and i <= #self.characterAllocations do
 		self.characterAllocations[i]:setValue(value:byte(i))
 		i = i + 1
@@ -426,8 +431,41 @@ function BIOS.util.defineRotary(msg, device_id, command, arg_number, category, d
 			}
 		}
 	}
+	moduleBeingDefined.exportHooks[#moduleBeingDefined.exportHooks+1] = function(dev0)
+		value:setValue(dev0:get_argument_value(arg_number) * 65535)
+	end
+end
 
-	--document { msg = msg, category = category, description = description, msg_type = "rotary", value_type = "float", value_range = {0, 1}, can_set = false, actions = {"DEC", "INC"}, address = value.address, mask = value.mask }
+function BIOS.util.defineRotaryPlus(msg, device_id, command2, command1, arg_number, category, description)
+	moduleBeingDefined.inputProcessors[msg] = function(value)
+	    GetDevice(device_id):performClickableAction(command1,1)
+		GetDevice(device_id):performClickableAction(command2,tonumber(value)/65535)
+		GetDevice(device_id):performClickableAction(command1,0)
+	end
+	local value = moduleBeingDefined.memoryMap:allocateInt {
+		maxValue = 65535
+	}
+
+	document {
+		identifier = msg,
+		category = category,
+		description = description,
+		control_type = "analog_dial",
+		api_variant = "multiturn",
+		inputs = {
+			{ interface = "variable_step", max_value = 65535, suggested_step = 3200, description = "turn the dial left or right" },
+		},
+		outputs = {
+			{ ["type"] = "integer",
+			  suffix = "_KNOB_POS",
+			  address = value.address,
+			  mask = value.mask,
+			  shift_by = value.shiftBy,
+			  max_value = 65535,
+			  description = "the rotation of the knob in the cockpit (not the value that is controlled by this knob!)"
+			}
+		}
+	}
 	moduleBeingDefined.exportHooks[#moduleBeingDefined.exportHooks+1] = function(dev0)
 		value:setValue(dev0:get_argument_value(arg_number) * 65535)
 	end
@@ -749,31 +787,35 @@ function BIOS.util.defineVariableStepTumb(msg, device_id, command, arg_number, m
 end
 
 function BIOS.util.defineString(msg, getter, maxLength, category, description)
-	--moduleBeingDefined.lowFrequencyMap[msg] = getter
-	local alloc = moduleBeingDefined.memoryMap:allocateString{ maxLength = maxLength }
-	moduleBeingDefined.exportHooks[#moduleBeingDefined.exportHooks+1] = function(dev0)
-		alloc:setValue(getter(dev0))
-	end
-	--document { msg = msg, category = category, description = description, msg_type = "string", value_type = "string", can_set = false, actions = {}, address = alloc.address, max_length = alloc.max_length }
+    --moduleBeingDefined.lowFrequencyMap[msg] = getter
+    local alloc = moduleBeingDefined.memoryMap:allocateString{ maxLength = maxLength }
+    moduleBeingDefined.exportHooks[#moduleBeingDefined.exportHooks+1] = function(dev0)
+--------------ammo
+        local value = getter(dev0)
+        if value == nil then 
+            error("function " .. msg .. " is sending a nil value from its getter")
+        end
+--------------	
+        alloc:setValue(value)
+    end
 
-	document {
-		identifier = msg,
-		category = category,
-		description = description,
-		control_type = "display",
-		inputs = {},
-		outputs = {
-			{ ["type"] = "string",
-			  suffix = "",
-			  address = alloc.address,
-			  mask = alloc.mask,
-			  shift_by = alloc.shiftBy,
-			  max_length = alloc.maxLength,
-			  description = description
-			}
-		}
-	}
-	
+    document {
+        identifier = msg,
+        category = category,
+        description = description,
+        control_type = "display",
+        inputs = {},
+        outputs = {
+            { ["type"] = "string",
+              suffix = "",
+              address = alloc.address,
+              mask = alloc.mask,
+              shift_by = alloc.shiftBy,
+              max_length = alloc.maxLength,
+              description = description
+            }
+        }
+    }
 end
 
 function BIOS.util.defineElectricallyHeldSwitch(msg, device_id, pos_command, neg_command, arg_number, category, description)
@@ -788,7 +830,8 @@ function BIOS.util.defineElectricallyHeldSwitch(msg, device_id, pos_command, neg
 		description = description,
 		control_type = "electrically_held_switch",
 		inputs = {
-			{ interface = "set_state", max_value = 1, description = "set the switch position -- 0 = off, 1 = try to turn it on" }
+			{ interface = "fixed_step", description = "switch to previous or next state" },
+			{ interface = "set_state", max_value = 1, description = "set the switch position -- 0 = off, 1 = try to turn it on" },
 		},
 		outputs = {
 			{ ["type"] = "integer",
@@ -907,7 +950,6 @@ function BIOS.util.defineFloat(msg, arg_number, limits, category, description)
 			}
 		}
 	}
-	--document { msg = msg, category = category, description = description, msg_type = "int", value_type = "int", value_range = limits, can_set = false, actions = {}, address = alloc.address }
 end
 
 function BIOS.util.define8BitFloat(msg, arg_number, limits, category, description)
@@ -935,7 +977,6 @@ function BIOS.util.define8BitFloat(msg, arg_number, limits, category, descriptio
 			}
 		}
 	}
-	--document { msg = msg, category = category, description = description, msg_type = "int", value_type = "int", value_range = limits, can_set = false, actions = {}, address = alloc.address }
 end
 
 function BIOS.util.defineIntegerFromGetter(msg, getter, maxValue, category, description)
@@ -960,6 +1001,23 @@ function BIOS.util.defineIntegerFromGetter(msg, getter, maxValue, category, desc
 			}
 		}
 	}
+end
+
+function BIOS.util.defineRadioWheel(msg, device_id, command1, command2, command_args, arg_number, step, limits, output_map, category, description)
+	BIOS.util.defineTumb(msg, device_id, command1, arg_number, step, limits, output_map, "skiplast", category, description)
+	local docentry = moduleBeingDefined.documentation[category][msg]
+	assert(docentry.inputs[2].interface == "set_state")
+	docentry.inputs[2] = nil
+	moduleBeingDefined.documentation[category][msg].control_type = "discrete_dial"
+	
+	moduleBeingDefined.inputProcessors[msg] = function(state)
+		if state == "INC" then
+			GetDevice(device_id):performClickableAction(command2, command_args[2])
+		end
+		if state == "DEC" then
+			GetDevice(device_id):performClickableAction(command1, command_args[1])
+		end
+	end
 end
 
 function BIOS.util.defineFloatFromGetter(msg, getter, limits, category, description)
@@ -1109,6 +1167,96 @@ function BIOS.util.defineMomentaryRockerSwitch(msg, device_id, pos_command, pos_
 			dev:performClickableAction(pos_stop_command, 1)
 			dev:performClickableAction(pos_stop_command, 0)
 			dev:performClickableAction(neg_command, -1)
+		end
+	end
+end
+
+function BIOS.util.define3Pos2CommandSwitchWW2(msg, device_id, switch1, switch2, arg_number, category, description)
+	local alloc = moduleBeingDefined.memoryMap:allocateInt{ maxValue = 2 }
+	moduleBeingDefined.exportHooks[#moduleBeingDefined.exportHooks+1] = function(dev0)
+	    local val = dev0:get_argument_value(arg_number)
+		if val == -1 then
+			alloc:setValue(0)
+		elseif val == 0 then
+			alloc:setValue(1)
+		elseif val == 1 then
+			alloc:setValue(2)
+		end
+	end
+	
+	document {
+		identifier = msg,
+		category = category,
+		description = description,
+		control_type = "3Pos_2Command_Switch",
+		inputs = {
+			{ interface = "set_state", max_value = 2, description = "set the switch position" }
+		},
+		outputs = {
+			{ ["type"] = "integer",
+			  suffix = "",
+			  address = alloc.address,
+			  mask = alloc.mask,
+			  shift_by = alloc.shiftBy,
+			  max_value = 2,
+			  description = "switch position -- 0 = Down, 1 = Mid ,  2 = UP"
+			}
+		}
+	}
+	moduleBeingDefined.inputProcessors[msg] = function(toState)
+		local dev = GetDevice(device_id)
+		 if toState == "0" then --off
+			 dev:performClickableAction(switch1, -1) 
+	     elseif toState == "1" then --Middle
+			 dev:performClickableAction(switch2, 0) 
+		 elseif toState == "2" then --Up
+			 dev:performClickableAction(switch2, 1)  
+		end
+	end
+end
+
+function BIOS.util.define3Pos2CommandSwitch(msg, device_id, switch1, switch2, arg_number, category, description)
+	local alloc = moduleBeingDefined.memoryMap:allocateInt{ maxValue = 2 }
+	moduleBeingDefined.exportHooks[#moduleBeingDefined.exportHooks+1] = function(dev0)
+	    local val = dev0:get_argument_value(arg_number)
+		if val == -1 then
+			alloc:setValue(0)
+		elseif val == 0 then
+			alloc:setValue(1)
+		elseif val == 1 then
+			alloc:setValue(2)
+		end
+	end
+	
+	document {
+		identifier = msg,
+		category = category,
+		description = description,
+		control_type = "3Pos_2Command_Switch",
+		inputs = {
+			{ interface = "set_state", max_value = 2, description = "set the switch position" }
+		},
+		outputs = {
+			{ ["type"] = "integer",
+			  suffix = "",
+			  address = alloc.address,
+			  mask = alloc.mask,
+			  shift_by = alloc.shiftBy,
+			  max_value = 2,
+			  description = "switch position -- 0 = Down, 1 = Mid ,  2 = UP"
+			}
+		}
+	}
+	moduleBeingDefined.inputProcessors[msg] = function(toState)
+		local dev = GetDevice(device_id)
+		 if toState == "0" then --off
+			 dev:performClickableAction(switch1, -1) 
+	     elseif toState == "1" then --Middle
+			 dev:performClickableAction(switch1, 0) 
+   		     dev:performClickableAction(switch2, -1)
+		 elseif toState == "2" then --Up
+			 dev:performClickableAction(switch1, 1)  
+			 dev:performClickableAction(switch1, 0) --I think this lets a mag switch flip it back
 		end
 	end
 end

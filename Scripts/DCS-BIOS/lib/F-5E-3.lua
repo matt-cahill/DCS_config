@@ -1,6 +1,6 @@
 BIOS.protocol.beginModule("F-5E-3", 0x7600)
 BIOS.protocol.setExportModuleAircrafts({"F-5E-3"})
---by WarLord
+--by WarLord (aka BlackLibrary)
 
 local documentation = moduleBeingDefined.documentation
 
@@ -452,5 +452,19 @@ end, 1, "External Aircraft Model", "Strobe Lights")
 defineIntegerFromGetter("EXT_BRAKE_CUTE", function()
 	if LoGetAircraftDrawArgumentValue(35) > 0 then return 1 else return 0 end
 end, 1, "External Aircraft Model", "Brake Cute")
+
+defineIntegerFromGetter("EXT_WOW_NOSE", function()
+	if LoGetAircraftDrawArgumentValue(1) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Weight ON Wheels Nose Gear")
+defineIntegerFromGetter("EXT_WOW_RIGHT", function()
+	if LoGetAircraftDrawArgumentValue(4) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Weight ON Wheels Right Gear")
+defineIntegerFromGetter("EXT_WOW_LEFT", function()
+	if LoGetAircraftDrawArgumentValue(6) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Weight ON Wheels Left Gear")
+
+defineFloat("SBY_COMPASS_HDG", 610, {-1, 1}, "Gauges", "Standby Compass Heading")
+defineFloat("SBY_COMPASS_PITCH", 611, {-1, 1}, "Gauges", "Standby Compass Pitch")
+defineFloat("SBY_COMPASS_BANK", 612, {-1, 1}, "Gauges", "Standby Compass Bank")
 
 BIOS.protocol.endModule()

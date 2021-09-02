@@ -575,9 +575,9 @@ docdata["I-16"] =
                                                                                      "outputs": [ {
                                                                                                         "address": 16412,
                                                                                                     "description": "Left Position Light (red)",
-                                                                                                           "mask": 4096,
+                                                                                                           "mask": 16384,
                                                                                                       "max_value": 1,
-                                                                                                       "shift_by": 12,
+                                                                                                       "shift_by": 14,
                                                                                                          "suffix": "",
                                                                                                            "type": "integer"
                                                                                                 } ]
@@ -591,9 +591,57 @@ docdata["I-16"] =
                                                                                      "outputs": [ {
                                                                                                         "address": 16412,
                                                                                                     "description": "Right Position Light (green)",
-                                                                                                           "mask": 8192,
+                                                                                                           "mask": 32768,
                                                                                                       "max_value": 1,
-                                                                                                       "shift_by": 13,
+                                                                                                       "shift_by": 15,
+                                                                                                         "suffix": "",
+                                                                                                           "type": "integer"
+                                                                                                } ]
+                                                                            },
+                                                            "EXT_WOW_LEFT": {
+                                                                                    "category": "External Aircraft Model",
+                                                                                "control_type": "metadata",
+                                                                                 "description": "Weight ON Wheels Left Gear",
+                                                                                  "identifier": "EXT_WOW_LEFT",
+                                                                                      "inputs": [  ],
+                                                                                     "outputs": [ {
+                                                                                                        "address": 16488,
+                                                                                                    "description": "Weight ON Wheels Left Gear",
+                                                                                                           "mask": 4,
+                                                                                                      "max_value": 1,
+                                                                                                       "shift_by": 2,
+                                                                                                         "suffix": "",
+                                                                                                           "type": "integer"
+                                                                                                } ]
+                                                                            },
+                                                           "EXT_WOW_RIGHT": {
+                                                                                    "category": "External Aircraft Model",
+                                                                                "control_type": "metadata",
+                                                                                 "description": "Weight ON Wheels Right Gear",
+                                                                                  "identifier": "EXT_WOW_RIGHT",
+                                                                                      "inputs": [  ],
+                                                                                     "outputs": [ {
+                                                                                                        "address": 16488,
+                                                                                                    "description": "Weight ON Wheels Right Gear",
+                                                                                                           "mask": 2,
+                                                                                                      "max_value": 1,
+                                                                                                       "shift_by": 1,
+                                                                                                         "suffix": "",
+                                                                                                           "type": "integer"
+                                                                                                } ]
+                                                                            },
+                                                            "EXT_WOW_TAIL": {
+                                                                                    "category": "External Aircraft Model",
+                                                                                "control_type": "metadata",
+                                                                                 "description": "Weight ON Wheels Tail Gear",
+                                                                                  "identifier": "EXT_WOW_TAIL",
+                                                                                      "inputs": [  ],
+                                                                                     "outputs": [ {
+                                                                                                        "address": 16488,
+                                                                                                    "description": "Weight ON Wheels Tail Gear",
+                                                                                                           "mask": 1,
+                                                                                                      "max_value": 1,
+                                                                                                       "shift_by": 0,
                                                                                                          "suffix": "",
                                                                                                            "type": "integer"
                                                                                                 } ]
@@ -832,11 +880,11 @@ docdata["I-16"] =
                                                                                                     "type": "integer"
                                                                                          } ]
                                                                      },
-                                                           "DOOR_L": {
+                                                       "DOOR_POS_L": {
                                                                              "category": "Gauges",
                                                                          "control_type": "analog_gauge",
                                                                           "description": "Left Door Position",
-                                                                           "identifier": "DOOR_L",
+                                                                           "identifier": "DOOR_POS_L",
                                                                                "inputs": [  ],
                                                                               "outputs": [ {
                                                                                                  "address": 16484,
@@ -848,11 +896,11 @@ docdata["I-16"] =
                                                                                                     "type": "integer"
                                                                                          } ]
                                                                      },
-                                                           "DOOR_R": {
+                                                       "DOOR_POS_R": {
                                                                              "category": "Gauges",
                                                                          "control_type": "analog_gauge",
                                                                           "description": "Right Door Position",
-                                                                           "identifier": "DOOR_R",
+                                                                           "identifier": "DOOR_POS_R",
                                                                                "inputs": [  ],
                                                                               "outputs": [ {
                                                                                                  "address": 16486,
@@ -1271,6 +1319,35 @@ docdata["I-16"] =
                                                                                                   "type": "integer"
                                                                                        } ]
                                                                    },
+                                                 "EXT_FUEL_VALVE": {
+                                                                                  "category": "Motor",
+                                                                              "control_type": "selector",
+                                                                               "description": "External Fuel Tank Valve",
+                                                                                "identifier": "EXT_FUEL_VALVE",
+                                                                                    "inputs": [ {
+                                                                                                  "description": "switch to previous or next state",
+                                                                                                    "interface": "fixed_step"
+                                                                                              }, {
+                                                                                                  "description": "set position",
+                                                                                                    "interface": "set_state",
+                                                                                                    "max_value": 1
+                                                                                              }, {
+                                                                                                     "argument": "TOGGLE",
+                                                                                                  "description": "Toggle switch state",
+                                                                                                    "interface": "action"
+                                                                                              } ],
+                                                                       "momentary_positions": "none",
+                                                                                   "outputs": [ {
+                                                                                                      "address": 16412,
+                                                                                                  "description": "selector position",
+                                                                                                         "mask": 4096,
+                                                                                                    "max_value": 1,
+                                                                                                     "shift_by": 12,
+                                                                                                       "suffix": "",
+                                                                                                         "type": "integer"
+                                                                                              } ],
+                                                                          "physical_variant": "toggle_switch"
+                                                                   },
                                                      "FUEL_VALVE": {
                                                                                   "category": "Motor",
                                                                               "control_type": "selector",
@@ -1529,7 +1606,7 @@ docdata["I-16"] =
                                                                                                        "suffix": "",
                                                                                                          "type": "integer"
                                                                                               } ],
-                                                                          "physical_variant": "limited_rotary"
+                                                                          "physical_variant": "toggle_switch"
                                                                    },
                                                 "START_PUMP_PULL": {
                                                                            "category": "Motor",
@@ -1869,6 +1946,36 @@ docdata["I-16"] =
                                                                                                             "mask": 1024,
                                                                                                        "max_value": 1,
                                                                                                         "shift_by": 10,
+                                                                                                          "suffix": "",
+                                                                                                            "type": "integer"
+                                                                                                 } ],
+                                                                             "physical_variant": "push_button"
+                                                                      },
+                                                    "JETT_FUEL_TANK": {
+                                                                                  "api_variant": "momentary_last_position",
+                                                                                     "category": "Weapons",
+                                                                                 "control_type": "selector",
+                                                                                  "description": "Jettison Fuel Tank",
+                                                                                   "identifier": "JETT_FUEL_TANK",
+                                                                                       "inputs": [ {
+                                                                                                     "description": "switch to previous or next state",
+                                                                                                       "interface": "fixed_step"
+                                                                                                 }, {
+                                                                                                     "description": "set position",
+                                                                                                       "interface": "set_state",
+                                                                                                       "max_value": 1
+                                                                                                 }, {
+                                                                                                        "argument": "TOGGLE",
+                                                                                                     "description": "Toggle switch state",
+                                                                                                       "interface": "action"
+                                                                                                 } ],
+                                                                          "momentary_positions": "none",
+                                                                                      "outputs": [ {
+                                                                                                         "address": 16412,
+                                                                                                     "description": "selector position",
+                                                                                                            "mask": 8192,
+                                                                                                       "max_value": 1,
+                                                                                                        "shift_by": 13,
                                                                                                           "suffix": "",
                                                                                                             "type": "integer"
                                                                                                  } ],

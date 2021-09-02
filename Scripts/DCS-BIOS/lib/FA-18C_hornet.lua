@@ -1,10 +1,8 @@
--- F/A-18 Module created by AndrewW v1.2 for DCS Beta 2.5.5 modified by WarLord, DeadMeat
--- Many thanks to Capt Zeen for the pointers on analog outputs and UFC/IFEI export
--- And of course huge thanks to [FSF]Ian for writing DCS-BIOS in the first place
--- Added new functions by Capt Zeen to get radios frecuencies and channels
+-- F/A-18 Module created by AndrewW, modified by WarLord,charliefoxtwo&DeadMeat v1.5c
+-- Many thanks to Capt Zeen for the pointers on analog and Radio outputs and UFC/IFEI export
 
 BIOS.protocol.beginModule("FA-18C_hornet", 0x7400)
-BIOS.protocol.setExportModuleAircrafts({"FA-18C_hornet"})
+BIOS.protocol.setExportModuleAircrafts({"FA-18C_hornet", "EA-18G", "FA-18E", "FA-18F"}) -- FA-18C + Mods
 
 local inputProcessors = moduleBeingDefined.inputProcessors
 local documentation = moduleBeingDefined.documentation
@@ -14,27 +12,22 @@ local document = BIOS.util.document
 local parse_indication = BIOS.util.parse_indication
 
 local defineIndicatorLight = BIOS.util.defineIndicatorLight
+local defineIndicatorLightInverted = BIOS.util.defineIndicatorLightInverted
 local definePushButton = BIOS.util.definePushButton
 local definePotentiometer = BIOS.util.definePotentiometer
 local defineRotary = BIOS.util.defineRotary
-local defineSetCommandTumb = BIOS.util.defineSetCommandTumb
 local defineTumb = BIOS.util.defineTumb
 local define3PosTumb = BIOS.util.define3PosTumb
 local defineToggleSwitch = BIOS.util.defineToggleSwitch
 local defineToggleSwitchToggleOnly = BIOS.util.defineToggleSwitchToggleOnly
-local defineFixedStepTumb = BIOS.util.defineFixedStepTumb
-local defineVariableStepTumb = BIOS.util.defineVariableStepTumb
 local defineString = BIOS.util.defineString
 local defineRockerSwitch = BIOS.util.defineRockerSwitch
-local defineMultipositionSwitch = BIOS.util.defineMultipositionSwitch
-local defineElectricallyHeldSwitch = BIOS.util.defineElectricallyHeldSwitch
 local defineFloat = BIOS.util.defineFloat
-local define8BitFloat = BIOS.util.define8BitFloat
 local defineIntegerFromGetter = BIOS.util.defineIntegerFromGetter
 
 -- remove Arg# Pilot 540
 
-function ValueConvert(actual_value, input, output)
+local function ValueConvert(actual_value, input, output)
 local range=1
 local real_value=0
 local slope = {}
@@ -54,7 +47,7 @@ local slope = {}
 	return final_value
 end
 
-function coerce_nil_to_string(value)
+local function coerce_nil_to_string(value)
 	if value == nil then
 		return ""
 	else
@@ -62,7 +55,7 @@ function coerce_nil_to_string(value)
 	end
 end
 
-function parse_indication(indicator_id)  -- Thanks to [FSF]Ian code
+local function parse_indication(indicator_id)  -- Thanks to [FSF]Ian code
 	local ret = {}
 	local li = list_indication(indicator_id)
 	if li == "" then return nil end
@@ -74,14 +67,15 @@ function parse_indication(indicator_id)  -- Thanks to [FSF]Ian code
 	end
 	return ret
 end
-
-function defineEmergencyParkingBrake(msg, device_id, emergency_command, park_command, arg_number, category, description)
-	local alloc = moduleBeingDefined.memoryMap:allocateInt{ maxValue = 1 }
+--------------------------
+local function defineEmergencyParkingBrake(msg, device_id, emergency_command, park_command, arg_number, category, description)
+	local alloc = moduleBeingDefined.memoryMap:allocateInt{ maxValue = 2 }
 	moduleBeingDefined.exportHooks[#moduleBeingDefined.exportHooks+1] = function(dev0)
-		if dev0:get_argument_value(arg_number) < 0.5 then
+		if dev0:get_argument_value(arg_number) < 0.64 then
 			alloc:setValue(0)
-		else
-			alloc:setValue(1)
+		elseif dev0:get_argument_value(arg_number) > 0.66 then
+			alloc:setValue(2)			
+		else alloc:setValue(1)
 		end
 	end
 	
@@ -91,7 +85,7 @@ function defineEmergencyParkingBrake(msg, device_id, emergency_command, park_com
 		description = description,
 		control_type = "emergency_parking_brake",
 		inputs = {
-			{ interface = "set_state", max_value = 1, description = "set the switch position -- 0 = emergency, 1 = parking" }
+			{ interface = "set_state", max_value = 2, description = "set the switch position -- 0 = emergency, 1 = park, 2 = release" }
 		},
 		outputs = {
 			{ ["type"] = "integer",
@@ -99,28 +93,27 @@ function defineEmergencyParkingBrake(msg, device_id, emergency_command, park_com
 			  address = alloc.address,
 			  mask = alloc.mask,
 			  shift_by = alloc.shiftBy,
-			  max_value = 1,
-			  description = "switch position -- 0 = emergency, 1 = parking"
+			  max_value = 2,
+			  description = "switch position -- 0 = emergency, 1 = parking, 2 = release"
 			}
 		}
 	}
-	moduleBeingDefined.inputProcessors[msg] = function(toState)
+		moduleBeingDefined.inputProcessors[msg] = function(toState)
 		local dev = GetDevice(device_id)
-		local fromState = GetDevice(0):get_argument_value(arg_number)
-		if fromState > 0.5 then fromState = 1 end
-		if fromState == 0 and toState == "1" then
-			dev:performClickableAction(park_command, 0) 
-			dev:performClickableAction(park_command, 1) 
-			dev:performClickableAction(park_command, 0) 
-		elseif fromState == 1 and toState == "0" then
-			dev:performClickableAction(emergency_command, 0) 
-			dev:performClickableAction(emergency_command, 1) 
-			dev:performClickableAction(emergency_command, 0) 
+		dev:performClickableAction(emergency_command, 0)
+		dev:performClickableAction(park_command, 0)
+		 if toState == "0" then --Emerg
+			dev:performClickableAction(emergency_command, -1)
+		 elseif toState == "1" then --release Park
+		 	dev:performClickableAction(park_command, 1)
+            dev:performClickableAction(park_command, 0)		
+	     elseif toState == "2" then --Park 		 
+			dev:performClickableAction(park_command, 1)				
 		end
 	end
-end
-
-function defineToggleSwitchToggleOnly2(msg, device_id, command, arg_number, category, description)
+end					
+--------------------------
+local function defineToggleSwitchToggleOnly2(msg, device_id, command, arg_number, category, description)
 	local alloc = moduleBeingDefined.memoryMap:allocateInt{ maxValue = 1 }
 	moduleBeingDefined.exportHooks[#moduleBeingDefined.exportHooks+1] = function(dev0)
 		if dev0:get_argument_value(arg_number) < 0.5 then
@@ -161,7 +154,7 @@ function defineToggleSwitchToggleOnly2(msg, device_id, command, arg_number, cate
 	end
 end
 
-function defineMissionComputerSwitch(msg, device_id, mc1_off_command, mc2_off_command, arg_number, category, description)
+local function defineMissionComputerSwitch(msg, device_id, mc1_off_command, mc2_off_command, arg_number, category, description)
 	local alloc = moduleBeingDefined.memoryMap:allocateInt{ maxValue = 2 }
 	moduleBeingDefined.exportHooks[#moduleBeingDefined.exportHooks+1] = function(dev0)
 	    local val = dev0:get_argument_value(arg_number)
@@ -180,7 +173,7 @@ function defineMissionComputerSwitch(msg, device_id, mc1_off_command, mc2_off_co
 		description = description,
 		control_type = "mission_computer_switch",
 		inputs = {
-			{ interface = "set_state", max_value = 2, description = "set the switch position -- 0 = emergency, 1 = parking" }
+			{ interface = "set_state", max_value = 2, description = "set the switch position -- 0 = 1OFF, 1 = NORM, 2 = 2OFF" }
 		},
 		outputs = {
 			{ ["type"] = "integer",
@@ -189,7 +182,7 @@ function defineMissionComputerSwitch(msg, device_id, mc1_off_command, mc2_off_co
 			  mask = alloc.mask,
 			  shift_by = alloc.shiftBy,
 			  max_value = 2,
-			  description = "switch position -- 0 = emergency, 1 = parking"
+			  description = "switch position -- 0 = 1OFF, 1 = NORM, 2 = 2OFF"
 			}
 		}
 	}
@@ -205,7 +198,7 @@ function defineMissionComputerSwitch(msg, device_id, mc1_off_command, mc2_off_co
 	end
 end
 
-function defineEjectionHandleSwitch(msg, device_id, command, arg_number, category, description)
+local function defineEjectionHandleSwitch(msg, device_id, command, arg_number, category, description)
 	local alloc = moduleBeingDefined.memoryMap:allocateInt{ maxValue = 1 }
 	moduleBeingDefined.exportHooks[#moduleBeingDefined.exportHooks+1] = function(dev0)
 		if dev0:get_argument_value(arg_number) < 0.5 then
@@ -246,7 +239,7 @@ function defineEjectionHandleSwitch(msg, device_id, command, arg_number, categor
 end
 
 
-function defineFloatWithValueConversion(msg, arg_number, limits, input_range, output_range, category, description)
+local function defineFloatWithValueConversion(msg, arg_number, limits, input_range, output_range, category, description)
 	local intervalLength = limits[2] - limits[1]
 	local alloc = moduleBeingDefined.memoryMap:allocateInt { maxValue = 65535 }
 	moduleBeingDefined.exportHooks[#moduleBeingDefined.exportHooks+1] = function(dev0)
@@ -274,7 +267,7 @@ end
 
 
 -- functions by Capt Zeen
-function defineFrequency(msg, id_device_number, category, description)
+local function defineFrequency(msg, id_device_number, category, description)
 	
 	local alloc = moduleBeingDefined.memoryMap:allocateInt { maxValue = 65535 }
 	moduleBeingDefined.exportHooks[#moduleBeingDefined.exportHooks+1] = function(freq)
@@ -301,7 +294,7 @@ function defineFrequency(msg, id_device_number, category, description)
 end
 
 
-function defineFloatFromUFCChannel(msg, _channel, category, description)
+local function defineFloatFromUFCChannel(msg, _channel, category, description)
 	
 	
 		 
@@ -377,10 +370,7 @@ function defineFloatFromUFCChannel(msg, _channel, category, description)
 	}
 
 end
-
-
 -- end of functions adeed by Capt Zeen
-
 
 -- radio freqs: by Capt Zeen
 defineFrequency("COMM1_FREQ", 38, "Comms frequency", "COMM1 FREQ")
@@ -388,17 +378,11 @@ defineFrequency("COMM2_FREQ", 39, "Comms frequency", "COMM2 FREQ")
 defineFloatFromUFCChannel("COMM1_CHANNEL_NUMERIC", 1, "Comms frequency", "Comm 1 Channel as number")   
 defineFloatFromUFCChannel("COMM2_CHANNEL_NUMERIC", 2, "Comms frequency", "Comm 2 Channel as number")   
 
-
-
-
--- INSTRUMENT PANEL
-
+---- INSTRUMENT PANEL
 -- 1. Lock/Shoot Lights
 defineIndicatorLight("LS_LOCK", 1, "Lock Shoot Lights", "LOCK")
 defineIndicatorLight("LS_SHOOT", 2, "Lock Shoot Lights", "SHOOT")
 defineIndicatorLight("LS_SHOOT_STROBE", 3, "Lock Shoot Lights", "SHOOT STROBE")
-
--- 2. Head Up Display
 
 -- 3. Angle of Attack Indexer Lights
 defineIndicatorLight("AOA_INDEXER_HIGH", 4, "Angle of Attack Indexer Lights", "AOA Indexer High")
@@ -663,13 +647,16 @@ defineToggleSwitch("HUD_ALT_SW", 34, 3008, 147, "HUD Control Panel", "Altitude S
 define3PosTumb("HUD_ATT_SW", 34, 3009, 148, "HUD Control Panel", "Attitude Selector Switch, INS/AUTO/STBY")
 
 -- 19. Standby Magnetic Compass
+defineFloat("SBY_COMPASS_HDG", 149, {-1, 1}, "Standby Compass", "Standby Compass Heading")
+defineFloat("SBY_COMPASS_PITCH", 150, {-1, 1}, "Standby Compass", "Standby Compass Pitch")
+defineFloat("SBY_COMPASS_BANK", 151, {-1, 1}, "Standby Compass", "Standby Compass Bank")
 
 -- 20. Station Jettison Select
-defineToggleSwitch("SJ_CTR", 23, 3005, 153, "Station Jettison Select", "Station Jettison Select Button, CENTER")
-defineToggleSwitch("SJ_LI", 23, 3006, 155, "Station Jettison Select", "Station Jettison Select Button, LEFT IN")
-defineToggleSwitch("SJ_LO", 23, 3007, 157, "Station Jettison Select", "Station Jettison Select Button, LEFT OUT")
-defineToggleSwitch("SJ_RI", 23, 3008, 159, "Station Jettison Select", "Station Jettison Select Button, RIGHT IN")
-defineToggleSwitch("SJ_RO", 23, 3009, 161, "Station Jettison Select", "Station Jettison Select Button, RIGHT OUT")
+definePushButton("SJ_CTR", 23, 3005, 153, "Station Jettison Select", "Station Jettison Select Button, CENTER")
+definePushButton("SJ_LI", 23, 3006, 155, "Station Jettison Select", "Station Jettison Select Button, LEFT IN")
+definePushButton("SJ_LO", 23, 3007, 157, "Station Jettison Select", "Station Jettison Select Button, LEFT OUT")
+definePushButton("SJ_RI", 23, 3008, 159, "Station Jettison Select", "Station Jettison Select Button, RIGHT IN")
+definePushButton("SJ_RO", 23, 3009, 161, "Station Jettison Select", "Station Jettison Select Button, RIGHT OUT")
 defineIndicatorLight("SJ_CTR_LT", 152, "Station Jettison Select", "CTR Light")
 defineIndicatorLight("SJ_LI_LT", 154, "Station Jettison Select", "LI Light")
 defineIndicatorLight("SJ_LO_LT", 156, "Station Jettison Select", "LO Light")
@@ -716,6 +703,7 @@ local txt_TEMP_R = ""
 local txt_Codes = ""
 local txt_SP = ""
 local txt_TimeSetMode = ""
+local txt_T = ""
 local RPMTexture = ""
 local TempTexture = ""
 local FFTexture = ""
@@ -732,6 +720,8 @@ local L100Texture = ""
 local R100Texture = ""
 local LPointerTexture = ""
 local RPointerTexture = ""
+local LTexture = ""
+local Rexture = ""
 local ZTexture = ""
 moduleBeingDefined.exportHooks[#moduleBeingDefined.exportHooks+1] = function()
 	local ifei = parse_indication(5)
@@ -759,6 +749,7 @@ moduleBeingDefined.exportHooks[#moduleBeingDefined.exportHooks+1] = function()
 	txt_Codes	 	= "   "
 	txt_SP	 		= "   "
 	txt_TimeSetMode = "      "
+	txt_T 			= "      "
 	RPMTexture = "0"
 	TempTexture = "0"
 	FFTexture = "0"
@@ -775,6 +766,8 @@ moduleBeingDefined.exportHooks[#moduleBeingDefined.exportHooks+1] = function()
 	R100Texture = "0"
 	LPointerTexture = "0"
 	RPointerTexture = "0"
+	LTexture = "0"
+	RTexture = "0"
 	ZTexture = "0"
 	if not ifei then
 		return
@@ -803,9 +796,11 @@ moduleBeingDefined.exportHooks[#moduleBeingDefined.exportHooks+1] = function()
 	txt_Codes		= coerce_nil_to_string(ifei.txt_Codes)
 	txt_SP			= coerce_nil_to_string(ifei.txt_SP)
 	txt_TimeSetMode	= coerce_nil_to_string(ifei.txt_TimeSetMode)
+	txt_T			= coerce_nil_to_string(ifei.txt_T)
 	if ifei.RPMTexture == nil then RPMTexture = "0" else RPMTexture = "1" end
 	if ifei.TempTexture == nil then TempTexture = "0" else TempTexture = "1" end
 	if ifei.FFTexture == nil then FFTexture = "0" else FFTexture = "1" end
+	if ifei.NOZTexture == nil then NOZTexture = "0" else NOZTexture = "1" end
 	if ifei.OILTexture == nil then OILTexture = "0" else OILTexture = "1" end
 	if ifei.BINGOTexture == nil then BINGOTexture = "0" else BINGOTexture = "1" end
 	if ifei.LScaleTexture == nil then LScaleTexture = "0" else LScaleTexture = "1" end
@@ -818,6 +813,8 @@ moduleBeingDefined.exportHooks[#moduleBeingDefined.exportHooks+1] = function()
 	if ifei.R100Texture == nil then R100Texture = "0" else R100Texture = "1" end
 	if ifei.LPointerTexture == nil then LPointerTexture = "0" else LPointerTexture = "1" end
 	if ifei.RPointerTexture == nil then RPointerTexture = "0" else RPointerTexture = "1" end
+	if ifei.LTexture == nil then LTexture = "0" else LTexture = "1" end
+	if ifei.RTexture == nil then RTexture = "0" else RTexture = "1" end
 	if ifei.ZTexture == nil then ZTexture = "0" else ZTexture = "1" end
 end
 
@@ -836,10 +833,10 @@ defineString("IFEI_FF_L", function() return txt_FF_L end, 3, "Integrated Fuel/En
 defineString("IFEI_FF_R", function() return txt_FF_R end, 3, "Integrated Fuel/Engine Indicator (IFEI)", "FF_R")
 defineString("IFEI_FUEL_DOWN", function() return txt_FUEL_DOWN end, 6, "Integrated Fuel/Engine Indicator (IFEI)", "FUEL_DOWN")
 defineString("IFEI_FUEL_UP", function() return txt_FUEL_UP end, 6, "Integrated Fuel/Engine Indicator (IFEI)", "FUEL_UP")
-defineString("IFEI_OIL_PRESS_L", function() return txt_OilPress_L end, 2, "Integrated Fuel/Engine Indicator (IFEI)", "OilPress_L")
-defineString("IFEI_OIL_PRESS_R", function() return txt_OilPress_R end, 2, "Integrated Fuel/Engine Indicator (IFEI)", "OilPress_R")
-defineString("IFEI_RPM_L", function() return txt_RPM_L end, 2, "Integrated Fuel/Engine Indicator (IFEI)", "RPM_L")
-defineString("IFEI_RPM_R", function() return txt_RPM_R end, 2, "Integrated Fuel/Engine Indicator (IFEI)", "RPM_R")
+defineString("IFEI_OIL_PRESS_L", function() return txt_OilPress_L end, 3, "Integrated Fuel/Engine Indicator (IFEI)", "OilPress_L")
+defineString("IFEI_OIL_PRESS_R", function() return txt_OilPress_R end, 3, "Integrated Fuel/Engine Indicator (IFEI)", "OilPress_R")
+defineString("IFEI_RPM_L", function() return txt_RPM_L end, 3, "Integrated Fuel/Engine Indicator (IFEI)", "RPM_L")
+defineString("IFEI_RPM_R", function() return txt_RPM_R end, 3, "Integrated Fuel/Engine Indicator (IFEI)", "RPM_R")
 defineString("IFEI_TEMP_L", function() return txt_TEMP_L end, 3, "Integrated Fuel/Engine Indicator (IFEI)", "TEMP_L")
 defineString("IFEI_TEMP_R", function() return txt_TEMP_R end, 3, "Integrated Fuel/Engine Indicator (IFEI)", "TEMP_R")
 defineString("IFEI_CODES", function() return txt_Codes end, 3, "Integrated Fuel/Engine Indicator (IFEI)", "Codes")
@@ -848,12 +845,13 @@ defineString("IFEI_TIME_SET_MODE", function() return txt_TimeSetMode end, 6, "In
 defineString("IFEI_RPM_TEXTURE", function() return RPMTexture end, 1, "Integrated Fuel/Engine Indicator (IFEI)", "RPM Texture Visible: 1 = yes, 0 = no")
 defineString("IFEI_TEMP_TEXTURE", function() return TempTexture end, 1, "Integrated Fuel/Engine Indicator (IFEI)", "Temp Texture Visible: 1 = yes, 0 = no")
 defineString("IFEI_FF_TEXTURE", function() return FFTexture end, 1, "Integrated Fuel/Engine Indicator (IFEI)", "FF Texture Visible: 1 = yes, 0 = no")
+defineString("IFEI_NOZ_TEXTURE", function() return NOZTexture end, 1, "Integrated Fuel/Engine Indicator (IFEI)", "NOZZLE Texture Visible: 1 = yes, 0 = no")
 defineString("IFEI_OIL_TEXTURE", function() return OILTexture end, 1, "Integrated Fuel/Engine Indicator (IFEI)", "OIL Texture Visible: 1 = yes, 0 = no")
 defineString("IFEI_BINGO_TEXTURE", function() return BINGOTexture end, 1, "Integrated Fuel/Engine Indicator (IFEI)", "BINGO Texture Visible: 1 = yes, 0 = no")
 defineString("IFEI_LSCALE_TEXTURE", function() return LScaleTexture end, 1, "Integrated Fuel/Engine Indicator (IFEI)", "Left Scale Texture Visible: 1 = yes, 0 = no")
 defineString("IFEI_RSCALE_TEXTURE", function() return RScaleTexture end, 1, "Integrated Fuel/Engine Indicator (IFEI)", "Right Scale Texture Visible: 1 = yes, 0 = no")
 defineString("IFEI_L0_TEXTURE", function() return L0Texture end, 1, "Integrated Fuel/Engine Indicator (IFEI)", "Left 0 Texture Visible: 1 = yes, 0 = no")
-defineString("IFEI_L0_TEXTURE", function() return R0Texture end, 1, "Integrated Fuel/Engine Indicator (IFEI)", "Right 0 Texture Visible: 1 = yes, 0 = no")
+defineString("IFEI_R0_TEXTURE", function() return R0Texture end, 1, "Integrated Fuel/Engine Indicator (IFEI)", "Right 0 Texture Visible: 1 = yes, 0 = no")
 defineString("IFEI_L50_TEXTURE", function() return L50Texture end, 1, "Integrated Fuel/Engine Indicator (IFEI)", "Left 50 Texture Visible: 1 = yes, 0 = no")
 defineString("IFEI_R50_TEXTURE", function() return R50Texture end, 1, "Integrated Fuel/Engine Indicator (IFEI)", "Right 50 Texture Visible: 1 = yes, 0 = no")
 defineString("IFEI_L100_TEXTURE", function() return L100Texture end, 1, "Integrated Fuel/Engine Indicator (IFEI)", "Left 100 Texture Visible: 1 = yes, 0 = no")
@@ -864,9 +862,9 @@ defineString("IFEI_Z_TEXTURE", function() return ZTexture end, 1, "Integrated Fu
 
 -- 23. HUD Video Record Panel
 definePotentiometer("IFEI", 33, 3007, 174, {0, 1}, "HUD Video Record Panel", "Brightness Control Knob")
-define3PosTumb("SELECT_HMD_LDDI_RDDI", 0, 3104, 175, "HUD Video Record Panel", "Selector Switch, HMD/LDDI/RDDI") -- From TODO, will change
-define3PosTumb("SELECT_HUD_LDDI_RDDI", 0, 3105, 176, "HUD Video Record Panel", "Selector Switch, HUD/LDIR/RDDI") -- From TODO, will change
-define3PosTumb("MODE_SELECTOR_SW", 0, 3106, 314, "HUD Video Record Panel", "Mode Selector Switch, MAN/OFF/AUTO") -- From TODO, will change
+define3PosTumb("SELECT_HMD_LDDI_RDDI", 0, 3104, 175, "HUD Video Record Panel", "Selector Switch, HMD/LDDI/RDDI")
+define3PosTumb("SELECT_HUD_LDDI_RDDI", 0, 3105, 176, "HUD Video Record Panel", "Selector Switch, HUD/LDIR/RDDI")
+define3PosTumb("MODE_SELECTOR_SW", 0, 3106, 314, "HUD Video Record Panel", "Mode Selector Switch, MAN/OFF/AUTO")
 
 -- 24. AMPCD
 definePotentiometer("AMPCD_BRT_CTL", 37, 3001, 203, {0, 1}, "AMPCD", "Brightness Control Knob")
@@ -896,17 +894,15 @@ definePushButton("AMPCD_PB_19", 37, 3029, 201, "AMPCD", "Pushbutton 19")
 definePushButton("AMPCD_PB_20", 37, 3030, 202, "AMPCD", "Pushbutton 20")
 
 -- 25. Standby Attitude Reference Indicator
-definePushButton("SAI_TEST_BTN", 32, 3001, 215, "Standby Attitude Reference Indicator", "Test Button")
-definePushButton("SAI_CAGE", 32, 3002, 213, "Standby Attitude Reference Indicator", "Pull to uncage")
-defineRotary("SAI_SET", 32, 3003, 214, "Standby Attitude Reference Indicator", "Adjust Attitude")
-defineFloat("SAI_PITCH", 205, {0, 1}, "Standby Attitude Reference Indicator", "Pitch")
-defineFloat("SAI_BANK", 206, {0, 1}, "Standby Attitude Reference Indicator", "Bank")
-defineFloat("SAI_ATT_WARNING_FLAG", 209, {0, 1}, "Standby Attitude Reference Indicator", "Attitude Warning Flag")
-defineFloat("SAI_MAN_PITCH_ADJ", 210, {0, 1}, "Standby Attitude Reference Indicator", "Manual Pitch Adjustment")
-defineFloat("SAI_SLIP_BALL", 207, {0, 1}, "Standby Attitude Reference Indicator", "Slip Ball")
-defineFloat("SAI_RATE_OF_TURN", 208, {0, 1}, "Standby Attitude Reference Indicator", "Rate Of Turn")
-
--- 26. Azimuth Indicator
+definePushButton("SAI_TEST_BTN", 32, 3001, 215, "Standby Attitude Reference Indicator", "SAI Test Button")
+definePushButton("SAI_CAGE", 32, 3002, 213, "Standby Attitude Reference Indicator", "SAI Pull to uncage")
+defineRotary("SAI_SET", 32, 3003, 214, "Standby Attitude Reference Indicator", "SAI Adjust Attitude")
+defineFloat("SAI_PITCH", 205, {-1, 1}, "Standby Attitude Reference Indicator", "SAI Pitch")
+defineFloat("SAI_BANK", 206, {-1, 1}, "Standby Attitude Reference Indicator", "SAI Bank")
+defineFloat("SAI_ATT_WARNING_FLAG", 209, {0, 1}, "Standby Attitude Reference Indicator", "SAI Attitude Warning Flag")
+defineFloat("SAI_MAN_PITCH_ADJ", 210, {-1, 1}, "Standby Attitude Reference Indicator", "SAI Manual Pitch Adjustment")
+defineFloat("SAI_SLIP_BALL", 207, {-1, 1}, "Standby Attitude Reference Indicator", "SAI Slip Ball")
+defineFloat("SAI_RATE_OF_TURN", 208, {-1, 1}, "Standby Attitude Reference Indicator", "SAI Rate Of Turn")
 
 -- 27. Standby Airspeed Indicator
 defineFloat("STBY_ASI_AIRSPEED", 217, {0, 1}, "Standby Airspeed Indicator", "Airspeed")
@@ -944,8 +940,6 @@ define3PosTumb("FLAP_SW", 2, 3007, 234, "Select Jettison Button", "FLAP Switch, 
 defineToggleSwitch("LDG_TAXI_SW", 8, 3004, 237, "Select Jettison Button", "LDG/TAXI LIGHT Switch")
 defineFloat("HYD_IND_BRAKE", 242, {0, 1}, "Select Jettison Button", "HYD Indicator Brake")
 
--- 33. Brake Accumulator Pressure Gage
-
 -- 34. Emergency and Parking Brake Handle
 defineToggleSwitch("EMERGENCY_PARKING_BRAKE_PULL", 5, 3005, 240, "Emergency and Parking Brake Handle", "Emergency/Parking Brake Pull")
 defineEmergencyParkingBrake("EMERGENCY_PARKING_BRAKE_ROTATE", 5, 3007, 3006, 241, "Emergency and Parking Brake Handle", "Emergency/Parking Brake Rotate")
@@ -953,7 +947,7 @@ defineEmergencyParkingBrake("EMERGENCY_PARKING_BRAKE_ROTATE", 5, 3007, 3006, 241
 -- 35. Dispenser/EMC Panel
 defineTumb("CMSD_DISPENSE_SW", 54, 3001, 517, 0.1, {0.0, 0.2}, nil, false, "Dispenser/EMC Panel", "DISPENSER Switch, BYPASS/ON/OFF")
 definePushButton("CMSD_JET_SEL_BTN", 54, 3003, 515, "Dispenser/EMC Panel", "ECM JETT JETT SEL Button - Push to jettison")
-defineTumb("ECM_MODE_SW", 0, 3116, 248, 0.1, {0.0, 0.4}, nil, false, "Dispenser/EMC Panel", "ECM Mode Switch, XMIT/REC/BIT/STBY/OFF")
+defineTumb("ECM_MODE_SW", 66, 3001, 248, 0.1, {0.0, 0.4}, nil, false, "Dispenser/EMC Panel", "ECM Mode Switch, XMIT/REC/BIT/STBY/OFF")
 defineToggleSwitch("AUX_REL_SW", 23, 3012, 258, "Dispenser/EMC Panel", "Auxiliary Release Switch, ENABLE/NORM")
 
 -- 36. RWR Control Indicator
@@ -965,7 +959,7 @@ definePushButton("RWR_BIT_BTN", 53, 3005, 266, "RWR Control Indicator", "ALR-67 
 definePotentiometer("RWR_DMR_CTRL", 53, 3006, 263, {0, 1}, "RWR Control Indicator", "ALR-67 DMR Control Knob")
 defineTumb("RWR_DIS_TYPE_SW", 53, 3007, 261, 0.1, {0.0, 0.4}, nil, false, "RWR Control Indicator", "ALR-67 DIS TYPE Switch, N/I/A/U/F")
 definePotentiometer("RWR_RWR_INTESITY", 53, 3008, 216, {0, 1}, "RWR Control Indicator", "RWR Intensity Knob")
-defineIndicatorLight("RWR_LOWER_LT", 276, "RWR Control Indicator", "ALR-67 LOWER Light (green)")
+defineIndicatorLight("RWR_LOWER_LT", 276, "RWR Control Indicator", "ALR-67 POWER Light ON (green)")
 defineIndicatorLight("RWR_LIMIT_LT", 273, "RWR Control Indicator", "ALR-67 LIMIT Light (green)")
 defineIndicatorLight("RWR_DISPLAY_LT", 274, "RWR Control Indicator", "ALR-67 DISPLAY Light (green)")
 defineIndicatorLight("RWR_SPECIAL_EN_LT", 270, "RWR Control Indicator", "ALR-67 SPECIAL ENABLE Light (green)")
@@ -987,8 +981,6 @@ defineToggleSwitch("RUDDER_PEDAL_ADJUST", 7, 3012, 260, "Rudder Pedal Adjust Lev
 -- 39. Cockpit Altimeter
 defineFloat("PRESSURE_ALT", 285, {0, 1}, "Cockpit Altimeter", "Pressure Altitude")
 
--- 40. Static Source Select
-
 -- 41. Radar Altimeter
 definePushButton("RADALT_TEST_SW", 30, 3001, 292, "Radar Altimeter", "Push to Test Switch")
 defineRotary("RADALT_HEIGHT", 30, 3002, 291, "Radar Altimeter", "Set low altitude pointer")
@@ -997,8 +989,6 @@ defineFloat("RADALT_MIN_HEIGHT_PTR", 287, {0, 1}, "Radar Altimeter", "Min Height
 defineFloat("RADALT_ALT_PTR", 286, {0, 1}, "Radar Altimeter", "Altitude Pointer")
 defineFloat("RADALT_OFF_FLAG", 288, {0, 1}, "Radar Altimeter", "OFF Flag")
 defineIndicatorLight("RADALT_GREEN_LAMP", 289, "Radar Altimeter", "Green Lamp")
-
--- 42. Aircraft Bureau Number
 
 -- 43. Arresting Hook Handle and Light
 defineToggleSwitch("HOOK_LEVER", 5, 3009, 293, "Arresting Hook Handle and Light", "Hook Lever")
@@ -1018,7 +1008,7 @@ defineIndicatorLight("CLIP_BATT_SW_LT", 300, "Caution Light Panel", "BATT SW")
 defineIndicatorLight("CLIP_FCS_HOT_LT", 301, "Caution Light Panel", "FCS HOT")
 defineIndicatorLight("CLIP_GEN_TIE_LT", 302, "Caution Light Panel", "GEN TIE")
 defineIndicatorLight("CLIP_SPARE_CTN1_LT", 303, "Caution Light Panel", "SPARE CTN1")
-defineIndicatorLight("CLIP_FUEL_LO_LT", 304, "Caution Light Panel", "FUEL LO`")
+defineIndicatorLight("CLIP_FUEL_LO_LT", 304, "Caution Light Panel", "FUEL LO")
 defineIndicatorLight("CLIP_FCES_LT", 305, "Caution Light Panel", "FCES")
 defineIndicatorLight("CLIP_SPARE_CTN2_LT", 306, "Caution Light Panel", "SPARE CTN2")
 defineIndicatorLight("CLIP_L_GEN_LT", 307, "Caution Light Panel", "L GEN")
@@ -1033,8 +1023,7 @@ defineFloat("HYD_IND_RIGHT", 311, {0, 1}, "HYD 1 and HYD Pressure Indicator", "H
 defineRockerSwitch("LEFT_DDI_HDG_SW", 35, 3004, 3004, 3005, 3005, 312, "Heading and Course Set Switches", "Heading Set Switch")
 defineRockerSwitch("LEFT_DDI_CRS_SW", 35, 3006, 3006, 3007, 3007, 313, "Heading and Course Set Switches", "Course Set Switch")
 
--- LEFT CONSOLE
-
+---- LEFT CONSOLE
 -- 1. Fire Test Panel
 defineRockerSwitch("FIRE_TEST_SW", 12, 3006, 3006, 3007, 3007, 331, "Fire Test Panel", "Fire and Bleed Air Test Switch, (RMB) TEST A/(LMB) TEST B")
 
@@ -1088,12 +1077,6 @@ defineTumb("COM_ILS_CHANNEL_SW", 40, 3017, 352, 0.05, {0.0, 0.95}, nil, false, "
 defineToggleSwitch("OBOGS_SW", 10, 3001, 365, "LOX Indicator", "OBOGS Control Switch, ON/OFF")
 definePotentiometer("OXY_FLOW", 10, 3002, 366, {0, 1}, "LOX Indicator", "OXY Flow Knob")
 
--- 9. Anti-G Valve
-
--- 10. Pilot Services Panel
-
--- 11. Communication Connect
-
 -- 12. Mission Computer and Hydraulic Isolate Panel
 defineMissionComputerSwitch("MC_SW", 3, 3025, 3026, 368, "Mission Computer and Hydraulic Isolate Panel", "MC Switch, 1 OFF/NORM/2 OFF")
 defineToggleSwitch("HYD_ISOLATE_OVERRIDE_SW", 4, 3001, 369, "Mission Computer and Hydraulic Isolate Panel", "Hydraulic Isolate Override Switch, NORM/ORIDE")
@@ -1114,24 +1097,13 @@ defineToggleSwitch("GEN_TIE_SW", 3, 3006, 378, "Generator Tie Control Switch", "
 -- 16. ECM Dispenser Button
 definePushButton("CMSD_DISPENSE_BTN", 54, 3002, 380, "ECM Dispenser Button", "Dispense Button - Push to dispense flares and chaff")
 
--- 17. Ground Power Decal
-
 -- 18. Left Essential Circuit Breakers
 definePushButton("CB_FCS_CHAN1", 3, 3017, 381, "Left Essential Circuit Breakers", "CB FCS CHAN 1, ON/OFF")
 definePushButton("CB_FCS_CHAN2", 3, 3018, 382, "Left Essential Circuit Breakers", "CB FCS CHAN 2, ON/OFF")
 definePushButton("CB_SPD_BRK", 3, 3019, 383, "Left Essential Circuit Breakers", "CB SPD BRK, ON/OFF")
 definePushButton("CB_LAUNCH_BAR", 3, 3020, 384, "Left Essential Circuit Breakers", "CB LAUNCH BAR, ON/OFF")
 
--- 19. Canopy Manual Handle and Drive
-
--- 20. HVI Stowage/Nuclear Weapon Switch
-
--- 21. Video Sensor Head
-
--- 22. OBOGS Monitor
-
--- RIGHT CONSOLE
-
+---- RIGHT CONSOLE
 -- 1. Electrical Power Panel
 define3PosTumb("BATTERY_SW", 3, 3001, 404, "Electrical Power Panel", "Battery Switch, ON/OFF/ORIDE")
 defineToggleSwitch("L_GEN_SW", 3, 3002, 402, "Electrical Power Panel", "Left Generator Control Switch, NORM/OFF")
@@ -1158,13 +1130,10 @@ definePotentiometer("CHART_DIMMER", 9, 3005, 418, {0, 1}, "Interior Lights Panel
 definePotentiometer("WARN_CAUTION_DIMMER", 9, 3006, 417, {0, 1}, "Interior Lights Panel", "WARN/CAUTION Light Dimmer")
 defineToggleSwitch("LIGHTS_TEST_SW", 9, 3007, 416, "Interior Lights Panel", "Lights Test Switch, TEST/OFF")
 
--- 4. AMAC Control
-
 -- 5. Sensor Panel
 define3PosTumb("FLIR_SW", 62, 3001, 439, "Sensor Panel", "FLIR Switch, ON/STBY/OFF")
-define3PosTumb("LTD_R_SW", 62, 3002, 441, "Sensor Panel", "LTD/R Switch, ---/SAFE/AFT") -- ARM position is handled by another parameter
-defineToggleSwitch("LST_NFLR_SW", 62, 3004, 442, "Sensor Panel", "LST/NFLR Switch, ON/OFF")
-defineToggleSwitch("LTD_R_ARM", 62, 3003, 441, "Sensor Panel", "LTD/R Switch, ARM/SAFE")
+defineToggleSwitch("LTD_R_SW", 62, 3002, 441, "Sensor Panel", "LTD/R Switch, ARM/SAFE") 
+defineToggleSwitch("LST_NFLR_SW", 62, 3003, 442, "Sensor Panel", "LST/NFLR Switch, ON/OFF")
 defineTumb("RADAR_SW", 42, 3001, 440, 0.1, {0.0, 0.3}, nil, false, "Sensor Panel", "RADAR Switch Change ,OFF/STBY/OPR/EMERG(PULL)")
 definePushButton("RADAR_SW_PULL", 42, 3002, 440, "Sensor Panel", "RADAR Switch Pull (MW to pull), OFF/STBY/OPR/EMERG(PULL)")
 defineTumb("INS_SW", 44, 3001, 443, 0.1, {0.0, 0.7}, nil, false, "Sensor Panel", "INS Switch, OFF/CV/GND/NAV/IFA/GYRO/GB/TEST")
@@ -1175,16 +1144,8 @@ definePotentiometer("KY58_VOLUME", 41, 3005, 445, {0, 1}, "KY-58 Control", "KY-5
 defineTumb("KY58_FILL_SELECT", 41, 3002, 446, 0.1, {0.0, 0.7}, nil, false, "KY-58 Control", "KY-58 Fill Select Knob, Z 1-5/1/2/3/4/5/6/Z ALL")
 defineTumb("KY58_POWER_SELECT", 41, 3004, 447, 0.1, {0.0, 0.2}, nil, false, "KY-58 Control", "KY-58 Power Select Knob, OFF/ON/TD")
 
--- 7. NVG Storage
-
--- 8. Fan Test Switch
-
--- 9. Map and Data Case
-
--- 10. Utility Light
-
 -- 11. Defog Panel
-definePotentiometer("DEFOG_HANDLE", 11, 3005, 451, {0, 1}, "Defog Panel", "Defog Handle")
+definePotentiometer("DEFOG_HANDLE", 11, 3005, 451, {-1, 1}, "Defog Panel", "Defog Handle")
 define3PosTumb("WSHIELD_ANTI_ICE_SW", 11, 3009, 452, "Defog Panel", "Windshield Anti-Ice/Rain Switch, ANTI ICE/OFF/RAIN")
 
 -- 12. Internal Canopy Switch
@@ -1197,17 +1158,10 @@ definePushButton("CB_HOOOK", 3, 3023, 456, "Right Essential Circuit Breakers", "
 definePushButton("CB_LG", 3, 3024, 457, "Right Essential Circuit Breakers", "CB LG, ON/OFF")
 defineToggleSwitch("FCS_BIT_SW", 2, 3004, 470, "Right Essential Circuit Breakers", "FCS BIT Switch")
 
--- 14. Video Sensor Head
-
--- 15. Video Camera
-
-
--- COCKPIT CONTROLS
-
+---- COCKPIT CONTROLS
 defineFloat("CANOPY_POS", 181, {0, 1}, "Internal Canopy Switch", "Canopy Position")
 
 -- 1. Ejection Seat
-
 defineEjectionHandleSwitch("EJECTION_HANDLE_SW", 7, 3008, 510, "Ejection Seat", "Ejection Control Handle")
 defineToggleSwitch("EJECTION_SEAT_ARMED", 7, 3006, 511, "Ejection Seat", "Ejection Seat SAFE/ARMED Handle, SAFE/ARMED")
 defineToggleSwitch("EJECTION_SEAT_MNL_OVRD", 7, 3007, 512, "Ejection Seat", "Ejection Seat Manual Override Handle, PULL/PUSH")
@@ -1220,6 +1174,21 @@ definePushButton("LEFT_VIDEO_BIT", 0, 3127, 315, "TODO", "Left Video Sensor BIT 
 definePushButton("RIGHT_VIDEO_BIT", 0, 3128, 318, "TODO", "Right Video Sensor BIT Initiate Pushbutton - Push to initiate BIT")
 definePotentiometer("RWR_AUDIO_CTRL", 0, 3130, 262, {0, 1}, "RWR Control Indicator", "ALR-67 AUDIO Control Knob")
 defineToggleSwitch("NUC_WPN_SW", 0, 3100, 507, "TODO", "NUC WPN Switch, ENABLE/DISABLE (no function)")
+
+-- HOTAS STICK
+definePushButton("STICK_WEAP_REL_BTN", 13, 3003, 475, "Stick", "Stick Weapon Release Button")
+definePushButton("STICK_RECCE_SW", 13, 3004, 477, "Stick", "Stick RECCE Event Mark Switch")
+definePushButton("STICK_GUN_TRIGGER2", 13, 3002, 479, "Stick", "Stick Gun Trigger, SECOND DETENT (Press to shoot)")
+definePushButton("STICK_PADDLE_SW", 13, 3018, 482, "Stick", "Stick Autopilot/Nosewheel Steering Disengage (Paddle) Switch")
+definePushButton("STICK_N_WHEEL_SW", 13, 3013, 480, "Stick", "Stick Undesignate/Nose Wheel Steer Switch")
+
+-- HOTAS THROTTLE
+definePushButton("THROTTLE_CAGE_BTN", 13, 3031, 487, "Throttle Quadrant", "Throttle Cage/Uncage Button")
+defineRockerSwitch("THROTTLE_DISP_SW", 13, 3032, 3032, 3033, 3033, 488, "Throttle Quadrant", "Throttle Dispense Switch, Aft(FLARE)/Center(OFF)/Forward(CHAFF)")
+define3PosTumb("THROTTLE_SPEED_BRK", 13, 3035, 489, "Throttle Quadrant", "Throttle Speed Brake Switch, EXTEND/OFF/RETRACT")
+definePushButton("THROTTLE_ATC_SW", 13, 3037, 491, "Throttle Quadrant", "Throttle ATC Engage/Disengage Switch")
+definePushButton("THROTTLE_FOV_SEL_SW", 13, 3034, 492, "Throttle Quadrant", "Throttle RAID/FLIR FOV Select Button")
+definePotentiometer("THROTTLE_RADAR_ELEV", 13, 3026, 493, {-1, 1}, "Throttle Quadrant", "Throttle Radar Elevation Control")
 defineTumb("THROTTLE_EXT_L_SW", 13, 3041, 494, 2, {-1, 1}, nil, false, "Throttle Quadrant", "Throttle Exterior Lights Switch, ON/OFF")
 
 defineIndicatorLight("CONSOLE_INT_LT", 460, "Internal Lights", "Console Lightning (light green)")
@@ -1235,24 +1204,64 @@ defineIndicatorLight("IFEI_BTN_INT_LT", 469, "Internal Lights", "IFEI Buttons Li
 defineIndicatorLight("CMSD_JET_SEL_L", 516, "Dispenser/EMC Panel", "ECM JETT JETT SEL Button Light (green)")
 defineIndicatorLight("RWR_LT_BRIGHT", 520, "RWR Control Indicator", "RWR Lights Brightness")
 
+defineFloat("SAI_POINTER_VER", 211, {-1, 1}, "Standby Attitude Reference Indicator", "SAI Vertical Pointer")
+defineFloat("SAI_POINTER_HOR", 212, {-1, 1}, "Standby Attitude Reference Indicator", "SAI Horisontal Pointer")
+
+defineIndicatorLightInverted("SAI_ATT_WARN_FLAG_L", 209, "Standby Attitude Reference Indicator", "SAI Attitude Warning Flag as Light")
+
 --Externals
 defineIntegerFromGetter("EXT_SPEED_BRAKE", function()
-	return math.floor(LoGetAircraftDrawArgumentValue(183)*65535)
+	return math.floor(LoGetAircraftDrawArgumentValue(21)*65535)
 end, 65535, "External Aircraft Model", "Speed Brake")
-
+defineIntegerFromGetter("EXT_WING_FOLDING", function()
+	return math.floor(LoGetAircraftDrawArgumentValue(8)*65535)
+end, 65535, "External Aircraft Model", "Wing Folding")
+defineIntegerFromGetter("EXT_STAIR", function()
+	return math.floor(LoGetAircraftDrawArgumentValue(323)*65535)
+end, 65535, "External Aircraft Model", "Stair")
+defineIntegerFromGetter("EXT_REFUEL_PROBE", function()
+	return math.floor(LoGetAircraftDrawArgumentValue(22)*65535)
+end, 65535, "External Aircraft Model", "Refuel Probe")
+defineIntegerFromGetter("EXT_REFUEL_PROBE_LIGHT", function()
+	if LoGetAircraftDrawArgumentValue(212) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Refuel Probe Light (white)")
 defineIntegerFromGetter("EXT_POSITION_LIGHT_LEFT", function()
 	if LoGetAircraftDrawArgumentValue(190) > 0 then return 1 else return 0 end
-end, 1, "External Aircraft Model", "Left Position Light")
+end, 1, "External Aircraft Model", "Left Position Light (red)")
 defineIntegerFromGetter("EXT_POSITION_LIGHT_RIGHT", function()
 	if LoGetAircraftDrawArgumentValue(191) > 0 then return 1 else return 0 end
-end, 1, "External Aircraft Model", "Right Position Light")
-
+end, 1, "External Aircraft Model", "Right Position Light (green)")
 defineIntegerFromGetter("EXT_FORMATION_LIGHTS", function()
 	return math.floor(LoGetAircraftDrawArgumentValue(88)*65535)
-end, 65535, "External Aircraft Model", "Formation Lights")
-
+end, 65535, "External Aircraft Model", "Formation Lights (light green)")
+defineIntegerFromGetter("EXT_TAIL_LIGHT", function()
+	if LoGetAircraftDrawArgumentValue(192) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Tail Light (white)")
 defineIntegerFromGetter("EXT_STROBE_LIGHTS", function()
 	if LoGetAircraftDrawArgumentValue(193) > 0 then return 1 else return 0 end
-end, 1, "External Aircraft Model", "Strobe Lights")
+end, 1, "External Aircraft Model", "Strobe Lights (red)")
+defineIntegerFromGetter("EXT_NOZZLE_POS_R", function()
+	return math.floor(LoGetAircraftDrawArgumentValue(89)*65535)
+end, 65535, "External Aircraft Model", "Right Nozzle Position")
+defineIntegerFromGetter("EXT_NOZZLE_POS_L", function()
+	return math.floor(LoGetAircraftDrawArgumentValue(90)*65535)
+end, 65535, "External Aircraft Model", "Left Nozzle Position")
+defineIntegerFromGetter("EXT_WOW_NOSE", function()
+	if LoGetAircraftDrawArgumentValue(1) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Weight ON Wheels Nose Gear")
+defineIntegerFromGetter("EXT_WOW_RIGHT", function()
+	if LoGetAircraftDrawArgumentValue(4) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Weight ON Wheels Right Gear")
+defineIntegerFromGetter("EXT_WOW_LEFT", function()
+	if LoGetAircraftDrawArgumentValue(6) > 0 then return 1 else return 0 end
+end, 1, "External Aircraft Model", "Weight ON Wheels Left Gear")
+
+defineString("IFEI_T", function() return txt_T end, 6, "Integrated Fuel/Engine Indicator (IFEI)", "T")
+defineString("IFEI_L_TEXTURE", function() return LTexture end, 1, "Integrated Fuel/Engine Indicator (IFEI)", "Left Texture Visible: 1 = yes, 0 = no")
+defineString("IFEI_R_TEXTURE", function() return RTexture end, 1, "Integrated Fuel/Engine Indicator (IFEI)", "Right Texture Visible: 1 = yes, 0 = no")
+
+defineIntegerFromGetter("EXT_HOOK", function()
+	return math.floor(LoGetAircraftDrawArgumentValue(25)*65535)
+end, 65535, "External Aircraft Model", "Hook")
 
 BIOS.protocol.endModule()

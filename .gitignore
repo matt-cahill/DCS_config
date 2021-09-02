@@ -49,3 +49,5 @@ Missions/
 /Config/authdata.bin
 /dcs.lock
 Mods/
+.idea/
+/Config/nicknames.lua
