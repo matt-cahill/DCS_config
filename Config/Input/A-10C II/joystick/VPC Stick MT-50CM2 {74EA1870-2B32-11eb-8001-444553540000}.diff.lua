@@ -231,6 +231,14 @@ local diff = {
 				},
 			},
 		},
+		["d83pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN35",
+				},
+			},
+			["name"] = "Eject",
+		},
 		["d957pnilu958cdnilvdnilvpnilvunil"] = {
 			["name"] = "Stick to trimmer control mode",
 			["removed"] = {
