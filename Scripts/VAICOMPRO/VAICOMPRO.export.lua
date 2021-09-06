@@ -84,7 +84,7 @@ vaicom.insert = {
 			vaicom.sendtoclient:send(newdata)
 		else	
 			if purge then
-			vaicom.insert:Flush()	
+				vaicom.insert:Flush()	
 			end
 			purge = false
 		end			
@@ -176,12 +176,18 @@ vaicom.insert = {
 			return 
 		end
 		if mod == "Yak-52" then 
-			LoSetCommand(1591,-1) 	
+			LoSetCommand(1591)
+			LoSetCommand(1592) 
 			return 
 		end	
 		if string.find(mod, "L-39") then
 			GetDevice(34):performClickableAction(1188,1)
 			return
+		end	
+		if string.find(mod, "109") or string.find(mod, "190") then
+			LoSetCommand(1591)
+			LoSetCommand(1592) 													 		
+			return 
 		end	
 		if string.find(mod, "Spitfire") then
 			LoSetCommand(1591)

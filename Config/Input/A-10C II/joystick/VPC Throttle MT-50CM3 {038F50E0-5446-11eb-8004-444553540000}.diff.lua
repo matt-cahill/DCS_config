@@ -415,38 +415,6 @@ local diff = {
 			},
 			["name"] = "HOTAS Left Throttle Button",
 		},
-		["d572pnilu576cdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN20",
-				},
-			},
-			["name"] = "HOTAS MIC Switch Up",
-		},
-		["d573pnilu576cdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN18",
-				},
-			},
-			["name"] = "HOTAS MIC Switch Down",
-		},
-		["d574pnilu576cdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN19",
-				},
-			},
-			["name"] = "HOTAS MIC Switch Aft",
-		},
-		["d575pnilu576cdnilvdnilvpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN17",
-				},
-			},
-			["name"] = "HOTAS MIC Switch Forward",
-		},
 		["d577pnilu579cdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
