@@ -1,0 +1,1 @@
+data['plane_Name'] = 'Mi-24P'
