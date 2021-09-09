@@ -124,6 +124,46 @@ local diff = {
 		},
 	},
 	["keyDiffs"] = {
+		["d1092pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN56",
+				},
+			},
+			["name"] = "Fuel quantity selector INT",
+		},
+		["d1093pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN57",
+				},
+			},
+			["name"] = "Fuel quantity selector MAIN",
+		},
+		["d1094pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN58",
+				},
+			},
+			["name"] = "Fuel quantity selector WING",
+		},
+		["d1095pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN59",
+				},
+			},
+			["name"] = "Fuel quantity selector EXT WING",
+		},
+		["d1096pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN60",
+				},
+			},
+			["name"] = "Fuel quantity selector EXT CTR",
+		},
 		["d1374pnilunilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {

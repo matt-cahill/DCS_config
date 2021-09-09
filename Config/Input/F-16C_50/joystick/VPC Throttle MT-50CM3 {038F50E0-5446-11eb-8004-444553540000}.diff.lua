@@ -101,26 +101,10 @@ local diff = {
 		},
 	},
 	["keyDiffs"] = {
-		["d3024pnilu3024cd16vd1vpnilvu0"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN20",
-				},
-			},
-			["name"] = "Transmit Switch - VHF",
-		},
-		["d3025pnilu3025cd16vd1vpnilvu0"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN18",
-				},
-			},
-			["name"] = "Transmit Switch - UHF",
-		},
 		["d3026pnilu3026cd16vd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN19",
+					["key"] = "JOY_BTN33",
 				},
 			},
 			["name"] = "Transmit Switch - IFF OUT",
@@ -128,7 +112,7 @@ local diff = {
 		["d3027pnilu3027cd16vd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN17",
+					["key"] = "JOY_BTN32",
 				},
 			},
 			["name"] = "Transmit Switch - IFF IN",
