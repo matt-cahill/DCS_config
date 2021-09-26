@@ -336,6 +336,13 @@ options = {
 			["Reticle"] = false,
 			["Shake"] = 100,
 		},
+		["MosquitoFBMkVI"] = {
+			["CPLocalList"] = "default",
+			["assistance"] = 100,
+			["autoRudder"] = false,
+			["cameraOrigin"] = 0,
+			["thtldetent"] = 0,
+		},
 		["NS430"] = {
 			["SpitfireLFMkIXCW_enabled"] = true,
 			["SpitfireLFMkIX_enabled"] = true,

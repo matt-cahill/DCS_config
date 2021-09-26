@@ -62,6 +62,30 @@ local diff = {
 			},
 			["name"] = "NWS A/R DISC MSL STEP Button",
 		},
+		["d3001pnilu3001cd28vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN25",
+				},
+			},
+			["name"] = "Mode (M) Button - Depress",
+		},
+		["d3003pnilu3003cd28vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN52",
+				},
+			},
+			["name"] = "HDG Set Knob - Depress",
+		},
+		["d3005pnilu3005cd28vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN55",
+				},
+			},
+			["name"] = "CRS Set / Brightness Control Knob - Depress",
+		},
 		["d3006pnilu3006cd16vd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
@@ -238,6 +262,38 @@ local diff = {
 				},
 			},
 		},
+		["dnilp3002unilcd28vdnilvp-0.01vunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN53",
+				},
+			},
+			["name"] = "HDG Set Knob - CCW/Decrease",
+		},
+		["dnilp3002unilcd28vdnilvp0.01vunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN54",
+				},
+			},
+			["name"] = "HDG Set Knob - CW/Increase",
+		},
+		["dnilp3004unilcd28vdnilvp-0.01vunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN56",
+				},
+			},
+			["name"] = "CRS Set / Brightness Control Knob - CCW/Decrease",
+		},
+		["dnilp3004unilcd28vdnilvp0.01vunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN57",
+				},
+			},
+			["name"] = "CRS Set / Brightness Control Knob - CW/Increase",
+		},
 		["dnilp32u214cdnilvdnilvpnilvunil"] = {
 			["name"] = "View Left slow",
 			["removed"] = {
@@ -269,6 +325,22 @@ local diff = {
 					["key"] = "JOY_BTN_POV1_D",
 				},
 			},
+		},
+		["dnilp771unilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN59",
+				},
+			},
+			["name"] = "Pitch Trim Knob - CCW",
+		},
+		["dnilp772unilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN60",
+				},
+			},
+			["name"] = "Pitch Trim Knob - CW",
 		},
 		["dnilp93u215cdnilvdnilvpnilvunil"] = {
 			["added"] = {

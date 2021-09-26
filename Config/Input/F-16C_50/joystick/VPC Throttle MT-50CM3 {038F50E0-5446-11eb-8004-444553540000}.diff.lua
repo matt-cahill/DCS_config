@@ -29,13 +29,13 @@ local diff = {
 				[1] = {
 					["filter"] = {
 						["curvature"] = {
-							[1] = -0.05,
+							[1] = 0,
 						},
-						["deadzone"] = 0,
+						["deadzone"] = 0.02,
 						["invert"] = true,
-						["saturationX"] = 0.98,
+						["saturationX"] = 1,
 						["saturationY"] = 1,
-						["slider"] = false,
+						["slider"] = true,
 					},
 					["key"] = "JOY_RY",
 				},
@@ -101,6 +101,54 @@ local diff = {
 		},
 	},
 	["keyDiffs"] = {
+		["d3003pnilunilcd4vd1vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN35",
+				},
+			},
+			["name"] = "External Fuel Transfer Switch - NORM",
+		},
+		["d3005pnilunilcd4vd0.1vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN56",
+				},
+			},
+			["name"] = "FUEL QTY SEL Knob - NORM",
+		},
+		["d3005pnilunilcd4vd0.2vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN57",
+				},
+			},
+			["name"] = "FUEL QTY SEL Knob - RSVR",
+		},
+		["d3005pnilunilcd4vd0.3vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN58",
+				},
+			},
+			["name"] = "FUEL QTY SEL Knob - INT WING",
+		},
+		["d3005pnilunilcd4vd0.4vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN59",
+				},
+			},
+			["name"] = "FUEL QTY SEL Knob - EXT WING",
+		},
+		["d3005pnilunilcd4vd0.5vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN60",
+				},
+			},
+			["name"] = "FUEL QTY SEL Knob - EXT CTR",
+		},
 		["d3026pnilu3026cd16vd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
@@ -157,6 +205,14 @@ local diff = {
 			},
 			["name"] = "SPD BRK Switch - Aft/EXTEND (Momentary)",
 		},
+		["d3031pnilu3031cd2vd-1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN6",
+				},
+			},
+			["name"] = "Autopilot PITCH Switch - ATT HOLD",
+		},
 		["d3031pnilunilcd16vd1vpnilvunil"] = {
 			["added"] = {
 				[1] = {
@@ -164,6 +220,38 @@ local diff = {
 				},
 			},
 			["name"] = "SPD BRK Switch - Fwd/RETRACT",
+		},
+		["d3032pnilu3032cd2vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN7",
+				},
+			},
+			["name"] = "Autopilot PITCH Switch - ALT HOLD",
+		},
+		["d3032pnilunilcd2vd-1vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN5",
+				},
+			},
+			["name"] = "Autopilot PITCH Switch - A/P OFF",
+		},
+		["d3033pnilunilcd2vd-1vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN2",
+				},
+			},
+			["name"] = "Autopilot ROLL Switch - Down",
+		},
+		["d3033pnilunilcd2vd1vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN3",
+				},
+			},
+			["name"] = "Autopilot ROLL Switch - Up",
 		},
 		["d3039pnilu3039cd16vd1vpnilvu0"] = {
 			["added"] = {
