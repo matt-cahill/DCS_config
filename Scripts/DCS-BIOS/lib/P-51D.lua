@@ -93,7 +93,7 @@ definePushButton("OIL_DILUTE", 15, 3013, 62, "Engine Control Panel", "Oil Dilute
 definePushButton("STARTER", 15, 3008, 63, "Engine Control Panel", "Starter Activate")
 defineToggleSwitch("STARTER_COVER", 15, 3009, 64, "Engine Control Panel", "Starter Switch Cover")
 definePushButton("PRIMER", 15, 3011, 65, "Engine Control Panel", "Primer Activate")
-defineFloat("AIRSPEED_NEEDLE", 11, {0, 1}, "Airspeed Indicator", "Airspeed Needle")
+defineFloat("AIRSPEED_NEEDLE", 11, {0, 0.7}, "Airspeed Indicator", "Airspeed Needle")
 defineRotary("SET_PRESSURE", 17, 3001, 26, "Altimeter", "Set Pressure")
 defineFloat("ALTIMETER_PRESSURE", 97, {0, 1}, "Altimeter", "Altimeter Pressure")
 defineFloat("ALTIMETER_100_FOOT", 25, {0, 1}, "Altimeter", "Altimeter 100 Foot")
@@ -138,8 +138,8 @@ defineToggleSwitch("WARNING_RADAR_POWER", 25, 3001, 114, "Tail Warning Radar", "
 definePushButton("WARNING_RADAR_TEST", 25, 3003, 115, "Tail Warning Radar", "Tail Warning Radar Test")
 definePotentiometer("WARNING_RADAR_LIGHT", 25, 3004, 113, {0, 1}, "Tail Warning Radar", "Tail Warning Radar Light Control")
 defineIndicatorLight("RADAR_WARNING_LIGHT", 161, "Tail Warning Radar", "Radar Warning Light (yellow)")
-definePotentiometer("DETROLA_FREQUENCY", 26, 3001, 137, {0, 1}, "Detrola", "Detrola Frequency Selector")
-definePotentiometer("DETROLA_VOLUME", 26, 3002, 138, {0, 1}, "Detrola", "Detrola Volume")
+definePotentiometer("DETROLA_FREQUENCY", 26, 3004, 137, {0, 1}, "Detrola", "Detrola Frequency Selector")
+definePotentiometer("DETROLA_VOLUME", 26, 3001, 138, {0, 1}, "Detrola", "Detrola Volume")
 defineToggleSwitch("OFF_POWER", 27, 3001, 140, "IFF", "IFF Power On/Off")
 defineToggleSwitch("IFF_DISTRESS", 27, 3005, 143, "IFF", "IFF Distress Signal On/Off")
 defineToggleSwitch("IFF_DET_CIRCUIT", 27, 3004, 142, "IFF", "IFF Detonator Circuit On/Off")
@@ -147,9 +147,9 @@ definePushButton("IFF_DET_LEFT", 27, 3007, 145, "IFF", "IFF Detonator Left")
 definePushButton("IFF_DET_RIGHT", 27, 3008, 146, "IFF", "IFF Detonator Right")
 defineTumb("IFF_TIME_OFF_ON", 27, 3003, 141, 1, {-1,1}, nil, false, "IFF", "IFF Time/Off/On")
 defineTumb("IFF_CODE", 27, 3016, 139, 0.1, {0.0, 0.5}, nil, false, "IFF", "IFF Code 1-6")
-defineToggleSwitch("HOMING_ADAPTER_POWER", 28, 3002, 153, "Homing Adapter", "Homing Adapter On/Off")
+defineToggleSwitch("HOMING_ADAPTER_POWER", 28, 3004, 153, "Homing Adapter", "Homing Adapter CW/MCW Switch")
 definePushButton("HOMING_ADAPTER_CB", 28, 3003, 154, "Homing Adapter", "Homing Adapter Circuit Breaker")
-defineTumb("HOMING_ADAPTER_MODE", 28, 3005, 152, 0.1, {0.0, 0.2}, nil, false, "Homing Adapter", "Homing Adapter Mode")
+defineTumb("HOMING_ADAPTER_MODE", 28, 3001, 152, 0.1, {0.0, 0.2}, nil, false, "Homing Adapter", "Homing Adapter Mode Switch")
 defineFloat("ACCELEROMETER_MAIN", 175, {0.0, 1.0}, "Accelerometer", "Accelerometer Main")
 defineFloat("ACCELEROMETER_MIN", 177, {0.0, 1.0}, "Accelerometer", "Accelerometer Min")
 defineFloat("ACCELEROMETER_MAX", 178, {0.0, 1.0}, "Accelerometer", "Accelerometer Max")
@@ -174,7 +174,6 @@ defineFloat("FUEL_TANK_RIGHT", 156, {0.0, 1.0}, "Fuel System", "Fuel Tank Right"
 defineFloat("FUEL_TANK_FUSELAGE", 160, {0.0, 1.0}, "Fuel System", "Fuel Tank Fuselage")
 
 --Externals
-
 defineIntegerFromGetter("EXT_POSITION_LIGHT_LEFT", function()
 	if LoGetAircraftDrawArgumentValue(190) > 0 then return 1 else return 0 end
 end, 1, "External Aircraft Model", "Left Position Light (red)")
@@ -195,7 +194,6 @@ defineIntegerFromGetter("EXT_RECOC_LIGHT_YE", function()
 end, 1, "External Aircraft Model", "Amber Recognition Light (yellow)")
 
 --[[--Gauge Values--]]--
-
 local function getAirspeed()
      local returnValue = (GetDevice(0):get_argument_value(11))*1000
      return returnValue

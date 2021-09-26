@@ -264,7 +264,7 @@ defineFloat("PLT_CLOCK_F_M", 53, {0, 1}, "Clock Gauges", "PILOT Clock Flight Min
 defineFloat("PLT_CLOCK_ST_M", 54, {0, 1}, "Clock Gauges", "PILOT Clock Seconds Time Minutes")
 defineFloat("PLT_CLOCK_ST_S", 55, {0, 1}, "Clock Gauges", "PILOT Clock Seconds Time Seconds")
 defineFloat("OP_CLOCK_CT_H", 695, {0, 1}, "Clock Gauges", "OPERATOR Clock Current Time Hours")
-defineFloat("OP_CLOCK_CT_M", 696, {0, 1}, "Clock Gauges", "OPERATOR Clock Current Time Minutes")
+defineFloat("OP_CLOCK_CT_M", 1027, {0, 1}, "Clock Gauges", "OPERATOR Clock Current Time Minutes")
 defineFloat("OP_CLOCK_CT_S", 690, {0, 1}, "Clock Gauges", "OPERATOR Clock Current Time Seconds")
 defineFloat("OP_CLOCK_FT_STAT", 692, {0, 1}, "Clock Gauges", "OPERATOR Clock Flight Time Status")
 defineFloat("OP_CLOCK_F_H", 961, {0, 1}, "Clock Gauges", "OPERATOR Clock Flight Hours")
@@ -639,7 +639,7 @@ defineIndicatorLight("OP_SHTV_MINUS27V_L", 914, "I9K113 Lights", "OPERATOR SHTV 
 defineIndicatorLight("OP_SHTV_0_L", 918, "I9K113 Lights", "OPERATOR SHTV Tablo 0 Light (yellow)")
 defineIndicatorLight("OP_SHTV_04K_L", 924, "I9K113 Lights", "OPERATOR SHTV Tablo 0,4K Light (yellow)")
 defineIndicatorLight("OP_SHTV_04T_L", 923, "I9K113 Lights", "OPERATOR SHTV Tablo 0,4T Light (yellow)")
-defineIndicatorLight("OP_SHTV_APCH _L", 922, "I9K113 Lights", "OPERATOR SHTV Tablo APCH  Light (yellow)")
+defineIndicatorLight("OP_SHTV_APCH_L", 922, "I9K113 Lights", "OPERATOR SHTV Tablo APCH  Light (yellow)")
 defineIndicatorLight("OP_SHTV_UP_L", 928, "I9K113 Lights", "OPERATOR SHTV Tablo UP Light (yellow)")
 defineIndicatorLight("OP_SHTV_L_L", 929, "I9K113 Lights", "OPERATOR SHTV Tablo LEFT Light (yellow)")
 defineIndicatorLight("OP_SHTV_DN_L", 927, "I9K113 Lights", "OPERATOR SHTV Tablo DOWN Light (yellow)")
@@ -683,7 +683,7 @@ definePotentiometer("PLT_ASP17_HORIZONTAL_ADJ", 16, 3006, 566, {0, 1}, "ASP17", 
 definePotentiometer("PLT_ASP17_GRID_BRIGHT_ADJ", 16, 3010, 567, {0, 1}, "ASP17", "PILOT ASP17 Sight Grid Brightness Adjustment")
 defineToggleSwitch("PLT_ASP17_CROSSHAIR_LAMP", 16, 3013, 568, "ASP17", "PILOT ASP17 Sight Crosshair Lamp, MAIN/BACKUP")
 defineToggleSwitch("PLT_ASP17_GRID_LAMP", 16, 3012, 569, "ASP17", "PILOT ASP17 Sight Grid Lamp, MAIN/BACKUP")
-definePushButton("PLT_ASP17_CONTROL", 16, 3009, 570, "ASP17", "PILOT ASP17 Sight Control")
+definePushButton("PLT_ASP17_CONTROL", 16, 3009, 570, "ASP17", "PILOT ASP17 Sight Check")
 defineToggleSwitch("OP_USR_PW", 16, 3015, 761, "ASP17", "OPERATOR USR power")
 defineToggleSwitch("OP_USR_CHECK", 16, 3016, 762, "ASP17", "OPERATOR USR check")  -- Arg doubled
 defineToggleSwitch("PLT_ASP17_REFLECTOR_FIX", 16, 3045, 1005, "ASP17", "PILOT ASP17 Sight Reflector Control Fix")
@@ -1191,5 +1191,17 @@ end, 1, "External Aircraft Model", "Weight ON Wheels Right Gear")
 defineIntegerFromGetter("EXT_WOW_LEFT", function()
 	if LoGetAircraftDrawArgumentValue(6) > 0 then return 1 else return 0 end
 end, 1, "External Aircraft Model", "Weight ON Wheels Left Gear")
+
+defineIndicatorLight("OP_TIMER_L", 1026, "Internal Lights", "OPERATOR Timer Device Lamp (yellow)")
+defineToggleSwitch("PLT_SPU8_STICK_BTN", 55, 3024, 738, "SPU-8 PLT", "PILOT SPU-8 Trigger Button, RADIO(LMB)/ICS(RMB)")
+defineToggleSwitch("OP_SPU8_STICK_BTN", 55, 3025, 856, "SPU-8 OP", "OPERATOR SPU-8 Trigger Button, RADIO(LMB)/ICS(RMB)")
+
+--Timer
+defineToggleSwitch("OP_TIMER_L_UP", 70, 3003, 1015, "Timer", "OPERATOR Left Timer Control Up/Down")
+definePotentiometer("OP_TIMER_L_ROT", 70, 3004, 1016, {0, 1}, "Timer", "OPERATOR Left Timer Control Rotary")
+defineToggleSwitch("OP_TIMER_R_UP", 70, 3005, 1019, "Timer", "OPERATOR Right Timer Control Up/Down")
+definePotentiometer("OP_TIMER_R_ROT", 70, 3006, 1020, {0, 1}, "Timer", "OPERATOR Right Timer Control Rotary")
+defineTumb("OP_TIMER_SEL", 70, 3002, 1017, 0.5, {0, 1}, nil, false, "Timer", "OPERATOR Active Timer Select")
+defineToggleSwitch("OP_TIMER_ON", 70, 3001, 1018, "Timer", "OPERATOR Active Timer Start/Stop")
 
 BIOS.protocol.endModule()

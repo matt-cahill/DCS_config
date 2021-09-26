@@ -20,44 +20,44 @@ local defineIntegerFromGetter = BIOS.util.defineIntegerFromGetter
 -- remove Arg# Pilot 540
 
 defineTumb("GEN_ON_OFF", 1, 3075, 114, 1, {0,1}, nil, false, "Generator", "Generator On/Off")
-defineTumb("GEN_ON", 1, 3077, 114, 1,  {1, 1}, nil, false, "Generator", "Generator On")
+definePushButton("GEN_ON", 1, 3077, 114, "Generator", "Generator On")
 defineTumb("GEN_OFF", 1, 3092, 151, 1, {0,1}, nil, false, "Generator", "Generator Off")
 -- D 100 - Heating CB
 defineTumb("PIT_HEAT_ON_OFF", 1, 3012, 115, 1, {0,1}, nil, false, "Pitot", "Pitot/Windscreen Heating On/Off")
-defineTumb("PIT_HEAT_ON", 1, 3014, 115, 1,  {1, 1}, nil, false, "Pitot", "Pitot/Windscreen Heating On")
+definePushButton("PIT_HEAT_ON", 1, 3014, 115, "Pitot", "Pitot/Windscreen Heating On")
 defineTumb("PIT_HEAT_OFF", 1, 3086, 152, 1, {0,1}, nil, false, "Pitot", "Pitot/Windscreen Heating Off")
 -- C 100 - Navigation Lights CB
 defineTumb("NAV_LIGHTS_ON_OFF", 1, 3006, 116, 1, {0,1}, nil, false, "Lights", "Nav. Lights On/Off")
-defineTumb("NAV_LIGHTS_ON", 1, 3008, 116, 1,  {1, 1}, nil, false, "Lights", "Nav. Lights On")
+definePushButton("NAV_LIGHTS_ON", 1, 3008, 116, "Lights", "Nav. Lights On")
 defineTumb("NAV_LIGHTS_OFF", 1, 3084, 153, 1, {0,1}, nil, false, "Lights", "Nav. Lights Off")
 -- C 101 - Instrument Panel Illumination CB
 defineTumb("UV_LIGHTS_ON_OFF", 1, 3009, 117, 1, {0,1}, nil, false, "Lights", "UV Lights On/Off")
-defineTumb("UV_LIGHTS_ON", 1, 3011, 117, 1,  {1, 1}, nil, false, "Lights", "UV Lights On")
+definePushButton("UV_LIGHTS_ON", 1, 3011, 117, "Lights", "UV Lights On")
 defineTumb("UV_LIGHTS_OFF", 1, 3085, 154, 1, {0,1}, nil, false, "Lights", "UV Lights Off")
 -- V 101 - Drop Ordnance & Optional Armament CB
 defineTumb("WNG_DRP_ON_OFF", 1, 3024, 118, 1, {0,1}, nil, false, "Weapon Control", "Wing / Drop Ordnance On/Off")
-defineTumb("WNG_DRP_ON", 1, 3026, 118, 1,  {1, 1}, nil, false, "Weapon Control", "Wing / Drop Ordnance On")
+definePushButton("WNG_DRP_ON", 1, 3026, 118, "Weapon Control", "Wing / Drop Ordnance On")
 defineTumb("WNG_DRP_OFF", 1, 3090, 155, 1, {0,1}, nil, false, "Weapon Control", "Wing / Drop Ordnance Off")
 -- V 100 - Systematic & Ignition CB
 defineTumb("IGN_ON_OFF", 1, 3003, 119, 1, {0,1}, nil, false, "Engine", "Ignition On/Off")
-defineTumb("IGN_ON", 1, 3005, 119, 1,  {1, 1}, nil, false, "Engine", "Ignition On")
+definePushButton("IGN_ON", 1, 3005, 119, "Engine", "Ignition On")
 defineTumb("IGN_OFF", 1, 3083, 156, 1, {0,1}, nil, false, "Engine", "Ignition Off")
 -- Right Row
 -- A 101 - Battery Cut-Off Relay
 defineTumb("BAT_ON_OFF", 1, 3078, 120, 1, {0,1}, nil, false, "Engine", "Battery On/Off")
-defineTumb("BAT_ON", 1, 3080, 120, 1,  {1, 1}, nil, false, "Engine", "Battery On")
+definePushButton("BAT_ON", 1, 3080, 120, "Engine", "Battery On")
 defineTumb("BAT_OFF", 1, 3093, 157, 1, {0,1}, nil, false, "Engine", "Battery Off")
 -- F 135 - Radio CB - Labelled "FuG 16"
 defineTumb("RADIO_ON_OFF", 1, 3018, 121, 1, {0,1}, nil, false, "Radio", "Radio On/Off")
-defineTumb("RADIO_ON", 1, 3020, 121, 1,  {1, 1}, nil, false, "Radio", "Radio On")
+definePushButton("RADIO_ON", 1, 3020, 121, "Radio", "Radio On")
 defineTumb("RADIO_OFF", 1, 3088, 158, 1, {0,1}, nil, false, "Radio", "Radio Off")
 -- F 211 - IFF CB - Labelled "FuG 25a"
 defineTumb("IFF_ON_OFF", 1, 3021, 122, 1, {0,1}, nil, false, "Radio", "I.F.F. Power On/Off")
-defineTumb("IFF_ON", 1, 3023, 122, 1,  {1, 1}, nil, false, "Radio", "I.F.F. Power On")
+definePushButton("IFF_ON", 1, 3023, 122, "Radio", "I.F.F. Power On")
 defineTumb("IFF_OFF", 1, 3089, 159, 1, {0,1}, nil, false, "Radio", "I.F.F. Power Off")
 -- E 101 - Fuel Pump CB - Labelled "Tankpumpe"
 defineTumb("FUEL_ON_OFF", 1, 3015, 123, 1, {0,1}, nil, false, "Engine", "Fuel Pump On/Off")
-defineTumb("FUEL_ON", 1, 3017, 123, 1,  {1, 1}, nil, false, "Engine", "Fuel Pump On")
+definePushButton("FUEL_ON", 1, 3017, 123, "Engine", "Fuel Pump On")
 defineTumb("FUEL_OFF", 1, 3087, 160, 1, {0,1}, nil, false, "Engine", "Fuel Pump Off")
 
 -- Control Stick Triggers and Buttons
@@ -155,12 +155,6 @@ definePushButton("L_RADIATOR_OFF", 4, 3043, 90, "Engine", "LH Radiator Cut-Off")
 -- RH Radiator Hose Cut-Off Pull Handle
 definePushButton("R_RADIATOR_OFF", 4, 3045, 91, "Engine", "RH Radiator Cut-Off")
 
-
-
--- Rudder and Wheel Brakes
---TODO LEFT & RIGHT WHEEL BRAKES
-
--- Navigation Instruments
 -- Altimeter
 defineRotary("ALT_PRESS_SET", 8, 3001, 11, "Cockpit", "Altimeter Pressure Set")
 
@@ -190,7 +184,6 @@ definePotentiometer("SIGHT_BRIGHT", 1, 3044, 48, {0,1}, "Gun Sight", "Gun Sight 
 defineTumb("SIGHT_FOLD", 3, 3007, 139, 1, {0,1}, nil, false, "Gun Sight", "Gun Sight Fold")
 -- P 112 Gun Sight Smoked Screen Controls
 definePushButton("SIGHT_SCREEN", 3, 3010, 47, "Gun Sight", "Gun Sight Smoked Screen Up/Down")
---
 -- Radio Controls
 defineTumb("RADIO_MODE", 14, 3001, 128, 0.1, {0,0.3}, nil, false, "Radio", "Radio Mode")
 
@@ -226,7 +219,6 @@ definePushButton("FLARE_GUN", 20, 3001, 72, "Flare Gun", "Fire Flare Gun")
 
 
 -- Throttle Lever
---TODO Throttle Lever
 -- Propellor Control Rocker
 defineTumb("DEC_RPM", 1, 3060, 85, 1, {-1,1}, nil, false, "Engine", "Decrease RPM")
 defineTumb("INC_RPM", 1, 3060, 85, 1, {-1,1}, nil, false, "Engine", "Increase RPM")
@@ -238,12 +230,11 @@ defineTumb("GOV_AUTO_SWITCH", 1, 3058, 89, 1, {0,1}, nil, false, "Engine", "Gove
 
 -- Cold Weather Start Valve Handle
 definePushButton("COLD_START", 5, 3008, 86, "Engine", "Cold Weather Start")
---
 
 defineFloat("MIRRORS_DRAW", 183, {1, 0}, "Indicator", "mirrors_draw")
 defineFloat("PANEL_SHAKE_Z", 146, {-0.8, 0.8}, "Indicator", "Panel_Shake_Z")
 defineFloat("PANEL_SHAKE_Y", 147, {-0.8, 0.8}, "Indicator", "Panel_Shake_Y")
-defineFloat("PANEL_ROT_X", 1489, {-0.5, 0.5}, "Indicator", "Panel_Rot_X")
+defineFloat("PANEL_ROT_X", 148, {-0.5, 0.5}, "Indicator", "Panel_Rot_X")
 defineFloat("STICKPITCH", 105, {-1.0, 1.0}, "Indicator", "StickPitch")
 defineFloat("STICKBANK", 106, {-1.0, 1.0}, "Indicator", "StickBank")
 defineFloat("RUDDERPEDALS", 102, {-1.0, 1.0}, "Indicator", "RudderPedals")
@@ -295,7 +286,6 @@ defineIndicatorLight("LANDINGGEARGREENLIGHTRIGHT", 58, "Indicator", "LandingGear
 defineIndicatorLight("FUEL_RESERVE_LAMP", 135, "Indicator", "Fuel_Reserve_Lamp")
 
 -- Gauge Formulas
-
 local function getManifold()
      local returnValue = (GetDevice(0):get_argument_value(32))*65+10
      return returnValue
@@ -307,7 +297,7 @@ local function getMW50()
      local returnValue = (GetDevice(0):get_argument_value(1))*30
      return returnValue
 end
-defineIntegerFromGetter("METHANOL_WATER _PRES_VALUE", getMW50, 65000, 
+defineIntegerFromGetter("METHANOL_WATER_PRES_VALUE", getMW50, 65000, 
 "Gauge Values", "Methanol Water Pres kg/cm2 Read as X.X")
 
 local function getPropPitch()
@@ -437,5 +427,8 @@ definePushButton("FLARE_GUN_RD", 20, 3004, 165, "Flare Gun", "Fire Flare Gun Red
 definePushButton("FLARE_GUN_WH", 20, 3005, 165, "Flare Gun", "Fire Flare Gun White")
 definePushButton("FLARE_GUN_YE", 20, 3006, 165, "Flare Gun", "Fire Flare Gun Yellow")
 
+-- Rudder and Wheel Brakes
+definePotentiometer("LH_WHEELBRAKE", 4, 3015, 103, {0, 1}, "Cockpit", "Left Wheel Brake")
+definePotentiometer("RH_WHEELBRAKE", 4, 3018, 104, {0, 1}, "Cockpit", "Right Wheel Brake")
 
 BIOS.protocol.endModule()

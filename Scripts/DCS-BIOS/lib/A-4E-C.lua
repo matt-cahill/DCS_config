@@ -264,7 +264,7 @@ defineMultipositionSwitch("APC_ENABLE", 27, 3095, 135, 3, 1.0, "ApproachPowerCom
 defineMultipositionSwitch("APS_COLD_STD_HOT", 27, 3096, 136, 3, 1.0, "ApproachPowerCompensator", "APC Cold/Std/Hot")
 
 --Mechanical Systems
-defineToggleSwitch("GEAR HANDLE", 14, 3020, 8, "Mechanical Systems", "Landing Gear Handle")
+defineToggleSwitch("GEAR_HANDLE", 14, 3020, 8, "Mechanical Systems", "Landing Gear Handle")
 defineToggleSwitch("HOOK_HANDLE", 14, 3021, 10, "Gear", "Landing Hook Handle")
 defineToggleSwitch("SPOILER_ARM", 15, 3017, 84, "Mechanical Systems", "Spoiler Arm Switch")
 defineToggleSwitch("SPEEDBRAKE", 12, 3024, 85, "Mechanical Systems", "Speedbrake Switch")
@@ -291,8 +291,8 @@ defineToggleSwitch("OXY_SW", 1, 3138, 125, "Avionics", "Oxygen Switch")
 --Avionics
 definePushButton("ACCEL_RESET", 1, 3111, 139, "Avionics", "Reset Accelerometer")
 definePushButton("STOPWATCH", 7, 3105, 146, "Clock", "Stopwatch Start/Stop")
-definePushButton("RADAR_ALT_SW", 18, 3038, 603, "Avionics", "Radar Altitude Warning Button")
-defineRotary("RADAR_ALT_INDEX", 18, 3037, 602, "Avionics", "Radar Altitude Warning Knob")
+definePushButton("RADAR_ALT_SW", 18, 3038, 603, "Avionics", "Radar Altimeter Warning Button")
+defineRotary("RADAR_ALT_INDEX", 18, 3037, 602, "Avionics", "Radar Altimeter Warning Knob")
 definePushButton("STBY_ATT_INDEX_BTN", 1, 3042, 663, "Avionics", "Standby Attitude Horizon Button")
 defineRotary("STBY_ATT_INDEX_KNB", 1, 3043, 662, "Avionics", "Standby Attitude Horizon Knob")
 definePushButton("FUEL_EXT_BTN", 1, 3018, 720, "Avionics", "Show EXT Fuel")

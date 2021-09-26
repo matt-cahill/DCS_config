@@ -31,7 +31,7 @@ defineToggleSwitch("CANOPY_HANDLE", 19, 3042, 116, "General", "Canopy Handle, OP
 definePushButton("MASTER_ALERT_BTN", 19, 3040, 143, "General", "Master Alert Button")
 --define3PosTumb("CONTR_AUG_SW", xx, 30xx, 92, "Electric System", "Control Aug Switch, ALL/SBI/RESET")
 defineRotary("RUDDER_TRIM_KNB", 19, 3557, 165, "General", "Rudder Trim Knob")
-defineToggleSwitch("BATTERY1_SW", 19, 3061, 265, "General", "Seat Arming Handle, SAFE/ARMED")
+defineToggleSwitch("SEAT_ARM", 19, 3061, 265, "General", "Seat Arming Handle, SAFE/ARMED")
 definePushButton("EJECT_HANDLE", 19, 3063, 264, "General", "Ejection Handle - Pull To Eject")
 
 -- Electric system
@@ -240,7 +240,7 @@ defineIndicatorLight("ACCEL_L", 77, "Warning, Caution and IndicatorLights","ACCE
 defineIndicatorLight("FUEL_L", 78, "Warning, Caution and IndicatorLights","FUEL Light (yellow)")
 defineIndicatorLight("RAT_L", 80, "Warning, Caution and IndicatorLights","RAT Light (yellow)")
 defineIndicatorLight("TP_HOT_L", 81, "Warning, Caution and IndicatorLights","TP HOT Light (yellow)")
-defineIndicatorLight("LP PMP_L", 83, "Warning, Caution and IndicatorLights","LP PMP Light (yellow)")
+defineIndicatorLight("LP_PMP_L", 83, "Warning, Caution and IndicatorLights","LP PMP Light (yellow)")
 defineIndicatorLight("F_PRES_L", 84, "Warning, Caution and IndicatorLights","F PRES Light (yellow)")
 defineIndicatorLight("PK_BRK_L", 86, "Warning, Caution and IndicatorLights","PK BRK Light (yellow)")
 defineIndicatorLight("C_AUG_L", 87, "Warning, Caution and IndicatorLights","C AUG Light (yellow)")
