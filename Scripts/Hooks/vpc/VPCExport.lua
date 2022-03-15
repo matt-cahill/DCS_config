@@ -1,3 +1,10 @@
+local PrevExportScript                    = {}
+PrevExportScript.LuaExportStart           = LuaExportStart
+PrevExportScript.LuaExportStop            = LuaExportStop
+PrevExportScript.LuaExportBeforeNextFrame = LuaExportBeforeNextFrame
+PrevExportScript.LuaExportAfterNextFrame  = LuaExportAfterNextFrame
+PrevExportScript.LuaExportActivityNextEvent = LuaExportActivityNextEvent
+
 local oldPath = package.path
 local socketHost = "127.0.0.1"
 local socketPort = 4123
@@ -40,40 +47,74 @@ end
 
 function LuaExportStart()
     log.write('VPC.EXPORT', log.INFO, 'VPC Export start initiated'); 
+
+    if PrevExportScript.LuaExportStart then
+		PrevExportScript.LuaExportStart()
+	end
+end
+
+function LuaExportBeforeNextFrame()
+	if PrevExportScript.LuaExportBeforeNextFrame then
+		return PrevExportScript.LuaExportBeforeNextFrame()
+	end
+	
+	return NextTime
+end
+
+function LuaExportAfterNextFrame()
+	if PrevExportScript.LuaExportAfterNextFrame then
+		return PrevExportScript.LuaExportAfterNextFrame()
+	end
+	
+	return NextTime
 end
 
 
 function LuaExportActivityNextEvent(t)
-    log.write('VPC.EXPORT', log.INFO, 'Next frame triggered');
+    local NextTime = t + 0.5
+    -- log.write('VPC.EXPORT', log.INFO, 'Next frame triggered');
     data = {}
     vpcPanel = GetDevice(0)
+    log.write('VPC.EXPORT', log.WARNING, vpcPanel);
 
     if vpcPanel ~= 0 then
-        vpcPanel:update_arguments()
+        vpcPanel:update_arguments();
     end
 
     -- Executing common telemetry Export
     loadstring(readAll(lfs.writedir() .. '\\Scripts\\Hooks\\vpc\\common.lua'))()
-    planeFile = lfs.writedir() .. '\\Scripts\\Hooks\\vpc\\planes\\' .. LoGetSelfData().Name .. ".lua"
-    if fileExists(planeFile) then
-        -- Executing plane specific telemetry Export
-        if planeDefinitions == nil then
+    if vpcPanel ~= 0 then
+        planeFile = lfs.writedir() .. '\\Scripts\\Hooks\\vpc\\planes\\' .. LoGetSelfData().Name .. ".lua"
+        if fileExists(planeFile) then
+            -- Executing plane specific telemetry Export
+            if planeDefinitions == nil then
+                planeDefinitions = readAll(planeFile)
+            end
+        else
+            local planeTelemetryFile = assert(io.open(planeFile, 'w'))
+            planeTelemetryFile:write("data['plane_Name'] = '" .. LoGetSelfData().Name .."'")    
+            planeTelemetryFile:close() 
             planeDefinitions = readAll(planeFile)
         end
-    else
-        local planeTelemetryFile = assert(io.open(planeFile, 'w'))
-        planeTelemetryFile:write("data['plane_Name'] = '" .. LoGetSelfData().Name .."'")    
-        planeTelemetryFile:close() 
-        planeDefinitions = readAll(planeFile)
+        loadstring(planeDefinitions)()
     end
-    loadstring(planeDefinitions)()
 
-    -- log.write('VPC.EXPORT', log.INFO, json:encode(LoGetEngineInfo()));
     socket.try(c:send(json:encode(data)))
-    return t + 0.5
+    
+	if PrevExportScript.LuaExportActivityNextEvent then
+		local t2 = PrevExportScript.LuaExportActivityNextEvent(t)
+        if t2 < NextTime then
+            NextTime = t2
+        end
+	end
+
+    return NextTime
 end
 
 function LuaExportStop()
     -- socket.try(c:send("quit")) -- to close the listener socket
     c:close()
+    if PrevExportScript.LuaExportStop then
+		PrevExportScript.LuaExportStop()
+	end
 end

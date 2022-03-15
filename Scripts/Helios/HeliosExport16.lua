@@ -44,7 +44,7 @@ helios_private.port = 9089
 helios_private.exportLowTickInterval = 2
 
 -- seconds between updates (high priority export interval)
-helios_impl.exportInterval = 0.067
+helios_impl.exportInterval = 0.033
 
 -- seconds between updates for low priority data
 -- NOTE: this parameter has no configuration UI

@@ -1,4 +1,4 @@
-if LoIsOwnshipExportAllowed() then
+if LoIsOwnshipExportAllowed() ~= nil and LoIsOwnshipExportAllowed() == true and LoGetSelfData() ~= nil then
     local mechanisationStatus = LoGetMechInfo()
     local counterMeasures = LoGetSnares()
     local failureStatus = LoGetMCPState()

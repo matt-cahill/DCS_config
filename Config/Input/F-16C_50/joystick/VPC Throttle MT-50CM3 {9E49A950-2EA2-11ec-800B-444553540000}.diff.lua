@@ -149,6 +149,22 @@ local diff = {
 			},
 			["name"] = "FUEL QTY SEL Knob - EXT CTR",
 		},
+		["d3012pnilu3012cd2vd-1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN6",
+				},
+			},
+			["name"] = "Autopilot PITCH Switch - Down",
+		},
+		["d3013pnilu3013cd2vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN7",
+				},
+			},
+			["name"] = "Autopilot PITCH Switch - Up",
+		},
 		["d3026pnilu3026cd16vd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
@@ -205,14 +221,6 @@ local diff = {
 			},
 			["name"] = "SPD BRK Switch - Aft/EXTEND (Momentary)",
 		},
-		["d3031pnilu3031cd2vd-1vpnilvu0"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN6",
-				},
-			},
-			["name"] = "Autopilot PITCH Switch - ATT HOLD",
-		},
 		["d3031pnilunilcd16vd1vpnilvunil"] = {
 			["added"] = {
 				[1] = {
@@ -220,14 +228,6 @@ local diff = {
 				},
 			},
 			["name"] = "SPD BRK Switch - Fwd/RETRACT",
-		},
-		["d3032pnilu3032cd2vd1vpnilvu0"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN7",
-				},
-			},
-			["name"] = "Autopilot PITCH Switch - ALT HOLD",
 		},
 		["d3032pnilunilcd2vd-1vpnilvunil"] = {
 			["added"] = {
@@ -267,7 +267,7 @@ local diff = {
 					["key"] = "JOY_BTN106",
 				},
 			},
-			["name"] = "THROTTLE - IDLE",
+			["name"] = "Throttle - IDLE",
 		},
 		["d313pnilunilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
