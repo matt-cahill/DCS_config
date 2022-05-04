@@ -1,10 +1,11 @@
 _  = function(p) return p end
 name = _('Helios')
 description = 'Generated from compatible Helios Profiles'
-A_10C_2_CDU_SCREEN = { x = 53, y = 59, width = 222, height = 163 }
-A_10C_2_HUD = { x = 53, y = 365, width = 600, height = 700 }
-A_10C_CDU_SCREEN = { x = 324, y = 59, width = 222, height = 163 }
-A_10C_HUD = { x = 694, y = 365, width = 600, height = 700 }
+F_16C_DED = { x = 5956, y = 33, width = 727, height = 284 }
+F_16C_EHSI = { x = 5120, y = 0, width = 350, height = 350 }
+F_16C_RWR = { x = 5570, y = 0, width = 350, height = 350 }
+LEFT_MFCD = { x = 5120, y = 480, width = 800, height = 800 }
+RIGHT_MFCD = { x = 5920, y = 480, width = 800, height = 800 }
 Viewports = {
   Center = {
     x = 0,
