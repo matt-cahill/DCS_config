@@ -51,22 +51,6 @@ local diff = {
 		},
 	},
 	["keyDiffs"] = {
-		["d3006pnilunilcd5vd0vpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN38",
-				},
-			},
-			["name"] = "Rotor Brake Switch - BRK",
-		},
-		["d3006pnilunilcd5vd1vpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN37",
-				},
-			},
-			["name"] = "Rotor Brake Switch - OFF",
-		},
 		["d3009pnilu3009cd5vd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {

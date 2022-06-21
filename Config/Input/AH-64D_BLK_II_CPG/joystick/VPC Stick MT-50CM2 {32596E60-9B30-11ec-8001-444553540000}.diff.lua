@@ -1,5 +1,13 @@
 local diff = {
 	["keyDiffs"] = {
+		["d3001pnilunilcd87vd1vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN2",
+				},
+			},
+			["name"] = "Request Aircraft Control",
+		},
 		["d3002pnilu3002cd25vd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
@@ -15,22 +23,6 @@ local diff = {
 				},
 			},
 			["name"] = "George AI Helper Interface - Show/Hide",
-		},
-		["d3002pnilunilcd7vd0vpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN36",
-				},
-			},
-			["name"] = "Parking Brake Handle - Stow",
-		},
-		["d3002pnilunilcd7vd1vpnilvunil"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN37",
-				},
-			},
-			["name"] = "Parking Brake Handle - Pull",
 		},
 		["d3003pnilu3003cd25vd1vpnilvu0"] = {
 			["added"] = {
@@ -72,38 +64,6 @@ local diff = {
 			},
 			["name"] = "Force Trim/Hold Mode Switch - AL/Right",
 		},
-		["d3008pnilu3008cd25vd1vpnilvu0"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN11",
-				},
-			},
-			["name"] = "Weapons Action Switch - G/Up",
-		},
-		["d3008pnilu3008cd87vd1vpnilvu0"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN2",
-				},
-			},
-			["name"] = "Consent To Fire",
-		},
-		["d3009pnilu3009cd25vd-1vpnilvu0"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN13",
-				},
-			},
-			["name"] = "Weapons Action Switch - A/Down",
-		},
-		["d3010pnilu3010cd25vd-1vpnilvu0"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN14",
-				},
-			},
-			["name"] = "Weapons Action Switch - R/Left",
-		},
 		["d3010pnilunilcd40vd1vpnilvunil"] = {
 			["added"] = {
 				[1] = {
@@ -111,14 +71,6 @@ local diff = {
 				},
 			},
 			["name"] = "IHADSS show",
-		},
-		["d3011pnilu3011cd25vd1vpnilvu0"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN12",
-				},
-			},
-			["name"] = "Weapons Action Switch - M/Right",
 		},
 		["d3012pnilunilcd25vd1vpnilvunil"] = {
 			["added"] = {
@@ -159,6 +111,38 @@ local diff = {
 				},
 			},
 			["name"] = "Flare Dispense Button - Depress",
+		},
+		["d3049pnilu3049cd52vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN11",
+				},
+			},
+			["name"] = "LHG Weapons Action (WAS) Switch - G (GUN)",
+		},
+		["d3050pnilu3050cd52vd-1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN13",
+				},
+			},
+			["name"] = "LHG Weapons Action (WAS) Switch - A (AIR-TO-AIR)",
+		},
+		["d3051pnilu3051cd52vd-1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN14",
+				},
+			},
+			["name"] = "LHG Weapons Action (WAS) Switch - R (ROCKET)",
+		},
+		["d3052pnilu3052cd52vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN12",
+				},
+			},
+			["name"] = "LHG Weapons Action (WAS) Switch - M (MISSILE)",
 		},
 		["d97pnilunilcdnilvdnilvpnilvunil"] = {
 			["added"] = {

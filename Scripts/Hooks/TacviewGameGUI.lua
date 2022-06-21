@@ -27,7 +27,7 @@ do
 
 	-- Register Callbacks in DCS World GUI environment
 
-	local tacviewName = 'Tacview 1.8.6.201 C++ flight data recorder';
+	local tacviewName = 'Tacview 1.8.8.201 C++ flight data recorder';
 
 	if status then
 
