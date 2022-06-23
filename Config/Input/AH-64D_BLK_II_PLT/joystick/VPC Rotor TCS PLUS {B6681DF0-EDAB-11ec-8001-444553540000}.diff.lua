@@ -42,6 +42,16 @@ local diff = {
 		["a3042cd25"] = {
 			["added"] = {
 				[1] = {
+					["filter"] = {
+						["curvature"] = {
+							[1] = 0.3,
+						},
+						["deadzone"] = 0.02,
+						["invert"] = false,
+						["saturationX"] = 1,
+						["saturationY"] = 1,
+						["slider"] = false,
+					},
 					["key"] = "JOY_RX",
 				},
 			},
@@ -52,9 +62,9 @@ local diff = {
 				[1] = {
 					["filter"] = {
 						["curvature"] = {
-							[1] = 0,
+							[1] = 0.3,
 						},
-						["deadzone"] = 0,
+						["deadzone"] = 0.02,
 						["invert"] = true,
 						["saturationX"] = 1,
 						["saturationY"] = 1,
@@ -67,6 +77,22 @@ local diff = {
 		},
 	},
 	["keyDiffs"] = {
+		["d3006pnilunilcd5vd0vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN38",
+				},
+			},
+			["name"] = "Rotor Brake Switch - BRK",
+		},
+		["d3006pnilunilcd5vd1vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN37",
+				},
+			},
+			["name"] = "Rotor Brake Switch - OFF",
+		},
 		["d3023pnilunilcd3vd-1vpnilvunil"] = {
 			["added"] = {
 				[1] = {
@@ -91,13 +117,85 @@ local diff = {
 			},
 			["name"] = "PLT NVS MODE Switch - FIXED",
 		},
+		["d3028pnilu3028cd25vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN14",
+				},
+			},
+			["name"] = "Sight Select Switch - HMD/Up",
+		},
+		["d3029pnilu3029cd25vd-1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN16",
+				},
+			},
+			["name"] = "Sight Select Switch - LINK/Down",
+		},
+		["d3030pnilu3030cd25vd-1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN17",
+				},
+			},
+			["name"] = "Sight Select Switch - FCR/Left",
+		},
+		["d3031pnilu3031cd25vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN15",
+				},
+			},
+			["name"] = "Sight Select Switch - TADS/Right",
+		},
+		["d3036pnilu3036cd25vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN19",
+				},
+			},
+			["name"] = "Cursor Controller - Up",
+		},
+		["d3037pnilu3037cd25vd-1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN21",
+				},
+			},
+			["name"] = "Cursor Controller - Down",
+		},
+		["d3038pnilu3038cd25vd-1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN22",
+				},
+			},
+			["name"] = "Cursor Controller - Left",
+		},
+		["d3039pnilu3039cd25vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN20",
+				},
+			},
+			["name"] = "Cursor Controller - Right",
+		},
 		["d3040pnilu3040cd25vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN23",
+				},
+			},
+			["name"] = "Cursor Enter - Depress",
+		},
+		["d3041pnilu3041cd25vd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
 					["key"] = "JOY_BTN8",
 				},
 			},
-			["name"] = "Cursor Enter - Depress",
+			["name"] = "Alternate Cursor Enter - Depress",
 		},
 		["d3042pnilu3042cd3vd1vpnilvu0"] = {
 			["added"] = {
@@ -126,14 +224,6 @@ local diff = {
 			},
 			["name"] = "Cursor Display Select Button - Depress",
 		},
-		["d3048pnilu3048cd25vd1vpnilvu0"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN18",
-				},
-			},
-			["name"] = "Missile Advance Switch - Depress",
-		},
 		["d3051pnilu3051cd25vd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
@@ -150,10 +240,18 @@ local diff = {
 			},
 			["name"] = "NVS Select Switch - PNVS",
 		},
+		["d3053pnilu3053cd25vd-1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN12",
+				},
+			},
+			["name"] = "Boresight/Polarity Switch - B/S",
+		},
 		["d3054pnilu3054cd25vd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN16",
+					["key"] = "JOY_BTN10",
 				},
 			},
 			["name"] = "Boresight/Polarity Switch - PLRT",
@@ -161,7 +259,7 @@ local diff = {
 		["d3055pnilu3055cd25vd-1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN21",
+					["key"] = "JOY_BTN5",
 				},
 			},
 			["name"] = "Stabilator Control Switch - NU",
@@ -169,7 +267,7 @@ local diff = {
 		["d3056pnilu3056cd25vd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN19",
+					["key"] = "JOY_BTN6",
 				},
 			},
 			["name"] = "Stabilator Control Switch - ND",
@@ -177,7 +275,7 @@ local diff = {
 		["d3057pnilu3057cd25vd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN23",
+					["key"] = "JOY_BTN7",
 				},
 			},
 			["name"] = "Stabilator Control Switch - Depress",
@@ -206,21 +304,37 @@ local diff = {
 			},
 			["name"] = "Tail Wheel Lock/Unlock Button - Depress",
 		},
-		["d3067pnilunilcd25vd1vpnilvunil"] = {
+		["d311pnilunilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN2",
+					["key"] = "JOY_BTN39",
 				},
 			},
-			["name"] = "BUCS Trigger Guard - OPEN",
+			["name"] = "Power Lever (Left) - IDLE",
 		},
-		["d3068pnilu3068cd25vd1vpnilvu0"] = {
+		["d312pnilunilcdnilvdnilvpnilvunil"] = {
 			["added"] = {
 				[1] = {
-					["key"] = "JOY_BTN3",
+					["key"] = "JOY_BTN41",
 				},
 			},
-			["name"] = "BUCS Trigger - Depress",
+			["name"] = "Power Lever (Right) - IDLE",
+		},
+		["d313pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN40",
+				},
+			},
+			["name"] = "Power Lever (Left) - OFF",
+		},
+		["d314pnilunilcdnilvdnilvpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN42",
+				},
+			},
+			["name"] = "Power Lever (Right) - OFF",
 		},
 	},
 }

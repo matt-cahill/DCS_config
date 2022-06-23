@@ -8,14 +8,6 @@ local diff = {
 			},
 			["name"] = "Request Aircraft Control",
 		},
-		["d3002pnilu3002cd25vd1vpnilvu0"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN1",
-				},
-			},
-			["name"] = "Weapons Trigger Switch - FIRST DETENT",
-		},
 		["d3002pnilu3002cd87vd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
@@ -23,14 +15,6 @@ local diff = {
 				},
 			},
 			["name"] = "George AI Helper Interface - Show/Hide",
-		},
-		["d3003pnilu3003cd25vd1vpnilvu0"] = {
-			["added"] = {
-				[1] = {
-					["key"] = "JOY_BTN6",
-				},
-			},
-			["name"] = "Weapons Trigger Switch - SECOND DETENT",
 		},
 		["d3004pnilu3004cd25vd1vpnilvu0"] = {
 			["added"] = {
@@ -96,6 +80,22 @@ local diff = {
 			},
 			["name"] = "Symbology Select Switch - Depress",
 		},
+		["d3017pnilu3017cd25vd-1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN40",
+				},
+			},
+			["name"] = "PTT/RTS Switch - RADIO/Left (call radio menu)",
+		},
+		["d3018pnilu3018cd25vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN41",
+				},
+			},
+			["name"] = "PTT/RTS Switch - ICS/Right (call radio menu)",
+		},
 		["d3021pnilu3021cd25vd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
@@ -143,6 +143,22 @@ local diff = {
 				},
 			},
 			["name"] = "LHG Weapons Action (WAS) Switch - M (MISSILE)",
+		},
+		["d3061pnilu3061cd52vd0.5vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN1",
+				},
+			},
+			["name"] = "LHG Weapons Trigger Switch - FIRST DETENT",
+		},
+		["d3062pnilu3062cd52vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN6",
+				},
+			},
+			["name"] = "LHG Weapons Trigger Switch - SECOND DETENT",
 		},
 		["d97pnilunilcdnilvdnilvpnilvunil"] = {
 			["added"] = {

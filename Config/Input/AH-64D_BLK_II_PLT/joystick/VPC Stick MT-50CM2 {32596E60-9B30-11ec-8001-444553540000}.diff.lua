@@ -144,6 +144,22 @@ local diff = {
 			},
 			["name"] = "Symbology Select Switch - Depress",
 		},
+		["d3017pnilu3017cd25vd-1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN40",
+				},
+			},
+			["name"] = "PTT/RTS Switch - RADIO/Left (call radio menu)",
+		},
+		["d3018pnilu3018cd25vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN41",
+				},
+			},
+			["name"] = "PTT/RTS Switch - ICS/Right (call radio menu)",
+		},
 		["d3021pnilu3021cd25vd1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
