@@ -1,4 +1,22 @@
 local diff = {
+	["axisDiffs"] = {
+		["a3027cd52"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_SLIDER1",
+				},
+			},
+			["name"] = "TDU GAIN Knob",
+		},
+		["a3029cd52"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_SLIDER2",
+				},
+			},
+			["name"] = "TDU LEV Knob",
+		},
+	},
 	["keyDiffs"] = {
 		["d3001pnilunilcd87vd1vpnilvunil"] = {
 			["added"] = {

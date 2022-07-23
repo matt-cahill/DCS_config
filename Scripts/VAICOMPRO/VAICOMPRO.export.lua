@@ -119,11 +119,6 @@ vaicom.insert = {
 
 	Alt = function(self)
 		local mod = vaicom.insert:Mod()
-		--if mod == "UH-1H" then
-		--	GetDevice(21):performClickableAction(3009,1)
-		--	GetDevice(21):performClickableAction(3009,0)
-		--	return true
-		--end
 		if mod == "MiG-21Bis" then
 			GetDevice(55):performClickableAction(3046,1)
 			return true
@@ -215,6 +210,11 @@ vaicom.insert = {
 		if string.find(mod, "Mosquito") then
 			LoSetCommand(1592)			
 			LoSetCommand(1591) 					
+			return 
+		end	
+		if string.find(mod, "AH-64") then
+			GetDevice(25):performClickableAction(3017,-1)
+			GetDevice(25):performClickableAction(3017,-1)
 			return 
 		end	
 	end,

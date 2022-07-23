@@ -51,5 +51,23 @@ local diff = {
 			},
 		},
 	},
+	["keyDiffs"] = {
+		["d3042pnilu3042cd3vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN40",
+				},
+			},
+			["name"] = "GND ORIDE Pushbutton",
+		},
+		["d3043pnilu3043cd3vd1vpnilvu0"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN39",
+				},
+			},
+			["name"] = "A/S Pushbutton",
+		},
+	},
 }
 return diff

@@ -1,4 +1,22 @@
 local diff = {
+	["axisDiffs"] = {
+		["a3031cd3"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_SLIDER2",
+				},
+			},
+			["name"] = "VCP FLIR LVL Control Knob",
+		},
+		["a3032cd3"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_SLIDER1",
+				},
+			},
+			["name"] = "VCP FLIR GAIN Control Knob",
+		},
+	},
 	["keyDiffs"] = {
 		["d3002pnilu3002cd25vd1vpnilvu0"] = {
 			["added"] = {
@@ -144,6 +162,22 @@ local diff = {
 			},
 			["name"] = "Symbology Select Switch - Depress",
 		},
+		["d3016pnilunilcd80vd0vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN46",
+				},
+			},
+			["name"] = "CMWS Flare Squibs Switch - SAFE",
+		},
+		["d3016pnilunilcd80vd1vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN47",
+				},
+			},
+			["name"] = "CMWS Flare Squibs Switch - ARM",
+		},
 		["d3017pnilu3017cd25vd-1vpnilvu0"] = {
 			["added"] = {
 				[1] = {
@@ -159,6 +193,38 @@ local diff = {
 				},
 			},
 			["name"] = "PTT/RTS Switch - ICS/Right (call radio menu)",
+		},
+		["d3018pnilunilcd80vd0vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN48",
+				},
+			},
+			["name"] = "CMWS Mode Switch - NAV",
+		},
+		["d3018pnilunilcd80vd1vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN49",
+				},
+			},
+			["name"] = "CMWS Mode Switch - CMWS",
+		},
+		["d3020pnilunilcd80vd0vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN50",
+				},
+			},
+			["name"] = "CMWS Operation Switch - AUTO",
+		},
+		["d3020pnilunilcd80vd1vpnilvunil"] = {
+			["added"] = {
+				[1] = {
+					["key"] = "JOY_BTN51",
+				},
+			},
+			["name"] = "CMWS Operation Switch - BYPASS",
 		},
 		["d3021pnilu3021cd25vd1vpnilvu0"] = {
 			["added"] = {

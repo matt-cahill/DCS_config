@@ -32,16 +32,16 @@ cfg =
     ["mode"] = 0,
     ["bind_address"] = "",
     ["isPublic"] = true,
-    ["lastSelectedMission"] = "D:\\DCS World OpenBeta\\Mods\\aircraft\\AH-64D\\Missions\\Quickstart\\AH-64D_IA_SYR_Wepons Range.miz",
+    ["lastSelectedMission"] = "D:\\DCS World OpenBeta\\Mods\\aircraft\\AH-64D\\Missions\\Quickstart\\AH-64D_IA_CAUC_Ghost_FARP.miz",
+    ["listShuffle"] = false,
+    ["password"] = "bill",
+    ["listLoop"] = false,
+    ["name"] = "the_weta_the_better",
+    ["version"] = 1,
     ["missionList"] = 
     {
-        [1] = "D:\\DCS World OpenBeta\\Mods\\aircraft\\AH-64D\\Missions\\Quickstart\\AH-64D_IA_SYR_Wepons Range.miz",
+        [1] = "D:\\DCS World OpenBeta\\Mods\\aircraft\\AH-64D\\Missions\\Quickstart\\AH-64D_IA_CAUC_Ghost_FARP.miz",
     }, -- end of ["missionList"]
-    ["password"] = "bill",
-    ["version"] = 1,
-    ["name"] = "the_weta_the_better",
-    ["listShuffle"] = false,
-    ["listLoop"] = false,
     ["require_pure_clients"] = true,
     ["require_pure_models"] = false,
     ["maxPlayers"] = 2,
