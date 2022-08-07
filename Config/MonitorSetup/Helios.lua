@@ -9,7 +9,11 @@ F_16C_DED = { x = 5955, y = 32, width = 726, height = 283 }
 F_16C_EHSI = { x = 5120, y = 0, width = 350, height = 350 }
 F_16C_RWR = { x = 5570, y = 0, width = 350, height = 350 }
 LEFT_MFCD = { x = 5120, y = 480, width = 800, height = 800 }
+--AH_64D_LEFT_MFCD_PLT = { x = 5120, y = 480, width = 800, height = 800 }
+--AH_64D_LEFT_MFCD_CPG = { x = 5120, y = 480, width = 800, height = 800 }
 RIGHT_MFCD = { x = 5920, y = 480, width = 800, height = 800 }
+--AH_64D_RIGHT_MFCD_PLT = { x = 5920, y = 480, width = 800, height = 800 }
+--AH_64D_RIGHT_MFCD_CPG = { x = 5920, y = 480, width = 800, height = 800 }
 Viewports = {
   Center = {
     x = 0,
