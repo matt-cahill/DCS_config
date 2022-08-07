@@ -1,6 +1,9 @@
 _  = function(p) return p end
 name = _('Helios')
 description = 'Generated from compatible Helios Profiles'
+A_10C_2_CDU_SCREEN = { x = 5920, y = 0, width = 800, height = 350 }
+A_10C_2_CMSC_SCREEN = { x = 5120, y = 250, width = 450, height = 100 }
+A_10C_2_RWR_SCREEN = { x = 5570, y = 0, width = 350, height = 350 }
 AH_64D_CMWS = { x = 5420, y = 0, width = 500, height = 250 }
 AH_64D_EUFD_PLT = { x = 5920, y = 0, width = 800, height = 350 }
 --AH_64D_EUFD_CPG = { x = 5920, y = 0, width = 800, height = 350 }
