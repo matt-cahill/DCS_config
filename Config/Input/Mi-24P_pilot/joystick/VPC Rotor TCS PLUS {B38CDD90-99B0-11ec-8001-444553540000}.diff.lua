@@ -8,7 +8,15 @@ local diff = {
 				},
 			},
 		},
-		["a2003cdnil"] = {
+		["a2002cdnil"] = {
+			["name"] = "Flight Control Cyclic Roll",
+			["removed"] = {
+				[1] = {
+					["key"] = "JOY_X",
+				},
+			},
+		},
+		["a2087cdnil"] = {
 			["added"] = {
 				[1] = {
 					["filter"] = {
@@ -19,29 +27,11 @@ local diff = {
 						["invert"] = true,
 						["saturationX"] = 1,
 						["saturationY"] = 1,
-						["slider"] = false,
+						["slider"] = true,
 					},
-					["key"] = "JOY_Z",
+					["key"] = "JOY_X",
 				},
 			},
-			["changed"] = {
-				[1] = {
-					["filter"] = {
-						["curvature"] = {
-							[1] = 0,
-						},
-						["deadzone"] = 0,
-						["invert"] = true,
-						["saturationX"] = 1,
-						["saturationY"] = 1,
-						["slider"] = false,
-					},
-					["key"] = "JOY_RZ",
-				},
-			},
-			["name"] = "Flight Control Rudder",
-		},
-		["a2087cdnil"] = {
 			["name"] = "Flight Control Collective",
 			["removed"] = {
 				[1] = {

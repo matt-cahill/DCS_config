@@ -71,7 +71,15 @@ helios_impl.alertInterval = 5.0
 
 -- Module names are different from internal self names, so this table translates them
 -- without instantiating every module.  Planes must be entered into this table to be
--- able to use modules from the Scripts\Mods directory.
+-- able to use modules from the Scripts\Helios\Mods directory.
+-- Typically these modules are embedded in the profile with an interface
+-- with the element <ExportModuleFormat>CaptZeenModule1</ExportModuleFormat>
+--
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+-- *  An entry in this table is **not** necessary if the interface is loaded from a  *
+-- *  JSON file in the ...\\Helios\\Interfaces\\HeliosInterfaces\\ folder.           *
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+-- 
 -- REVISIT: replace this mechanism with test loading and vehicle arrays
 local helios_module_names = {
     ["A-10C"] = "Helios_A10C",
@@ -89,6 +97,9 @@ local helios_module_names = {
     ["AV8BNA"] = "Helios_Harrier",
     ["UH-1H"] = "Helios_Huey",
     ["Ka-50"] = "Helios_KA50",
+    ["Ka-50_3"] = "Helios_KA50",
+    ["AH-64D_BLK_II"] = "Helios_AH64D",
+	["AJS37"] = "Helios_AJS37",
     -- legacy entry
     ["L-39"] = "Helios_L39",
     -- valid aircraft for L39 module
@@ -274,6 +285,15 @@ function helios.parseIndication(indicator_id)
         ret[name] = value
     end
     return ret
+end
+
+function helios.encodeIndication(indicator_id)
+    -- for complex variables we perform simple encoding before sending
+    local li = list_indication(indicator_id)
+    if li == "" then
+        return nil
+    end
+    return li:gsub(('%-'):rep(41).."\n","%%0A%%0D"):gsub("\n","%%0A"):gsub(":","%%3A")
 end
 
 -- send a value if its value has changed, batching sends
@@ -637,6 +657,11 @@ function helios_private.clearState()
     -- sent updates and received commands, just for reporting
     helios_private.state.sendCount = 0
     helios_private.state.receiveCount = 0
+
+    -- Inform driver to clear any local state it might be keeping
+    if helios_private.driver.clearState ~= nil then
+        helios_private.driver.clearState()
+    end
 end
 
 function helios_private.processArguments(device, arguments)
@@ -684,6 +709,11 @@ function helios_private.resetCachedValues()
 
     -- make sure low priority is sent also
     helios_private.state.nextLowUpdate = helios_private.state.nextHighUpdate
+
+     -- inform driver to clear any local state it might be keeping	
+	if helios_private.driver.clearState ~= nil then
+        helios_private.driver.clearState()
+    end
 end
 
 function helios_private.processInput()

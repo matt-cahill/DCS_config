@@ -1,7 +1,7 @@
 local diff = {
 	["axisDiffs"] = {
 		["a2001cdnil"] = {
-			["name"] = "Pitch",
+			["name"] = "Flight Control Cyclic Pitch",
 			["removed"] = {
 				[1] = {
 					["key"] = "JOY_Y",
@@ -9,26 +9,10 @@ local diff = {
 			},
 		},
 		["a2002cdnil"] = {
-			["name"] = "Roll",
+			["name"] = "Flight Control Cyclic Roll",
 			["removed"] = {
 				[1] = {
 					["key"] = "JOY_X",
-				},
-			},
-		},
-		["a2003cdnil"] = {
-			["name"] = "Rudder",
-			["removed"] = {
-				[1] = {
-					["key"] = "JOY_RZ",
-				},
-			},
-		},
-		["a2004cdnil"] = {
-			["name"] = "Throttle Both",
-			["removed"] = {
-				[1] = {
-					["key"] = "JOY_Z",
 				},
 			},
 		},
@@ -40,15 +24,12 @@ local diff = {
 							[1] = 0,
 						},
 						["deadzone"] = 0,
-						["hardwareDetent"] = false,
-						["hardwareDetentAB"] = 0,
-						["hardwareDetentMax"] = 0,
-						["invert"] = false,
+						["invert"] = true,
 						["saturationX"] = 1,
 						["saturationY"] = 1,
 						["slider"] = true,
 					},
-					["key"] = "JOY_Y",
+					["key"] = "JOY_X",
 				},
 			},
 			["name"] = "Zoom View",
