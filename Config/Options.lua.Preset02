@@ -511,7 +511,7 @@ options = {
 		["UH-1H"] = {
 			["CPLocalList"] = "default",
 			["UH1HCockpitShake"] = 50,
-			["UHRudderTrimmer"] = true,
+			["UHRudderTrimmer"] = false,
 			["UHTrimmingMethod"] = 0,
 			["autoPilot"] = true,
 			["weapTooltips"] = true,
@@ -558,7 +558,7 @@ options = {
 	["views"] = {
 		["cockpit"] = {
 			["avionics"] = 3,
-			["mirrors"] = false,
+			["mirrors"] = true,
 			["reflections"] = false,
 		},
 	},
